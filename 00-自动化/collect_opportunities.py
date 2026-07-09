@@ -203,6 +203,31 @@ INTERNSHIP_PREFERRED_TERMS = [
     "战略",
 ]
 
+POLITICAL_RISK_TERMS = [
+    "national endowment for democracy",
+    "ned",
+    "freedom house",
+    "human rights watch",
+    "amnesty",
+    "sanctions",
+    "制裁",
+    "china threat",
+    "decoupling",
+    "democracy promotion",
+    "authoritarian influence",
+    "taiwan strait security",
+    "xinjiang",
+    "uyghur",
+    "tibet",
+    "regime change",
+    "security alliance",
+    "defense policy",
+    "military",
+    "国家安全",
+    "军事",
+    "人权倡议",
+]
+
 
 def load_env(path: Path) -> None:
     if not path.exists():
@@ -380,6 +405,21 @@ def internship_exclusion_reason(row: dict[str, str]) -> str:
     return row.get("排除原因", "")
 
 
+def political_risk_reason(row: dict[str, str]) -> str:
+    text = combined_text(row)
+    for term in POLITICAL_RISK_TERMS:
+        if term in text:
+            return f"政治风险偏高或对中国议题框架较敏感：{term}"
+    return ""
+
+
+def exclusion_reason(row: dict[str, str]) -> str:
+    internship_reason = internship_exclusion_reason(row)
+    if internship_reason:
+        return internship_reason
+    return political_risk_reason(row)
+
+
 def infer_action_priority(row: dict[str, str]) -> str:
     if row.get("排除原因"):
         return "低"
@@ -403,7 +443,7 @@ def normalize_row(raw: dict, today: str) -> dict[str, str]:
     row["主题分区"] = row.get("主题分区") if row.get("主题分区") in TOPIC_SECTIONS else infer_topic_section(row)
     row["岗位类型"] = row.get("岗位类型") or infer_job_type(row)
     row["岗位职能"] = row.get("岗位职能") or infer_job_function(row)
-    row["排除原因"] = row.get("排除原因") or internship_exclusion_reason(row)
+    row["排除原因"] = row.get("排除原因") or exclusion_reason(row)
     row["相关度"] = row.get("相关度") or infer_relatedness(row)
     if row["排除原因"]:
         row["相关度"] = "低"
@@ -449,6 +489,7 @@ def build_prompt(today: str, mode: str, existing_rows: list[dict[str, str]]) -> 
 请执行一次国际会议与学术机会雷达的信息监测，尤其注意：
 - fellowship / policy fellowship / visiting fellowship / early-career fellowship
 - internship，重点来源包括 UN Careers、UNDP、UNESCO、UNIDO、UNEP、UNCTAD、UN-Habitat、OECD、World Bank、ADB 等国际组织官网
+- NGO / think tank / policy institute opportunities, especially development, climate, sustainability, global governance, international finance, debt, AI governance, and multilateral cooperation.
 
 Internship 专项检索要求：
 - 必须单独检索 UN Careers / careers.un.org 的 internship，不要用 World Bank 或 OECD internship 代替 UN internship。
@@ -457,6 +498,13 @@ Internship 专项检索要求：
 - 对 UNDP、UNEP、UNESCO、UNIDO、UNCTAD、UN-Habitat 也要优先找明确的 internship 页面或岗位检索入口。
 - instant 模式中，若有符合条件的国际组织 internship，至少返回 3 条 internship；weekly 模式至少返回 5 条 internship。
 - 不要返回 consultant、staff position、volunteer、full-time job 或 fellowship 来冒充 internship。
+
+NGO / Think Tank 专项检索要求：
+- 扩展监测大型 NGO、foundation、policy institute、think tank 的 fellowship、internship、young professionals、research assistant、policy school、conference 和 call for applications。
+- 优先保留中性、技术性、发展政策、气候治理、国际金融/债务、AI治理、全球治理、多边合作、国际组织能力建设相关机会。
+- 对明显以 China threat、sanctions、decoupling、democracy promotion、authoritarian influence、Taiwan Strait security、Xinjiang / Uyghur / Tibet advocacy、人权倡议、军事安全或国防政策为核心框架的机会，必须写入“排除原因”，行动优先级设为低，默认不推荐进入主视图。
+- 对 NED、Freedom House、Human Rights Watch、Amnesty、security/defense think tanks 等来源，除非机会主题明确是非敏感的全球治理、发展、气候或国际组织能力建设，否则标记为政治风险较高。
+- 不要因为来源是 NGO/智库就自动收录；必须与用户的政策研究、国际组织、全球治理、发展、可持续、AI治理、气候或金融债务方向有连接。
 
 项目规则：
 {rules}
@@ -493,7 +541,7 @@ Internship 专项检索要求：
       "需要准备的材料": "CV、论文摘要、statement、推荐信等；没有则待核查",
       "岗位类型": "如果是实习必须写 Internship；其他机会可留空",
       "岗位职能": "政策研究/项目支持/可持续发展/治理/发展融资/气候/AI或数字治理/传播倡导/伙伴关系/战略研究/其他/待核查",
-      "排除原因": "如果 internship 是城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒岗位，写明原因；否则留空",
+      "排除原因": "如果 internship 是城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒岗位，或 NGO/智库机会存在较高政治风险，写明原因；否则留空",
       "行动优先级": "高/中高/中/低",
       "状态": "新发现/待核查/值得申请/已错过/长期关注",
       "备注": "一句话说明为什么值得关注，或为什么只是低优先级"
@@ -506,6 +554,7 @@ Internship 专项检索要求：
 - weekly 模式返回 15-25 条，包括新增、即将截止、fellowship、internship 和 CFP。
 - Internship 必须明确是 internship；不要返回 full-time job、consultant、volunteer 或 staff position。
 - Internship 如果偏城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒，允许返回但必须写排除原因并标为低优先级。
+- NGO/智库机会如果存在明显政治风险，允许返回但必须写排除原因并标为低优先级；中性发展、气候、AI治理、国际金融和全球治理机会优先。
 - 不要虚构截止日期、资助、资格或链接；不确定就写“待核查”。
 - 原网页链接必须是真实可核查链接。
 """
