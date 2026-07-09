@@ -78,149 +78,149 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <style>
     :root {{
       color-scheme: light;
-      --bg: #f5f6f4;
-      --panel: #ffffff;
-      --text: #20242a;
-      --muted: #667085;
-      --line: #e3e7df;
-      --green: #2f6f63;
-      --blue: #2f5f8f;
-      --gold: #906a2d;
-      --rose: #9a4f4f;
-      --soft-green: #edf6f2;
-      --soft-blue: #edf3fa;
-      --soft-gold: #fbf5e8;
-      --shadow: 0 14px 34px rgba(31, 41, 55, .08);
+      --bg: #f4f1ed;
+      --wash-1: rgba(214, 205, 194, .44);
+      --wash-2: rgba(170, 185, 176, .32);
+      --wash-3: rgba(199, 183, 170, .28);
+      --panel: rgba(255, 254, 251, .82);
+      --panel-solid: #fffdfa;
+      --text: #2d302d;
+      --muted: #72756f;
+      --line: rgba(92, 100, 88, .14);
+      --ink: #53645c;
+      --ink-2: #6f766b;
+      --soft: #ece8e0;
+      --soft-2: #e2e7df;
+      --accent: #7d8f84;
+      --shadow: 0 18px 48px rgba(73, 69, 61, .10);
     }}
     * {{ box-sizing: border-box; }}
     body {{
       margin: 0;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 12% 10%, var(--wash-2), transparent 30%),
+        radial-gradient(circle at 86% 18%, var(--wash-1), transparent 32%),
+        radial-gradient(circle at 45% 92%, var(--wash-3), transparent 36%),
+        var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.55;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.58;
     }}
-    .shell {{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 42px; }}
-    header {{
+    .shell {{ max-width: 1200px; margin: 0 auto; padding: 34px 22px 48px; }}
+    .hero {{
       display: grid;
-      grid-template-columns: 1.4fr .9fr;
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 24px;
-      align-items: end;
-      margin-bottom: 20px;
+      align-items: center;
+      margin-bottom: 18px;
     }}
-    h1 {{ margin: 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: 0; line-height: 1.05; }}
-    .subtitle {{ margin: 12px 0 0; max-width: 720px; color: var(--muted); font-size: 16px; }}
+    h1 {{ margin: 0; font-size: clamp(34px, 5vw, 58px); letter-spacing: 0; line-height: .98; font-weight: 780; }}
     .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
-    .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 22px 0; }}
+    .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0 14px; }}
     .stat {{
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 13px 14px;
-      box-shadow: 0 6px 18px rgba(31, 41, 55, .04);
+      border-radius: 18px;
+      padding: 15px 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }}
-    .stat strong {{ display: block; font-size: 24px; line-height: 1.1; }}
-    .stat span {{ display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }}
+    .stat strong {{ display: block; font-size: 26px; line-height: 1; font-weight: 760; }}
+    .stat span {{ display: block; margin-top: 7px; color: var(--muted); font-size: 12px; }}
     .toolbar {{
-      background: rgba(255,255,255,.86);
+      background: rgba(255, 254, 251, .78);
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 14px;
+      border-radius: 22px;
+      padding: 16px;
       position: sticky;
-      top: 0;
+      top: 12px;
       z-index: 5;
-      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }}
-    .search-row {{ display: grid; grid-template-columns: 1fr auto auto; gap: 10px; }}
+    .search-row {{ display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; }}
     input, select {{
-      height: 40px;
+      height: 42px;
       border: 1px solid var(--line);
-      border-radius: 7px;
-      background: #fff;
+      border-radius: 13px;
+      background: rgba(255,255,255,.82);
       color: var(--text);
       padding: 0 12px;
       font-size: 14px;
     }}
     .filter-section {{ margin-top: 12px; }}
-    .filter-label {{ color: var(--muted); font-size: 12px; margin-bottom: 7px; }}
+    .filter-label {{ color: var(--muted); font-size: 12px; margin-bottom: 8px; }}
     .filters {{ display: flex; gap: 8px; flex-wrap: wrap; }}
     .filter-button {{
       border: 1px solid var(--line);
-      background: #fff;
+      background: rgba(255,255,255,.74);
       border-radius: 999px;
-      padding: 7px 12px;
-      color: #3f4651;
+      padding: 8px 13px;
+      color: #4d564f;
       cursor: pointer;
       font-size: 13px;
     }}
-    .filter-button.active {{ background: #24322f; color: #fff; border-color: #24322f; }}
-    .content {{ display: grid; grid-template-columns: 280px 1fr; gap: 18px; margin-top: 18px; }}
-    .side-panel {{
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 16px;
-      height: fit-content;
-    }}
-    .side-panel h2 {{ font-size: 15px; margin: 0 0 10px; }}
-    .hint {{ color: var(--muted); font-size: 13px; margin: 0 0 14px; }}
-    .legend {{ display: grid; gap: 8px; }}
-    .legend-item {{ display: flex; align-items: center; gap: 8px; color: #475467; font-size: 13px; }}
-    .dot {{ width: 9px; height: 9px; border-radius: 50%; background: var(--green); }}
-    .dot.medium {{ background: var(--gold); }}
-    .dot.low {{ background: #98a2b3; }}
-    .list {{ display: grid; gap: 12px; }}
+    .filter-button.active {{ background: #5d6b62; color: #fff; border-color: #5d6b62; }}
+    .content {{ margin-top: 18px; }}
+    .list {{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }}
     .card {{
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 10px;
-      box-shadow: 0 8px 22px rgba(31, 41, 55, .045);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
       overflow: hidden;
+      backdrop-filter: blur(18px);
+      grid-column: span 6;
+      position: relative;
     }}
+    .card::before {{ content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.38), transparent 45%); }}
     .card.excluded {{ opacity: .62; }}
     .card summary {{
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 16px;
-      padding: 16px 18px;
+      padding: 18px 18px 16px;
       cursor: pointer;
       list-style: none;
+      position: relative;
     }}
     .card summary::-webkit-details-marker {{ display: none; }}
-    .title {{ font-size: 17px; font-weight: 760; margin: 0 0 8px; }}
+    .title {{ font-size: 17px; font-weight: 760; margin: 0 0 10px; line-height: 1.34; }}
     .chips {{ display: flex; flex-wrap: wrap; gap: 7px; }}
-    .chip {{ border-radius: 999px; padding: 3px 9px; font-size: 12px; background: var(--soft-blue); color: var(--blue); }}
-    .chip.topic {{ background: var(--soft-green); color: var(--green); }}
-    .chip.priority {{ background: var(--soft-gold); color: var(--gold); }}
+    .chip {{ border-radius: 999px; padding: 4px 10px; font-size: 12px; background: var(--soft); color: var(--ink); }}
+    .chip.topic {{ background: var(--soft-2); color: var(--ink); }}
+    .chip.priority {{ background: #eee4d7; color: #725f4e; }}
     .deadline {{ min-width: 110px; text-align: right; color: var(--muted); font-size: 13px; }}
     .deadline strong {{ display: block; color: var(--text); font-size: 15px; }}
-    .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; }}
+    .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; position: relative; }}
     .detail-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
-    .field {{ background: #f8faf8; border: 1px solid #edf0ea; border-radius: 8px; padding: 10px 11px; }}
+    .field {{ background: rgba(248, 247, 242, .76); border: 1px solid var(--line); border-radius: 14px; padding: 11px 12px; }}
     .field b {{ display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }}
     .field span {{ font-size: 14px; }}
-    .judgment {{ margin-top: 12px; padding: 12px; border-left: 3px solid var(--green); background: #f8fbf9; border-radius: 8px; }}
+    .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid var(--line); background: rgba(246, 244, 238, .70); border-radius: 16px; }}
     .links {{ margin-top: 13px; display: flex; flex-wrap: wrap; gap: 10px; }}
-    a {{ color: #175cd3; font-weight: 700; text-decoration: none; }}
-    .empty {{ padding: 30px; text-align: center; color: var(--muted); background: #fff; border: 1px dashed var(--line); border-radius: 10px; }}
+    .links a {{ color: #53645c; font-weight: 750; text-decoration: none; border-bottom: 1px solid rgba(83,100,92,.28); }}
+    .archive-control {{ display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 13px; }}
+    .archive-control input {{ width: 16px; height: 16px; padding: 0; accent-color: var(--accent); }}
+    .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.74); border: 1px dashed var(--line); border-radius: 22px; }}
     @media (max-width: 860px) {{
-      header, .content, .search-row {{ grid-template-columns: 1fr; }}
+      .hero, .search-row {{ grid-template-columns: 1fr; }}
       .meta {{ text-align: left; }}
       .stats {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
       .detail-grid {{ grid-template-columns: 1fr; }}
       .card summary {{ grid-template-columns: 1fr; }}
       .deadline {{ text-align: left; }}
+      .card {{ grid-column: 1 / -1; }}
     }}
   </style>
 </head>
 <body>
   <div class="shell">
-    <header>
+    <header class="hero">
       <div>
         <h1>国际机会雷达</h1>
-        <p class="subtitle">把会议、学术论坛、Fellowship 和 Internship 放到一个可筛选仪表盘里。先看类型，再看主题，最后判断是否值得投入。</p>
       </div>
-      <div class="meta">更新时间：{html.escape(generated_at)}<br>默认隐藏强专业壁垒 internship</div>
+      <div class="meta">{html.escape(generated_at)}</div>
     </header>
 
     <section class="stats" id="stats"></section>
@@ -237,6 +237,11 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
           <option value="hide">隐藏排除项</option>
           <option value="show">显示排除项</option>
         </select>
+        <select id="archiveView">
+          <option value="active">未归档</option>
+          <option value="archived">已归档</option>
+          <option value="all">全部</option>
+        </select>
       </div>
       <div class="filter-section">
         <div class="filter-label">机会类型</div>
@@ -249,15 +254,6 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     </section>
 
     <section class="content">
-      <aside class="side-panel">
-        <h2>阅读方式</h2>
-        <p class="hint">邮件只负责提醒，真正筛选在这里完成。建议先打开“Internship / Fellowship”，再切到你关心的主题分区。</p>
-        <div class="legend">
-          <div class="legend-item"><span class="dot"></span> 高/中高：值得优先看</div>
-          <div class="legend-item"><span class="dot medium"></span> 中：可观察或择机投</div>
-          <div class="legend-item"><span class="dot low"></span> 低：收藏或排除</div>
-        </div>
-      </aside>
       <main class="list" id="list"></main>
     </section>
   </div>
@@ -265,13 +261,15 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <script>
     const opportunities = {data_json};
     const initialStats = {stat_json};
-    const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide" }};
+    const archiveKey = "opportunityRadarArchived";
+    const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide", archiveView: "active" }};
 
     const statsEl = document.getElementById("stats");
     const listEl = document.getElementById("list");
     const searchEl = document.getElementById("search");
     const sortEl = document.getElementById("sort");
     const excludedEl = document.getElementById("excluded");
+    const archiveViewEl = document.getElementById("archiveView");
 
     const priorityOrder = {{ "高": 0, "中高": 1, "中": 2, "低": 3 }};
 
@@ -290,8 +288,38 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       return Object.values(row).join(" ").toLowerCase();
     }}
 
+    function rowId(row) {{
+      return row["链接指纹"] || row["原网页链接"] || row["机会名称"];
+    }}
+
+    function archivedIds() {{
+      try {{ return new Set(JSON.parse(localStorage.getItem(archiveKey) || "[]")); }}
+      catch {{ return new Set(); }}
+    }}
+
+    function saveArchived(ids) {{
+      localStorage.setItem(archiveKey, JSON.stringify([...ids]));
+    }}
+
+    function isArchived(row) {{
+      return archivedIds().has(rowId(row));
+    }}
+
+    function setArchived(row, checked) {{
+      const ids = archivedIds();
+      const id = rowId(row);
+      if (checked) ids.add(id);
+      else ids.delete(id);
+      saveArchived(ids);
+      renderStats();
+      renderList();
+    }}
+
     function filteredRows() {{
       let rows = opportunities.filter(row => {{
+        const archived = isArchived(row);
+        if (state.archiveView === "active" && archived) return false;
+        if (state.archiveView === "archived" && !archived) return false;
         if (state.excluded === "hide" && row["排除原因"]) return false;
         if (state.type !== "全部" && row["机会类型分组"] !== state.type) return false;
         if (state.topic !== "全部" && row["主题分区"] !== state.topic) return false;
@@ -311,12 +339,14 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     }}
 
     function renderStats() {{
+      const activeCount = opportunities.filter(row => !row["排除原因"] && !isArchived(row)).length;
+      const archivedCount = opportunities.filter(row => isArchived(row)).length;
       const items = [
-        ["主视图机会", initialStats.total],
+        ["未归档", activeCount],
         ["今日新增", initialStats.today],
-        ["即将截止", initialStats.soon],
-        ["推荐优先看", initialStats.recommended],
-        ["待核查", initialStats.needs_check],
+        ["近期截止", initialStats.soon],
+        ["优先查看", initialStats.recommended],
+        ["已归档", archivedCount],
       ];
       statsEl.innerHTML = items.map(([label, value]) => `<div class="stat"><strong>${{value}}</strong><span>${{label}}</span></div>`).join("");
     }}
@@ -331,6 +361,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
         ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">申请/投稿链接</a>` : "";
       const originalLink = row["原网页链接"]
         ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">原网页链接</a>` : "";
+      const checked = isArchived(row) ? "checked" : "";
       return `
         <details class="card${{excludedClass}}">
           <summary>
@@ -360,6 +391,10 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
               ${{escapeHtml(row["备注"] || "")}}
             </div>
             <div class="links">${{originalLink}} ${{applyLink}}</div>
+            <label class="archive-control" onclick="event.stopPropagation()">
+              <input type="checkbox" data-archive-id="${{escapeHtml(rowId(row))}}" ${{checked}}>
+              已处理，不再显示
+            </label>
           </div>
         </details>
       `;
@@ -395,6 +430,13 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     searchEl.addEventListener("input", () => {{ state.query = searchEl.value.trim(); renderList(); }});
     sortEl.addEventListener("change", () => {{ state.sort = sortEl.value; renderList(); }});
     excludedEl.addEventListener("change", () => {{ state.excluded = excludedEl.value; renderList(); }});
+    archiveViewEl.addEventListener("change", () => {{ state.archiveView = archiveViewEl.value; renderList(); }});
+    listEl.addEventListener("change", event => {{
+      if (!event.target.matches("[data-archive-id]")) return;
+      const id = event.target.dataset.archiveId;
+      const row = opportunities.find(item => rowId(item) === id);
+      if (row) setArchived(row, event.target.checked);
+    }});
 
     renderStats();
     activateButtons("typeFilters", "filterType", "全部");
