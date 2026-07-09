@@ -15,6 +15,32 @@ import collect_opportunities as radar
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 CN_TZ = timezone(timedelta(hours=8))
 
+DISPLAY_LABELS = {
+    "全部": "All",
+    "会议": "Conferences",
+    "学术论坛/CFP": "Academic Forums / CFP",
+    "Fellowship": "Fellowship",
+    "Internship": "Internship",
+    "青年项目": "Youth Programs",
+    "Policy/Summer School": "Policy / Summer School",
+    "其他": "Other",
+    "AI治理": "AI Governance",
+    "全球治理/国际组织": "Global Governance / IOs",
+    "可持续发展/气候": "Sustainability / Climate",
+    "发展/不平等": "Development / Inequality",
+    "国际金融/债务": "International Finance / Debt",
+    "国际关系/政治学": "IR / Political Science",
+    "高": "High",
+    "中高": "Medium-high",
+    "中": "Medium",
+    "低": "Low",
+    "待核查": "Needs checking",
+}
+
+
+def display_label(value: str) -> str:
+    return DISPLAY_LABELS.get(value, value)
+
 
 def normalize_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
@@ -61,20 +87,20 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     data_json = json.dumps(rows, ensure_ascii=False)
     stat_json = json.dumps(stats(rows), ensure_ascii=False)
     type_buttons = "".join(
-        f'<button class="filter-button" data-filter-type="{html.escape(group)}">{html.escape(group)}</button>'
+        f'<button class="filter-button" data-filter-type="{html.escape(group)}">{html.escape(display_label(group))}</button>'
         for group in ["全部"] + radar.OPPORTUNITY_GROUPS
     )
     topic_buttons = "".join(
-        f'<button class="filter-button" data-filter-topic="{html.escape(topic)}">{html.escape(topic)}</button>'
+        f'<button class="filter-button" data-filter-topic="{html.escape(topic)}">{html.escape(display_label(topic))}</button>'
         for topic in ["全部"] + radar.TOPIC_SECTIONS
     )
 
     return f"""<!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>国际机会雷达</title>
+  <title>International Opportunity Radar</title>
   <style>
     :root {{
       color-scheme: light;
@@ -218,37 +244,37 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <div class="shell">
     <header class="hero">
       <div>
-        <h1>国际机会雷达</h1>
+        <h1>Opportunity Radar</h1>
       </div>
-      <div class="meta">{html.escape(generated_at)}</div>
+      <div class="meta">Updated {html.escape(generated_at)}</div>
     </header>
 
     <section class="stats" id="stats"></section>
 
     <section class="toolbar">
       <div class="search-row">
-        <input id="search" type="search" placeholder="搜索标题、主办方、主题、材料或要求">
+        <input id="search" type="search" placeholder="Search title, host, topic, materials, or requirements">
         <select id="sort">
-          <option value="deadline">按截止时间</option>
-          <option value="priority">按行动优先级</option>
-          <option value="newest">按发现时间</option>
+          <option value="deadline">Deadline first</option>
+          <option value="priority">Priority first</option>
+          <option value="newest">Newest first</option>
         </select>
         <select id="excluded">
-          <option value="hide">隐藏排除项</option>
-          <option value="show">显示排除项</option>
+          <option value="hide">Hide excluded</option>
+          <option value="show">Show excluded</option>
         </select>
         <select id="archiveView">
-          <option value="active">未归档</option>
-          <option value="archived">已归档</option>
-          <option value="all">全部</option>
+          <option value="active">Active</option>
+          <option value="archived">Archived</option>
+          <option value="all">All</option>
         </select>
       </div>
       <div class="filter-section">
-        <div class="filter-label">机会类型</div>
+        <div class="filter-label">Opportunity Type</div>
         <div class="filters" id="typeFilters">{type_buttons}</div>
       </div>
       <div class="filter-section">
-        <div class="filter-label">主题分区</div>
+        <div class="filter-label">Topic Area</div>
         <div class="filters" id="topicFilters">{topic_buttons}</div>
       </div>
     </section>
@@ -342,58 +368,61 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       const activeCount = opportunities.filter(row => !row["排除原因"] && !isArchived(row)).length;
       const archivedCount = opportunities.filter(row => isArchived(row)).length;
       const items = [
-        ["未归档", activeCount],
-        ["今日新增", initialStats.today],
-        ["近期截止", initialStats.soon],
-        ["优先查看", initialStats.recommended],
-        ["已归档", archivedCount],
+        ["Active", activeCount],
+        ["New Today", initialStats.today],
+        ["Upcoming", initialStats.soon],
+        ["Priority", initialStats.recommended],
+        ["Archived", archivedCount],
       ];
       statsEl.innerHTML = items.map(([label, value]) => `<div class="stat"><strong>${{value}}</strong><span>${{label}}</span></div>`).join("");
     }}
 
     function field(label, value) {{
-      return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(value || "待核查")}}</span></div>`;
+      return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(value || "Needs checking")}}</span></div>`;
     }}
 
     function renderCard(row, index) {{
       const excludedClass = row["排除原因"] ? " excluded" : "";
       const applyLink = row["申请/投稿链接"] && row["申请/投稿链接"] !== "待核查"
-        ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">申请/投稿链接</a>` : "";
+        ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">Apply / Submit</a>` : "";
       const originalLink = row["原网页链接"]
-        ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">原网页链接</a>` : "";
+        ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">Original Page</a>` : "";
       const checked = isArchived(row) ? "checked" : "";
+      const typeLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["机会类型分组"]] || row["机会类型分组"];
+      const topicLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["主题分区"]] || row["主题分区"];
+      const priorityLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["行动优先级"]] || row["行动优先级"];
       return `
         <details class="card${{excludedClass}}">
           <summary>
             <div>
               <p class="title">${{escapeHtml(row["机会名称"])}}</p>
               <div class="chips">
-                <span class="chip">${{escapeHtml(row["机会类型分组"])}}</span>
-                <span class="chip topic">${{escapeHtml(row["主题分区"])}}</span>
-                <span class="chip priority">优先级 ${{escapeHtml(row["行动优先级"])}}</span>
+                <span class="chip">${{escapeHtml(typeLabel)}}</span>
+                <span class="chip topic">${{escapeHtml(topicLabel)}}</span>
+                <span class="chip priority">Priority ${{escapeHtml(priorityLabel)}}</span>
               </div>
             </div>
-            <div class="deadline"><span>截止</span><strong>${{escapeHtml(row["截止日期"] || "待核查")}}</strong></div>
+            <div class="deadline"><span>Deadline</span><strong>${{escapeHtml(row["截止日期"] || "Needs checking")}}</strong></div>
           </summary>
           <div class="details">
             <div class="detail-grid">
-              ${{field("主办方", row["主办方"])}}
-              ${{field("地点/形式", row["地点/线上"])}}
-              ${{field("材料", row["需要准备的材料"])}}
-              ${{field("要求", row["参加条件"])}}
-              ${{field("岗位类型", row["岗位类型"])}}
-              ${{field("岗位职能", row["岗位职能"])}}
-              ${{field("排除原因", row["排除原因"] || "无")}}
-              ${{field("状态", row["状态"])}}
+              ${{field("Host", row["主办方"])}}
+              ${{field("Location / Format", row["地点/线上"])}}
+              ${{field("Materials", row["需要准备的材料"])}}
+              ${{field("Requirements", row["参加条件"])}}
+              ${{field("Role Type", row["岗位类型"])}}
+              ${{field("Function", row["岗位职能"])}}
+              ${{field("Risk / Exclusion Note", row["排除原因"] || "None")}}
+              ${{field("Status", row["状态"])}}
             </div>
             <div class="judgment">
-              <strong>备注与判断</strong><br>
+              <strong>Fit & Investment Judgment</strong><br>
               ${{escapeHtml(row["备注"] || "")}}
             </div>
             <div class="links">${{originalLink}} ${{applyLink}}</div>
             <label class="archive-control" onclick="event.stopPropagation()">
               <input type="checkbox" data-archive-id="${{escapeHtml(rowId(row))}}" ${{checked}}>
-              已处理，不再显示
+              Reviewed, hide from active view
             </label>
           </div>
         </details>
@@ -403,7 +432,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     function renderList() {{
       const rows = filteredRows();
       if (!rows.length) {{
-        listEl.innerHTML = '<div class="empty">当前筛选下没有机会。换一个类型、主题或搜索词试试。</div>';
+        listEl.innerHTML = '<div class="empty">No opportunities match the current filters. Try another type, topic, or search term.</div>';
         return;
       }}
       listEl.innerHTML = rows.map(renderCard).join("");
