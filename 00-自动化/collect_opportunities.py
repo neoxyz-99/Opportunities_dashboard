@@ -597,7 +597,7 @@ def normalize_row(raw: dict, today: str) -> dict[str, str]:
     row["发现日期"] = row.get("发现日期") or today
     row["最近核查日期"] = today
     row["机会类型分组"] = row.get("机会类型分组") if row.get("机会类型分组") in OPPORTUNITY_GROUPS else infer_opportunity_group(row)
-    row["主题分区"] = row.get("主题分区") if row.get("主题分区") in TOPIC_SECTIONS else infer_topic_section(row)
+    row["主题分区"] = infer_topic_section(row)
     row["岗位类型"] = row.get("岗位类型") or infer_job_type(row)
     row["岗位职能"] = row.get("岗位职能") or infer_job_function(row)
     existing_reason = row.get("排除原因", "")
@@ -997,7 +997,7 @@ def main() -> int:
 
     load_env(API_ENV_PATH)
     today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
-    existing = load_csv(DB_PATH, FIELDS)
+    existing = [normalize_row(row, today) for row in load_csv(DB_PATH, FIELDS)]
     prompt = build_prompt(today, args.mode, existing)
     incoming = parse_opportunities(call_openai(prompt), today)
     merged, new_rows = merge_rows(existing, incoming)
