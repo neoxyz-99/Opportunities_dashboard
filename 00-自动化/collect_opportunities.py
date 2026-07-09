@@ -53,6 +53,8 @@ FIELDS = [
     "链接指纹",
 ]
 
+UNKNOWN_VALUES = {"", "待核查", "needs checking", "need checking", "n/a", "na", "tbc", "tbd", "not specified"}
+
 CORE_KEYWORDS = [
     "sustainable development",
     "可持续发展",
@@ -112,6 +114,28 @@ PERSONAL_FOCUS = {
     "金融债务": ["finance", "金融", "debt", "债务", "imf", "world bank", "treasury"],
     "全球治理": ["global governance", "全球治理", "multilateral", "多边", "international organization", "国际组织", "united nations"],
 }
+
+MULTILATERAL_BANK_TERMS = [
+    "world bank",
+    "imf",
+    "adb",
+    "asian development bank",
+    "afdb",
+    "african development bank",
+    "idb",
+    "inter-american development bank",
+    "ebrd",
+    "european bank for reconstruction and development",
+    "eib",
+    "european investment bank",
+    "aiib",
+    "new development bank",
+    "green climate fund",
+    "gcf",
+    "global environment facility",
+    "gef",
+    "adaptation fund",
+]
 
 OPPORTUNITY_GROUPS = [
     "会议",
@@ -189,6 +213,11 @@ INTERNSHIP_PREFERRED_TERMS = [
     "digital",
     "ai",
     "development finance",
+    "finance",
+    "financial",
+    "economics",
+    "economic affairs",
+    "international finance",
     "strategy",
     "政策",
     "研究",
@@ -201,6 +230,8 @@ INTERNSHIP_PREFERRED_TERMS = [
     "气候",
     "数字",
     "战略",
+    "金融",
+    "经济",
 ]
 
 POLITICAL_RISK_TERMS = [
@@ -251,6 +282,11 @@ def normalize_url(url: str) -> str:
     parts = urlsplit(url)
     clean = parts._replace(fragment="")
     return urlunsplit(clean).rstrip("/")
+
+
+def is_unknown(value: str) -> bool:
+    text = (value or "").strip().lower()
+    return text in UNKNOWN_VALUES or "待核查" in text or text == "needs checking"
 
 
 def fingerprint_for(row: dict[str, str]) -> str:
@@ -348,20 +384,134 @@ def infer_opportunity_group(row: dict[str, str]) -> str:
     return "其他"
 
 
+def has_any(text: str, patterns: list[str]) -> bool:
+    return any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in patterns)
+
+
+def topic_text(row: dict[str, str]) -> str:
+    fields = [
+        "机会名称",
+        "机会类型",
+        "议题标签",
+        "参加条件",
+        "需要准备的材料",
+        "岗位职能",
+        "备注",
+    ]
+    return " ".join(row.get(field, "").lower() for field in fields)
+
+
 def infer_topic_section(row: dict[str, str]) -> str:
-    text = combined_text(row)
-    if any(term in text for term in ["ai", "artificial intelligence", "人工智能", "digital governance", "数字治理", "technology governance"]):
+    text = topic_text(row)
+    full_text = combined_text(row)
+    if has_any(
+        text,
+        [
+            r"\bai governance\b",
+            r"\bartificial intelligence\b",
+            r"\bmachine learning\b",
+            r"\balgorithmic governance\b",
+            r"\bdigital governance\b",
+            r"\bdigital cooperation\b",
+            r"\btechnology governance\b",
+            r"\bdata governance\b",
+            r"\bai safety\b",
+            r"\bai policy\b",
+            "人工智能",
+            "数字治理",
+        ],
+    ):
         return "AI治理"
-    if any(term in text for term in ["world bank", "imf", "united nations", "oecd", "undp", "unesco", "unep", "unctad", "global governance", "multilateral", "国际组织", "联合国", "全球治理", "多边"]):
-        return "全球治理/国际组织"
-    if any(term in text for term in ["sustainable", "climate", "energy transition", "可持续", "气候", "能源转型"]):
+    if has_any(
+        text,
+        [
+            r"\bsustainable\b",
+            r"\bsustainability\b",
+            r"\bclimate\b",
+            r"\bclimate finance\b",
+            r"\bgreen finance\b",
+            r"\benergy transition\b",
+            r"\bjust transition\b",
+            r"\benvironmental governance\b",
+            r"\bgreen climate fund\b",
+            r"\bgcf\b",
+            "可持续",
+            "气候",
+            "能源转型",
+        ],
+    ):
         return "可持续发展/气候"
-    if any(term in text for term in ["development", "inequality", "inclusive", "发展", "不平等", "包容性"]):
-        return "发展/不平等"
-    if any(term in text for term in ["finance", "debt", "treasury", "金融", "债务", "发展融资"]):
+    if has_any(
+        text,
+        [
+            r"\bfinance\b",
+            r"\bfinancial\b",
+            r"\bdebt\b",
+            r"\bsovereign debt\b",
+            r"\bdevelopment finance\b",
+            r"\binternational monetary\b",
+            r"\bglobal economy\b",
+            r"\beconomic governance\b",
+            "金融",
+            "债务",
+            "发展融资",
+        ],
+    ) or any(term in full_text for term in MULTILATERAL_BANK_TERMS):
         return "国际金融/债务"
-    if any(term in text for term in ["international relations", "political science", "politics", "国际关系", "政治学"]):
+    if has_any(
+        text,
+        [
+            r"\bdevelopment\b",
+            r"\binequality\b",
+            r"\binclusive\b",
+            r"\bglobal south\b",
+            r"\bsocial protection\b",
+            r"\bpoverty\b",
+            "发展",
+            "不平等",
+            "包容性",
+        ],
+    ):
+        return "发展/不平等"
+    if has_any(
+        text,
+        [
+            r"\binternational relations\b",
+            r"\bpolitical science\b",
+            r"\bcomparative politics\b",
+            r"\beast asian studies\b",
+            r"\beast asia\b",
+            r"\barea studies\b",
+            r"\bpublic policy\b",
+            r"\bgovernance\b",
+            "国际关系",
+            "政治学",
+            "比较政治",
+            "东亚研究",
+            "治理",
+        ],
+    ):
         return "国际关系/政治学"
+    if has_any(
+        text + " " + row.get("主办方", "").lower(),
+        [
+            r"\bglobal governance\b",
+            r"\bmultilateral\b",
+            r"\binternational organization\b",
+            r"\bunited nations\b",
+            r"\bun\b",
+            r"\boecd\b",
+            r"\bundp\b",
+            r"\bunesco\b",
+            r"\bunep\b",
+            r"\bunctad\b",
+            "国际组织",
+            "联合国",
+            "全球治理",
+            "多边",
+        ],
+    ):
+        return "全球治理/国际组织"
     return "其他"
 
 
@@ -396,20 +546,27 @@ def internship_exclusion_reason(row: dict[str, str]) -> str:
         return row.get("排除原因", "")
     text = combined_text(row)
     if "internship" not in text and "实习" not in text:
-        return "未明确标注为 Internship"
+        return "Not clearly marked as an internship"
     for term in INTERNSHIP_EXCLUSION_TERMS:
-        if term in text:
-            return f"岗位职能偏强专业壁垒：{term}"
+        if exclusion_term_matches(text, term):
+            return f"Specialized role barrier: {term}"
     if not any(term in text for term in INTERNSHIP_PREFERRED_TERMS):
-        return "未体现政策研究、项目支持、治理、可持续发展或传播倡导等优先方向"
+        return "Not clearly linked to policy research, programme support, governance, sustainability or communications"
     return row.get("排除原因", "")
+
+
+def exclusion_term_matches(text: str, term: str) -> bool:
+    term = term.lower()
+    if re.fullmatch(r"[a-z]{1,3}", term):
+        return bool(re.search(rf"\b{re.escape(term)}\b", text))
+    return term in text
 
 
 def political_risk_reason(row: dict[str, str]) -> str:
     text = combined_text(row)
     for term in POLITICAL_RISK_TERMS:
         if term in text:
-            return f"政治风险偏高或对中国议题框架较敏感：{term}"
+            return f"Higher political sensitivity or China-related risk framing: {term}"
     return ""
 
 
@@ -443,7 +600,10 @@ def normalize_row(raw: dict, today: str) -> dict[str, str]:
     row["主题分区"] = row.get("主题分区") if row.get("主题分区") in TOPIC_SECTIONS else infer_topic_section(row)
     row["岗位类型"] = row.get("岗位类型") or infer_job_type(row)
     row["岗位职能"] = row.get("岗位职能") or infer_job_function(row)
-    row["排除原因"] = row.get("排除原因") or exclusion_reason(row)
+    existing_reason = row.get("排除原因", "")
+    if "：it" in existing_reason.lower() or ": it" in existing_reason.lower():
+        existing_reason = ""
+    row["排除原因"] = existing_reason or exclusion_reason(row)
     row["相关度"] = row.get("相关度") or infer_relatedness(row)
     if row["排除原因"]:
         row["相关度"] = "低"
@@ -464,7 +624,7 @@ def merge_rows(existing: list[dict[str, str]], incoming: list[dict[str, str]]) -
             for field in FIELDS:
                 if field in {"发现日期", "链接指纹"}:
                     continue
-                if row.get(field) and row.get(field) != "待核查":
+                if row.get(field) and not is_unknown(row.get(field, "")):
                     current[field] = row[field]
         else:
             by_fingerprint[fingerprint] = row
@@ -490,13 +650,20 @@ def build_prompt(today: str, mode: str, existing_rows: list[dict[str, str]]) -> 
 - fellowship / policy fellowship / visiting fellowship / early-career fellowship
 - internship，重点来源包括 UN Careers、UNDP、UNESCO、UNIDO、UNEP、UNCTAD、UN-Habitat、OECD、World Bank、ADB 等国际组织官网
 - NGO / think tank / policy institute opportunities, especially development, climate, sustainability, global governance, international finance, debt, AI governance, and multilateral cooperation.
+- multilateral development banks and climate funds, including World Bank, IMF, ADB, AfDB, IDB, EBRD, EIB, AIIB, NDB, IsDB, GCF, GEF, Adaptation Fund and Climate Investment Funds.
+- academic CFPs and conferences in governance, political science, comparative politics, East Asian studies, international relations, sustainable development, climate governance, international political economy, development finance, and global governance.
+
+Output language requirement:
+- All user-facing text fields must be written primarily in English: opportunity name, host, tags, requirements, materials, job function, exclusion reason, action priority note and remarks.
+- Do not write long Chinese sentences in the JSON values. Chinese is allowed only if it is part of an official Chinese title or official source name.
+- If information is unknown, write "Needs checking" instead of "待核查".
 
 Internship 专项检索要求：
 - 必须单独检索 UN Careers / careers.un.org 的 internship，不要用 World Bank 或 OECD internship 代替 UN internship。
 - 优先查询这些方向：political affairs internship, public information internship, sustainable development internship, economic affairs internship, programme management internship, communications internship, partnerships internship, governance internship, digital cooperation internship。
-- 如果 UN Careers 页面无法直接被搜索工具索引，请返回 UN Careers 官方检索入口并在备注中写“需在 UN Careers 站内以 Internship 过滤核查”，不要写成没有机会。
+- 如果 UN Careers 页面无法直接被搜索工具索引，请返回 UN Careers 官方检索入口并在备注中写 "Verify inside UN Careers with the Internship filter"，不要写成没有机会。
 - 对 UNDP、UNEP、UNESCO、UNIDO、UNCTAD、UN-Habitat 也要优先找明确的 internship 页面或岗位检索入口。
-- instant 模式中，若有符合条件的国际组织 internship，至少返回 3 条 internship；weekly 模式至少返回 5 条 internship。
+- instant 模式中，若有符合条件的国际组织 internship，至少返回 4 条 internship，其中至少 2 条应来自 UN system 或 UN Careers 入口；weekly 模式至少返回 6 条 internship。
 - 不要返回 consultant、staff position、volunteer、full-time job 或 fellowship 来冒充 internship。
 
 NGO / Think Tank 专项检索要求：
@@ -505,6 +672,15 @@ NGO / Think Tank 专项检索要求：
 - 对明显以 China threat、sanctions、decoupling、democracy promotion、authoritarian influence、Taiwan Strait security、Xinjiang / Uyghur / Tibet advocacy、人权倡议、军事安全或国防政策为核心框架的机会，必须写入“排除原因”，行动优先级设为低，默认不推荐进入主视图。
 - 对 NED、Freedom House、Human Rights Watch、Amnesty、security/defense think tanks 等来源，除非机会主题明确是非敏感的全球治理、发展、气候或国际组织能力建设，否则标记为政治风险较高。
 - 不要因为来源是 NGO/智库就自动收录；必须与用户的政策研究、国际组织、全球治理、发展、可持续、AI治理、气候或金融债务方向有连接。
+
+Multilateral banks / foundations / climate funds:
+- Actively search official opportunities pages for GCF, GEF, Adaptation Fund, Climate Investment Funds, ADB, AfDB, IDB, EBRD, EIB, AIIB, NDB and IsDB.
+- Prioritize internships, fellowships, young professional programmes, graduate programmes, research programmes, climate finance events and calls for applications.
+
+Academic CFP / conference search:
+- Search beyond general "international conference"; include governance, political science, comparative politics, East Asian studies, international relations, sustainable development, climate governance, development studies, international political economy and global governance.
+- Include academic association CFPs, university research centre workshops, graduate/early-career conferences and special issue calls when submission is open.
+- Do not over-classify academic or development finance opportunities as AI unless the title or tags explicitly mention AI, artificial intelligence, AI governance, AI policy, digital governance or data governance.
 
 项目规则：
 {rules}
@@ -534,17 +710,17 @@ NGO / Think Tank 专项检索要求：
       "地点/线上": "地点、线上或混合",
       "原网页链接": "会议官网或信息源原始链接",
       "申请/投稿链接": "申请、报名或投稿链接；没有则待核查",
-      "参加条件": "年龄、身份、学历、国籍/地区、专业背景等；没有明确写出则待核查",
-      "费用": "注册费、参会费、线上/线下成本；没有明确写出则待核查",
-      "是否有资助": "是/否/待核查",
-      "资助说明链接": "奖学金、travel grant、fee waiver 等说明链接；没有则待核查",
-      "需要准备的材料": "CV、论文摘要、statement、推荐信等；没有则待核查",
+      "参加条件": "Eligibility in English; write Needs checking if unclear",
+      "费用": "Cost information in English; write Needs checking if unclear",
+      "是否有资助": "Yes/No/Needs checking",
+      "资助说明链接": "Funding, scholarship, travel grant or fee waiver link; write Needs checking if unavailable",
+      "需要准备的材料": "Materials in English, such as CV, abstract, statement, recommendation letter; write Needs checking if unclear",
       "岗位类型": "如果是实习必须写 Internship；其他机会可留空",
-      "岗位职能": "政策研究/项目支持/可持续发展/治理/发展融资/气候/AI或数字治理/传播倡导/伙伴关系/战略研究/其他/待核查",
-      "排除原因": "如果 internship 是城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒岗位，或 NGO/智库机会存在较高政治风险，写明原因；否则留空",
+      "岗位职能": "Policy research/Programme support/Sustainable development/Governance/Development finance/Climate/AI or digital governance/Communications/Partnerships/Strategy/Other/Needs checking",
+      "排除原因": "Exclusion or risk reason in English if the internship is strongly specialized or if the NGO/think tank opportunity has high political risk; otherwise leave blank",
       "行动优先级": "高/中高/中/低",
       "状态": "新发现/待核查/值得申请/已错过/长期关注",
-      "备注": "一句话说明为什么值得关注，或为什么只是低优先级"
+      "备注": "One English sentence explaining fit, value, or why it is low priority"
     }}
   ]
 }}
@@ -555,7 +731,8 @@ NGO / Think Tank 专项检索要求：
 - Internship 必须明确是 internship；不要返回 full-time job、consultant、volunteer 或 staff position。
 - Internship 如果偏城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒，允许返回但必须写排除原因并标为低优先级。
 - NGO/智库机会如果存在明显政治风险，允许返回但必须写排除原因并标为低优先级；中性发展、气候、AI治理、国际金融和全球治理机会优先。
-- 不要虚构截止日期、资助、资格或链接；不确定就写“待核查”。
+- 不要虚构截止日期、资助、资格或链接；不确定就写 "Needs checking"。
+- Each opportunity must have exactly one 机会类型分组 and exactly one 主题分区. Do not combine multiple topic sections with slashes, commas or dashes inside the value.
 - 原网页链接必须是真实可核查链接。
 """
 
@@ -635,7 +812,7 @@ def matched_focus_areas(row: dict[str, str]) -> list[str]:
 
 def has_clear_deadline(row: dict[str, str]) -> bool:
     deadline = row.get("截止日期", "").strip()
-    return bool(deadline) and "待核查" not in deadline and "rolling" not in deadline.lower()
+    return bool(deadline) and not is_unknown(deadline) and "rolling" not in deadline.lower()
 
 
 def is_fellowship(row: dict[str, str]) -> bool:
