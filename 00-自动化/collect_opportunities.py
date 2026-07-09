@@ -450,6 +450,14 @@ def build_prompt(today: str, mode: str, existing_rows: list[dict[str, str]]) -> 
 - fellowship / policy fellowship / visiting fellowship / early-career fellowship
 - internship，重点来源包括 UN Careers、UNDP、UNESCO、UNIDO、UNEP、UNCTAD、UN-Habitat、OECD、World Bank、ADB 等国际组织官网
 
+Internship 专项检索要求：
+- 必须单独检索 UN Careers / careers.un.org 的 internship，不要用 World Bank 或 OECD internship 代替 UN internship。
+- 优先查询这些方向：political affairs internship, public information internship, sustainable development internship, economic affairs internship, programme management internship, communications internship, partnerships internship, governance internship, digital cooperation internship。
+- 如果 UN Careers 页面无法直接被搜索工具索引，请返回 UN Careers 官方检索入口并在备注中写“需在 UN Careers 站内以 Internship 过滤核查”，不要写成没有机会。
+- 对 UNDP、UNEP、UNESCO、UNIDO、UNCTAD、UN-Habitat 也要优先找明确的 internship 页面或岗位检索入口。
+- instant 模式中，若有符合条件的国际组织 internship，至少返回 3 条 internship；weekly 模式至少返回 5 条 internship。
+- 不要返回 consultant、staff position、volunteer、full-time job 或 fellowship 来冒充 internship。
+
 项目规则：
 {rules}
 
