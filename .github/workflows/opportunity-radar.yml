@@ -85,7 +85,6 @@ jobs:
         run: echo "Long emails are disabled; dashboard is the primary interface."
 
       - name: Commit database and dashboard
-        if: ${{ steps.collect.outputs.has_updates == 'true' }}
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update opportunity radar"
