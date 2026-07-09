@@ -1,0 +1,92 @@
+name: 国际会议与学术机会雷达
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "运行模式"
+        type: choice
+        options:
+          - instant
+          - weekly
+        default: instant
+      send_email:
+        description: "发送极简邮件提醒"
+        type: boolean
+        required: true
+        default: false
+      send_to_email:
+        description: "临时收件邮箱；留空则使用 MAIL_TO Secret"
+        type: string
+        required: false
+  schedule:
+    # 每 6 小时监测一次新机会。GitHub Actions 使用 UTC。
+    - cron: "0 */6 * * *"
+    # 每周一北京时间 09:00 汇总，即周一 UTC 01:00。
+    - cron: "0 1 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-build-dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate sample opportunities
+        run: python "00-自动化/validate_opportunities.py" "04-模板/30条样例机会.csv"
+
+      - name: Resolve mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 1 * * 1" ]; then
+            echo "mode=weekly" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=instant" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Collect opportunities
+        id: collect
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5' }}
+        run: python "00-自动化/collect_opportunities.py" --mode "${{ steps.mode.outputs.mode }}"
+
+      - name: Generate dashboard
+        run: python "00-自动化/generate_dashboard.py"
+
+      - name: Send brief email
+        if: ${{ steps.collect.outputs.has_updates == 'true' && github.event_name == 'workflow_dispatch' && inputs.send_email }}
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ github.event_name == 'workflow_dispatch' && inputs.send_to_email || secrets.MAIL_TO }}
+          MAIL_REPLY_TO: ${{ secrets.MAIL_REPLY_TO }}
+          MAIL_SUBJECT_PREFIX: 国际会议与学术机会雷达
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
+        run: python "00-自动化/send_email.py" "${{ steps.collect.outputs.html_path }}" --subject "${{ steps.collect.outputs.email_subject }}"
+
+      - name: Skip email notice
+        if: ${{ steps.collect.outputs.has_updates != 'true' || github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_email) }}
+        run: echo "Long emails are disabled; dashboard is the primary interface."
+
+      - name: Commit database and dashboard
+        if: ${{ steps.collect.outputs.has_updates == 'true' }}
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update opportunity radar"
+          file_pattern: "04-数据库/* 05-历史记录/* 06-邮件输出/* docs/*"
