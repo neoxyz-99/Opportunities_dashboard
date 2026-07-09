@@ -1,0 +1,425 @@
+#!/usr/bin/env python3
+"""Generate the static opportunity radar dashboard."""
+
+from __future__ import annotations
+
+import argparse
+import html
+import json
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+
+import collect_opportunities as radar
+
+
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+CN_TZ = timezone(timedelta(hours=8))
+
+
+def normalize_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
+    normalized = [radar.normalize_row(row, today) for row in rows]
+    normalized.sort(key=lambda row: (deadline_sort_key(row), priority_sort_key(row), row.get("机会名称", "")))
+    return normalized
+
+
+def deadline_sort_key(row: dict[str, str]) -> str:
+    deadline = row.get("截止日期", "").strip()
+    if not deadline or "待核查" in deadline:
+        return "9999-99-99"
+    return deadline[:10]
+
+
+def priority_sort_key(row: dict[str, str]) -> int:
+    order = {"高": 0, "中高": 1, "中": 2, "低": 3}
+    return order.get(row.get("行动优先级", ""), 4)
+
+
+def visible_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    return [row for row in rows if not row.get("排除原因")]
+
+
+def stats(rows: list[dict[str, str]]) -> dict[str, int]:
+    today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
+    main_rows = visible_rows(rows)
+    soon = [
+        row for row in main_rows
+        if row.get("截止日期") and "待核查" not in row.get("截止日期", "") and row.get("截止日期", "")[:10] <= "9999-99-99"
+    ]
+    return {
+        "total": len(main_rows),
+        "today": sum(1 for row in main_rows if row.get("发现日期") == today),
+        "soon": min(len(soon), len(main_rows)),
+        "recommended": sum(1 for row in main_rows if row.get("行动优先级") in {"高", "中高"}),
+        "needs_check": sum(1 for row in main_rows if "待核查" in " ".join(row.values())),
+        "excluded": len(rows) - len(main_rows),
+    }
+
+
+def render_dashboard(rows: list[dict[str, str]]) -> str:
+    generated_at = datetime.now(CN_TZ).strftime("%Y-%m-%d %H:%M")
+    data_json = json.dumps(rows, ensure_ascii=False)
+    stat_json = json.dumps(stats(rows), ensure_ascii=False)
+    type_buttons = "".join(
+        f'<button class="filter-button" data-filter-type="{html.escape(group)}">{html.escape(group)}</button>'
+        for group in ["全部"] + radar.OPPORTUNITY_GROUPS
+    )
+    topic_buttons = "".join(
+        f'<button class="filter-button" data-filter-topic="{html.escape(topic)}">{html.escape(topic)}</button>'
+        for topic in ["全部"] + radar.TOPIC_SECTIONS
+    )
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>国际机会雷达</title>
+  <style>
+    :root {{
+      color-scheme: light;
+      --bg: #f5f6f4;
+      --panel: #ffffff;
+      --text: #20242a;
+      --muted: #667085;
+      --line: #e3e7df;
+      --green: #2f6f63;
+      --blue: #2f5f8f;
+      --gold: #906a2d;
+      --rose: #9a4f4f;
+      --soft-green: #edf6f2;
+      --soft-blue: #edf3fa;
+      --soft-gold: #fbf5e8;
+      --shadow: 0 14px 34px rgba(31, 41, 55, .08);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }}
+    .shell {{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 42px; }}
+    header {{
+      display: grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 20px;
+    }}
+    h1 {{ margin: 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: 0; line-height: 1.05; }}
+    .subtitle {{ margin: 12px 0 0; max-width: 720px; color: var(--muted); font-size: 16px; }}
+    .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
+    .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 22px 0; }}
+    .stat {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+      box-shadow: 0 6px 18px rgba(31, 41, 55, .04);
+    }}
+    .stat strong {{ display: block; font-size: 24px; line-height: 1.1; }}
+    .stat span {{ display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }}
+    .toolbar {{
+      background: rgba(255,255,255,.86);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+    }}
+    .search-row {{ display: grid; grid-template-columns: 1fr auto auto; gap: 10px; }}
+    input, select {{
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fff;
+      color: var(--text);
+      padding: 0 12px;
+      font-size: 14px;
+    }}
+    .filter-section {{ margin-top: 12px; }}
+    .filter-label {{ color: var(--muted); font-size: 12px; margin-bottom: 7px; }}
+    .filters {{ display: flex; gap: 8px; flex-wrap: wrap; }}
+    .filter-button {{
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: #3f4651;
+      cursor: pointer;
+      font-size: 13px;
+    }}
+    .filter-button.active {{ background: #24322f; color: #fff; border-color: #24322f; }}
+    .content {{ display: grid; grid-template-columns: 280px 1fr; gap: 18px; margin-top: 18px; }}
+    .side-panel {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      height: fit-content;
+    }}
+    .side-panel h2 {{ font-size: 15px; margin: 0 0 10px; }}
+    .hint {{ color: var(--muted); font-size: 13px; margin: 0 0 14px; }}
+    .legend {{ display: grid; gap: 8px; }}
+    .legend-item {{ display: flex; align-items: center; gap: 8px; color: #475467; font-size: 13px; }}
+    .dot {{ width: 9px; height: 9px; border-radius: 50%; background: var(--green); }}
+    .dot.medium {{ background: var(--gold); }}
+    .dot.low {{ background: #98a2b3; }}
+    .list {{ display: grid; gap: 12px; }}
+    .card {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgba(31, 41, 55, .045);
+      overflow: hidden;
+    }}
+    .card.excluded {{ opacity: .62; }}
+    .card summary {{
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 16px 18px;
+      cursor: pointer;
+      list-style: none;
+    }}
+    .card summary::-webkit-details-marker {{ display: none; }}
+    .title {{ font-size: 17px; font-weight: 760; margin: 0 0 8px; }}
+    .chips {{ display: flex; flex-wrap: wrap; gap: 7px; }}
+    .chip {{ border-radius: 999px; padding: 3px 9px; font-size: 12px; background: var(--soft-blue); color: var(--blue); }}
+    .chip.topic {{ background: var(--soft-green); color: var(--green); }}
+    .chip.priority {{ background: var(--soft-gold); color: var(--gold); }}
+    .deadline {{ min-width: 110px; text-align: right; color: var(--muted); font-size: 13px; }}
+    .deadline strong {{ display: block; color: var(--text); font-size: 15px; }}
+    .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; }}
+    .detail-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
+    .field {{ background: #f8faf8; border: 1px solid #edf0ea; border-radius: 8px; padding: 10px 11px; }}
+    .field b {{ display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }}
+    .field span {{ font-size: 14px; }}
+    .judgment {{ margin-top: 12px; padding: 12px; border-left: 3px solid var(--green); background: #f8fbf9; border-radius: 8px; }}
+    .links {{ margin-top: 13px; display: flex; flex-wrap: wrap; gap: 10px; }}
+    a {{ color: #175cd3; font-weight: 700; text-decoration: none; }}
+    .empty {{ padding: 30px; text-align: center; color: var(--muted); background: #fff; border: 1px dashed var(--line); border-radius: 10px; }}
+    @media (max-width: 860px) {{
+      header, .content, .search-row {{ grid-template-columns: 1fr; }}
+      .meta {{ text-align: left; }}
+      .stats {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+      .detail-grid {{ grid-template-columns: 1fr; }}
+      .card summary {{ grid-template-columns: 1fr; }}
+      .deadline {{ text-align: left; }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <h1>国际机会雷达</h1>
+        <p class="subtitle">把会议、学术论坛、Fellowship 和 Internship 放到一个可筛选仪表盘里。先看类型，再看主题，最后判断是否值得投入。</p>
+      </div>
+      <div class="meta">更新时间：{html.escape(generated_at)}<br>默认隐藏强专业壁垒 internship</div>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="toolbar">
+      <div class="search-row">
+        <input id="search" type="search" placeholder="搜索标题、主办方、主题、材料或要求">
+        <select id="sort">
+          <option value="deadline">按截止时间</option>
+          <option value="priority">按行动优先级</option>
+          <option value="newest">按发现时间</option>
+        </select>
+        <select id="excluded">
+          <option value="hide">隐藏排除项</option>
+          <option value="show">显示排除项</option>
+        </select>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">机会类型</div>
+        <div class="filters" id="typeFilters">{type_buttons}</div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">主题分区</div>
+        <div class="filters" id="topicFilters">{topic_buttons}</div>
+      </div>
+    </section>
+
+    <section class="content">
+      <aside class="side-panel">
+        <h2>阅读方式</h2>
+        <p class="hint">邮件只负责提醒，真正筛选在这里完成。建议先打开“Internship / Fellowship”，再切到你关心的主题分区。</p>
+        <div class="legend">
+          <div class="legend-item"><span class="dot"></span> 高/中高：值得优先看</div>
+          <div class="legend-item"><span class="dot medium"></span> 中：可观察或择机投</div>
+          <div class="legend-item"><span class="dot low"></span> 低：收藏或排除</div>
+        </div>
+      </aside>
+      <main class="list" id="list"></main>
+    </section>
+  </div>
+
+  <script>
+    const opportunities = {data_json};
+    const initialStats = {stat_json};
+    const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide" }};
+
+    const statsEl = document.getElementById("stats");
+    const listEl = document.getElementById("list");
+    const searchEl = document.getElementById("search");
+    const sortEl = document.getElementById("sort");
+    const excludedEl = document.getElementById("excluded");
+
+    const priorityOrder = {{ "高": 0, "中高": 1, "中": 2, "低": 3 }};
+
+    function escapeHtml(value) {{
+      return String(value || "").replace(/[&<>"']/g, char => ({{
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }}[char]));
+    }}
+
+    function deadlineKey(row) {{
+      const value = row["截止日期"] || "";
+      return value && !value.includes("待核查") ? value.slice(0, 10) : "9999-99-99";
+    }}
+
+    function rowText(row) {{
+      return Object.values(row).join(" ").toLowerCase();
+    }}
+
+    function filteredRows() {{
+      let rows = opportunities.filter(row => {{
+        if (state.excluded === "hide" && row["排除原因"]) return false;
+        if (state.type !== "全部" && row["机会类型分组"] !== state.type) return false;
+        if (state.topic !== "全部" && row["主题分区"] !== state.topic) return false;
+        if (state.query && !rowText(row).includes(state.query.toLowerCase())) return false;
+        return true;
+      }});
+      rows.sort((a, b) => {{
+        if (state.sort === "priority") {{
+          return (priorityOrder[a["行动优先级"]] ?? 9) - (priorityOrder[b["行动优先级"]] ?? 9);
+        }}
+        if (state.sort === "newest") {{
+          return String(b["发现日期"] || "").localeCompare(String(a["发现日期"] || ""));
+        }}
+        return deadlineKey(a).localeCompare(deadlineKey(b));
+      }});
+      return rows;
+    }}
+
+    function renderStats() {{
+      const items = [
+        ["主视图机会", initialStats.total],
+        ["今日新增", initialStats.today],
+        ["即将截止", initialStats.soon],
+        ["推荐优先看", initialStats.recommended],
+        ["待核查", initialStats.needs_check],
+      ];
+      statsEl.innerHTML = items.map(([label, value]) => `<div class="stat"><strong>${{value}}</strong><span>${{label}}</span></div>`).join("");
+    }}
+
+    function field(label, value) {{
+      return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(value || "待核查")}}</span></div>`;
+    }}
+
+    function renderCard(row, index) {{
+      const excludedClass = row["排除原因"] ? " excluded" : "";
+      const applyLink = row["申请/投稿链接"] && row["申请/投稿链接"] !== "待核查"
+        ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">申请/投稿链接</a>` : "";
+      const originalLink = row["原网页链接"]
+        ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">原网页链接</a>` : "";
+      return `
+        <details class="card${{excludedClass}}">
+          <summary>
+            <div>
+              <p class="title">${{escapeHtml(row["机会名称"])}}</p>
+              <div class="chips">
+                <span class="chip">${{escapeHtml(row["机会类型分组"])}}</span>
+                <span class="chip topic">${{escapeHtml(row["主题分区"])}}</span>
+                <span class="chip priority">优先级 ${{escapeHtml(row["行动优先级"])}}</span>
+              </div>
+            </div>
+            <div class="deadline"><span>截止</span><strong>${{escapeHtml(row["截止日期"] || "待核查")}}</strong></div>
+          </summary>
+          <div class="details">
+            <div class="detail-grid">
+              ${{field("主办方", row["主办方"])}}
+              ${{field("地点/形式", row["地点/线上"])}}
+              ${{field("材料", row["需要准备的材料"])}}
+              ${{field("要求", row["参加条件"])}}
+              ${{field("岗位类型", row["岗位类型"])}}
+              ${{field("岗位职能", row["岗位职能"])}}
+              ${{field("排除原因", row["排除原因"] || "无")}}
+              ${{field("状态", row["状态"])}}
+            </div>
+            <div class="judgment">
+              <strong>备注与判断</strong><br>
+              ${{escapeHtml(row["备注"] || "")}}
+            </div>
+            <div class="links">${{originalLink}} ${{applyLink}}</div>
+          </div>
+        </details>
+      `;
+    }}
+
+    function renderList() {{
+      const rows = filteredRows();
+      if (!rows.length) {{
+        listEl.innerHTML = '<div class="empty">当前筛选下没有机会。换一个类型、主题或搜索词试试。</div>';
+        return;
+      }}
+      listEl.innerHTML = rows.map(renderCard).join("");
+    }}
+
+    function activateButtons(containerId, attr, value) {{
+      document.querySelectorAll(`#${{containerId}} .filter-button`).forEach(button => {{
+        button.classList.toggle("active", button.dataset[attr] === value);
+      }});
+    }}
+
+    document.getElementById("typeFilters").addEventListener("click", event => {{
+      if (!event.target.matches("button")) return;
+      state.type = event.target.dataset.filterType;
+      activateButtons("typeFilters", "filterType", state.type);
+      renderList();
+    }});
+    document.getElementById("topicFilters").addEventListener("click", event => {{
+      if (!event.target.matches("button")) return;
+      state.topic = event.target.dataset.filterTopic;
+      activateButtons("topicFilters", "filterTopic", state.topic);
+      renderList();
+    }});
+    searchEl.addEventListener("input", () => {{ state.query = searchEl.value.trim(); renderList(); }});
+    sortEl.addEventListener("change", () => {{ state.sort = sortEl.value; renderList(); }});
+    excludedEl.addEventListener("change", () => {{ state.excluded = excludedEl.value; renderList(); }});
+
+    renderStats();
+    activateButtons("typeFilters", "filterType", "全部");
+    activateButtons("topicFilters", "filterTopic", "全部");
+    renderList();
+  </script>
+</body>
+</html>
+"""
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", default="04-数据库/机会数据库.csv")
+    parser.add_argument("--output", default="docs/index.html")
+    args = parser.parse_args()
+
+    source = PROJECT_DIR / args.source
+    output = PROJECT_DIR / args.output
+    rows = normalize_rows(radar.load_csv(source, radar.FIELDS))
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(render_dashboard(rows), encoding="utf-8")
+    print(f"Generated {output.relative_to(PROJECT_DIR)} with {len(rows)} opportunities.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
