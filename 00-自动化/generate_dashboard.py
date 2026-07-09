@@ -119,33 +119,32 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <style>
     :root {{
       color-scheme: light;
-      --bg: #eef2f1;
-      --glass: rgba(255, 255, 255, .52);
-      --glass-strong: rgba(255, 255, 255, .68);
-      --glass-soft: rgba(255, 255, 255, .36);
-      --text: #202522;
-      --muted: #66706a;
-      --line: rgba(255, 255, 255, .58);
-      --edge: rgba(78, 92, 84, .12);
-      --ink: #5f726a;
-      --accent: #60756c;
-      --mint: rgba(184, 205, 195, .42);
-      --blue: rgba(196, 214, 224, .42);
-      --pearl: rgba(232, 226, 216, .56);
-      --shadow: 0 24px 70px rgba(53, 61, 56, .16);
+      --bg: #f5f5f7;
+      --glass: rgba(255, 255, 255, .58);
+      --glass-strong: rgba(255, 255, 255, .76);
+      --glass-soft: rgba(255, 255, 255, .42);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(255, 255, 255, .72);
+      --edge: rgba(0, 0, 0, .08);
+      --ink: #424245;
+      --accent: #0071e3;
+      --soft: rgba(242, 242, 247, .82);
+      --soft-2: rgba(229, 229, 234, .78);
+      --shadow: 0 22px 60px rgba(0, 0, 0, .10);
     }}
     * {{ box-sizing: border-box; }}
     body {{
       margin: 0;
       background:
-        radial-gradient(circle at 12% 8%, var(--blue), transparent 34%),
-        radial-gradient(circle at 88% 12%, var(--pearl), transparent 34%),
-        radial-gradient(circle at 52% 96%, var(--mint), transparent 42%),
-        linear-gradient(135deg, #f7f8f6 0%, #e9eeeb 100%),
+        radial-gradient(circle at 18% 0%, rgba(255,255,255,.92), transparent 30%),
+        radial-gradient(circle at 82% 10%, rgba(235,241,248,.86), transparent 28%),
+        linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 42%, #eeeeef 100%),
         var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
       line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }}
     body::before {{
       content: "";
@@ -153,10 +152,10 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(115deg, rgba(255,255,255,.44), transparent 32%),
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.38), transparent 28%);
+        linear-gradient(115deg, rgba(255,255,255,.58), transparent 34%),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.48), transparent 30%);
     }}
-    .shell {{ max-width: 1180px; margin: 0 auto; padding: 32px 22px 52px; position: relative; }}
+    .shell {{ max-width: 1180px; margin: 0 auto; padding: 38px 24px 56px; position: relative; }}
     .hero {{
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -164,75 +163,75 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       align-items: center;
       margin-bottom: 18px;
     }}
-    h1 {{ margin: 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: 0; line-height: 1; font-weight: 760; }}
+    h1 {{ margin: 0; font-size: clamp(34px, 5vw, 56px); letter-spacing: 0; line-height: .98; font-weight: 720; }}
     .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
     .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0 14px; }}
     .stat {{
-      background: linear-gradient(145deg, var(--glass-strong), var(--glass-soft));
+      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,255,255,.48));
       border: 1px solid var(--line);
       border-bottom-color: var(--edge);
-      border-radius: 24px;
-      padding: 15px 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(24px) saturate(150%);
-      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      border-radius: 22px;
+      padding: 16px 18px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.07);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
     }}
-    .stat strong {{ display: block; font-size: 25px; line-height: 1; font-weight: 740; }}
+    .stat strong {{ display: block; font-size: 25px; line-height: 1; font-weight: 700; }}
     .stat span {{ display: block; margin-top: 7px; color: var(--muted); font-size: 12px; }}
     .toolbar {{
-      background: linear-gradient(150deg, rgba(255,255,255,.70), rgba(255,255,255,.38));
+      background: linear-gradient(150deg, rgba(255,255,255,.78), rgba(255,255,255,.52));
       border: 1px solid var(--line);
       border-bottom-color: var(--edge);
-      border-radius: 28px;
+      border-radius: 26px;
       padding: 16px;
       position: sticky;
       top: 12px;
       z-index: 5;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(26px) saturate(160%);
-      -webkit-backdrop-filter: blur(26px) saturate(160%);
+      box-shadow: 0 20px 55px rgba(0,0,0,.08);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
     }}
     .search-row {{ display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; }}
     input, select {{
       height: 42px;
-      border: 1px solid rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.82);
       border-bottom-color: var(--edge);
-      border-radius: 16px;
-      background: rgba(255,255,255,.52);
+      border-radius: 14px;
+      background: rgba(255,255,255,.62);
       color: var(--text);
       padding: 0 12px;
       font-size: 14px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.52);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
     }}
     .filter-section {{ margin-top: 12px; }}
     .filter-label {{ color: var(--muted); font-size: 12px; margin-bottom: 8px; }}
     .filters {{ display: flex; gap: 8px; flex-wrap: wrap; }}
     .filter-button {{
-      border: 1px solid rgba(255,255,255,.70);
-      background: rgba(255,255,255,.42);
+      border: 1px solid rgba(255,255,255,.82);
+      background: rgba(255,255,255,.58);
       border-radius: 999px;
       padding: 8px 14px;
-      color: #4d564f;
+      color: #424245;
       cursor: pointer;
       font-size: 13px;
-      box-shadow: 0 8px 18px rgba(65, 72, 68, .06), inset 0 1px 0 rgba(255,255,255,.72);
+      box-shadow: 0 8px 18px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.78);
     }}
-    .filter-button.active {{ background: rgba(76, 93, 85, .88); color: #fff; border-color: rgba(76, 93, 85, .25); }}
+    .filter-button.active {{ background: rgba(29,29,31,.88); color: #fff; border-color: rgba(0,0,0,.08); }}
     .content {{ margin-top: 18px; }}
     .list {{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }}
     .card {{
-      background: linear-gradient(150deg, rgba(255,255,255,.70), rgba(255,255,255,.42));
-      border: 1px solid rgba(255,255,255,.72);
+      background: linear-gradient(150deg, rgba(255,255,255,.76), rgba(255,255,255,.50));
+      border: 1px solid rgba(255,255,255,.82);
       border-bottom-color: var(--edge);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
+      border-radius: 26px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.08);
       overflow: hidden;
       backdrop-filter: blur(26px) saturate(160%);
       -webkit-backdrop-filter: blur(26px) saturate(160%);
       grid-column: span 6;
       position: relative;
     }}
-    .card::before {{ content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.58), transparent 44%); }}
+    .card::before {{ content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.72), transparent 42%); }}
     .card.excluded {{ opacity: .62; }}
     .card summary {{
       display: grid;
@@ -246,19 +245,19 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     .card summary::-webkit-details-marker {{ display: none; }}
     .title {{ font-size: 17px; font-weight: 730; margin: 0 0 10px; line-height: 1.34; }}
     .chips {{ display: flex; flex-wrap: wrap; gap: 7px; }}
-    .chip {{ border-radius: 999px; padding: 4px 10px; font-size: 12px; background: rgba(232, 226, 216, .62); color: var(--ink); }}
-    .chip.topic {{ background: rgba(210, 224, 216, .62); color: var(--ink); }}
-    .chip.priority {{ background: rgba(230, 218, 201, .68); color: #6e5e4b; }}
+    .chip {{ border-radius: 999px; padding: 4px 10px; font-size: 12px; background: var(--soft); color: var(--ink); }}
+    .chip.topic {{ background: rgba(232, 238, 244, .82); color: var(--ink); }}
+    .chip.priority {{ background: rgba(0,113,227,.10); color: #0066cc; }}
     .deadline {{ min-width: 110px; text-align: right; color: var(--muted); font-size: 13px; }}
     .deadline strong {{ display: block; color: var(--text); font-size: 15px; }}
     .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; position: relative; }}
     .detail-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
-    .field {{ background: rgba(255,255,255,.38); border: 1px solid rgba(255,255,255,.62); border-bottom-color: var(--edge); border-radius: 18px; padding: 11px 12px; }}
+    .field {{ background: rgba(255,255,255,.52); border: 1px solid rgba(255,255,255,.76); border-bottom-color: var(--edge); border-radius: 16px; padding: 11px 12px; }}
     .field b {{ display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }}
     .field span {{ font-size: 14px; }}
-    .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid rgba(255,255,255,.62); background: rgba(255,255,255,.34); border-radius: 18px; }}
+    .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid rgba(255,255,255,.76); background: rgba(255,255,255,.48); border-radius: 16px; }}
     .links {{ margin-top: 13px; display: flex; flex-wrap: wrap; gap: 10px; }}
-    .links a {{ color: #53645c; font-weight: 750; text-decoration: none; border-bottom: 1px solid rgba(83,100,92,.28); }}
+    .links a {{ color: var(--accent); font-weight: 650; text-decoration: none; border-bottom: 1px solid rgba(0,113,227,.22); }}
     .archive-control {{ display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 13px; }}
     .archive-control input {{ width: 16px; height: 16px; padding: 0; accent-color: var(--accent); }}
     .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.50); border: 1px dashed rgba(255,255,255,.70); border-radius: 28px; }}
