@@ -18,23 +18,38 @@ CN_TZ = timezone(timedelta(hours=8))
 DISPLAY_LABELS = {
     "全部": "All",
     "会议": "Conferences",
-    "学术论坛/CFP": "Academic Forums / CFP",
+    "学术论坛/CFP": "Academic",
     "Fellowship": "Fellowship",
     "Internship": "Internship",
-    "青年项目": "Youth Programs",
-    "Policy/Summer School": "Policy / Summer School",
+    "青年项目": "Youth",
+    "Policy/Summer School": "Schools",
     "其他": "Other",
-    "AI治理": "AI Governance",
-    "全球治理/国际组织": "Global Governance / IOs",
-    "可持续发展/气候": "Sustainability / Climate",
-    "发展/不平等": "Development / Inequality",
-    "国际金融/债务": "International Finance / Debt",
-    "国际关系/政治学": "IR / Political Science",
+    "AI治理": "AI",
+    "全球治理/国际组织": "Governance",
+    "可持续发展/气候": "Sustainability",
+    "发展/不平等": "Development",
+    "国际金融/债务": "Finance",
+    "国际关系/政治学": "Politics",
     "高": "High",
     "中高": "Medium-high",
     "中": "Medium",
     "低": "Low",
     "待核查": "Needs checking",
+    "新发现": "New",
+    "值得申请": "Worth applying",
+    "已错过": "Expired",
+    "长期关注": "Watchlist",
+    "政策研究": "Policy research",
+    "研究支持": "Research support",
+    "项目支持": "Programme support",
+    "传播倡导": "Communications",
+    "伙伴关系": "Partnerships",
+    "战略支持": "Strategy",
+    "AI或数字治理": "AI and digital governance",
+    "可持续发展": "Sustainable development",
+    "治理": "Governance",
+    "发展融资": "Development finance",
+    "气候": "Climate",
 }
 
 
@@ -51,7 +66,7 @@ def normalize_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
 def deadline_sort_key(row: dict[str, str]) -> str:
     deadline = row.get("截止日期", "").strip()
-    if not deadline or "待核查" in deadline:
+    if not deadline or "待核查" in deadline or "needs checking" in deadline.lower():
         return "9999-99-99"
     return deadline[:10]
 
@@ -70,7 +85,7 @@ def stats(rows: list[dict[str, str]]) -> dict[str, int]:
     main_rows = visible_rows(rows)
     soon = [
         row for row in main_rows
-        if row.get("截止日期") and "待核查" not in row.get("截止日期", "") and row.get("截止日期", "")[:10] <= "9999-99-99"
+        if row.get("截止日期") and "待核查" not in row.get("截止日期", "") and "needs checking" not in row.get("截止日期", "").lower() and row.get("截止日期", "")[:10] <= "9999-99-99"
     ]
     return {
         "total": len(main_rows),
@@ -104,35 +119,44 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <style>
     :root {{
       color-scheme: light;
-      --bg: #f4f1ed;
-      --wash-1: rgba(214, 205, 194, .44);
-      --wash-2: rgba(170, 185, 176, .32);
-      --wash-3: rgba(199, 183, 170, .28);
-      --panel: rgba(255, 254, 251, .82);
-      --panel-solid: #fffdfa;
-      --text: #2d302d;
-      --muted: #72756f;
-      --line: rgba(92, 100, 88, .14);
-      --ink: #53645c;
-      --ink-2: #6f766b;
-      --soft: #ece8e0;
-      --soft-2: #e2e7df;
-      --accent: #7d8f84;
-      --shadow: 0 18px 48px rgba(73, 69, 61, .10);
+      --bg: #eef2f1;
+      --glass: rgba(255, 255, 255, .52);
+      --glass-strong: rgba(255, 255, 255, .68);
+      --glass-soft: rgba(255, 255, 255, .36);
+      --text: #202522;
+      --muted: #66706a;
+      --line: rgba(255, 255, 255, .58);
+      --edge: rgba(78, 92, 84, .12);
+      --ink: #5f726a;
+      --accent: #60756c;
+      --mint: rgba(184, 205, 195, .42);
+      --blue: rgba(196, 214, 224, .42);
+      --pearl: rgba(232, 226, 216, .56);
+      --shadow: 0 24px 70px rgba(53, 61, 56, .16);
     }}
     * {{ box-sizing: border-box; }}
     body {{
       margin: 0;
       background:
-        radial-gradient(circle at 12% 10%, var(--wash-2), transparent 30%),
-        radial-gradient(circle at 86% 18%, var(--wash-1), transparent 32%),
-        radial-gradient(circle at 45% 92%, var(--wash-3), transparent 36%),
+        radial-gradient(circle at 12% 8%, var(--blue), transparent 34%),
+        radial-gradient(circle at 88% 12%, var(--pearl), transparent 34%),
+        radial-gradient(circle at 52% 96%, var(--mint), transparent 42%),
+        linear-gradient(135deg, #f7f8f6 0%, #e9eeeb 100%),
         var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.58;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
     }}
-    .shell {{ max-width: 1200px; margin: 0 auto; padding: 34px 22px 48px; }}
+    body::before {{
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, rgba(255,255,255,.44), transparent 32%),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.38), transparent 28%);
+    }}
+    .shell {{ max-width: 1180px; margin: 0 auto; padding: 32px 22px 52px; position: relative; }}
     .hero {{
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -140,66 +164,75 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       align-items: center;
       margin-bottom: 18px;
     }}
-    h1 {{ margin: 0; font-size: clamp(34px, 5vw, 58px); letter-spacing: 0; line-height: .98; font-weight: 780; }}
+    h1 {{ margin: 0; font-size: clamp(32px, 5vw, 54px); letter-spacing: 0; line-height: 1; font-weight: 760; }}
     .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
     .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0 14px; }}
     .stat {{
-      background: var(--panel);
+      background: linear-gradient(145deg, var(--glass-strong), var(--glass-soft));
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-bottom-color: var(--edge);
+      border-radius: 24px;
       padding: 15px 16px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
     }}
-    .stat strong {{ display: block; font-size: 26px; line-height: 1; font-weight: 760; }}
+    .stat strong {{ display: block; font-size: 25px; line-height: 1; font-weight: 740; }}
     .stat span {{ display: block; margin-top: 7px; color: var(--muted); font-size: 12px; }}
     .toolbar {{
-      background: rgba(255, 254, 251, .78);
+      background: linear-gradient(150deg, rgba(255,255,255,.70), rgba(255,255,255,.38));
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-bottom-color: var(--edge);
+      border-radius: 28px;
       padding: 16px;
       position: sticky;
       top: 12px;
       z-index: 5;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(26px) saturate(160%);
+      -webkit-backdrop-filter: blur(26px) saturate(160%);
     }}
     .search-row {{ display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; }}
     input, select {{
       height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.72);
+      border-bottom-color: var(--edge);
+      border-radius: 16px;
+      background: rgba(255,255,255,.52);
       color: var(--text);
       padding: 0 12px;
       font-size: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.52);
     }}
     .filter-section {{ margin-top: 12px; }}
     .filter-label {{ color: var(--muted); font-size: 12px; margin-bottom: 8px; }}
     .filters {{ display: flex; gap: 8px; flex-wrap: wrap; }}
     .filter-button {{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(255,255,255,.70);
+      background: rgba(255,255,255,.42);
       border-radius: 999px;
-      padding: 8px 13px;
+      padding: 8px 14px;
       color: #4d564f;
       cursor: pointer;
       font-size: 13px;
+      box-shadow: 0 8px 18px rgba(65, 72, 68, .06), inset 0 1px 0 rgba(255,255,255,.72);
     }}
-    .filter-button.active {{ background: #5d6b62; color: #fff; border-color: #5d6b62; }}
+    .filter-button.active {{ background: rgba(76, 93, 85, .88); color: #fff; border-color: rgba(76, 93, 85, .25); }}
     .content {{ margin-top: 18px; }}
     .list {{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }}
     .card {{
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 22px;
+      background: linear-gradient(150deg, rgba(255,255,255,.70), rgba(255,255,255,.42));
+      border: 1px solid rgba(255,255,255,.72);
+      border-bottom-color: var(--edge);
+      border-radius: 28px;
       box-shadow: var(--shadow);
       overflow: hidden;
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(26px) saturate(160%);
+      -webkit-backdrop-filter: blur(26px) saturate(160%);
       grid-column: span 6;
       position: relative;
     }}
-    .card::before {{ content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.38), transparent 45%); }}
+    .card::before {{ content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(135deg, rgba(255,255,255,.58), transparent 44%); }}
     .card.excluded {{ opacity: .62; }}
     .card summary {{
       display: grid;
@@ -211,24 +244,24 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       position: relative;
     }}
     .card summary::-webkit-details-marker {{ display: none; }}
-    .title {{ font-size: 17px; font-weight: 760; margin: 0 0 10px; line-height: 1.34; }}
+    .title {{ font-size: 17px; font-weight: 730; margin: 0 0 10px; line-height: 1.34; }}
     .chips {{ display: flex; flex-wrap: wrap; gap: 7px; }}
-    .chip {{ border-radius: 999px; padding: 4px 10px; font-size: 12px; background: var(--soft); color: var(--ink); }}
-    .chip.topic {{ background: var(--soft-2); color: var(--ink); }}
-    .chip.priority {{ background: #eee4d7; color: #725f4e; }}
+    .chip {{ border-radius: 999px; padding: 4px 10px; font-size: 12px; background: rgba(232, 226, 216, .62); color: var(--ink); }}
+    .chip.topic {{ background: rgba(210, 224, 216, .62); color: var(--ink); }}
+    .chip.priority {{ background: rgba(230, 218, 201, .68); color: #6e5e4b; }}
     .deadline {{ min-width: 110px; text-align: right; color: var(--muted); font-size: 13px; }}
     .deadline strong {{ display: block; color: var(--text); font-size: 15px; }}
     .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; position: relative; }}
     .detail-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
-    .field {{ background: rgba(248, 247, 242, .76); border: 1px solid var(--line); border-radius: 14px; padding: 11px 12px; }}
+    .field {{ background: rgba(255,255,255,.38); border: 1px solid rgba(255,255,255,.62); border-bottom-color: var(--edge); border-radius: 18px; padding: 11px 12px; }}
     .field b {{ display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }}
     .field span {{ font-size: 14px; }}
-    .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid var(--line); background: rgba(246, 244, 238, .70); border-radius: 16px; }}
+    .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid rgba(255,255,255,.62); background: rgba(255,255,255,.34); border-radius: 18px; }}
     .links {{ margin-top: 13px; display: flex; flex-wrap: wrap; gap: 10px; }}
     .links a {{ color: #53645c; font-weight: 750; text-decoration: none; border-bottom: 1px solid rgba(83,100,92,.28); }}
     .archive-control {{ display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 13px; }}
     .archive-control input {{ width: 16px; height: 16px; padding: 0; accent-color: var(--accent); }}
-    .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.74); border: 1px dashed var(--line); border-radius: 22px; }}
+    .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.50); border: 1px dashed rgba(255,255,255,.70); border-radius: 28px; }}
     @media (max-width: 860px) {{
       .hero, .search-row {{ grid-template-columns: 1fr; }}
       .meta {{ text-align: left; }}
@@ -287,6 +320,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
   <script>
     const opportunities = {data_json};
     const initialStats = {stat_json};
+    const labelMap = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)};
     const archiveKey = "opportunityRadarArchived";
     const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide", archiveView: "active" }};
 
@@ -307,11 +341,27 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
 
     function deadlineKey(row) {{
       const value = row["截止日期"] || "";
-      return value && !value.includes("待核查") ? value.slice(0, 10) : "9999-99-99";
+      return value && !value.includes("待核查") && !value.toLowerCase().includes("needs checking") ? value.slice(0, 10) : "9999-99-99";
     }}
 
     function rowText(row) {{
       return Object.values(row).join(" ").toLowerCase();
+    }}
+
+    function hasCjk(value) {{
+      return /[\u3400-\u9fff]/.test(String(value || ""));
+    }}
+
+    function cleanValue(value, options = {{}}) {{
+      let text = String(value || "").trim();
+      if (!text) return "";
+      if (labelMap[text]) text = labelMap[text];
+      const lower = text.toLowerCase();
+      const emptyValues = ["待核查", "needs checking", "none", "无", "n/a", "na", "not specified", "tbc", "tbd"];
+      if (emptyValues.includes(lower) || emptyValues.includes(text)) return "";
+      if (text.includes("待核查")) return "";
+      if (options.hideChinese && hasCjk(text)) return "";
+      return text;
     }}
 
     function rowId(row) {{
@@ -377,20 +427,36 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       statsEl.innerHTML = items.map(([label, value]) => `<div class="stat"><strong>${{value}}</strong><span>${{label}}</span></div>`).join("");
     }}
 
-    function field(label, value) {{
-      return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(value || "Needs checking")}}</span></div>`;
+    function field(label, value, options = {{}}) {{
+      const text = cleanValue(value, options);
+      if (!text) return "";
+      return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(text)}}</span></div>`;
     }}
 
     function renderCard(row, index) {{
       const excludedClass = row["排除原因"] ? " excluded" : "";
-      const applyLink = row["申请/投稿链接"] && row["申请/投稿链接"] !== "待核查"
+      const applyTarget = cleanValue(row["申请/投稿链接"]);
+      const originalTarget = cleanValue(row["原网页链接"]);
+      const applyLink = applyTarget
         ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">Apply / Submit</a>` : "";
-      const originalLink = row["原网页链接"]
+      const originalLink = originalTarget
         ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">Original Page</a>` : "";
       const checked = isArchived(row) ? "checked" : "";
-      const typeLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["机会类型分组"]] || row["机会类型分组"];
-      const topicLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["主题分区"]] || row["主题分区"];
-      const priorityLabel = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)}[row["行动优先级"]] || row["行动优先级"];
+      const typeLabel = labelMap[row["机会类型分组"]] || row["机会类型分组"];
+      const topicLabel = labelMap[row["主题分区"]] || row["主题分区"];
+      const priorityLabel = labelMap[row["行动优先级"]] || row["行动优先级"];
+      const deadline = cleanValue(row["截止日期"]) || "Open";
+      const details = [
+        field("Host", row["主办方"], {{ hideChinese: true }}),
+        field("Location", row["地点/线上"], {{ hideChinese: true }}),
+        field("Materials", row["需要准备的材料"], {{ hideChinese: true }}),
+        field("Requirements", row["参加条件"], {{ hideChinese: true }}),
+        field("Role", row["岗位类型"], {{ hideChinese: true }}),
+        field("Function", row["岗位职能"], {{ hideChinese: true }}),
+        field("Risk Note", row["排除原因"], {{ hideChinese: true }}),
+      ].filter(Boolean).join("");
+      const note = cleanValue(row["备注"], {{ hideChinese: true }});
+      const judgment = note ? `<div class="judgment"><strong>Fit & Judgment</strong><br>${{escapeHtml(note)}}</div>` : "";
       return `
         <details class="card${{excludedClass}}">
           <summary>
@@ -402,23 +468,11 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
                 <span class="chip priority">Priority ${{escapeHtml(priorityLabel)}}</span>
               </div>
             </div>
-            <div class="deadline"><span>Deadline</span><strong>${{escapeHtml(row["截止日期"] || "Needs checking")}}</strong></div>
+            <div class="deadline"><span>Deadline</span><strong>${{escapeHtml(deadline)}}</strong></div>
           </summary>
           <div class="details">
-            <div class="detail-grid">
-              ${{field("Host", row["主办方"])}}
-              ${{field("Location / Format", row["地点/线上"])}}
-              ${{field("Materials", row["需要准备的材料"])}}
-              ${{field("Requirements", row["参加条件"])}}
-              ${{field("Role Type", row["岗位类型"])}}
-              ${{field("Function", row["岗位职能"])}}
-              ${{field("Risk / Exclusion Note", row["排除原因"] || "None")}}
-              ${{field("Status", row["状态"])}}
-            </div>
-            <div class="judgment">
-              <strong>Fit & Investment Judgment</strong><br>
-              ${{escapeHtml(row["备注"] || "")}}
-            </div>
+            ${{details ? `<div class="detail-grid">${{details}}</div>` : ""}}
+            ${{judgment}}
             <div class="links">${{originalLink}} ${{applyLink}}</div>
             <label class="archive-control" onclick="event.stopPropagation()">
               <input type="checkbox" data-archive-id="${{escapeHtml(rowId(row))}}" ${{checked}}>
@@ -488,7 +542,11 @@ def main() -> int:
     rows = normalize_rows(radar.load_csv(source, radar.FIELDS))
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(render_dashboard(rows), encoding="utf-8")
-    print(f"Generated {output.relative_to(PROJECT_DIR)} with {len(rows)} opportunities.")
+    try:
+        display_path = output.relative_to(PROJECT_DIR)
+    except ValueError:
+        display_path = output
+    print(f"Generated {display_path} with {len(rows)} opportunities.")
     return 0
 
 
