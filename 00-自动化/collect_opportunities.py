@@ -648,7 +648,8 @@ def build_prompt(today: str, mode: str, existing_rows: list[dict[str, str]]) -> 
 
 请执行一次国际会议与学术机会雷达的信息监测，尤其注意：
 - fellowship / policy fellowship / visiting fellowship / early-career fellowship
-- internship，重点来源包括 UN Careers、UNDP、UNESCO、UNIDO、UNEP、UNCTAD、UN-Habitat、OECD、World Bank、ADB 等国际组织官网
+- internship，重点来源包括 OECD、World Bank、IMF、ADB、AfDB、IDB、EBRD、EIB、AIIB、GCF、GEF、major foundations and selected think tanks.
+- Do not actively search UN Careers or UN-system internships. UN-system conferences, youth forums, fellowships, policy schools, CFPs and public events remain in scope.
 - NGO / think tank / policy institute opportunities, especially development, climate, sustainability, global governance, international finance, debt, AI governance, and multilateral cooperation.
 - multilateral development banks and climate funds, including World Bank, IMF, ADB, AfDB, IDB, EBRD, EIB, AIIB, NDB, IsDB, GCF, GEF, Adaptation Fund and Climate Investment Funds.
 - academic CFPs and conferences in governance, political science, comparative politics, East Asian studies, international relations, sustainable development, climate governance, international political economy, development finance, and global governance.
@@ -659,11 +660,9 @@ Output language requirement:
 - If information is unknown, write "Needs checking" instead of "待核查".
 
 Internship 专项检索要求：
-- 必须单独检索 UN Careers / careers.un.org 的 internship，不要用 World Bank 或 OECD internship 代替 UN internship。
-- 优先查询这些方向：political affairs internship, public information internship, sustainable development internship, economic affairs internship, programme management internship, communications internship, partnerships internship, governance internship, digital cooperation internship。
-- 如果 UN Careers 页面无法直接被搜索工具索引，请返回 UN Careers 官方检索入口并在备注中写 "Verify inside UN Careers with the Internship filter"，不要写成没有机会。
-- 对 UNDP、UNEP、UNESCO、UNIDO、UNCTAD、UN-Habitat 也要优先找明确的 internship 页面或岗位检索入口。
-- instant 模式中，若有符合条件的国际组织 internship，至少返回 4 条 internship，其中至少 2 条应来自 UN system 或 UN Careers 入口；weekly 模式至少返回 6 条 internship。
+- 为降低 API 成本，不主动检索 UN Careers、UNDP、UNEP、UNESCO、UNIDO、UNCTAD、UN-Habitat、UN Women、ILO、UNICEF、UNOPS、WFP 等 UN system internship。
+- 优先查询这些方向：sustainable development internship, economic affairs internship, communications internship, partnerships internship, governance internship, digital cooperation internship, development finance internship, climate finance internship, public policy internship, think tank internship。
+- weekly 模式返回 3-6 条高相关 internship 即可，不要为了凑数扩大到强专业壁垒岗位。
 - 不要返回 consultant、staff position、volunteer、full-time job 或 fellowship 来冒充 internship。
 
 NGO / Think Tank 专项检索要求：
@@ -726,8 +725,8 @@ Academic CFP / conference search:
 }}
 
 数量要求：
-- instant 模式返回 8-15 条近期新机会或近期开放的周期性机会。
-- weekly 模式返回 15-25 条，包括新增、即将截止、fellowship、internship 和 CFP。
+- instant 模式返回 6-10 条近期新机会或近期开放的周期性机会。
+- weekly 模式返回 10-16 条，包括新增、即将截止、fellowship、internship 和 CFP。
 - Internship 必须明确是 internship；不要返回 full-time job、consultant、volunteer 或 staff position。
 - Internship 如果偏城市规划、法律、HR、IT、财务、采购、行政、医学、工程等强专业壁垒，允许返回但必须写排除原因并标为低优先级。
 - NGO/智库机会如果存在明显政治风险，允许返回但必须写排除原因并标为低优先级；中性发展、气候、AI治理、国际金融和全球治理机会优先。
@@ -740,7 +739,7 @@ Academic CFP / conference search:
 def call_openai(prompt: str) -> str:
     from openai import OpenAI
 
-    model = os.environ.get("OPENAI_MODEL", "gpt-5.5")
+    model = os.environ.get("OPENAI_MODEL", "gpt-5.5-mini")
     client = OpenAI()
     response = client.responses.create(
         model=model,
