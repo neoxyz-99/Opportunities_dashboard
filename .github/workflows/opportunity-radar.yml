@@ -9,7 +9,7 @@ on:
         options:
           - instant
           - weekly
-        default: instant
+        default: weekly
       send_email:
         description: "发送极简邮件提醒"
         type: boolean
@@ -20,8 +20,6 @@ on:
         type: string
         required: false
   schedule:
-    # 每 6 小时监测一次新机会。GitHub Actions 使用 UTC。
-    - cron: "0 */6 * * *"
     # 每周一北京时间 09:00 汇总，即周一 UTC 01:00。
     - cron: "0 1 * * 1"
 
@@ -53,17 +51,15 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.schedule }}" = "0 1 * * 1" ]; then
-            echo "mode=weekly" >> "$GITHUB_OUTPUT"
           else
-            echo "mode=instant" >> "$GITHUB_OUTPUT"
+            echo "mode=weekly" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Collect opportunities
         id: collect
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5' }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5-mini' }}
         run: python "00-自动化/collect_opportunities.py" --mode "${{ steps.mode.outputs.mode }}"
 
       - name: Generate dashboard
