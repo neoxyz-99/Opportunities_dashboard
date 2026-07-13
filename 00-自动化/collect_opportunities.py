@@ -739,14 +739,29 @@ Academic CFP / conference search:
 def call_openai(prompt: str) -> str:
     from openai import OpenAI
 
-    model = os.environ.get("OPENAI_MODEL", "gpt-5.5-mini")
+    model = os.environ.get("OPENAI_MODEL", "gpt-4.1-mini")
+    fallback_model = os.environ.get("OPENAI_FALLBACK_MODEL", "gpt-4.1-mini")
     client = OpenAI()
-    response = client.responses.create(
-        model=model,
-        tools=[{"type": "web_search"}],
-        tool_choice="auto",
-        input=prompt,
-    )
+    try:
+        response = client.responses.create(
+            model=model,
+            tools=[{"type": "web_search"}],
+            tool_choice="auto",
+            input=prompt,
+        )
+    except Exception as exc:
+        message = str(exc)
+        if "model_not_found" not in message and "does not exist" not in message:
+            raise
+        if model == fallback_model:
+            raise
+        print(f"Model {model} is unavailable; retrying with {fallback_model}.", file=sys.stderr)
+        response = client.responses.create(
+            model=fallback_model,
+            tools=[{"type": "web_search"}],
+            tool_choice="auto",
+            input=prompt,
+        )
     return response.output_text
 
 
