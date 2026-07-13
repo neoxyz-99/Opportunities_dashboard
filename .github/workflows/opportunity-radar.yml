@@ -59,7 +59,7 @@ jobs:
         id: collect
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.5-mini' }}
+          OPENAI_MODEL: gpt-4.1-mini
         run: python "00-自动化/collect_opportunities.py" --mode "${{ steps.mode.outputs.mode }}"
 
       - name: Generate dashboard
