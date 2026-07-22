@@ -71,6 +71,22 @@ def deadline_sort_key(row: dict[str, str]) -> str:
     return deadline[:10]
 
 
+def deadline_date(row: dict[str, str]):
+    value = deadline_sort_key(row)
+    if value == "9999-99-99":
+        return None
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
+
+def is_expired(row: dict[str, str], today=None) -> bool:
+    today = today or datetime.now(CN_TZ).date()
+    deadline = deadline_date(row)
+    return bool(deadline and deadline < today)
+
+
 def priority_sort_key(row: dict[str, str]) -> int:
     order = {"高": 0, "中高": 1, "中": 2, "低": 3}
     return order.get(row.get("行动优先级", ""), 4)
@@ -81,24 +97,30 @@ def visible_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
 
 
 def stats(rows: list[dict[str, str]]) -> dict[str, int]:
-    today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
+    today_date = datetime.now(CN_TZ).date()
+    today = today_date.isoformat()
+    upcoming_cutoff = today_date + timedelta(days=30)
     main_rows = visible_rows(rows)
+    active_rows = [row for row in main_rows if not is_expired(row, today_date)]
     soon = [
-        row for row in main_rows
-        if row.get("截止日期") and "待核查" not in row.get("截止日期", "") and "needs checking" not in row.get("截止日期", "").lower() and row.get("截止日期", "")[:10] <= "9999-99-99"
+        row for row in active_rows
+        if deadline_date(row) and today_date <= deadline_date(row) <= upcoming_cutoff
     ]
     return {
-        "total": len(main_rows),
-        "today": sum(1 for row in main_rows if row.get("发现日期") == today),
-        "soon": min(len(soon), len(main_rows)),
-        "recommended": sum(1 for row in main_rows if row.get("行动优先级") in {"高", "中高"}),
-        "needs_check": sum(1 for row in main_rows if "待核查" in " ".join(row.values())),
+        "total": len(active_rows),
+        "today": sum(1 for row in active_rows if row.get("发现日期") == today),
+        "soon": len(soon),
+        "recommended": sum(1 for row in active_rows if row.get("行动优先级") in {"高", "中高"}),
+        "needs_check": sum(1 for row in active_rows if "待核查" in " ".join(row.values())),
+        "expired": len(main_rows) - len(active_rows),
         "excluded": len(rows) - len(main_rows),
     }
 
 
 def render_dashboard(rows: list[dict[str, str]]) -> str:
     generated_at = datetime.now(CN_TZ).strftime("%Y-%m-%d %H:%M")
+    today = datetime.now(CN_TZ).date()
+    upcoming_cutoff = today + timedelta(days=30)
     data_json = json.dumps(rows, ensure_ascii=False)
     stat_json = json.dumps(stats(rows), ensure_ascii=False)
     type_buttons = "".join(
@@ -260,6 +282,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     .links a {{ color: var(--accent); font-weight: 650; text-decoration: none; border-bottom: 1px solid rgba(0,113,227,.22); }}
     .archive-control {{ display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 13px; }}
     .archive-control input {{ width: 16px; height: 16px; padding: 0; accent-color: var(--accent); }}
+    .archive-control.auto {{ color: #8a3b32; font-weight: 600; }}
     .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.50); border: 1px dashed rgba(255,255,255,.70); border-radius: 28px; }}
     @media (max-width: 860px) {{
       .hero, .search-row {{ grid-template-columns: 1fr; }}
@@ -320,6 +343,8 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     const opportunities = {data_json};
     const initialStats = {stat_json};
     const labelMap = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)};
+    const todayKey = {json.dumps(today.isoformat())};
+    const upcomingCutoffKey = {json.dumps(upcoming_cutoff.isoformat())};
     const archiveKey = "opportunityRadarArchived";
     const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide", archiveView: "active" }};
 
@@ -341,6 +366,16 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     function deadlineKey(row) {{
       const value = row["截止日期"] || "";
       return value && !value.includes("待核查") && !value.toLowerCase().includes("needs checking") ? value.slice(0, 10) : "9999-99-99";
+    }}
+
+    function datedDeadline(row) {{
+      const value = deadlineKey(row);
+      return /^\\d{{4}}-\\d{{2}}-\\d{{2}}$/.test(value) && value !== "9999-99-99" ? value : "";
+    }}
+
+    function isExpired(row) {{
+      const deadline = datedDeadline(row);
+      return Boolean(deadline && deadline < todayKey);
     }}
 
     function rowText(row) {{
@@ -376,8 +411,12 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       localStorage.setItem(archiveKey, JSON.stringify([...ids]));
     }}
 
-    function isArchived(row) {{
+    function isManuallyArchived(row) {{
       return archivedIds().has(rowId(row));
+    }}
+
+    function isArchived(row) {{
+      return isExpired(row) || isManuallyArchived(row);
     }}
 
     function setArchived(row, checked) {{
@@ -408,19 +447,29 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
         if (state.sort === "newest") {{
           return String(b["发现日期"] || "").localeCompare(String(a["发现日期"] || ""));
         }}
+        if (state.archiveView === "archived") {{
+          return deadlineKey(b).localeCompare(deadlineKey(a));
+        }}
         return deadlineKey(a).localeCompare(deadlineKey(b));
       }});
       return rows;
     }}
 
     function renderStats() {{
-      const activeCount = opportunities.filter(row => !row["排除原因"] && !isArchived(row)).length;
-      const archivedCount = opportunities.filter(row => isArchived(row)).length;
+      const visible = opportunities.filter(row => !row["排除原因"]);
+      const active = visible.filter(row => !isArchived(row));
+      const archivedCount = visible.filter(row => isArchived(row)).length;
+      const newToday = active.filter(row => row["发现日期"] === todayKey).length;
+      const upcoming = active.filter(row => {{
+        const deadline = datedDeadline(row);
+        return deadline && deadline >= todayKey && deadline <= upcomingCutoffKey;
+      }}).length;
+      const priority = active.filter(row => ["高", "中高"].includes(row["行动优先级"])).length;
       const items = [
-        ["Active", activeCount],
-        ["New Today", initialStats.today],
-        ["Upcoming", initialStats.soon],
-        ["Priority", initialStats.recommended],
+        ["Active", active.length],
+        ["New Today", newToday],
+        ["Upcoming", upcoming],
+        ["Priority", priority],
         ["Archived", archivedCount],
       ];
       statsEl.innerHTML = items.map(([label, value]) => `<div class="stat"><strong>${{value}}</strong><span>${{label}}</span></div>`).join("");
@@ -440,7 +489,8 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
         ? `<a href="${{escapeHtml(row["申请/投稿链接"])}}" target="_blank" rel="noreferrer">Apply / Submit</a>` : "";
       const originalLink = originalTarget
         ? `<a href="${{escapeHtml(row["原网页链接"])}}" target="_blank" rel="noreferrer">Original Page</a>` : "";
-      const checked = isArchived(row) ? "checked" : "";
+      const expired = isExpired(row);
+      const checked = isManuallyArchived(row) ? "checked" : "";
       const typeLabel = labelMap[row["机会类型分组"]] || row["机会类型分组"];
       const topicLabel = labelMap[row["主题分区"]] || row["主题分区"];
       const priorityLabel = labelMap[row["行动优先级"]] || row["行动优先级"];
@@ -456,6 +506,12 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       ].filter(Boolean).join("");
       const note = cleanValue(row["备注"], {{ hideChinese: true }});
       const judgment = note ? `<div class="judgment"><strong>Fit & Judgment</strong><br>${{escapeHtml(note)}}</div>` : "";
+      const archiveControl = expired
+        ? `<div class="archive-control auto">Expired automatically</div>`
+        : `<label class="archive-control" onclick="event.stopPropagation()">
+              <input type="checkbox" data-archive-id="${{escapeHtml(rowId(row))}}" ${{checked}}>
+              Reviewed, hide from active view
+            </label>`;
       return `
         <details class="card${{excludedClass}}">
           <summary>
@@ -473,10 +529,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
             ${{details ? `<div class="detail-grid">${{details}}</div>` : ""}}
             ${{judgment}}
             <div class="links">${{originalLink}} ${{applyLink}}</div>
-            <label class="archive-control" onclick="event.stopPropagation()">
-              <input type="checkbox" data-archive-id="${{escapeHtml(rowId(row))}}" ${{checked}}>
-              Reviewed, hide from active view
-            </label>
+            ${{archiveControl}}
           </div>
         </details>
       `;
