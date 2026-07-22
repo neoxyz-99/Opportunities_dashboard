@@ -23,6 +23,7 @@ NOTIFIED_PATH = PROJECT_DIR / "05-历史记录" / "已提醒链接.csv"
 OUTPUT_DIR = PROJECT_DIR / "06-邮件输出"
 API_ENV_PATH = PROJECT_DIR / "07-配置" / "api.env"
 DOCS_DIR = PROJECT_DIR / "docs"
+RAW_RESPONSE_DEBUG_PATH = PROJECT_DIR / "05-历史记录" / "last_openai_response.txt"
 
 FIELDS = [
     "机会名称",
@@ -302,6 +303,28 @@ def strip_json_fence(text: str) -> str:
         stripped = re.sub(r"^```(?:json)?\s*", "", stripped)
         stripped = re.sub(r"\s*```$", "", stripped)
     return stripped.strip()
+
+
+def extract_json_payload(text: str) -> str:
+    stripped = strip_json_fence(text)
+    if stripped.startswith("{") and stripped.endswith("}"):
+        return stripped
+
+    decoder = json.JSONDecoder()
+    for index, char in enumerate(stripped):
+        if char != "{":
+            continue
+        try:
+            _, end = decoder.raw_decode(stripped[index:])
+        except json.JSONDecodeError:
+            continue
+        return stripped[index : index + end]
+    return stripped
+
+
+def save_debug_response(raw: str) -> None:
+    RAW_RESPONSE_DEBUG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    RAW_RESPONSE_DEBUG_PATH.write_text(raw, encoding="utf-8")
 
 
 def load_csv(path: Path, fieldnames: list[str]) -> list[dict[str, str]]:
@@ -767,13 +790,15 @@ def call_openai(prompt: str) -> str:
 
 def parse_opportunities(raw: str, today: str) -> list[dict[str, str]]:
     try:
-        data = json.loads(strip_json_fence(raw))
+        data = json.loads(extract_json_payload(raw))
     except json.JSONDecodeError as exc:
+        save_debug_response(raw)
         print(raw, file=sys.stderr)
-        raise RuntimeError("OpenAI 返回内容不是有效 JSON。") from exc
+        raise RuntimeError(f"OpenAI 返回内容不是有效 JSON，原始回复已保存到 {RAW_RESPONSE_DEBUG_PATH.relative_to(PROJECT_DIR)}。") from exc
 
     items = data.get("opportunities", [])
     if not isinstance(items, list):
+        save_debug_response(raw)
         raise RuntimeError("JSON 中缺少 opportunities 数组。")
 
     rows = [normalize_row(item, today) for item in items if isinstance(item, dict)]
@@ -1013,7 +1038,13 @@ def main() -> int:
     today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
     existing = [normalize_row(row, today) for row in load_csv(DB_PATH, FIELDS)]
     prompt = build_prompt(today, args.mode, existing)
-    incoming = parse_opportunities(call_openai(prompt), today)
+    raw_response = call_openai(prompt)
+    try:
+        incoming = parse_opportunities(raw_response, today)
+    except RuntimeError as exc:
+        print(f"Collect skipped: {exc}", file=sys.stderr)
+        set_github_output(has_updates="false", new_count="0", dashboard_path="docs/index.html")
+        return 0
     merged, new_rows = merge_rows(existing, incoming)
     write_csv(DB_PATH, FIELDS, merged)
 
