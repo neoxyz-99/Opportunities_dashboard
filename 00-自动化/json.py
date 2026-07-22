@@ -9,6 +9,7 @@ behavior, but retries ``loads`` after extracting the first JSON object.
 from __future__ import annotations
 
 import importlib.util
+import sys
 import sysconfig
 from pathlib import Path
 from typing import Any
@@ -24,7 +25,13 @@ if _spec is None or _spec.loader is None:
     raise ImportError("Could not load Python standard-library json module")
 
 _stdlib_json = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_stdlib_json)
+_wrapper_json = sys.modules[__name__]
+sys.modules[_spec.name] = _stdlib_json
+sys.modules[__name__] = _stdlib_json
+try:
+    _spec.loader.exec_module(_stdlib_json)
+finally:
+    sys.modules[__name__] = _wrapper_json
 
 JSONDecodeError = _stdlib_json.JSONDecodeError
 JSONDecoder = _stdlib_json.JSONDecoder
