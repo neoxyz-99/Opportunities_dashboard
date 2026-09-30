@@ -173,11 +173,25 @@ def candidate_links(page: dict, kind: str) -> list[dict]:
     for link in page["links"]:
         if link["url"] in seen or not LINK_WORDS.search(link["title"] + " " + urlsplit(link["url"]).path):
             continue
-        if re.search(r"privacy|cookie|login|sign.in|contact|donat|alumni|our.people|/archive(?:/|$)|/publications?/|/books?/|/people/", link["url"], re.I):
+        if re.search(r"privacy|cookie|login|sign.in|contact|donat|alumni|our.people|/archive(?:/|$)|/publications?/|/books?/|/people/(?!jobs/)|recruitment-process|terms.?and.?conditions|/MyECPR/|register-your-interest|scroll_to=", link["url"], re.I):
             continue
         seen.add(link["url"])
         found.append(link)
     return found
+
+
+def fetch_listing(fetcher, source: dict) -> tuple[dict, list[dict]]:
+    """Try only configured official alternatives, with the same access checks."""
+    attempts = []
+    urls = list(dict.fromkeys([source["url"]] + source.get("fallback_urls", [])))
+    for url in urls[:3]:
+        try:
+            page = fetcher.fetch(url, source["domains"], source.get("render", False))
+            attempts.append({"url": url, "status": "readable"})
+            return page, attempts
+        except Exception as exc:
+            attempts.append({"url": url, "status": "failed", "error": f"{type(exc).__name__}: {str(exc)[:200]}"})
+    raise ValueError("; ".join(f"{entry['url']}: {entry['error']}" for entry in attempts))
 
 
 def ranked_links(links: list[dict], kind: str, cache: dict, today: str) -> list[dict]:
@@ -341,7 +355,10 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
                     raise ValueError("Job duties lack source evidence")
                 if item["group"] == "Internship" and not re.search(r"\bintern(?:ship|ships|s)?\b|实习|\btraineeship\b", documents[page["url"]], re.I):
                     raise ValueError("No explicit internship identification")
-                if page.get("source_id") in {"un", "undp", "unep", "unesco"}:
+                if item["group"] == "Internship" and (
+                    page.get("source_id") in {"un", "undp", "unep", "unesco", "un-youth", "unfccc-events"}
+                    or (urlsplit(page["url"]).hostname or "").endswith(".un.org")
+                ):
                     continue
             row = {target: item[key] for key, target in mapping.items()}
             row["机会类型"] = item["group"]
@@ -501,7 +518,8 @@ def run(args, client=None, fetcher=None) -> int:
         result = {"name": source["name"], "url": source["url"], "checked_at": now, "last_success": previous_sources.get(source["id"], {}).get("last_success"), "status": "failed", "error": "", "candidates": 0, "expected_pages": 0, "validated_pages": 0}
         report["sources"][source["id"]] = result
         try:
-            listing = fetcher.fetch(source["url"], source["domains"], source.get("render", False))
+            listing, entry_attempts = fetch_listing(fetcher, source)
+            result.update(entry_attempts=entry_attempts, fetched_url=listing["url"])
             links = candidate_links(listing, source["kind"])
             if source.get("link_pattern"):
                 links = [link for link in links if re.search(source["link_pattern"], link["url"])]
@@ -517,8 +535,10 @@ def run(args, client=None, fetcher=None) -> int:
                 result["error"] = "No opportunity links or explicit empty-state evidence; needs source adapter review"
             else:
                 result["status"] = "pending"
+            if source.get("listing_first"):
+                all_candidates.append({"url": listing["url"], "source": source, "page": listing})
             all_candidates.extend({"url": link["url"], "source": source} for link in links[:link_limit])
-            if not links or source["kind"] != "jobs":
+            if not source.get("listing_first") and (not links or source["kind"] != "jobs"):
                 all_candidates.append({"url": listing["url"], "source": source, "page": listing})
         except Exception as exc:
             result["error"] = f"{type(exc).__name__}: {str(exc)[:240]}"
