@@ -1,0 +1,303 @@
+{
+  "rejected": {
+    "https://www.greenclimate.fund/about/careers/internship-programme": [
+      "Job duties lack source evidence"
+    ]
+  },
+  "response": {
+    "pages": [
+      {
+        "url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/",
+        "reason": "Open call for workshop proposals for the 14th European Workshops in International Studies (EWIS 2027) in Bordeaux, France, from 2027-06-30 to 2027-07-02. Proposals due by 2026-11-23. Suitable for scholars engaged in International Studies with topics on power, territory, spatial imaginaries, and related political and international issues.",
+        "opportunities": [
+          {
+            "title": "Call for Workshop Proposals, EWIS 2027",
+            "host": "European International Studies Association (EISA)",
+            "group": "学术论坛/CFP",
+            "topic": "国际关系/政治学",
+            "tags": "international studies, workshop, call for proposals, international politics, power, territory, spatial scales",
+            "deadline": "2026-11-23",
+            "deadline_quote": "The closing date for workshop proposals is 23 November 2026 (Midnight, CET).",
+            "dates": "2027-06-30 to 2027-07-02",
+            "location": "Bordeaux, France",
+            "source_url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/",
+            "apply_url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals",
+            "batch": "EWIS2027",
+            "materials": [
+              "Workshop title, description (max. 500 words)",
+              "Possible paper topics and participants (1–2 pages)",
+              "Workshop convenor biographies (max. 1 page each)",
+              "EISA membership number"
+            ],
+            "function": "Submit proposal to convene a workshop engaging international studies scholars on spatial, political, and power-related themes",
+            "judgment": "Call is currently open with deadline 2026-11-23; accepts proposals from scholars with EISA membership; workshop in mid 2027; valuable for academic researchers in international politics.",
+            "relevant_duties": false,
+            "specialized_duties": false,
+            "senior_role": false,
+            "scope_quote": "Call for Workshop Proposals is OPEN. The closing date for workshop proposals is 23 November 2026 (Midnight, CET).",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "party_membership",
+                "status": "Required",
+                "summary": "Workshop convenors must be EISA members.",
+                "quote": "Workshop convenors must be EISA members at the time of submission.",
+                "url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+        "reason": "The Green Climate Fund Internship Programme is an active opportunity for students or recent graduates in fields related to GCF's work, with intake starting typically in July annually and recruitment starting in December. Open to all nationalities, especially candidates from developing countries.",
+        "opportunities": [
+          {
+            "title": "Green Climate Fund Internship Programme",
+            "host": "Green Climate Fund",
+            "group": "Internship",
+            "topic": "可持续发展/气候",
+            "tags": "internship, climate finance, sustainability, international organization, developing countries, graduate",
+            "deadline": "",
+            "deadline_quote": "",
+            "dates": "Review process February to May, starting typically July (varies)",
+            "location": "Songdo, South Korea",
+            "source_url": "https://www.greenclimate.fund/about/careers/internship-programme",
+            "apply_url": "https://jobs.greenclimate.fund",
+            "batch": "",
+            "materials": [
+              "Resume/CV",
+              "Interview",
+              "Written assessment (if applicable)",
+              "Panel interview"
+            ],
+            "function": "Internship to gain experience in climate finance and related operations at GCF secretariat",
+            "judgment": "Recruitment is annual starting December with selections Feb–May and start usually in July; applications open later in year; internships for current Master's/PhD students or recent graduates.",
+            "relevant_duties": true,
+            "specialized_duties": true,
+            "senior_role": false,
+            "scope_quote": "The programme is meticulously crafted for talented and driven individuals proficient in areas pertinent to the operations of the GCF.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "Must be enrolled in a Master's or PhD programme prior to internship assignment or a recent graduate.",
+                "quote": "Be enrolled in a Master's or PhD programme prior to internship assignment, or a recent graduate",
+                "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+                "min_years": null
+              },
+              {
+                "category": "language",
+                "status": "Required",
+                "summary": "Excellent command of English is required.",
+                "quote": "Possess an excellent command of English.",
+                "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/information-for-hosts",
+        "reason": "Information page for potential hosts for the Alexander von Humboldt Foundation’s International Climate Protection Fellowship. This page supports fellowship applicants and hosts, but itself is not a fellowship application page nor does it provide direct application opportunity. Fellowship application deadline for host statements is 2026-02-10, indicating the next fellowship call closes on this date, so the programme remains CURRENT.",
+        "opportunities": [
+          {
+            "title": "International Climate Protection Fellowship (Support for Host Institutions)",
+            "host": "Alexander von Humboldt Foundation",
+            "group": "Fellowship",
+            "topic": "可持续发展/气候",
+            "tags": "fellowship, climate protection, research in Germany, developing countries, postdoc",
+            "deadline": "2026-02-10",
+            "deadline_quote": "Please ensure that you submit this form to us online by the application deadline (10 February 2026) at the latest.",
+            "dates": "",
+            "location": "Germany",
+            "source_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+            "apply_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+            "batch": "",
+            "materials": [
+              "Host statement form",
+              "Applicant research proposal",
+              "Host confirmation of research facilities"
+            ],
+            "function": "Support and host international fellows conducting climate protection research in Germany.",
+            "judgment": "Application deadline for host statements was 2026-02-10; fellowship program currently active; suitable for hosting fellows from developing and transition countries undertaking climate research.",
+            "relevant_duties": true,
+            "specialized_duties": true,
+            "senior_role": false,
+            "scope_quote": "Create the conditions that enable the funding recipient to conduct her/his project in Germany and provide her/him with the necessary contacts.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "citizenship",
+                "status": "Required",
+                "summary": "Applicants must be from developing and transition countries outside Europe.",
+                "quote": "International Climate Protection Fellows from developing and transition countries outside of Europe.",
+                "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "documents": [
+    {
+      "url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/",
+      "text": "Call for Worskshop Proposals | eisa-net.org Call for Worskshop Proposals HOME IMPORTANT DATES CALL FOR WORKHOP PROPOSALS PROGRAMME AT A GLANCE VENUE CONTACTS 1 4 th European Workshops in International Studies Sciences Po Bordeaux, France, 30 June - 2 July 2027 The European Workshops in International Studies (EWIS), launched by the EISA in 2013, have fast established themselves as a spirited place for the European IR community to engage in sustained, in-depth discussion with a diverse range of peers from various institutions, countries, disciplines and career stages. EWIS has proven to be a popular and productive format, perfect for preparing special issues, edited volumes or exploring new ideas, themes and directions in a vibrant and friendly atmosphere. CALL FOR WORKHOP PROPOSALS IS OPEN EWIS 202 7 : Call for Workshop Proposals Call for Workshop Proposals is OPEN 14 th European Workshops in International Studies, Bordeaux, 30 June – 2 July 2027 Boundaries across Scales: Power, Territory, and Spatial Imaginaries The European International Studies Association (EISA) invites workshop proposals for EWIS 2027, to be held at Sciences Po Bordeaux from 30 June to 2 July 2027. The European Workshops in International Studies (EWIS), launched by the EISA in 2013, have fast established themselves as a spirited place for the European IR community to engage in sustained, in-depth discussion with a diverse range of peers from various institutions, countries, disciplines and career stages. EWIS has proven to be a popular and productive format, perfect for preparing special issues, edited volumes or exploring new ideas, themes and directions in a vibrant and friendly atmosphere. EWIS 2027 will take place in Bordeaux, France, at a time when the uses and implications of maps, scales and boundaries once again reveal their centrality to the controversies shaping international politics. A recent example is the United Nations General Assembly’s September 2026 resolution supporting a more equitable representation of the world’s regions on maps. Framed in terms of ‘cognitive justice and memorial reparation’, particularly towards Africa, Latin America, and Southeast Asia, this initiative ‘to correct the map’ reminds us how seemingly technical questions of cartographic representation are actually objects of political and international contestation. Such questions are neither confined to cartography nor the United Nations. From the critique of the “territorial trap” and the state-centred assumptions underpinning conventional representations of world politics, to renewed attention to multiscalar social spaces, networks, infrastructures, fields, guilds and digital environments, scholars have continuously challenged the authority of maps and scales whilst proposing other forms of conceptualisation and visualisation of how the institutionalisation of spaces structures politics (and vice versa). At this critical juncture, these critiques and proposals raise fundamental methodological, epistemological, and theoretical issues for International Studies at large. Hence, the 14th iteration of EWIS at Sciences Po Bordeaux invites participants to explore how different understandings and representations of spaces and scales are produced, on the one hand, and, on the other, how they confront, overlap or become articulated with one another. In both cases, the key question is: what does research on these representations reveal about contemporary configurations of power? We also encourage critical reflection on the boundaries of International Studies itself, including how those boundaries shift when International Studies is understood as interdisciplinary. How might innovative analytical approaches and alternative spatial imaginaries open up new epistemological and ontological perspectives on international phenomena? We therefore invite workshops that connect debates on space and scale to broader transformations in world politics, such as multidimensional challenges in international security, global health, political economy, environmental conditions, and artificial intelligence, to name just a few. Workshops may engage with this year’s theme from theoretical, methodological, empirical, historical, comparative, and interdisciplinary perspectives. Venue EWIS 2027 will be organized at Sciences Po Bordeaux, one of the ten French Institutes of Political Studies, a multidisciplinary and international education and research institution in human and social sciences. It will be in Bordeaux, a city of 270,000 inhabitants and its surrounding area (population c. 900,000) which are highly attractive. Not only is Bordeaux a historic city, over the last twenty years it has been revitalized, notably by opening up its riverside, renewing numerous public spaces and the construction of an extensive tramway network. The area’s vineyards (Médoc, St Emilion, Sauternes…) are an obvious attraction, as is Bordeaux’s proximity to the ocean and the Bassin d’Arcachon, the Dordogne and the Pyrenees. Access to the city is very easy by air or by rail. Situated only 20 minutes from the city center, Bordeaux’s airport has permanent direct links to more than 50 destinations located throughout Europe, Africa and even a direct flight to Montreal. Most transatlantic travellers nevertheless arrive and depart via Paris, London or Madrid. As regards rail links, Bordeaux city centre is only 2 hours from Paris, a destination to and from which there are more than 20 trains a day. Other direct destinations by TGV train include London, Brussels, Strasbourg and Paris’s Roissy-Charles de Gaulle Airport (thereby facilitating rail transfers to Bordeaux for passengers arriving in France at that airport). SUBMISSION INSTRUCTIONS The proposals should include the following: Workshop title, description of the proposed workshop topic and its relevance (max. 500 words) An indication of possible paper topics and potential participants (1–2 pages) A short biography of each workshop convenor (max. 1 page each) Workshop convenors must be EISA members at the time of submission. The submission form will ask for your membership number. To find this number, please log in to the membership portal and then click in the upper right corner of the webpage on ‘my account’. This will display your membership number and expiration date of your membership. One can be listed as (co-)convenor for maximum one workshop. We are seeking proposals for workshops relevant to the EWIS 2027 theme but are also happy to consider proposals that explore other topics in International Studies. EWIS 2027 will take place in person. We are committed to offering our participants a safe and inclusive meeting space throughout the event. We will closely follow the public health and safety guidance issued by the local authorities and the University. The full details of the EWIS health and safety measures will be published on our website in due course. Conditions: Maximum of two conveners for each workshop. Workshop convenors must be current EISA members. They will pay a reduced participation fee and will be invited to the workshop convenors’ dinner. They will, however, fund and arrange their own travel and accommodation. Accepted workshop convenors will be notified by 14 December 2026. The general call for papers will then open on 12 th January 2027, and EISA members will be able to submit their abstracts until 23 th February 2027. On our website, you can find a timeline of key dates, detailed submission instructions and further information about the venue and theme. Workshop format: EWIS will be an on-site only event and no virtual participation is possible. The 14th iteration of EWIS will start on June 30, 2027 with registration, plenary sessions and welcome reception. The registration desk will open in the morning. The plenary sessions will start around 13:00 followed by an early evening welcome reception. Workshops will take place on day 2 and 3 (July 1 and 2, 2027 respectively) from 9:00 until 18:00. Participants are expected to attend all sessions of their respective workshops. In total, we plan 8 sessions of 90 minutes each over the two workshop days (1 and 2 July 2027). This includes the introductory and conclusion sessions for each workshop. The EWIS format is meant to enable in-depth discussions in a closed group of participants. Each session will therefore host 2-3 papers maximum to ensure paper presenters have the most benefit from the workshop format. Typically, a small EWIS workshop has around 8 participants while we, based on previous experience, do not recommend workshops with more than 15 papers. Convenors of accepted workshops will have the following tasks/responsibilities: Share the call within your networks and directly reach out to those whom you indicated in your workshop proposals as confirmed/potential speakers. Make sure that everyone, including confirmed/potential paper presenters, submits their abstracts through the EISA’s submission portal before the official deadline. Review abstracts submitted to your respective workshops and make the decision on acceptance/rejection. EISA will be in touch concerning the technical steps in reviewing and evaluating applications. Once the abstract selection is completed, the EISA will send out acceptance and rejection emails. Once the registration is open, the EISA will send official emails to invite accepted paper presenters to register. We strongly encourage you to get in touch with prospective participants of your workshop to make sure everyone registers on time. Late registration will not be possible. Devise workshop sessions according to your workshop needs, such as time allocation, presentation type, assigning chairs/discussants, etc. You have flexibility in terms of how you want to distribute the sessions over the workshop period. Make sure you circulate individual papers at least 2 weeks before EWIS 2027 to allow other participants to read them. When indicating potential participants for your workshop, please specify if they have indicated their availability to being in Bordeaux between 30 June and 2 July for EWIS. Please note that BISA 2027 clashes with EWIS 2027. SUBMISSION DEADLINE The closing date for workshop proposals is 23 November 2026 (Midnight, CET). We intend to have workshops with up to 20 participants. METHOD OF SUBMISSION Submit your workshop proposal HERE SUBMIT WORKSHOP PROPOSAL Contact For any queries, please contact us at: [email protected] Workshop Secretariat C-IN Prague Congress Centre 5. kvetna 65 140 21 Prague 4 Czech Republic Tel.: +420 296 219 600 Website: www.c-in.eu",
+      "links": [
+        {
+          "url": "https://eisa-net.org/ewis-2027",
+          "title": "HOME"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027",
+          "title": "IMPORTANT DATES"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals",
+          "title": "CALL FOR WORKHOP PROPOSALS"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027/programme-at-a-glance",
+          "title": "PROGRAMME AT A GLANCE"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027/venue",
+          "title": "VENUE"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027/contacts",
+          "title": "CONTACTS"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals",
+          "title": "CALL FOR WORKHOP PROPOSALS IS OPEN"
+        },
+        {
+          "url": "https://eisa-net.org/ewis-2027",
+          "title": "our website,"
+        },
+        {
+          "url": "https://eisa-net.org/cdn-cgi/l/email-protection",
+          "title": "[email protected]"
+        }
+      ],
+      "hash": "e0157d9b4e14d2206b9b2facf4b3e12814f5bada5557e20a1465bcf75fa53b99",
+      "source_id": "eisa",
+      "discovery_url": "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/"
+    },
+    {
+      "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+      "text": "Internship programme | Green Climate Fund Skip to main content Overview Work with us What we offer Internship programme How to apply Careers Portal The programme The Green Climate Fund internship programme offers an unparalleled learning experience tailored for students and recent graduates hailing from diverse academic disciplines. Our application process welcomes individuals of all nationalities, with a special emphasis on encouraging qualified candidates, particularly those from developing nations, to apply. We value diversity in professional, academic, and cultural backgrounds. This programme is meticulously crafted for talented and driven individuals proficient in areas pertinent to the operations of the GCF. Interns receive a monthly allowance of USD 1,300 and free comprehensive global health insurance coverage. Selected candidates have the opportunity to immerse themselves in the Fund's work, gaining invaluable insights and receiving guidance and training across various professional domains in a vibrant multicultural setting. The GCF internship initially spans six months, with the potential for a six-month extension contingent upon a performance review. All interns are required to work at the GCF headquarters located in Songdo, South Korea. For international hires, round-trip flights will be provided. To be eligible for an internship, candidates must: Be enrolled in a Master's or PhD programme prior to internship assignment, or a recent graduate; Be engaged or recently engaged in academic study in a field directly related to the Fund's work; Possess an excellent command of English. Selection process Timeline The recruitment for our cohort internship typically commences in December each year, extending through early January of the following year. Our meticulous selection process unfolds from February to May. Newly chosen interns typically embark on their journey in July of the same year, although start dates may vary to accommodate business needs. Steps The recruitment journey kicks off with a thorough review of CVs, with shortlisted candidates advancing to the next stage. Depending on the role, candidates may undergo either an online video interview, a written assessment, or both. Following this stage, a 30-minute panel interview is conducted online to delve deeper into candidates' qualifications and suitability for the position. Browse internships Testimonials Manuel Cruz Department of Invesment Services Intern Learn more Emilie Uehara Department of Partnership and Resource Mobilization Intern Learn more Emma Nijssen Chief Investment Officer Front Office Intern Learn more Leslie Chinove Division of Portfolio Management Intern Learn more Meixi Wan Office of the Chief Finance and Risk Officer Intern Learn more",
+      "links": [
+        {
+          "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+          "title": "Skip to main content"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/careers",
+          "title": "Overview"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/careers/work-with-us",
+          "title": "Work with us"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/careers/what-we-offer",
+          "title": "What we offer"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/careers/internship-programme",
+          "title": "Internship programme"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/careers/apply",
+          "title": "How to apply"
+        },
+        {
+          "url": "https://jobs.greenclimate.fund",
+          "title": "Careers Portal"
+        },
+        {
+          "url": "https://jobs.greenclimate.fund/?_gl=1*1oyrreo*_ga*NTAwMDkyNTMuMTc1NjE5NDc3NA..*_ga_1G93H3NSBL*czE3NzYwNzc1MTEkbzI0JGcxJHQxNzc2MDc3NTEyJGo1OSRsMCRoMA..*_ga_R4E8SRK8JR*czE3NzYwNzc1MTEkbzM0JGcxJHQxNzc2MDc3NTExJGo2MCRsMCRoMA..",
+          "title": "Browse internships"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/secretariat/manuel-cruz",
+          "title": "Manuel Cruz Department of Invesment Services Intern Learn more"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/secretariat/emilie-uehara",
+          "title": "Emilie Uehara Department of Partnership and Resource Mobilization Intern Learn more"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/secretariat/emma-nijssen",
+          "title": "Emma Nijssen Chief Investment Officer Front Office Intern Learn more"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/secretariat/leslie-chinove",
+          "title": "Leslie Chinove Division of Portfolio Management Intern Learn more"
+        },
+        {
+          "url": "https://www.greenclimate.fund/about/secretariat/meixi-wan",
+          "title": "Meixi Wan Office of the Chief Finance and Risk Officer Intern Learn more"
+        }
+      ],
+      "hash": "3ff14bbf4368c7a369cc7be8d3f15d90013e297ce68a4cb745d81c263778e565",
+      "source_id": "gcf",
+      "discovery_url": "https://www.greenclimate.fund/about/careers/internship-programme"
+    },
+    {
+      "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/information-for-hosts",
+      "text": "Information for hosts Jump to the content Become a host for an International Climate Protection Fellow The Alexander von Humboldt Foundation’s International Climate Protection Fellows require academic support and a point of contact at their host institution during their stay in Germany. If you work at a public or private institution in Germany (universities, research institutions, businesses, associations, administrative offices, NGOs etc.), you can act as a host for International Climate Protection Fellows from developing and transition countries outside of Europe. Create the conditions that enable the funding recipient to conduct her/his project in Germany and provide her/him with the necessary contacts. If a fellowship is granted, the Humboldt Foundation will provide your institution with a monthly subsidy of €500 (humanities and social sciences) or €800 (natural sciences and engineering) towards research costs. Please refer to our website or the International Climate Protection Fellowship programme information to find out exactly what is required of applicants. International Climate Protection Fellowship – website Programme information (PDF, 118 KB) Programme information for postdocs (PDF, 116 KB) Frequently asked questions from hosts about the subsidy towards research costs Guidelines on handling security-relevant research in international research collaborations Your statement First, applicants must coordinate their independently developed research projects with you. To enable you to submit a meaningful host’s statement on the research project and the applicant’s qualifications, you will be given access to their application package. You will receive a link to the documents as soon as the applicant has submitted their application. In drawing up your assessment, please refer to the list of questions for the statement by the host (PDF) and answer these questions in the order given, if possible. Upload the document, written in English, to an online form provided for you. You will receive the link to the online form via email as soon as the applicant has submitted their application. Your statement is crucial to the review process and very important to the Selection Committee. Your host’s statement will, of course, be treated as confidential. Please note The application will not be forwarded to the Humboldt Foundation and processed until you have submitted the host form. Please ensure that you submit this form to us online by the application deadline (10 February 2026) at the latest. Applicants for the International Climate Fellowship Programme for postdocs may plan their research stays with two hosts. If the applicant would like to conduct their research stay at two host institutes, separate host’s statements and confirmations that research facilities will be made available are required from both host institutes. If both hosts work at the same institute, they may provide a joint host’s statement, which must however be signed and submitted by each host. The second host also receives a link to a host form as well as access to the submitted application form. Once the application documents have been reviewed and assessed by an independent Selection Committee, the best candidates will be invited by the end of June to Germany for a selection meeting. This meeting is held over several days. The meeting will take place in September and gives candidates the opportunity to present their proposal. The Selection Committee will decide whether or not to grant the applicant a fellowship at this meeting. Please note: Fellows must stay at the host institution in Germany for the entire duration of their sponsorship period. Stays abroad are permitted only under certain conditions.",
+      "links": [
+        {
+          "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/information-for-hosts",
+          "title": "Jump to the content"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/{{href}}",
+          "title": ""
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+          "title": "International Climate Protection Fellowship – website"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/fileadmin/Bewerben/Programme/Internationales-Klimaschutzstipendium/iks_programminformation.pdf",
+          "title": "Programme information (PDF, 118 KB)"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/fileadmin/Bewerben/Programme/Internationales-Klimaschutzstipendium/icf_programme_information_postdocs.pdf",
+          "title": "Programme information for postdocs (PDF, 116 KB)"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/en/apply/become-a-humboldt-host",
+          "title": "Frequently asked questions from hosts about the subsidy towards research costs"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/en/explore/about-the-humboldt-foundation/security-relevant-research",
+          "title": "Guidelines on handling security-relevant research in international research collaborations"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/fileadmin/Bewerben/Programme/Internationales-Klimaschutzstipendium/icf_list_of_questions_host.pdf",
+          "title": "list of questions for the statement by the host"
+        },
+        {
+          "url": "https://www.humboldt-foundation.de/en/privacy-policy",
+          "title": ""
+        }
+      ],
+      "hash": "3ebc7c9a2ea2ba355842726cfd9334d429731e8045d68a337ea160471f43d4f2",
+      "source_id": "humboldt-climate",
+      "discovery_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/information-for-hosts"
+    }
+  ]
+}

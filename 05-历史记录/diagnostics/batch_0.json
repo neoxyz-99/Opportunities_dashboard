@@ -1,0 +1,346 @@
+{
+  "rejected": {
+    "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777": [
+      "Unfetched or fabricated opportunity URL"
+    ]
+  },
+  "response": {
+    "pages": [
+      {
+        "url": "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai",
+        "reason": "This page describes a scheduled conference event on 2025-11-10. It is an announcement of a future event, not a currently open opportunity for application or participation funding.",
+        "opportunities": []
+      },
+      {
+        "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications",
+        "reason": "This page is an informational listing of publications and annual reports related to the Max Weber Programme. It contains no active fellowship, scholarship, or job applications.",
+        "opportunities": []
+      },
+      {
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+        "reason": "This page describes the Development-Related Postgraduate Courses (EPOS) scholarship programme by DAAD, with detailed application requirements and procedures. Only application deadlines on a per-program basis are listed and applicants must apply directly to respective courses. The page contains current, applicable scholarship opportunities for postgraduate and doctoral study in Germany in development-related fields.",
+        "opportunities": [
+          {
+            "title": "Development-Related Postgraduate Courses (EPOS) Scholarship 2027/2028",
+            "host": "DAAD - Deutscher Akademischer Austauschdienst",
+            "group": "Scholarships",
+            "topic": "国际关系/政治学",
+            "tags": "development, postgraduate, scholarship, Germany, EPOS",
+            "deadline": "",
+            "deadline_quote": "Application deadline Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+            "dates": "12 to 42 months duration, dependent on study programme",
+            "location": "Germany",
+            "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+            "apply_url": "Applications must be sent directly to the chosen postgraduate course per the respective websites listed by DAAD; not to DAAD itself.",
+            "batch": "",
+            "materials": [
+              "Completed and signed checklist EPOS application form",
+              "Curriculum vitae in reverse chronological order",
+              "One Letter of Motivation explaining course priorities if multiple",
+              "Letter of recommendation from current employer",
+              "Employment certificates showing at least 2 years relevant work experience",
+              "Proof of language skills (IELTS/TOEFL for English courses, DSH 2/TestDaF 4 for German)",
+              "Certified copies of higher education degrees and transcripts",
+              "APS Certificate for applicants from PR China"
+            ],
+            "function": "Scholarship grants to support study and research for graduates with 2+ years professional development experience from eligible developing and newly industrialized countries for postgraduate/master's or doctoral degrees at German state or state-recognised universities.",
+            "judgment": "A competitive scholarship for development-focused postgraduate study in Germany requiring substantial prior professional experience and academic excellence. Suitable for candidates aiming to advance sustainable development expertise.",
+            "relevant_duties": true,
+            "specialized_duties": false,
+            "senior_role": false,
+            "scope_quote": "The Typical Scholarship Holder works for a public authority or state/private company in a developing country engaged in planning and executing development policy-related projects with technological, economic or social emphasis.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "citizenship",
+                "status": "Required",
+                "summary": "Foreign graduates from development and newly industrialised countries as listed in the eligible countries list.",
+                "quote": "Graduates with at least two years' professional experience from the following countries: list of eligible countries",
+                "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/dac_laenderliste_epos.pdf",
+                "min_years": null
+              },
+              {
+                "category": "residency",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "work_authorization",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "visa_sponsorship",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "opt_cpt",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "student_graduation",
+                "status": "Required",
+                "summary": "Applicants must hold at least a Bachelor’s degree usually obtained within the last six years with above-average results and have at least two years of professional experience after the first degree at time of application.",
+                "quote": "has completed an academic degree with far above average results (upper third) and at least two years of related professional experience after the first degree (bachelor) at the time of application",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+                "min_years": 2
+              },
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "Bachelor’s degree (typically four years) in a related subject is required.",
+                "quote": "Candidates have a Bachelor degree (usually a four-year course) in an appropriate subject",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+                "min_years": null
+              },
+              {
+                "category": "experience",
+                "status": "Required",
+                "summary": "Minimum two years' related professional experience after the bachelor degree is required.",
+                "quote": "and at least two years of related professional experience after the first degree (bachelor) at the time of application",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+                "min_years": 2
+              },
+              {
+                "category": "language",
+                "status": "Required",
+                "summary": "For German taught programs: minimum B1 German at application plus DSH 2 or TestDaF 4 before course start. For English programs: proficiency per program requirements, e.g. IELTS or TOEFL.",
+                "quote": "For study courses in German...minimum German language level of B1 at the time of application is a requirement... For courses in English: Proof of adequate language skills",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+                "min_years": null
+              },
+              {
+                "category": "party_membership",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "school_restrictions",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "documents": [
+    {
+      "url": "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai",
+      "text": "Reimagining Internationalisation in International Studies: From Global Structures to Academic Responsibility | IPSA Skip to main content LOG IN Contact Us | | English Français International Political Science Association The Voice of Political Science around the World Reimagining Internationalisation in International Studies: From Global Structures to Academic Responsibility Reimagining Internationalisation in International Studies: From Global Structures to Academic Responsibility Mon, 10 Nov 2025 - Mon, 10 Nov 2025 More information Organized by: ISA, ECPR, British International Studies Association The discussion will focus on the role of scientific associations and the benefits that being a member can provide, as well as on the principles and practicalities that underpin positive research partnerships in international studies.  Speakers will also explore how internationalisation in International Studies must be rethought in light of emerging global transformations, shifting power structures, and increasing critiques of technocratic and market-driven academic models. Co-sponsored by the British International Studies Association and the European Consortium for Political Research. SPEAKERS: Simon Rushton (University of Sheffield) Marianna Charountaki (Lincoln University) Daniela Irrera (School of Advanced Defence Studies, CASD) ISA Code of Conduct By registering for this event, all participants, including, but not limited to, attendees, speakers, volunteers, ISA staff members, service providers, and all others agree to abide by the ISA Code of Conduct throughout the events sponsored by ISA (virtual and in-person). https://www.isanet.org/ISA/Governance/Policy-and-Procedures/ID/9/ISA-Co… Register Now Top PARTNERS Contact Us Membership and Account Related Inquiries membership@ipsa.org World Congress and IPSA Events Requests regarding the 2027 IPSA World Congress should be made to wc2027@ipsa.org General inquiries about IPSA events can be made to events@ipsa.org IPSA Awards awards@ipsa.org General inquiries info@ipsa.org Webmaster webmaster@ipsa.org Privacy Statement | Cookies Policy ©2026 International Political Science Association , Canada",
+      "links": [
+        {
+          "url": "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai",
+          "title": "Skip to main content"
+        },
+        {
+          "url": "https://www.ipsa.org/user/login?destination=/na/event/reimagining-internationalisation-international-studies-global-structures-academic",
+          "title": "LOG IN"
+        },
+        {
+          "url": "https://www.ipsa.org/contact-us",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai",
+          "title": "English"
+        },
+        {
+          "url": "https://www.ipsa.org/fr/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai",
+          "title": "Français"
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/abstracts",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/ipsaportal",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/participation",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/ipsr",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/encyclopedia",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/privacy-statement",
+          "title": "Privacy Statement"
+        },
+        {
+          "url": "https://www.ipsa.org/cookies-policy",
+          "title": "Cookies Policy"
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": "International Political Science Association"
+        }
+      ],
+      "hash": "890c0fd8c07f501148ad0fad28d55e86e25794db34cb30cd479d73a44c373271",
+      "source_id": "ipsa",
+      "discovery_url": "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai"
+    },
+    {
+      "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications",
+      "text": "Max Weber Programme Publications Skip to content Search European University Institute website Search Search in: Web People Research Help Max Weber Programme Publications A Collection Jump to: Max Weber Programme for Postdoctoral Studies About the Max Weber Programme (ACO) Academic Careers Observatory Max Weber Programme Activities at a Glance Max Weber Programme Publications People of the Max Weber Programme ​The Max Weber Programme (MWP) at the European University Institute (EUI) offers a comprehensive collection of publications and resources that reflect its commitment to academic excellence and interdisciplinary research. These materials serve as valuable references for scholars, researchers, and anyone interested in the social sciences and humanities.​ MWP Books, Articles, and Working Papers: The programme showcases a diverse range of scholarly works authored by its fellows and affiliates, including books, peer-reviewed articles, and working papers. These publications cover various disciplines and contribute significantly to contemporary academic discourse. Detailed records and access to these works are available through the EUI's repository, Cadmus . MWP Newsletters: The programme publishes annual newsletters at the end of every academic year highlighting the programme’s activities, news, and achievements. These newsletters offer a snapshot of the vibrant academic environment fostered by the MWP and keep the community informed about the academic achievements of current and former fellows. To contribute please write to mwp@eui.eu . Check out the last: Newsletter 2026 Check out our previous ones: MWP Newsletters 2026 Newsletter 26 2025 Newsletter 25: Summer 2025 Issue 2024 Newsletter 24: Summer 2024 Issue 2023 Newsletter 23: Spring 2023 Issue 2022 Newsletter 22: Spring 2022 Issue 2021 Newsletter 21: Summer 2021 Issue Newsletter 20: Winter 2021 Issue 2020 Newsletter 19: Summer 2020 Issue Newsletter 18: Winter 2020 Issue 2019 Newsletter 17: Summer 2019 Issue Newsletter 16 Winter 2019 Issue MWP Annual Reports: Each year, the MWP compiles an annual report detailing its activities, including workshops, conferences, and other scholarly events. These reports also feature updates on fellows' research progress, publications, and subsequent career placements, providing a comprehensive overview of the programme's impact and reach.​ MWP Annual Report 2023-2024 Last update: March 2025 Eng (14227 KB - pdf) Download MWP Annual Report 2023-2024 Page last updated on 24/08/2026 Go back to top of the page",
+      "links": [
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications",
+          "title": "Skip to content"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+          "title": "Max Weber Programme for Postdoctoral Studies"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/about-the-max-weber-programme",
+          "title": "About the Max Weber Programme"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/aco-academic-careers-observatory",
+          "title": "(ACO) Academic Careers Observatory"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-activities-at-a-glance",
+          "title": "Max Weber Programme Activities at a Glance"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications",
+          "title": "Max Weber Programme Publications"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/people-of-the-max-weber-programme",
+          "title": "People of the Max Weber Programme"
+        },
+        {
+          "url": "https://cadmus.eui.eu/handle/1814/6887",
+          "title": "EUI's repository, Cadmus"
+        },
+        {
+          "url": "https://www.eui.eu/Documents/MWP/PDFs/Annual-Report-MWP.pdf",
+          "title": "Download MWP Annual Report 2023-2024"
+        },
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications",
+          "title": "Go back to top of the page"
+        }
+      ],
+      "hash": "336b3a41eb7bb2ca790ae0afd64512bdde299ce15197e1ba94231895dfef9216",
+      "source_id": "eui-maxweber",
+      "discovery_url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications"
+    },
+    {
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+      "text": "Development-Related Postgraduate Courses (EPOS) - DAAD - Deutscher Akademischer Austauschdienst Finding Scholarships Welcome to our scholarship database! Here you will find information about our DAAD scholarship programmes for international students and\n        researchers as well as offers from other selected funding organisations . « Search results Development-Related Postgraduate Courses (EPOS) • DAAD Do you have any questions about DAAD scholarships? You will find the answers here ! Overview Application requirements Application Procedure Please note: The usage of the application portal is possible only to a limited extent with mobile devices. Please use your desktop computer. Technical requirements Overview Eine Druckversion dieser Ausschreibung (PDF) steht Ihnen in den weiteren Registerkarten (z.B. „Bewerbungsvoraussetzungen“) zur Verfügung. A print version of this announcement (PDF) is available in the further tabs (e.g. “Application requirements”). Objective With its development-oriented postgraduate study programmes, the DAAD promotes the training of specialists from development and newly industrialised countries. Well-trained local experts, who are networked with international partners, play an important part in the sustainable development of their countries. They are the best guarantee for a better future with less poverty, more education and health for all. The scholarships offer foreign graduates from development and newly industrialised countries from all disciplines and with at least two years' professional experience the chance to take a postgraduate or Master's degree at a state or state-recognised German university, and in exceptional cases to take a doctoral degree, and to obtain a university qualification (Master's/PhD) in Germany. Who can apply? Graduates with at least two years' professional experience from the following countries: list of eligible countries What can be funded? Individual scholarships exclusively for Postgraduate courses in Germany that are listed on the List of all Postgraduate courses with application deadlines 2027/2028 . Duration of the funding 12 to 42 months (dependent on study programme) Value Depending on academic level, monthly payments of 992 euros for graduates or 1,300 euros (1,400 euros beginning with February 2026) for doctoral candidates Payments towards health, accident and personal liability insurance cover Travel allowance, unless these expenses are covered by the home country or another source of funding Under certain circumstances, scholarship holders may receive the following additional benefits: Monthly rent subsidy Monthly allowance for accompanying members of family Selection Candidates fulfil the necessary academic requirements and can be expected to successfully complete a study programme in Germany (above-average result for first academic exam – top performance third, language skills) Candidates have a Bachelor degree (usually a four-year course) in an appropriate subject Candidates have at least two years' professional experience Candidates can prove their motivation is development-related and be expected to take on social responsibility and initiate and support processes of change in their personal and professional environment after their training/scholarship Further information FAQs Application requirements What requirements must be met? The Typical Scholarship Holder works either for a public authority or a state or private company in a developing country and, as such, is engaged in the planning and execution of directives and projects with emphasis on development policies having a bearing on technological, economic or social areas. holds a Bachelor’s degree (normally four years) in a related subject. has completed an academic degree with far above average results (upper third) and at least two years of related professional experience after the first degree (bachelor) at the time of application. His/her academic degrees should normally not be more than six years old. Applicants who have been resident in Germany for longer than 15 months at the application deadline cannot be considered Language skills For study courses in German (scholarship includes a preparatory 6-month German language course in Germany): Successful passing of the language examination DSH 2 or TestDaF 4 before the start of the study course. Therefore, a minimum German language level of B1 at the time of application is a requirement, that needs to be proofed by providing a current certificate. Note: It is not possible to pass the required German language courses (DSH or TestDaF) without any previous basic knowledge in the German language (at least B1 Level), even with the preceding six-month intensive course in Germany. Passing the language test is a formal prerequisite for matriculation at the respective German university. For courses in English: Proof of adequate language skills, according to the regulations of the respective course. For detailed information see the relevant course description on the following pages. Application Procedure Application deadline Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. Application documents Applications have only to be sent to the respective course directly! Please refer to their respective websites for the application procedure (e.g. online application), for the application deadline and the documents to be submitted. Applications sent to the DAAD will not be forwarded to the respective course/university. You can apply for up to three courses. If applying to more than one course, please list courses in order of priority in the DAAD application forms (see 7. Choice of host university/institution in Germany) and do not change the priorities in the according application form! Application documents Required documents (in the following order): Completed and signed checklist EPOS application form (please type your answers or make sure they are easy to read). Current Note: If you cannot open the file, please try using a different browser. A curriculum vitae in reverse chronological order without any unexplained gaps (please use the europass template including exact information about your studies, and on practical experience One Letter of Motivation with detailed reference to academic, professional and personal reasons for applying for the programme. IMPORTANT: When applying for more than one postgraduate course (maximum 3 courses), please also give detailed reasons for your choice of courses and prioritisation in the letter of motivation. Please submit a uniform letter of motivation to all postgraduate degree programmes of your choice. Letter of recommendation from your current employer; the letter must include official letterhead, signature and official stamp and must be of current date (not in a sealed envelope) Certificate(s) of Employment from the employer(s) showing at least two years of relevant work experience after the Bachelor's degree up to the time of application and if possible, a guarantee of re-employment from your current employer upon returning home. The certificate of employment from the current employer should, if possible, include a guarantee of re-employment after returning to the home country. Recent proof of Language Skills: o English – IELTS or TOEFL (Note: The institutional TOEFL is not accepted) o German – required for courses taught in German Copies of your higher education degree certificates . Please provide a certified translation if the original is not in German or English, and make sure these are clearly legible. Copy of your full set of transcript of records . Please provide an explanation of the grading system if this is not part of the transcript. Applicants from the People’s Republic of China are asked to submit an APS Certificate with their application documents. Note: Some courses may require additional documents. For detailed information, please see the relevant course description in the Brochure and on the respective websites. IMPORTANT: The complete applications have to be submitted in English or German to be considered. Incomplete applications cannot be considered. When applying for more than one postgraduate course (maximum 3 courses), you have to submit one motivation letter explaining why you are applying for these specific courses and why you chose that priority. If this information is ignored, the application cannot be considered or an already awarded scholarship might be withdrawn. Please check with the requirements of the according University whether certified copies are required. Application location Apply directly to the chosen study programme Application and Selection Procedure Step 1: You send your complete application(s) directly to the according postgraduate course. Step 2:  A selection committee suggests potential candidates for a DAAD scholarship. Step 3: The suggested candidates will be contacted by DAAD to upload their complete application to the DAAD Portal. Step 4: The selection process will be finalized, and the suggested candidates will be informed accordingly. IMPORTANT: Make sure that you have a copy of each document of your application ready, as those documents (as PDF files) have to be uploaded to the DAAD Portal in case you are suggested for a DAAD scholarship! Do you have any questions about DAAD scholarships? You will find the answers here ! Please also take note of our important scholarship information . Please select your status and your country to enable you to submit an application Afghanistan Albania Algeria Angola Argentina Armenia Azerbaijan Bangladesh Belarus Belize Benin Bhutan Bolivia Botswana Brazil Burkina Faso Burundi Cambodia Cameroon Cape Verde Central African Republic Chad China, PR Colombia Comoros Congo Congo, Democratic Republic Cook Islands Costa Rica Côte d'Ivoire Cuba Dominica Dominican Republic Ecuador Egypt El Salvador Equatorial Guinea Eritrea Eswatani Ethiopia Fiji Gabon Gambia Georgia Ghana Grenada Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras India Indonesia Iran Iraq Jamaica Jordan Kazakhstan Kenya Kiribati Kyrgyzstan Lao People's Democratic Republic Lebanon Lesotho Liberia Libya Madagascar Malawi Malaysia Maldives Mali Marshall Islands Mauritania Mauritius Mexico Micronesia, Federated States of Moldova, Republic of Mongolia Morocco Mozambique Myanmar Namibia Nauru Nepal Nicaragua Niger Nigeria Niue Pakistan Palestinian Territories Panama Papua New Guinea Paraguay Peru Philippines Rwanda Saint Lucia Saint Vincent and the Grenadines Samoa Sao Tome and Principe Senegal Seychelles Sierra Leone Solomon Islands Somalia South Africa South Sudan Sri Lanka Sudan Suriname Syrian Arab Republic (Syria) Tajikistan Tanzania, United Republic of Thailand Timor-Leste Togo Tonga Tunisia Turkmenistan Tuvalu Uganda Ukraine Uzbekistan Vanuatu Venezuela, Bolivarian Republic of Vietnam Yemen Zambia Zimbabwe „Country“ is the country in which you are living and from which you are applying. If you come from another country, please contact us to find out whether you are eligible for the programme of your choice. More Information Graduates Graduates are people who already have at least one first academic degree, e.g. Bachelor. Your status and/or country is not in the list? If your status and/or country is not included in the list, you cannot apply for this scholarship programme. To ensure that only scholarship programmes for which you are eligible to apply are shown, please select your status and your country in the results list (left-hand column). Copy this link: Copy this link: daad.de/go/en/stipa50076777 Print as PDF",
+      "links": [
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/scholarship-database/information-on-other-funding-organisations",
+          "title": "other selected funding organisations"
+        },
+        {
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?status=&origin=&subjectGrps=&intention=&daad=&q=&page=1&target=&back=1",
+          "title": "« Search results"
+        },
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
+          "title": "here"
+        },
+        {
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Overview"
+        },
+        {
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Application requirements"
+        },
+        {
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Application Procedure"
+        },
+        {
+          "url": "https://www.daad.de/sapportal/technische_voraussetzungen/PBF_en.html",
+          "title": "Technical requirements"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/dac_laenderliste_epos.pdf",
+          "title": "list of eligible countries"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
+          "title": "List of all Postgraduate courses with application deadlines 2027/2028"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_faq_en.pdf",
+          "title": "FAQs"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_checkliste.pdf",
+          "title": "checklist"
+        },
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
+          "title": "here"
+        },
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
+          "title": "important scholarship information"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/hinweise/en/27334-frequently-asked-questions",
+          "title": "More Information"
+        },
+        {
+          "url": "https://daad.de/go/en/stipa50076777",
+          "title": "daad.de/go/en/stipa50076777"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?type=print",
+          "title": "Print"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database.pdf?detail=50076777",
+          "title": "as PDF"
+        }
+      ],
+      "hash": "2695f39d90b985ab5d748be1c9be46ea3508e9a91e56e5425ee0e95223a7ce05",
+      "source_id": "daad-epos",
+      "discovery_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777"
+    }
+  ]
+}

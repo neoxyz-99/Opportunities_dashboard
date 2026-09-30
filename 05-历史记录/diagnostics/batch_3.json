@@ -1,0 +1,329 @@
+{
+  "rejected": {
+    "https://ecpr.eu/JointSessions": [
+      "Unsupported eligibility evidence: residency",
+      "Unfetched or fabricated opportunity URL"
+    ],
+    "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets": [
+      "Job duties lack source evidence"
+    ]
+  },
+  "response": {
+    "pages": [
+      {
+        "url": "https://ecpr.eu/JointSessions",
+        "reason": "No currently open calls for participation or application deadlines for 2026. Workshop proposals are closed; paper proposals open 15 October 2026 for event in June 2027, registration opens March 2027. Funding applications open only from 1 to 17 February 2027.",
+        "opportunities": [
+          {
+            "title": "Event Participation Grant 2027",
+            "host": "European Consortium for Political Research (ECPR)",
+            "group": "Fellowship",
+            "topic": "国际关系/政治学",
+            "tags": "PhD, Early Career, Travel Funding, Fee Waiver",
+            "deadline": "2027-02-17",
+            "deadline_quote": "Applications are accepted from 1 February until 17 February 2027, midnight UK time.",
+            "dates": "2027-06-01 to 2027-06-04",
+            "location": "University of Trieste, Italy",
+            "source_url": "https://ecpr.eu/JointSessions",
+            "apply_url": "https://ecpr.eu/Funding/Funding",
+            "batch": "2027",
+            "materials": [
+              "Proof of enrolment or recent PhD",
+              "Application form"
+            ],
+            "function": "Supports attendance for PhD students and early career scholars from ECPR Full Member Institutions with fee waiver and travel/accommodation up to £500.",
+            "judgment": "Open for future application period starting 2027-02-01; event participation funding specifically supports research discussion event in political science with relevant governance topic.",
+            "relevant_duties": false,
+            "specialized_duties": false,
+            "senior_role": false,
+            "scope_quote": "\"Open to PhD students and early career scholars from ECPR Full Member Institutions . If successful, you will receive full fee waiver and up to £500 towards travel and accommodation costs.\"",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "PhD students or early career scholars (before or within five years of PhD)",
+                "quote": "Open to PhD students and early career scholars from ECPR Full Member Institutions",
+                "url": "https://ecpr.eu/JointSessions",
+                "min_years": null
+              },
+              {
+                "category": "residency",
+                "status": "Required",
+                "summary": "Affiliation with ECPR Full Member Institution",
+                "quote": "Participants must be from ECPR Full Member Institutions",
+                "url": "https://ecpr.eu/JointSessions",
+                "min_years": null
+              }
+            ]
+          },
+          {
+            "title": "Rudolf Wildenmann Prize 2027",
+            "host": "European Consortium for Political Research (ECPR)",
+            "group": "Fellowship",
+            "topic": "国际关系/政治学",
+            "tags": "Outstanding Paper Award, Early Career, Research Excellence",
+            "deadline": "",
+            "deadline_quote": "",
+            "dates": "Awarded after 2027 event",
+            "location": "University of Trieste, Italy",
+            "source_url": "https://ecpr.eu/prizes/rudolf-wildenmann",
+            "apply_url": "https://ecpr.eu/prizes/rudolf-wildenmann",
+            "batch": "2027",
+            "materials": [
+              "Outstanding Paper presented at the event"
+            ],
+            "function": "Prize awarded to outstanding early career scholar paper presented at Joint Sessions of Workshops.",
+            "judgment": "Prize awarded post-event; nomination invited from Workshop Directors; supports outstanding research in political science.",
+            "relevant_duties": false,
+            "specialized_duties": false,
+            "senior_role": false,
+            "scope_quote": "\"The Rudolf Wildenmann Prize is awarded annually to a scholar (before PhD or within five years of receiving their PhD) in recognition of an outstanding Paper presented at the Joint Sessions of Workshops.\"",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "Before PhD or within 5 years after PhD",
+                "quote": "before PhD or within five years of receiving their PhD",
+                "url": "https://ecpr.eu/prizes/rudolf-wildenmann",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+        "reason": "Active vacancy with explicit application deadline 2026-10-11 and 12-month contract starting December 2026. Fits early career job in international finance policy.",
+        "opportunities": [
+          {
+            "title": "Junior Economist – Capital Markets",
+            "host": "Organisation for Economic Co-operation and Development (OECD)",
+            "group": "Early-career Jobs",
+            "topic": "国际金融/债务",
+            "tags": "Junior Economist, Capital Markets, Finance, Data Analysis, Policy Analysis, Econometrics",
+            "deadline": "2026-10-11",
+            "deadline_quote": "applications should reach us no later than midnight 11 October 2026 (Paris time).",
+            "dates": "Start date 2026-12-01; Contract duration 12 months",
+            "location": "OECD Headquarters, Paris, France",
+            "source_url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+            "apply_url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+            "batch": "",
+            "materials": [
+              "Resume/CV",
+              "Cover letter",
+              "Proof of qualifications"
+            ],
+            "function": "Conducts data and policy analysis on capital markets; develops financial databases and indicators; supports OECD policy guidance and meetings on financial market regulation and corporate governance.",
+            "judgment": "Relevant early-career economist role with international finance and policy focus; suitable for candidates with advanced degree and at least 1 year experience.",
+            "relevant_duties": true,
+            "specialized_duties": true,
+            "senior_role": false,
+            "scope_quote": "Contribute to OECD’s work supporting member and non-member countries to improve the functioning of their capital markets with a view to supporting access to finance, protect investors and increase corporate sustainability.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "Advanced university degree in finance, economics or related field with quantitative focus",
+                "quote": "An advanced university degree in finance, economics, business and finance or related field with a strong quantitative focus.",
+                "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+                "min_years": null
+              },
+              {
+                "category": "experience",
+                "status": "Required",
+                "summary": "Minimum one year of professional experience in capital markets or related field",
+                "quote": "A minimum of one year of professional experience in capital markets or a related field.",
+                "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+                "min_years": 1
+              },
+              {
+                "category": "language",
+                "status": "Required",
+                "summary": "Fluency in English or French; commitment to good working level in the other",
+                "quote": "Fluency in one of the two OECD official languages (English and French) and knowledge of the other, with a commitment to reach a good working level.",
+                "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://www.un.org/youthaffairs/en/news/shaping-tomorrow-young-leaders-skills-ai-and-opportunity",
+        "reason": "This is an informative UN article about youth skills and AI, without any open calls, scholarships, internships or job openings.",
+        "opportunities": []
+      }
+    ]
+  },
+  "documents": [
+    {
+      "url": "https://ecpr.eu/JointSessions",
+      "text": "Joint Sessions of Workshops, University of Trieste, 1 – 4 June 2027 You are currently browsing offline Menu Close Install the app Install this application on your home screen for quick and easy access when you’re on the go. Just tap Share then “Add to Home Screen” Joint Sessions of Workshops, University of Trieste, 1 – 4 June 2027 Guides Help Centre Guidelines and Deadlines Terms and Conditions Code of Conduct Joint Sessions of Workshops 2027 University of Trieste 1 – 4 June 2027 #ecprjs27 The call for Workshop proposals is now closed. The Joint Sessions of Workshops is a unique platform for political science scholars worldwide to come together for several days of intense discussion, feedback and collaboration. About Proposals Funding Registration Prize About the event The ECPR Joint Sessions of Workshops bring together political scientists with shared interests to develop their research in an intimate, focused setting. This unique, closed-group format facilitates intensive discussions, deep collaboration, and rigorous peer feedback. By offering a trusted global platform to refine ideas, the Joint Sessions play a vital role in building networks and supporting the publication of high-impact work. Each Workshop is a closed forum accommodating 15–20 Papers over several days. Each participant presents their Paper which is then thoroughly reviewed and discussed by the group. Join us in Trieste for an unmissable gathering that continues to drive the advancement of political science across Europe! Participants may attend only one Workshop and must fully participate in all its sessions. Refine research Thorough feedback from your peers Get inspired Fresh ideas from across the field Build networks Connect with scholars in your research area Stay tuned Subscribe to event updates via My ECPR Subscribe → Have a question? Find answers in our Help Centre Visit Help Centre → Workshop and Paper Proposals Workshop proposals close 15 September 2026. Paper proposals open 15 October 2026. Read full proposal guidelines here . Propose a Workshop Bring together scholars working on a shared research question for four days of focused discussion, collaboration, and research development. We welcome proposals on original and significant topics across all areas of political science, including comparative politics, public policy and public administration, political theory, international relations and European studies. As a Workshop Director or Co-Director, you will shape the programme, select the Papers, and guide discussion throughout the event. Good to know All Workshops will be held in person at the University of Trieste. This event does not support the hybrid format. Scholars who served as a Workshop Director or Co-Director in 2025 or 2026 are not eligible to hold either role in 2027. Your institution’s ECPR membership determines how you can take part. Check your institution's status → Workshop Directors must be affiliated with an ECPR Full Member institution. Scholars at Associate Member institutions may co-direct alongside a scholar from a Full Member institution but cannot serve as sole Directors. At least 90% of participants in each Workshop must work or study at an ECPR Member institution. Registration process and fees Registration opens in March 2027. Only those with an approved Paper will be invited to register and pay through our online system. All participants and co-authors wishing to join must register to attend. All participants must pay a fee. Your space is not secured until your registration is paid in full . Please note that this event does not support hybrid participation. The registration fee is determined by your institution's ECPR membership status. Check your institution's status → About the registration fee The base 2027 Joint Sessions fee reflects a small increase to cover rising costs, in line with ECB inflation rates. However, in addition, ECPR events can be subject to VAT depending on the host country. In Italy, a local VAT rate of 22% must be applied to the base registration fee. As a result, the majority of the overall increase this year is due to this mandatory tax, rather than a change in the underlying event fee All prices shown include 22% VAT. ECPR Members Student: £150.06 (approx. €176.43) Standard: £500.20 (approx. €588.11) Member discount applied Non-Members Student: £650.26 (approx. €764.54) Standard: £1,000.40 (approx. €1,176.22) ECPR Member affiliates save 50% ECPR Membership could reduce registration fees and unlock many other valuable benefits for you and your colleagues. Discover member benefits → Funding opportunities Applications are accepted from 1 February until 17 February 2027, midnight UK time. You could get funded to attend our Joint Sessions of Workshops with the support of our dedicated funding stream . Eligibility depends on your institution's ECPR membership status. Check your institution's status → Event Participation Grant Open to PhD students and early career scholars from ECPR Full Member Institutions . If successful, you will receive full fee waiver and up to £500 towards travel and accommodation costs. All participants must register to attend. However, please do not register until you have heard about the outcome of your application. Please note: You must not be in receipt of any other funding for this event. You must not have received funding from ECPR within the last two years. Rudolf Wildenmann Prize The Rudolf Wildenmann Prize is awarded annually to a scholar (before PhD or within five years of receiving their PhD) in recognition of an outstanding Paper presented at the Joint Sessions of Workshops. This can be a co-authored Paper, under certain circumstances. The award for this prize is £900. Nomination information will be sent directly to Workshop Directors who will be invited to nominate ONE Paper from their Workshop for this prize. Nominations open after the event. Find out more Loading news Loading key dates Share this page",
+      "links": [
+        {
+          "url": "https://ecpr.eu",
+          "title": ""
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Joint Sessions of Workshops, University of Trieste, 1 – 4 June 2027"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Guides"
+        },
+        {
+          "url": "https://ecpr.eu/Events/Event/Content?ID=1661&EventID=369",
+          "title": "Guidelines and Deadlines"
+        },
+        {
+          "url": "https://ecpr.eu/Events/EventTermsAndConditionsContent.aspx?EventID=369",
+          "title": "Terms and Conditions"
+        },
+        {
+          "url": "https://ecpr.eu/content-page/626",
+          "title": "Code of Conduct"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "About"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Proposals"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Funding"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Registration"
+        },
+        {
+          "url": "https://ecpr.eu/JointSessions",
+          "title": "Prize"
+        },
+        {
+          "url": "https://ecpr.eu/MyECPR/MyProfile?myProfileTabs=Subscriptions",
+          "title": "Subscribe →"
+        },
+        {
+          "url": "https://ecpr.eu/Events/Event/Content?ID=1661&EventID=369",
+          "title": "here"
+        },
+        {
+          "url": "https://ecpr.eu/Membership/CurrentMembers",
+          "title": "Check your institution's status →"
+        },
+        {
+          "url": "https://ecpr.eu/Membership/CurrentMembers",
+          "title": "Check your institution's status →"
+        },
+        {
+          "url": "https://ecpr.eu/Membership/MembershipBenefits",
+          "title": "Discover member benefits →"
+        },
+        {
+          "url": "https://ecpr.eu/Funding/Funding",
+          "title": "dedicated funding stream"
+        },
+        {
+          "url": "https://ecpr.eu/Membership/CurrentMembers",
+          "title": "Check your institution's status →"
+        },
+        {
+          "url": "https://ecpr.eu/Membership/CurrentMembers",
+          "title": "ECPR Full Member Institutions"
+        },
+        {
+          "url": "https://ecpr.eu/Prizes/PrizeDetails.aspx?PrizeID=7",
+          "title": "Rudolf Wildenmann Prize"
+        },
+        {
+          "url": "https://ecpr.eu/prizes/rudolf-wildenmann",
+          "title": "Find out more"
+        }
+      ],
+      "hash": "872321d45e50f8577a06114c778c3052822a26ff9fb776ee951e258368b39683",
+      "source_id": "ecpr",
+      "discovery_url": "https://ecpr.eu/JointSessions"
+    },
+    {
+      "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets",
+      "text": "OECD Junior Economist – Capital Markets | SmartRecruiters Google Chrome Microsoft Edge Apple Safari Mozilla Firefox Junior Economist – Capital Markets Full-time Directorate: DAF Grade: T6 Company Description The Organisation for Economic Co-operation and Development ( OECD ) is an international organisation comprised of 38 member countries, that works to build better policies for better lives. Our mission is to promote policies that will improve the economic and social well-being of people around the world.  Together with governments, policymakers and citizens, we work on establishing evidence-based international standards, and finding solutions to a range of social, economic and environmental challenges. From improving economic performance and creating jobs to fostering strong education and fighting international tax evasion, we provide a unique forum and knowledge hub for data and analysis, exchange of experiences, best-practice sharing, and advice on public policies and international standard-setting. The OECD has earned a leading role in financial and enterprise issues. The core mission of the Directorate for Financial and Enterprise Affairs ( DAF ) is to assist markets to fund inclusive economic growth, and in turn Better Lives, through setting and implementing standards, providing capacity building and technical assistance, acting as a forum for co-operation and collaboration across the OECD Directorates, external stakeholders and international organisations. DAF’s mission is pursued through five substantive divisions whose teams provide member and partner countries with policy guidance, analysis and support in the areas of competition, anti-corruption, corporate governance, financial markets, insurance and pensions, consumer finance, responsible business conduct and international investment. DAF currently employs about 350 staff members (economists, lawyers, statisticians, support staff, consultants and trainees), who support work across a broad range of policy areas. The Capital Markets and Financial Institutions Division (CM) focuses on the following thematic areas: financial markets and financial economics, insurance and pensions, financial education and consumer protection, corporate governance and state-owned enterprises. This work is developed under the guidance of the Committee on Financial Markets and the Corporate Governance Committee and their respective sub-bodies. DAF is looking for a Junior Economist for the Financial Economics Team in the Capital Markets and Financial Institutions Division. The successful candidate will contribute to the OECD’s work supporting member and non-member countries to improve the functioning of their capital markets with a view to supporting access to finance, protect investors and increase corporate sustainability. The selected candidate will report to a senior policy analyst in the Financial Economics Team. Job Description Main responsibilities Data analysis Manage and update financial databases, collect data from commercial and other sources, and improve the efficiency of data collection and management processes. Develop new databases and produce novel indicators. Stay abreast of emerging AI tools and methods and assess their potential to enhance data infrastructure, visualisation and analysis. Policy analysis Conduct policy-relevant research and technical analysis on capital markets and related areas. Contribute to the team’s evidence-based and data-driven analytical work, by using statistical techniques, including econometric modelling and microdata analysis, and identify trends that merit policy attention in capital market developments. Monitor capital market developments and public policies affecting corporate access to finance, drawing on academic research and other policy-relevant literature. Present findings and policy implications to internal and external stakeholders, including national governments and international partners. Work for senior OECD management Contribute to the preparation of meeting briefings, talking points, speeches and presentations for senior OECD management. Liaison, dissemination and representation Participate in discussions in expert groups and conferences related to the team’s work on capital markets. Represent the team/Division in meetings as required and synthesise and report back to Division management on key outcomes and issues for follow-up. Establish and develop professional contacts with government officials, the business community, other international organisations and the academic community to support the analytical work and engagement of participants to the committees, their roundtables and other policy dialogue events. Contribute to the wide dissemination of the Division’s reports on capital markets. Qualifications Ideal Candidate Profile Academic Background An advanced university degree in finance, economics, business and finance or related field with a strong quantitative focus. Strong analytical background in finance would be an advantage. Tools Proficiency in programming languages such as R with the ability to write clean, efficient and well-documented codes is a requirement. Ability to programme in other languages such as SQL, Python or Stata would be an advantage. Familiarity with commercial financial databases, such as Bloomberg, LSEG, FactSet, Preqin and Orbis would be an advantage. Professional Background A minimum of one year of professional experience in capital markets or a related field. Experience working with large datasets. Previous professional experience or academic training in finance would be an advantage. Experience in organising, analysing and synthesising information, and drafting for both technical and general audiences. Strong team spirit and ability to work effectively in a collaborative environment. Strong drafting skills in English. Core Competencies OECD staff are expected to demonstrate behaviours aligned to six core competencies which will be assessed as part of this hiring processes: Vision and Strategy (Level 1); Enable People (Level 1); Ethics and Integrity (Level 1); Collaboration and Horizontality (Level 2); Achieve Results (Level 1); Innovate and Embrace Change (Level 2). There are three possible levels for each competency. The level for each competency is determined according to the specific needs of each job role and its associated grade. To learn more about the definitions for each competency for levels 1-3, please refer to OECD Core Competencies . Languages Fluency in one of the two OECD official languages (English and French) and knowledge of the other, with a commitment to reach a good working level. The OECD is an equal opportunity employer and welcomes the applications of all qualified candidates, irrespective of their racial or ethnic origin, opinions or beliefs, gender, sexual orientation, health or disabilities. Temporary appointments are open to applicants irrespective of nationality. In accordance with OECD practice, priority will be given to candidates who are nationals of OECD Members, or, where applicable, to countries participating in the relevant programme or body. The OECD promotes an optimal use of resources in order to improve its efficiency and effectiveness. Staff members are encouraged to actively contribute to this goal. Additional Information Closing Date This vacancy should be filled as soon as possible, and applications should reach us no later than midnight 11 October 2026 (Paris time). Contract Duration 12 months Ideal start date: 1 December 2026 . Salary Information For temporary staff, salary starts at 3 240 EUR. The Corporate Salary Framework for Temporary staff members can be found here . I'm interested By clicking the link above or any third-party link within this posting, you are leaving this site and going to a third-party website where the third-party website's terms and privacy policy apply I'm interested I'm interested Privacy Notice Imprint I'm interested share this job Share to WeChat × Copy the link and open WeChat to share. Copy to clipboard Open WeChat Share to WeChat × Use Scan QR Code in WeChat and click ··· to share.",
+      "links": [
+        {
+          "url": "https://www.oecd.org/en/about/directorates/directorate-for-financial-and-enterprise-affairs.html",
+          "title": "DAF"
+        },
+        {
+          "url": "https://www.oecd.org/careers/OECD-Core-Competency-Framework.pdf",
+          "title": "OECD Core Competencies"
+        },
+        {
+          "url": "https://www.oecd.org/content/dam/oecd/en/about/careers/OECD_Corporate_Salary_framework_for_Temporary_Staff.pdf",
+          "title": "here"
+        },
+        {
+          "url": "https://jobs.smartrecruiters.com/oneclick-ui/company/OECD/publication/6fa307b8-164e-4c6a-96e9-44e9b4968d1b?dcr_ci=OECD",
+          "title": "I'm interested"
+        },
+        {
+          "url": "https://www.oecd.org/en/about/careers/data-protection-notice-for-recruitment.html",
+          "title": "Privacy Notice"
+        },
+        {
+          "url": "https://www.oecd.org/en/about/careers/data-protection-notice-for-recruitment.html",
+          "title": "Imprint"
+        },
+        {
+          "url": "https://jobs.smartrecruiters.com/cdn-cgi/l/email-protection",
+          "title": ""
+        },
+        {
+          "url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets?trid=7d1dcdfa-96a8-4e55-bb9c-0db211f5a9b3",
+          "title": ""
+        }
+      ],
+      "hash": "7b3ddcdef03331b0486e4cfaf8c022a38f6da43632eb42ba0edab4a884c59f57",
+      "source_id": "oecd",
+      "discovery_url": "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets"
+    },
+    {
+      "url": "https://www.un.org/youthaffairs/en/news/shaping-tomorrow-young-leaders-skills-ai-and-opportunity",
+      "text": "Shaping Tomorrow: Young Leaders on Skills, AI and Opportunity | Youth Office Skip to main content Youth Office Shaping Tomorrow: Young Leaders on Skills, AI and Opportunity 11 August 2026 Young people are not preparing to inherit the future — they are already helping build it. Yet at the same time, they are also preparing for futures that are increasingly difficult to predict. Artificial intelligence is transforming industries, economies are evolving rapidly, and new occupations continue to emerge. The urgency is clear. According to the World Bank , over the next decade, approximately 1.2 billion young people are expected to enter the labour market, while only around 420 million jobs are projected globally. The task ahead is about ensuring young people can access new opportunities by developing the skills required to thrive in a rapidly changing world. As technological, economic and social change accelerates, ensuring young people have the skills and opportunities to participate in the labor market and to shape the future has never been more important. That is why the UN Youth Office's International Youth Day activation focuses on future-ready skills: the technical, digital and human-centred capabilities that enable young people to lead, innovate and contribute meaningfully to their communities. AI & beyond: the human skills that matter most As artificial intelligence reshapes the future of work, digital literacy alone is no longer enough. Increasingly, it is human-centred capabilities — such as critical thinking, creativity, communication, empathy and ethical judgment, among others — that will enable young people to adapt, innovate and lead responsibly. According to the World Economic Forum , technological change is expected to create 170 million jobs and displace 92 million by 2030, while nearly 40 per cent of the skills required in the workplace are expected to change. At the same time, the International Monetary Fund estimates that AI could affect almost 40 per cent of jobs worldwide, creating opportunities for greater productivity and growth while also risking deeper inequalities if access to skills and technology remains uneven. The ILO has also found that AI is more likely to augment jobs than replace them entirely, automating some tasks while allowing workers to focus on others. For Nila Ibrahimi, a Young Leader for the SDGs, some of the most important skills she developed were not found in a textbook or a website. \"It was never the technical knowledge that opened doors. It was the ability to listen closely, to find the right words, to build trust with someone who owed me none of it. Empathy. Communication. Leadership.\" As Nila notes, many of the jobs today's youth will hold have not yet been invented. In a future that cannot be fully predicted, the ability to learn, communicate effectively and reason may prove just as important as technical proficiency. But AI also raises important questions around misinformation, safety, accountability and ethics. For Nila, this means AI literacy cannot be understood solely as a technical skill. \"Teach a young person to use the tool without also building their judgement, their empathy, their capacity to ask should we, not only can we, and we will have failed the entire point of the education.\" Preparing young people for the future therefore requires a balanced approach — one that combines digital and technological skills with the values, ethics and critical reasoning needed to apply them responsibly. Future-ready means future-ready for everyone Future-ready skills are only meaningful if young people have equitable opportunities to develop and apply them. The conversation about future-ready skills cannot be separated from the question of access. Despite rapid technological progress, digital opportunities remain unevenly distributed. According to the International Telecommunication Union (ITU) , an estimated 2.2 billion people remained offline globally in 2025, with gaps in affordability, connectivity and digital skills continuing to limit participation in the digital economy. Access to advanced technologies is also highly unequal: while 84 per cent of people in high-income countries have access to 5G networks, the figure is just 4 per cent in low-income countries. These disparities matter because access increasingly shapes opportunity. As artificial intelligence transforms learning, work and civic participation, young people without reliable connectivity, digital infrastructure or relevant support systems risk being left further behind. Bridging these divides requires more than expanding access to technology; it requires investing in the systems that enable young people to benefit from it. Young Leader for the SDGs Enzo Romero's work highlights how technology can unlock human potential when barriers are addressed. A mechatronics engineer and founder of LAT Bionics, Enzo notes that according to the WHO, most people with upper-limb amputations live in developing countries, where access to assistive devices is often constrained by cost, insufficient funding and availability of specialized services. \"Assistive technology is an investment in human potential, independence and economic participation.\" Enzo notes that he uses AI in his work, harnessing the technology to help compile data needed in improving and innovating his work in engineering upper limb prostheses. In speaking about the impacts of AI and emerging technologies in his work, Enzo reflected on fitting one of his clients with a prosthesis, “[I] realized the intersection between emotion and science is beautiful. That made me realize technology serves one purpose only: dignity.” Enzo's work demonstrates that technology expands opportunity only when young people have equitable access—not only to the tools themselves, but also to the skills needed to use them confidently and independently. From skills to opportunity Different contexts may shape young people's experiences, but they do not diminish their ambitions. Around the world, young people are already leading — as innovators, advocates, entrepreneurs, creators and changemakers. Investing in future-ready skills means investing in their ability not only to navigate the future, but to actively shape it. At the same time, meaningful youth participation must remain at the centre of these efforts. Young people are essential partners in designing and improving education and training systems. When youth voices help shape policies, programmes and institutions, opportunities become more equitable and more effective. The challenge is therefore larger than preparing young people for a changing labour market. As participants in the Deputy Secretary-General's AI and Human Development dialogue emphasized, societies must consider not only what AI can do, but how it can advance human well-being, strengthen trust and support inclusive development. Initiatives such as StepForward ,  with partners such as S&P Global and the S&P Foundation, reflect this commitment by helping bridge the gap between learning and opportunity, ensuring young people are equipped not only with skills, but with meaningful avenues to use them. The perspectives shared by Young Leaders for the SDGs Enzo Romero and Nila Ibrahimi draw on their participation in the AI and Human Development global dialogue series convened by United Nations Deputy Secretary-General, Amina J. Mohammed. The July 2026 convening in Mexico City brought together policymakers, technologists, educators, artists, economists, civil society leaders and young changemakers to explore how artificial intelligence is reshaping human development and how diverse perspectives can help guide its future. Enzo's remarks also pull from his 2026 TEDx Talk: AI-Driven prosthesis for the planet . The views expressed in the reflections are those of the Young Leaders and do not necessarily represent the views of the United Nations or the UN Youth Office. Share News Go to top",
+      "links": [
+        {
+          "url": "https://www.un.org/youthaffairs/en/news/shaping-tomorrow-young-leaders-skills-ai-and-opportunity",
+          "title": "Skip to main content"
+        },
+        {
+          "url": "https://www.un.org/youthaffairs/en",
+          "title": "Youth Office"
+        },
+        {
+          "url": "https://www.un.org/youthaffairs/en/enzo-romero-muniz",
+          "title": "Enzo Romero"
+        },
+        {
+          "url": "https://www.un.org/youthaffairs/en/nila-ibrahimi",
+          "title": "Nila Ibrahimi"
+        },
+        {
+          "url": "https://unpartnerships.un.org/press-center/reimagining-artificial-intelligence-and-human",
+          "title": "July 2026 convening in Mexico City"
+        }
+      ],
+      "hash": "138aa783e1c7b35351c7fcd54cd9c65377a0dda21feb9160181069bca5738d62",
+      "source_id": "un-youth",
+      "discovery_url": "https://www.un.org/youthaffairs/en/news/shaping-tomorrow-young-leaders-skills-ai-and-opportunity"
+    }
+  ]
+}

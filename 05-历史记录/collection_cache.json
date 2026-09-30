@@ -8,12 +8,14 @@
     "https://www.isanet.org/Conferences/ISA2026/Call": {
       "hash": "55e5f9e25c4b0a203b6656a0205800cf3bc747f80862e7f8397c95ad103b93e5",
       "validated": true,
-      "checked_at": "2026-09-30T14:48:13.421404+00:00"
+      "checked_at": "2026-09-30T14:48:13.421404+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.worldbank.org/en/events/all": {
       "hash": "8ae691848d07ffe2487b3221e27b05251b74cb022d113dc12c9253b056ac15a0",
       "validated": true,
-      "checked_at": "2026-09-30T14:48:13.421404+00:00"
+      "checked_at": "2026-09-30T14:48:13.421404+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.iisd.org/?utm_source=openai": {
       "hash": "525e1205e0cf8d554d22bba63c1a73faeac270fdd79c1dd892b234f7b8a9a432",
@@ -23,12 +25,14 @@
     "https://www.isanet.org/Conferences/ISA2022": {
       "hash": "b0263bdcc763226dd8281bb1648dde4973c87e4b6a9abd8f79859db1720ccba1",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://unfccc.int/calendar/events-list": {
       "hash": "adac64257f7529e2a0fe3a4754bce6884b7b5fa539f389de00ded2ab605082d7",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.climatepolicyinitiative.org/career/analyst-junior-analyst-energy-technology/": {
       "hash": "12f3fdf837594ef8707fd27d201aabf5cc89ea2d2822329c8d74aaa7e54e05d9",
@@ -48,22 +52,26 @@
     "https://www.worldbank.org/ext/en/careers": {
       "hash": "77a5440ede49404d4574cd0e8bb23f790c34c7c651a2887be6d56638e8b61e19",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://summeruniversity.ceu.edu/courses": {
       "hash": "e60b4aafa1314cfd66313f6cdf5b2bda5e63b63af74e3d857cc8d48ab73559a8",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.isanet.org/Conferences/Special-Convention-Programs": {
       "hash": "fc174b23494d5b3f32f6438f59337223c0cdb19c3ce5aa08c3bb23e086c74d92",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.siis.org.cn/": {
       "hash": "19072a7de9dfb664011b07d440a51bdeb18396dc505d04da6de8f15189884a39",
       "validated": true,
-      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+      "checked_at": "2026-09-30T18:06:05.958275+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.e3g.org/about/careers/?utm_source=openai": {
       "hash": "1cfca4b1f447916d04690a06cf4ff811eb1e9ac9bc1ba120843a8099ba189207",
@@ -73,7 +81,8 @@
     "https://www.ipsa.org/na/news/call-papers-2027-ipsa-world-congress-now-open": {
       "hash": "4dca058637871c9b52bed9fc0e30c14bbf109cf02d8fc93ff0d5dc05c7d28f53",
       "validated": true,
-      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+      "checked_at": "2026-09-30T18:36:37.564211+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.ippapublicpolicy.org/summerschool/winter-school-doha-edition-2027/73": {
       "hash": "1ac5714cf69d40c1afa42dddcb22646de99cd11b6a26646936265f9db0f5e125",
@@ -93,12 +102,14 @@
     "https://www.fordfoundation.org/about/careers/": {
       "hash": "076df59a36a24bb3e8853a021616316b871117a84ed63b7dd4b0a0002e4d94c9",
       "validated": true,
-      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+      "checked_at": "2026-09-30T18:36:37.564211+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.rockefellerfoundation.org/about-us/careers/": {
       "hash": "cbf01cd80f1f480256d0e9b8f8ed1295c09d284a48a0e8504bf6db9e8019a665",
       "validated": true,
-      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+      "checked_at": "2026-09-30T18:36:37.564211+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://eisa-net.org/pec-2027/": {
       "hash": "ff8f936472f0bfcd007d6ee649a5953b17071f7e1e586c0ef5c4c0c826dd92e1",
@@ -108,7 +119,8 @@
     "https://www.isanet.org/Conferences/Upcoming": {
       "hash": "d58ed474f6a895bff6fff9f46077fa94eea3d161720589f1109bfce9c37fceae",
       "validated": true,
-      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+      "checked_at": "2026-09-30T18:36:37.564211+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     },
     "https://www.earthsystemgovernance.org/publication/hard-or-soft-governance-the-eus-climate-and-energy-policy-framework-for-2030/": {
       "hash": "86fce16ce54a427399c069ada8d1f6bf6f1879a5f27729a0e4d0b6595cfda6d6",
@@ -119,6 +131,354 @@
       "hash": "c691d922e26fd020345bb54db96b1f153a1bbad9d9658a3da69ddcc3ddff967f",
       "validated": true,
       "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.ipsa.org/na/event/reimagining-internationalisation-international-studies-global-structures-academic?utm_source=openai": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "890c0fd8c07f501148ad0fad28d55e86e25794db34cb30cd479d73a44c373271",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.imf.org/en/about/careers/internship-program?utm_source=openai": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.eui.eu/ProgrammesAndFellowships/MaxWeberProgramme/Publications": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.un.org/youthaffairs/en/youth-townhall": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "47c8f68e308d29d83ac5f75bc8e50c29ef18bab6d1923684ad5756b1f06de73f",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference?utm_source=openai": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "9c6094746d5adffdb398182ab06a60d05b92df1902fc0d790e0d4bcfe9852148",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/advice-on-finding-a-host": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "b474e209829b39da69b3325be7837ef736684fdb20bff9d2d26c999e39bc01c7",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "50cee9a920535d9ee41a934dc061ea8c469584c78308e42e5550e226abfc9e85",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/eyf-the-future-of-multilateralism-global-dialogue": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "ca8b370dc5c6298a66d531fc7b94941e5f6bf7106ebb967ecdd0901c5e1685df",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://ecpr.eu/JointSessions": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://jobs.smartrecruiters.com/OECD/744000152203229-junior-economist-capital-markets": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://cadmus.eui.eu/handle/1814/76722": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.un.org/youthaffairs/en/news/shaping-tomorrow-young-leaders-skills-ai-and-opportunity": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "138aa783e1c7b35351c7fcd54cd9c65377a0dda21feb9160181069bca5738d62",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://eisa-net.org/ewis-2027/call-for-workshop-proposals": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.greenclimate.fund/about/careers/internship-programme": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/information-for-hosts": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "3ebc7c9a2ea2ba355842726cfd9334d429731e8045d68a337ea160471f43d4f2",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/sdg-7-consulation-eyf26": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "bdebef369da9e69940cd512e6c7bab70ecedf41d804268e855e8ffc76005930b",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/summerschool/winter-school-chiang-mai-edition-2026/71": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.adb.org/work-with-us/careers/adb-young-professionals-program": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00",
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://cadmus.eui.eu/handle/1814/76983": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.un.org/youthaffairs/en": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/call-for-inputs-10-new-insights-in-climate-science": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://erecruitment.eib.org/psc/hr/EIBJOBS/CAREERS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_SCHJOB_FL&focus=Applicant": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/international-climate-protection-fellowship-letters-of-recommendation": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/apyouth-assembly-road-to-eyf26": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/conference/conference-2026/call-for-papers": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://careers.chathamhouse.org/jobs/8396678-crm-administrator": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.eui.eu/Documents/ServicesAdmin/DeanOfStudies/Code-of-Ethics-in-Academic-Conduct-and-Research.pdf": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/financing-for-youth-consultation-eyf26": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org/na/news/registration-open-2026-ipsa-aecpa-summer-school-political-science-and-social-science": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/restoration-finance-policy-intern-global-restoration-initiative-2026-jr100476": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship/a-selection-of-climate-protection-fellows": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/cdwd-eyf26-consultation": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.isanet.org/Conferences/ISA2026": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://e3g.bamboohr.com/careers/271": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/main-news-updates/consultation-on-2nd-ypsstudy": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://ecpr.eu/Funding/Funding": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.climatepolicyinitiative.org/career/analyst-junior-analyst-energy-technology": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/connect/explore-the-humboldt-network?tx_solr%5Bfilter%5D%5B0%5D=isnew_stringS%3A1&tx_solr%5Bfilter%5D%5B3%5D=&tx_solr%5Bfilter%5D%5B4%5D=&tx_solr%5Bfilter%5D%5B5%5D=&tx_solr%5Bfilter%5D%5B6%5D=&tx_solr%5Bfilter%5D%5B7%5D=&tx_solr%5Bfilter%5D%5B8%5D=&tx_solr%5Bfilter%5D%5Belectionprogram_stringS_9%5D=electionprogram_stringS%3AInternational%20Climate%20Protection%20Fellowship": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.unmgcy.org/": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://eisa-net.org/pec-2027": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.aiib.org/en/general/404.html?requested=/en/opportunities/career/index.html&server=other": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-during-your-stay/sponsorship-during-your-international-climate-protection-fellowship": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/summerschool/winter-school-alps-edition-2027/74": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/summer-school-of-sustainability-science-the-governance-of-socio-ecological-systems-exploring-the-land-ocean-continuum": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.brookings.edu/careers": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/conference/conference-2026": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org/na/news/ipsa-present-2026-ecpr-general-conference-krakow": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://eisa-net.org/online-events-12": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.imf.org/en/about/recruitment/working-at-the-imf/fund-internship-program?utm_source=openai": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/announcement/international-conference-on-public-administration-and-governance-in-south-asia/1237": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://centerforglobaldevelopment.applytojob.com/apply/nDb6lMwpMb/FellowSenior-Fellow-Market-Shaping-Accelerator": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/masterclass-with-professor-oran-r-young-governing-complexity-for-sustainability-in-the-anthropocene": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://jobs.smartrecruiters.com/OECD/744000101644285-internship-programme": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/2025/11/13/could-you-be-a-future-dsa-conference-host": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://jobs.greenclimate.fund": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org/na/news/ipsa-2026-ecpr-general-conference-krakow": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.adb.org/work-with-us/careers/japan-scholarship-program": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/transport-research-intern-2026-jr100493": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://eisa-net.org/": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.climatepolicyinitiative.org/about-cpi/careers": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/announcement/call-for-papers-cybersecurity-and-geopolitical-transformation-across-eurasia-and-the-indo-pacific/1231": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.brookings.edu/programs/foreign-policy": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/esg-research-fellow-trip-europe": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://centerforglobaldevelopment.applytojob.com/apply/u1K2ZXS3Vh/Senior-Fellow-Global-Health": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/2025/11/13/odid-oxford-november-2025-digest": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://jobs.smartrecruiters.com/OECD/744000152408679-project-coordinator-space-management": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.adb.org/work-with-us/careers/adb-visiting-fellow-program": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/electric-mobility-research-assistant-2026-jr100492": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/conference/icpp8-rennes-2027/29": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://careers-brookings.icims.com/jobs/search?ss=1&hashed=-435682078": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/3rd-summer-school-of-sustainability-the-governance-of-socio-ecological-systems": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://alerts.adb.org": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/2025/11/17/kings-college-london-dept-of-international-development-nov-2025": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/community-development-assistant-agroforestry-gayo-highlands-2026-jr100491": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.brookings.edu/careers/internships": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.adb.org/data": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/summerschool/winter-school-sao-paulo-edition-2026/72": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/associate-budget-analyst-2026-jr100434": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/earth-system-governance-summer-school-at-the-university-of-canberra": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/associate-accounts-2026-jr100351": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.devstud.org.uk/newsletter/conferences-council-dei-your-chance-to-be-involved/": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/energy-system-modeler-2026-jr100422": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/field-operation-and-procurement-assistant-agroforestry-gayo-highlands-2026-jr100490": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.isanet.org/Conferences": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/procurement-officer-2026-jr100463": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ippapublicpolicy.org/": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/stdb-field-project-coordinator-western-aceh-2026-jr100487": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.earthsystemgovernance.org/events/": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/renewable-energy-investment-analyst-2026-jr100475": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.ipsa.org/na/news/all": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.wri.org/careers/jobs/geospatial-data-analyst-2026-jr100472": {
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/max-weber-programme-publications": {
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "336b3a41eb7bb2ca790ae0afd64512bdde299ce15197e1ba94231895dfef9216",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
+    },
+    "https://eisa-net.org/ewis-2027/call-for-workshop-proposals/": {
+      "last_attempt": "2026-09-30T21:15:34.489717+00:00",
+      "hash": "e0157d9b4e14d2206b9b2facf4b3e12814f5bada5557e20a1465bcf75fa53b99",
+      "validated": true,
+      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "last_seen": "2026-09-30T21:15:34.489717+00:00"
     }
   }
 }
