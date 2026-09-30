@@ -37,7 +37,7 @@ REQUIRED_FIELDS = [
 
 CORE_TOPICS = ["发展", "不平等", "AI", "气候", "金融", "债务", "全球治理", "可持续"]
 LOW_TOPICS = ["粮食安全", "人口", "公共卫生"]
-OPPORTUNITY_GROUPS = {"会议", "学术论坛/CFP", "Fellowship", "Internship", "青年项目", "Policy/Summer School", "其他"}
+OPPORTUNITY_GROUPS = {"会议", "学术论坛/CFP", "Fellowship", "Internship", "Early-career Jobs", "青年项目", "Policy/Summer School", "其他"}
 TOPIC_SECTIONS = {"AI治理", "全球治理/国际组织", "可持续发展/气候", "发展/不平等", "国际金融/债务", "国际关系/政治学", "其他"}
 EXCLUDED_INTERNSHIP_TERMS = ["城市规划", "法律", "人力资源", "IT", "财务", "采购", "行政", "医学", "工程"]
 

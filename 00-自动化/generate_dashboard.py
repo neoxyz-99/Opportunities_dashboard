@@ -10,6 +10,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import collect_opportunities as radar
+from eligibility import CATEGORIES
 
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
@@ -21,6 +22,7 @@ DISPLAY_LABELS = {
     "学术论坛/CFP": "Academic",
     "Fellowship": "Fellowship",
     "Internship": "Internship",
+    "Early-career Jobs": "Early-career Jobs",
     "青年项目": "Youth",
     "Policy/Summer School": "Schools",
     "其他": "Other",
@@ -121,8 +123,19 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     generated_at = datetime.now(CN_TZ).strftime("%Y-%m-%d %H:%M")
     today = datetime.now(CN_TZ).date()
     upcoming_cutoff = today + timedelta(days=30)
-    data_json = json.dumps(rows, ensure_ascii=False)
+    data_json = json.dumps(rows, ensure_ascii=False).replace("<", "\\u003c")
     stat_json = json.dumps(stats(rows), ensure_ascii=False)
+    status_path = PROJECT_DIR / "05-历史记录/collection_status.json"
+    health = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
+    last_success = health.get("last_successful_collection") or "Not yet verified"
+    collection_label = {"success": "Sources checked", "partial": "Partial coverage", "failed": "Collection failed"}.get(health.get("status"), "Collection not verified")
+    source_details = "".join(
+        f'<li><a href="{html.escape(source.get("url", ""))}" target="_blank" rel="noreferrer">{html.escape(source.get("name", source_id))}</a>: {html.escape(source.get("status", "Not checked"))}'
+        f'{" · " + html.escape(source["error"]) if source.get("error") else ""}</li>'
+        for source_id, source in health.get("sources", {}).items()
+    )
+    source_details = source_details or "<li>No verified collection report is available.</li>"
+    source_details += "".join(f"<li>{html.escape(error)}</li>" for error in health.get("errors", []))
     type_buttons = "".join(
         f'<button class="filter-button" data-filter-type="{html.escape(group)}">{html.escape(display_label(group))}</button>'
         for group in ["全部"] + radar.OPPORTUNITY_GROUPS
@@ -185,8 +198,17 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       align-items: center;
       margin-bottom: 18px;
     }}
-    h1 {{ margin: 0; font-size: clamp(34px, 5vw, 56px); letter-spacing: 0; line-height: .98; font-weight: 720; }}
+    h1 {{ margin: 0; font-size: 44px; letter-spacing: 0; line-height: 1.12; font-weight: 720; }}
     .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
+    .collection-health {{ margin: 10px 0 18px; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }}
+    .collection-health summary {{ cursor: pointer; color: var(--text); padding: 8px 0; }}
+    .collection-health li {{ margin: 7px 0; }}
+    .collection-health a, .eligibility a {{ color: var(--accent); }}
+    .eligibility {{ padding-top: 18px; }}
+    .eligibility h2 {{ font-size: 16px; margin: 0 0 10px; }}
+    .eligibility ul, .field ul {{ margin: 5px 0; padding-left: 20px; }}
+    .eligibility li {{ margin: 10px 0; font-size: 14px; }}
+    .eligibility .evidence {{ display: block; color: var(--muted); margin-top: 3px; font-size: 12px; }}
     .stats {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0 14px; }}
     .stat {{
       background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,255,255,.48));
@@ -274,7 +296,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     .deadline strong {{ display: block; color: var(--text); font-size: 15px; }}
     .details {{ border-top: 1px solid var(--line); padding: 16px 18px 18px; position: relative; }}
     .detail-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }}
-    .field {{ background: rgba(255,255,255,.52); border: 1px solid rgba(255,255,255,.76); border-bottom-color: var(--edge); border-radius: 16px; padding: 11px 12px; }}
+    .field {{ padding: 8px 0; overflow-wrap: anywhere; }}
     .field b {{ display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }}
     .field span {{ font-size: 14px; }}
     .judgment {{ margin-top: 12px; padding: 13px; border: 1px solid rgba(255,255,255,.76); background: rgba(255,255,255,.48); border-radius: 16px; }}
@@ -285,6 +307,8 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     .archive-control.auto {{ color: #8a3b32; font-weight: 600; }}
     .empty {{ grid-column: 1 / -1; padding: 34px; text-align: center; color: var(--muted); background: rgba(255,255,255,.50); border: 1px dashed rgba(255,255,255,.70); border-radius: 28px; }}
     @media (max-width: 860px) {{
+      h1 {{ font-size: 34px; }}
+      .toolbar {{ position: static; }}
       .hero, .search-row {{ grid-template-columns: 1fr; }}
       .meta {{ text-align: left; }}
       .stats {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
@@ -301,8 +325,10 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       <div>
         <h1>Opportunity Radar</h1>
       </div>
-      <div class="meta">Updated {html.escape(generated_at)}</div>
+      <div class="meta">Last successful collection: <time data-date="{html.escape(last_success)}">{html.escape(last_success)}</time><br>Page generated: <time data-date="{html.escape(datetime.now(timezone.utc).isoformat())}">{html.escape(generated_at)}</time></div>
     </header>
+
+    <details class="collection-health"><summary>{html.escape(collection_label)} · {health.get('new_count', 0)} new in last attempt</summary><ul>{source_details}</ul></details>
 
     <section class="stats" id="stats"></section>
 
@@ -343,8 +369,14 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     const opportunities = {data_json};
     const initialStats = {stat_json};
     const labelMap = {json.dumps(DISPLAY_LABELS, ensure_ascii=False)};
-    const todayKey = {json.dumps(today.isoformat())};
-    const upcomingCutoffKey = {json.dumps(upcoming_cutoff.isoformat())};
+    function dateKey(date) {{
+      return `${{date.getFullYear()}}-${{String(date.getMonth()+1).padStart(2,"0")}}-${{String(date.getDate()).padStart(2,"0")}}`;
+    }}
+    function relativeKey(days = 0) {{
+      const date = new Date();
+      date.setDate(date.getDate() + days);
+      return dateKey(date);
+    }}
     const archiveKey = "opportunityRadarArchived";
     const state = {{ type: "全部", topic: "全部", query: "", sort: "deadline", excluded: "hide", archiveView: "active" }};
 
@@ -375,7 +407,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
 
     function isExpired(row) {{
       const deadline = datedDeadline(row);
-      return Boolean(deadline && deadline < todayKey);
+      return Boolean(deadline && deadline < relativeKey());
     }}
 
     function rowText(row) {{
@@ -412,7 +444,8 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     }}
 
     function isManuallyArchived(row) {{
-      return archivedIds().has(rowId(row));
+      const ids = archivedIds();
+      return ids.has(rowId(row)) || (row["旧归档ID"] && ids.has(row["旧归档ID"]));
     }}
 
     function isArchived(row) {{
@@ -459,15 +492,15 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       const visible = opportunities.filter(row => !row["排除原因"]);
       const active = visible.filter(row => !isArchived(row));
       const archivedCount = visible.filter(row => isArchived(row)).length;
-      const newToday = active.filter(row => row["发现日期"] === todayKey).length;
+      const recent = visible.filter(row => row["发现日期"] >= relativeKey(-29) && row["发现日期"] <= relativeKey()).length;
       const upcoming = active.filter(row => {{
         const deadline = datedDeadline(row);
-        return deadline && deadline >= todayKey && deadline <= upcomingCutoffKey;
+        return deadline && deadline >= relativeKey() && deadline <= relativeKey(30);
       }}).length;
       const priority = active.filter(row => ["高", "中高"].includes(row["行动优先级"])).length;
       const items = [
         ["Active", active.length],
-        ["New Today", newToday],
+        ["New · 30 days", recent],
         ["Upcoming", upcoming],
         ["Priority", priority],
         ["Archived", archivedCount],
@@ -479,6 +512,27 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       const text = cleanValue(value, options);
       if (!text) return "";
       return `<div class="field"><b>${{escapeHtml(label)}}</b><span>${{escapeHtml(text)}}</span></div>`;
+    }}
+
+    function bulletField(label, value) {{
+      const text = cleanValue(value, {{hideChinese: true}});
+      if (!text) return "";
+      const items = text.split(/;|\\n/).map(part => part.trim()).filter(Boolean);
+      return `<div class="field"><b>${{escapeHtml(label)}}</b><ul>${{items.map(part => `<li>${{escapeHtml(part)}}</li>`).join("")}}</ul></div>`;
+    }}
+
+    function eligibility(row) {{
+      const categories = {json.dumps(CATEGORIES)};
+      let facts = [];
+      try {{ facts = JSON.parse(row["资格条件JSON"] || "[]"); }} catch {{}}
+      const items = Object.entries(categories).map(([category, label]) => {{
+        const fact = facts.find(item => item.category === category);
+        if (!fact || fact.status === "Not stated") return `<li><b>${{escapeHtml(label)}}</b>: Not stated</li>`;
+        const link = String(fact.url || "").startsWith("https://") ? `<a href="${{escapeHtml(fact.url)}}" target="_blank" rel="noreferrer">Source</a>` : "";
+        return `<li><b>${{escapeHtml(label)}}</b> · ${{escapeHtml(fact.status)}}: ${{escapeHtml(fact.summary)}}<span class="evidence">${{escapeHtml(fact.quote)}} ${{link}}</span></li>`;
+      }});
+      const legacy = !facts.length ? bulletField("Previously collected requirements (not reverified)", row["参加条件"]) : "";
+      return `<section class="eligibility"><h2>Eligibility</h2><ul>${{items.join("")}}</ul>${{legacy}}</section>`;
     }}
 
     function renderCard(row, index) {{
@@ -494,12 +548,11 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       const typeLabel = labelMap[row["机会类型分组"]] || row["机会类型分组"];
       const topicLabel = labelMap[row["主题分区"]] || row["主题分区"];
       const priorityLabel = labelMap[row["行动优先级"]] || row["行动优先级"];
-      const deadline = cleanValue(row["截止日期"]) || "Open";
+      const deadline = cleanValue(row["截止日期"]) || "Not stated";
       const details = [
         field("Host", row["主办方"], {{ hideChinese: true }}),
         field("Location", row["地点/线上"], {{ hideChinese: true }}),
-        field("Materials", row["需要准备的材料"], {{ hideChinese: true }}),
-        field("Requirements", row["参加条件"], {{ hideChinese: true }}),
+        bulletField("Materials", row["需要准备的材料"]),
         field("Role", row["岗位类型"], {{ hideChinese: true }}),
         field("Function", row["岗位职能"], {{ hideChinese: true }}),
         field("Risk Note", row["排除原因"], {{ hideChinese: true }}),
@@ -527,6 +580,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
           </summary>
           <div class="details">
             ${{details ? `<div class="detail-grid">${{details}}</div>` : ""}}
+            ${{eligibility(row)}}
             ${{judgment}}
             <div class="links">${{originalLink}} ${{applyLink}}</div>
             ${{archiveControl}}
@@ -577,6 +631,17 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     activateButtons("typeFilters", "filterType", "全部");
     activateButtons("topicFilters", "filterTopic", "全部");
     renderList();
+    document.querySelectorAll("time[data-date]").forEach(element => {{
+      const date = new Date(element.dataset.date);
+      if (!Number.isNaN(date.getTime())) element.textContent = date.toLocaleString(undefined, {{dateStyle:"medium", timeStyle:"short"}});
+    }});
+    let renderedDay = relativeKey();
+    setInterval(() => {{
+      if (renderedDay !== relativeKey()) {{
+        renderedDay = relativeKey();
+        renderStats(); renderList();
+      }}
+    }}, 60000);
   </script>
 </body>
 </html>

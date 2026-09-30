@@ -52,6 +52,12 @@ FIELDS = [
     "发现日期",
     "最近核查日期",
     "链接指纹",
+    "资格条件JSON",
+    "经验门槛",
+    "发布批次",
+    "发现链接",
+    "来源ID",
+    "内容哈希",
 ]
 
 UNKNOWN_VALUES = {"", "待核查", "needs checking", "need checking", "n/a", "na", "tbc", "tbd", "not specified"}
@@ -143,6 +149,7 @@ OPPORTUNITY_GROUPS = [
     "学术论坛/CFP",
     "Fellowship",
     "Internship",
+    "Early-career Jobs",
     "青年项目",
     "Policy/Summer School",
     "其他",
@@ -293,7 +300,9 @@ def is_unknown(value: str) -> bool:
 def fingerprint_for(row: dict[str, str]) -> str:
     original = normalize_url(row.get("原网页链接", ""))
     apply_url = normalize_url(row.get("申请/投稿链接", ""))
-    identity = original or apply_url or f"{row.get('主办方', '')}|{row.get('机会名称', '')}"
+    identity = apply_url or original or f"{row.get('主办方', '')}|{row.get('机会名称', '')}"
+    if row.get("发布批次"):
+        identity += "|" + row["发布批次"]
     return hashlib.sha256(identity.lower().encode("utf-8")).hexdigest()[:16]
 
 
@@ -394,6 +403,8 @@ def infer_opportunity_group(row: dict[str, str]) -> str:
     text = (row.get("机会类型", "") + " " + row.get("机会名称", "") + " " + row.get("备注", "")).lower()
     if "internship" in text or "实习" in text:
         return "Internship"
+    if any(term in text for term in ["policy analyst", "research assistant", "junior", "entry-level", "early-career job", "graduate job", "coordinator"]):
+        return "Early-career Jobs"
     if "fellow" in text or "fellowship" in text:
         return "Fellowship"
     if "cfp" in text or "call for papers" in text or "投稿" in text or "学术年会" in text or "conference" in text and "academic" in text:
@@ -612,21 +623,23 @@ def infer_action_priority(row: dict[str, str]) -> str:
     return "低"
 
 
-def normalize_row(raw: dict, today: str) -> dict[str, str]:
+def normalize_row(raw: dict, today: str, verified: bool = False) -> dict[str, str]:
     row = {field: str(raw.get(field, "") or "").strip() for field in FIELDS}
     row["原网页链接"] = normalize_url(row.get("原网页链接", ""))
     row["申请/投稿链接"] = normalize_url(row.get("申请/投稿链接", ""))
     row["资助说明链接"] = normalize_url(row.get("资助说明链接", ""))
     row["发现日期"] = row.get("发现日期") or today
-    row["最近核查日期"] = today
+    if verified:
+        row["最近核查日期"] = today
     row["机会类型分组"] = row.get("机会类型分组") if row.get("机会类型分组") in OPPORTUNITY_GROUPS else infer_opportunity_group(row)
-    row["主题分区"] = infer_topic_section(row)
+    row["主题分区"] = row.get("主题分区") if row.get("主题分区") in TOPIC_SECTIONS else infer_topic_section(row)
     row["岗位类型"] = row.get("岗位类型") or infer_job_type(row)
     row["岗位职能"] = row.get("岗位职能") or infer_job_function(row)
     existing_reason = row.get("排除原因", "")
     if "：it" in existing_reason.lower() or ": it" in existing_reason.lower():
         existing_reason = ""
-    row["排除原因"] = existing_reason or exclusion_reason(row)
+    # Existing records retain their moderation state; new pages use evidence-based screening.
+    row["排除原因"] = existing_reason
     row["相关度"] = row.get("相关度") or infer_relatedness(row)
     if row["排除原因"]:
         row["相关度"] = "低"
@@ -1030,48 +1043,8 @@ def set_github_output(**values: str) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["instant", "weekly"], default="instant")
-    args = parser.parse_args()
-
-    load_env(API_ENV_PATH)
-    today = datetime.now(CN_TZ).strftime("%Y-%m-%d")
-    existing = [normalize_row(row, today) for row in load_csv(DB_PATH, FIELDS)]
-    prompt = build_prompt(today, args.mode, existing)
-    raw_response = call_openai(prompt)
-    try:
-        incoming = parse_opportunities(raw_response, today)
-    except RuntimeError as exc:
-        print(f"Collect skipped: {exc}", file=sys.stderr)
-        set_github_output(has_updates="false", new_count="0", dashboard_path="docs/index.html")
-        return 0
-    merged, new_rows = merge_rows(existing, incoming)
-    write_csv(DB_PATH, FIELDS, merged)
-
-    notified = load_notified_fingerprints()
-    if args.mode == "instant":
-        alert_rows = [row for row in new_rows if row.get("链接指纹") not in notified]
-    else:
-        alert_rows = incoming or merged[:25]
-
-    if not alert_rows:
-        print("No new opportunities to alert.")
-        set_github_output(has_updates="false", new_count="0", dashboard_path="docs/index.html")
-        return 0
-
-    html_path = write_email(alert_rows, args.mode, today)
-    append_notified(alert_rows, args.mode, today)
-    subject = "【国际机会雷达】仪表盘已更新"
-    set_github_output(
-        has_updates="true",
-        new_count=str(len(alert_rows)),
-        dashboard_path="docs/index.html",
-        html_path=str(html_path.relative_to(PROJECT_DIR)),
-        email_subject=subject,
-    )
-    print(f"Updated database: {DB_PATH.relative_to(PROJECT_DIR)}")
-    print(f"Wrote email: {html_path.relative_to(PROJECT_DIR)}")
-    return 0
+    from collection_pipeline import main as collect_verified
+    return collect_verified()
 
 
 if __name__ == "__main__":
