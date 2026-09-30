@@ -14,6 +14,56 @@
       "hash": "8ae691848d07ffe2487b3221e27b05251b74cb022d113dc12c9253b056ac15a0",
       "validated": true,
       "checked_at": "2026-09-30T14:48:13.421404+00:00"
+    },
+    "https://www.iisd.org/?utm_source=openai": {
+      "hash": "525e1205e0cf8d554d22bba63c1a73faeac270fdd79c1dd892b234f7b8a9a432",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.isanet.org/Conferences/ISA2022": {
+      "hash": "b0263bdcc763226dd8281bb1648dde4973c87e4b6a9abd8f79859db1720ccba1",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://unfccc.int/calendar/events-list": {
+      "hash": "adac64257f7529e2a0fe3a4754bce6884b7b5fa539f389de00ded2ab605082d7",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.climatepolicyinitiative.org/career/analyst-junior-analyst-energy-technology/": {
+      "hash": "12f3fdf837594ef8707fd27d201aabf5cc89ea2d2822329c8d74aaa7e54e05d9",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.earthsystemgovernance.org/event/2027-uppsala-conference/": {
+      "hash": "e42b6549b8e4b05a39248e32c0bddd874f8481c1e92baeb893db62abf5820ae8",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.devstud.org.uk/2025/02/26/call-for-papers-and-panel-gender-conference-at-uea/": {
+      "hash": "94773cec99553dc7df94894a2cf36228ad42449f4b10ad7c7237ab0843ca2bdf",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.worldbank.org/ext/en/careers": {
+      "hash": "77a5440ede49404d4574cd0e8bb23f790c34c7c651a2887be6d56638e8b61e19",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://summeruniversity.ceu.edu/courses": {
+      "hash": "e60b4aafa1314cfd66313f6cdf5b2bda5e63b63af74e3d857cc8d48ab73559a8",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.isanet.org/Conferences/Special-Convention-Programs": {
+      "hash": "fc174b23494d5b3f32f6438f59337223c0cdb19c3ce5aa08c3bb23e086c74d92",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.siis.org.cn/": {
+      "hash": "19072a7de9dfb664011b07d440a51bdeb18396dc505d04da6de8f15189884a39",
+      "validated": true,
+      "checked_at": "2026-09-30T18:06:05.958275+00:00"
     }
   }
 }
