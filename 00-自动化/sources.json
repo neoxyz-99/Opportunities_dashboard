@@ -31,6 +31,7 @@
   {"id":"china-siis","name":"Shanghai Institutes for International Studies","url":"https://www.siis.org.cn/","kind":"jobs","domains":["siis.org.cn"]},
   {"id":"chatham-fellowships","name":"Chatham House Academy fellowships","url":"https://www.chathamhouse.org/academy/fellowships","kind":"fellowship","domains":["chathamhouse.org"]},
   {"id":"eui-maxweber","name":"EUI Max Weber social-science fellowships","url":"https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies","kind":"fellowship","domains":["eui.eu"]},
+  {"id":"humboldt-climate","name":"Humboldt International Climate Protection Fellowship","url":"https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship","kind":"fellowship","domains":["humboldt-foundation.de"]},
   {"id":"daad-epos","name":"DAAD development-related postgraduate scholarships","url":"https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777","kind":"scholarships","domains":["daad.de"]},
   {"id":"ceu-schools","name":"CEU Summer University","url":"https://summeruniversity.ceu.edu/courses","kind":"schools","domains":["summeruniversity.ceu.edu"]},
   {"id":"un-youth","name":"UN Youth Office participation and events","url":"https://www.un.org/youthaffairs/en","kind":"youth","domains":["un.org"],"link_pattern":"/youthaffairs/.*(?:event|engag|opportunit|youth-townhall)"},
