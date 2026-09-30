@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 import certifi
 
 import collect_opportunities as radar
-from eligibility import CATEGORIES, validate_facts, screen_role, facts_json
+from eligibility import CATEGORIES, compact, validate_facts, screen_role, facts_json
 
 STATUS_PATH = radar.PROJECT_DIR / "05-历史记录/collection_status.json"
 CACHE_PATH = radar.PROJECT_DIR / "05-历史记录/collection_cache.json"
@@ -194,7 +194,7 @@ def extraction_schema() -> dict:
         "title": string, "host": string,
         "group": {"type": "string", "enum": radar.OPPORTUNITY_GROUPS},
         "topic": {"type": "string", "enum": radar.TOPIC_SECTIONS},
-        "tags": string, "deadline": string, "dates": string, "location": string,
+        "tags": string, "deadline": string, "deadline_quote": string, "dates": string, "location": string,
         "source_url": string, "apply_url": string, "batch": string,
         "materials": {"type": "array", "items": string},
         "function": string, "judgment": string,
@@ -234,8 +234,12 @@ Coordination must concern these areas, not generic administration, logistics or 
 Capture senior and experienced jobs too for exclusion, never disguise them as internships or graduate jobs.
 No active UN-system internship collection. UN events/CFPs/fellowships remain in scope.
 All summaries, titles, material lists and judgments must be concise English. Group/topic values use the specified enum.
+Return at most two specific opportunities per page; prefer linked detail pages over generic programmes.
 Use exactly one primary topic. Do not label AI unless AI/digital governance is central to the document.
 Dates: use YYYY-MM-DD only for explicitly known dates; 'Rolling' only if explicit; otherwise leave blank.
+deadline_quote must be a verbatim excerpt containing the deadline and its application/submission phase. Use empty quote if no deadline.
+Different submission phases with different deadlines are separate opportunities, with the phase in the title and explicit batch label.
+For a future opening, clearly state the opening date in judgment; do not imply applications are already open.
 Batch: explicit cycle/year/cohort/job requisition ID only; otherwise blank. Never substitute today's year.
 Source and application URLs must be URLs actually supplied in the document or its links.
 For every eligibility category distinguish Required, Preferred and Not stated; quote exact source text and source URL for every stated fact.
@@ -243,7 +247,8 @@ Citizenship, residency, work authorization, sponsorship, OPT/CPT and student sta
 US location does NOT imply US citizenship. No sponsorship does NOT imply OPT/CPT excluded.
 For China capture CCP membership and 985/211/Double First-Class/named-school restrictions only if expressly stated.
 Experience min_years is the minimum explicitly in the experience quote, including 0 in 0-2 years. Preferred experience does not become required.
-For Not stated use empty summary/quote/url and null min_years. Never assess a person's immigration status or personal political identity.
+For Not stated use empty summary/quote/url and null min_years. min_years MUST be null outside the experience category.
+Never assess a person's immigration status or personal political identity. Every quote must be verbatim, not a paraphrase.
 Scope_quote must be exact source evidence for actual job duties. Risk_note is only for an explicit sensitive duty/frame in risk_quote, not a judgment about a host or its nationality.
 If essential qualifications are in an unread linked PDF, do not assume they are absent; explain the limitation in reason.
 """ + "\nToday's date: " + datetime.now(radar.CN_TZ).date().isoformat() + "\n" + json.dumps(documents, ensure_ascii=False)
@@ -269,6 +274,24 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
             raise ValueError("A page decision needs a reason and opportunity list")
         allowed_urls = {page["url"]} | {link["url"] for link in page["links"]}
         for item in decision["opportunities"]:
+            deadline = item.get("deadline", "")
+            if deadline and deadline != "Rolling":
+                date_value = datetime.strptime(deadline, "%Y-%m-%d")
+                if deadline < today:
+                    continue
+                quote = item.get("deadline_quote", "")
+                month = date_value.strftime("%B")
+                abbreviated = date_value.strftime("%b")
+                patterns = [deadline, f"{date_value.day} {month} {date_value.year}", f"{month} {date_value.day}, {date_value.year}", f"{date_value.day} {abbreviated} {date_value.year}", f"{abbreviated} {date_value.day}, {date_value.year}"]
+                if not compact(quote) or compact(quote) not in compact(documents[page["url"]]) or not any(compact(pattern) in compact(quote) for pattern in patterns):
+                    raise ValueError("Deadline lacks matching source evidence")
+            elif deadline == "Rolling":
+                quote = item.get("deadline_quote", "")
+                if not compact(quote) or compact(quote) not in compact(documents[page["url"]]) or not re.search(r"rolling|year.round|throughout the year|全年|滚动", quote, re.I):
+                    raise ValueError("Rolling deadline lacks source evidence")
+            event_dates = re.findall(r"\d{4}-\d{2}-\d{2}", item.get("dates", ""))
+            if event_dates and max(event_dates) < today:
+                continue
             if item["source_url"] != page["url"] or (item["apply_url"] and item["apply_url"] not in allowed_urls):
                 raise ValueError("Unfetched or fabricated opportunity URL")
             if not item["title"] or item["group"] not in radar.OPPORTUNITY_GROUPS or item["topic"] not in radar.TOPIC_SECTIONS:
@@ -277,7 +300,7 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
             if item["deadline"] and item["deadline"] != "Rolling":
                 datetime.strptime(item["deadline"], "%Y-%m-%d")
             if item["group"] in {"Internship", "Early-career Jobs"}:
-                if not item["scope_quote"] or item["scope_quote"].casefold() not in documents[page["url"]].casefold():
+                if not compact(item["scope_quote"]) or compact(item["scope_quote"]) not in compact(documents[page["url"]]):
                     raise ValueError("Job duties lack source evidence")
                 if item["group"] == "Internship" and not re.search(r"\bintern(?:ship|ships|s)?\b|实习|\btraineeship\b", documents[page["url"]], re.I):
                     raise ValueError("No explicit internship identification")
@@ -303,6 +326,25 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
             normalized["主题分区"] = item["topic"]
             rows.append(normalized)
     return rows
+
+
+def validate_batch(data: dict, pages: list[dict], today: str):
+    decisions = data.get("pages", [])
+    if len(decisions) != len(pages) or {p.get("url") for p in decisions} != {p["url"] for p in pages}:
+        raise ValueError("Model did not decide every fetched page exactly once")
+    rows, rejected = [], {}
+    by_url = {page["url"]: page for page in pages}
+    for decision in decisions:
+        url = decision["url"]
+        if not decision.get("reason") or not isinstance(decision.get("opportunities"), list):
+            rejected[url] = ["Invalid page decision"]
+            continue
+        for item in decision["opportunities"]:
+            try:
+                rows.extend(validate_extraction({"pages": [{**decision, "opportunities": [item]}]}, [by_url[url]], today))
+            except (ValueError, KeyError, TypeError) as exc:
+                rejected.setdefault(url, []).append(str(exc))
+    return rows, rejected
 
 
 def indexed_discovery(client, sources: list[dict]) -> tuple[list[dict], dict]:
@@ -403,7 +445,8 @@ def run(args, client=None, fetcher=None) -> int:
         try:
             listing = fetcher.fetch(source["url"], source["domains"], source.get("render", False))
             links = candidate_links(listing, source["kind"])
-            links.sort(key=lambda link: (cache["pages"].get(link["url"], {}).get("checked_at", ""), not bool(re.search(r"intern|analyst|junior|graduate|assistant|call for|fellow", link["title"], re.I))))
+            year = int(today[:4])
+            links.sort(key=lambda link: (cache["pages"].get(link["url"], {}).get("checked_at", ""), not any(int(y) > year for y in re.findall(r"(?<!\d)(20\d\d)(?!\d)", link["title"] + link["url"])), not bool(re.search(r"intern|analyst|junior|graduate|assistant|call for|fellow", link["title"], re.I))))
             result["readable"] = True
             result["candidates"] = len(links)
             result["deferred_links"] = max(0, len(links) - 3)
@@ -476,14 +519,23 @@ def run(args, client=None, fetcher=None) -> int:
         report["model_calls"] += 1
         try:
             payload = extract_pages(client, batch)
-            rows = validate_extraction(payload, batch, today)
+            rows, rejected = validate_batch(payload, batch, today)
             incoming.extend(rows)
             for page in batch:
-                cache["pages"][page["url"]] = {"hash": page["hash"], "validated": True, "checked_at": now}
                 result = report["sources"][page["source_id"]]
+                if page["url"] in rejected:
+                    error = "Record validation: " + "; ".join(rejected[page["url"]])
+                    report["errors"].append(error)
+                    result.update(status="partial" if rows else "failed", error=error)
+                    if any(row["原网页链接"] == page["url"] for row in rows):
+                        result["validated_pages"] += 1
+                    continue
+                cache["pages"][page["url"]] = {"hash": page["hash"], "validated": True, "checked_at": now}
                 result["validated_pages"] += 1
                 if any(row["原网页链接"] == page["url"] for row in rows) and result["error"].startswith("No opportunity links"):
                     result["error"] = ""
+            if rejected:
+                atomic_json(radar.PROJECT_DIR / "05-历史记录/last_extraction_error.json", {"rejected": rejected, "response": payload, "documents": batch})
         except Exception as exc:
             error = f"Extraction failed: {type(exc).__name__}: {str(exc)[:240]}"
             report["errors"].append(error)
@@ -493,6 +545,10 @@ def run(args, client=None, fetcher=None) -> int:
             if payload is not None:
                 atomic_json(radar.PROJECT_DIR / "05-历史记录/last_extraction_error.json", {"error": error, "page_urls": [p["url"] for p in batch], "response": payload})
     for result in report["sources"].values():
+        if result["validated_pages"]:
+            result["last_success"] = now
+            if result["error"]:
+                result["status"] = "partial"
         if result["expected_pages"] and not result["error"]:
             if result["validated_pages"] == result["expected_pages"] and not result.get("deferred_links"):
                 result.update(status="checked", last_success=now)

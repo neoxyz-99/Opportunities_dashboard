@@ -38,7 +38,7 @@ def validate_facts(facts: list[dict], documents: dict[str, str]) -> list[dict]:
             raise ValueError(f"Unsupported eligibility evidence: {category}")
         if not fact.get("summary"):
             raise ValueError("An eligibility fact needs an English summary")
-        years = fact.get("min_years")
+        years = fact.get("min_years") if category == "experience" else None
         if years is not None:
             if category != "experience" or years < 0 or not re.search(r"\byears?\b|年", quote, re.I):
                 raise ValueError("Unsupported minimum experience")
