@@ -1,6 +1,7 @@
 import argparse
 import copy
 import json
+import os
 import sys
 import tempfile
 import unittest
@@ -31,6 +32,10 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_conference_submission_calls_use_academic_category(self):
+        row = radar.normalize_row({"机会名称": "DSA2027 Call for Panels", "机会类型分组": "会议", "原网页链接": URL}, "2026-09-30")
+        self.assertEqual(row["机会类型分组"], "学术论坛/CFP")
+
     def test_deadline_recovery_uses_source_order_not_model_paraphrase(self):
         source = "9 November 2026 Call for S ection Proposals D eadline 9 December 2026 Abstract Submission Opens 16 February 2027 Abstract Submission Deadline"
         evidence = pipeline.deadline_evidence("2026-11-09", "Call for Section Proposals Deadline: 9 November 2026", source)
@@ -199,7 +204,7 @@ class CollectionTests(unittest.TestCase):
             fetched["links"] = [{"url": URL, "title": "Policy Analyst"}]
             fetcher = SimpleNamespace(fetch=lambda *args: copy.deepcopy(fetched))
             args = argparse.Namespace(probe=False, limit_sources=0, no_discovery=True, mode="weekly")
-            with patch.object(radar, "DB_PATH", db), patch.object(radar, "PROJECT_DIR", root), patch.object(radar, "OUTPUT_DIR", root / "emails"), patch.object(pipeline, "STATUS_PATH", status), patch.object(pipeline, "CACHE_PATH", root / "cache.json"), patch.object(pipeline, "SOURCES_PATH", sources), patch.object(pipeline, "extract_pages", side_effect=ValueError("bad JSON") if failure else None, return_value=payload()):
+            with patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": "", "GITHUB_OUTPUT": ""}), patch.object(radar, "DB_PATH", db), patch.object(radar, "PROJECT_DIR", root), patch.object(radar, "OUTPUT_DIR", root / "emails"), patch.object(pipeline, "STATUS_PATH", status), patch.object(pipeline, "CACHE_PATH", root / "cache.json"), patch.object(pipeline, "SOURCES_PATH", sources), patch.object(pipeline, "extract_pages", side_effect=ValueError("bad JSON") if failure else None, return_value=payload()):
                 code = pipeline.run(args, client=object(), fetcher=fetcher)
             report = json.loads(status.read_text())
             if failure:
