@@ -31,6 +31,13 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_deadline_recovery_uses_source_order_not_model_paraphrase(self):
+        source = "9 November 2026 Call for S ection Proposals D eadline 9 December 2026 Abstract Submission Opens 16 February 2027 Abstract Submission Deadline"
+        evidence = pipeline.deadline_evidence("2026-11-09", "Call for Section Proposals Deadline: 9 November 2026", source)
+        self.assertIn(evidence, source)
+        with self.assertRaises(ValueError):
+            pipeline.deadline_evidence("2026-12-09", "Submission deadline 9 December 2026", source)
+
     def test_expired_record_is_skipped_before_other_validation(self):
         item = opportunity()
         item["deadline"] = "2026-06-14"
