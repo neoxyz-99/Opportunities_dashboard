@@ -48,8 +48,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install public-page renderer
+        run: python -m playwright install --with-deps chromium
+
       - name: Validate sample opportunities
         run: python "00-自动化/validate_opportunities.py" "04-模板/30条样例机会.csv"
+
+      - name: Test collection and eligibility
+        run: python -m unittest discover -s tests -v
 
       - name: Resolve mode
         id: mode
@@ -62,17 +68,22 @@ jobs:
 
       - name: Collect opportunities
         id: collect
+        continue-on-error: true
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dashboard_only) }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1-mini
+          RADAR_MAX_MODEL_CALLS: "7"
+          RADAR_MAX_EXTRACTIONS: "18"
         run: python "00-自动化/collect_opportunities.py" --mode "${{ steps.mode.outputs.mode }}"
 
       - name: Generate dashboard
+        id: dashboard
+        if: ${{ !cancelled() }}
         run: python "00-自动化/generate_dashboard.py"
 
       - name: Send brief email
-        if: ${{ steps.collect.outputs.has_updates == 'true' && github.event_name == 'workflow_dispatch' && inputs.send_email }}
+        if: ${{ steps.collect.outputs.has_updates == 'true' && steps.collect.outcome == 'success' && github.event_name == 'workflow_dispatch' && inputs.send_email }}
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
@@ -87,7 +98,14 @@ jobs:
         run: echo "Long emails are disabled; dashboard is the primary interface."
 
       - name: Commit database and dashboard
+        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update opportunity radar"
           file_pattern: "04-数据库/* 05-历史记录/* 06-邮件输出/* docs/*"
+
+      - name: Report collection failure
+        if: ${{ !cancelled() && steps.collect.outcome == 'failure' }}
+        run: |
+          echo "Collection failed. Existing data retained; dashboard shows the actual collection status."
+          exit 1
