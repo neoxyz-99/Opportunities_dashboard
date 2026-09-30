@@ -20,6 +20,7 @@ with sync_playwright() as runtime:
         assert page.locator("h1").inner_text() == "Opportunity Radar"
         assert page.locator("#stats .stat").count() == 5
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), "horizontal overflow"
+        page.screenshot(path=str(OUTPUT / (name + "-home.png")), full_page=False)
         page.locator("button[data-filter-type='Early-career Jobs']").click()
         page.locator("button[data-filter-type='全部']").click()
         page.locator("#archiveView").select_option("all")

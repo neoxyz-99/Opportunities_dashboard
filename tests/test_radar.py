@@ -31,6 +31,30 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_expired_record_is_skipped_before_other_validation(self):
+        item = opportunity()
+        item["deadline"] = "2026-06-14"
+        item["scope_quote"] = "invalid"
+        self.assertEqual(pipeline.validate_extraction(payload(item), [page()], "2026-09-30"), [])
+
+    def test_bad_record_does_not_discard_valid_batch_records(self):
+        good, bad = opportunity(), opportunity()
+        bad["scope_quote"] = "invented evidence"
+        data = payload(good)
+        data["pages"][0]["opportunities"].append(bad)
+        rows, rejected = pipeline.validate_batch(data, [page()], "2026-09-30")
+        self.assertEqual(len(rows), 1)
+        self.assertIn(URL, rejected)
+
+    def test_deadline_must_match_verbatim_phase_evidence(self):
+        item = opportunity()
+        item["deadline"] = "2026-11-09"
+        item["deadline_quote"] = "9 November 2026 Section proposals deadline"
+        self.assertEqual(len(pipeline.validate_extraction(payload(item), [page(TEXT + item["deadline_quote"])], "2026-09-30")), 1)
+        item["deadline"] = "2027-02-16"
+        with self.assertRaises(ValueError):
+            pipeline.validate_extraction(payload(item), [page(TEXT + item["deadline_quote"])], "2026-09-30")
+
     def test_budget_balances_opportunity_categories(self):
         candidates = [{"url": str(i), "source": {"id": source, "kind": kind}}
                       for i, (source, kind) in enumerate([("jobs-a", "jobs"), ("jobs-a", "jobs"), ("jobs-b", "jobs"), ("ecpr", "academic"), ("school", "schools")])]
