@@ -433,7 +433,7 @@ def run(args, client=None, fetcher=None) -> int:
     cache = read_json(CACHE_PATH, {"pages": {}})
     sources = read_json(SOURCES_PATH, [])
     previous_sources = previous.get("sources", {})
-    sources.sort(key=lambda s: previous_sources.get(s["id"], {}).get("last_success", ""))
+    sources.sort(key=lambda s: previous_sources.get(s["id"], {}).get("last_success") or "")
     if args.limit_sources:
         sources = sources[:args.limit_sources]
     report = {"version": 2, "attempted_at": now, "last_successful_collection": previous.get("last_successful_collection"), "status": "failed", "new_count": 0, "updated_count": 0, "sources": {}, "errors": [], "model_calls": 0, "pending_pages": 0, "probe_only": args.probe}
@@ -446,7 +446,7 @@ def run(args, client=None, fetcher=None) -> int:
             listing = fetcher.fetch(source["url"], source["domains"], source.get("render", False))
             links = candidate_links(listing, source["kind"])
             year = int(today[:4])
-            links.sort(key=lambda link: (cache["pages"].get(link["url"], {}).get("checked_at", ""), not any(int(y) > year for y in re.findall(r"(?<!\d)(20\d\d)(?!\d)", link["title"] + link["url"])), not bool(re.search(r"intern|analyst|junior|graduate|assistant|call for|fellow", link["title"], re.I))))
+            links.sort(key=lambda link: (cache["pages"].get(link["url"], {}).get("checked_at") or "", not any(int(y) > year for y in re.findall(r"(?<!\d)(20\d\d)(?!\d)", link["title"] + link["url"])), not bool(re.search(r"intern|analyst|junior|graduate|assistant|call for|fellow", link["title"], re.I))))
             result["readable"] = True
             result["candidates"] = len(links)
             result["deferred_links"] = max(0, len(links) - 3)
@@ -587,7 +587,18 @@ def main() -> int:
     parser.add_argument("--probe", action="store_true", help="Read real sources without model calls or database updates")
     parser.add_argument("--limit-sources", type=int, default=0)
     parser.add_argument("--no-discovery", action="store_true")
-    return run(parser.parse_args())
+    args = parser.parse_args()
+    try:
+        return run(args)
+    except Exception as exc:
+        try:
+            previous = read_json(STATUS_PATH, {})
+        except (ValueError, OSError):
+            previous = {}
+        report = {"version": 2, "attempted_at": datetime.now(UTC).isoformat(), "last_successful_collection": previous.get("last_successful_collection"), "status": "failed", "new_count": 0, "updated_count": 0, "sources": {}, "errors": [f"Collection interrupted: {type(exc).__name__}: {str(exc)[:240]}"], "model_calls": 0, "pending_pages": 0}
+        atomic_json(radar.PROJECT_DIR / "05-历史记录/source_probe.json" if args.probe else STATUS_PATH, report)
+        print(report["errors"][0])
+        return 1
 
 
 if __name__ == "__main__":
