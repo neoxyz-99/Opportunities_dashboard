@@ -32,6 +32,10 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_english_politics_and_governance_relevance(self):
+        row = radar.normalize_row({"机会名称": "Political Science and International Relations Congress", "原网页链接": URL}, "2026-09-30")
+        self.assertEqual(row["相关度"], "高")
+
     def test_conference_submission_calls_use_academic_category(self):
         row = radar.normalize_row({"机会名称": "DSA2027 Call for Panels", "机会类型分组": "会议", "原网页链接": URL}, "2026-09-30")
         self.assertEqual(row["机会类型分组"], "学术论坛/CFP")
