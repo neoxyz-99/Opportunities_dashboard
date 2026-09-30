@@ -251,7 +251,7 @@ For Not stated use empty summary/quote/url and null min_years. min_years MUST be
 Never assess a person's immigration status or personal political identity. Every quote must be verbatim, not a paraphrase.
 Scope_quote must be exact source evidence for actual job duties. Risk_note is only for an explicit sensitive duty/frame in risk_quote, not a judgment about a host or its nationality.
 If essential qualifications are in an unread linked PDF, do not assume they are absent; explain the limitation in reason.
-""" + "\nToday's date: " + datetime.now(radar.CN_TZ).date().isoformat() + "\n" + json.dumps(documents, ensure_ascii=False)
+""" + "\nToday's date (UTC): " + datetime.now(UTC).date().isoformat() + "\n" + json.dumps(documents, ensure_ascii=False)
     response = client.responses.create(
         model=os.environ.get("OPENAI_MODEL", "gpt-4.1-mini"),
         input=prompt, store=False, max_output_tokens=7000,
@@ -443,7 +443,7 @@ def balanced_candidates(candidates: list[dict]) -> list[dict]:
 def run(args, client=None, fetcher=None) -> int:
     radar.load_env(radar.API_ENV_PATH)
     now = datetime.now(UTC).isoformat()
-    today = datetime.now(radar.CN_TZ).date().isoformat()
+    today = datetime.now(UTC).date().isoformat()
     previous = read_json(STATUS_PATH, {})
     cache = read_json(CACHE_PATH, {"pages": {}})
     sources = read_json(SOURCES_PATH, [])

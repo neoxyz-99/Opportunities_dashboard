@@ -492,7 +492,8 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       const visible = opportunities.filter(row => !row["排除原因"]);
       const active = visible.filter(row => !isArchived(row));
       const archivedCount = visible.filter(row => isArchived(row)).length;
-      const recent = visible.filter(row => row["发现日期"] >= relativeKey(-29) && row["发现日期"] <= relativeKey()).length;
+      // Date-only discovery records may be one day ahead across time zones.
+      const recent = visible.filter(row => row["发现日期"] >= relativeKey(-29) && row["发现日期"] <= relativeKey(1)).length;
       const upcoming = active.filter(row => {{
         const deadline = datedDeadline(row);
         return deadline && deadline >= relativeKey() && deadline <= relativeKey(30);
