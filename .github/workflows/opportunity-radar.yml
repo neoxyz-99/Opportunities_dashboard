@@ -30,6 +30,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
   collect-and-build-dashboard:
@@ -103,6 +104,14 @@ jobs:
         with:
           commit_message: "chore: update opportunity radar"
           file_pattern: "04-数据库/* 05-历史记录/* 06-邮件输出/* docs/*"
+
+      - name: Publish updated GitHub Pages
+        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.request('POST /repos/{owner}/{repo}/pages/builds', context.repo);
+            core.info('Requested a Pages rebuild from the updated docs directory.');
 
       - name: Report collection failure
         if: ${{ !cancelled() && steps.collect.outcome == 'failure' }}
