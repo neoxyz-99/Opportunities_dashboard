@@ -64,6 +64,61 @@
       "hash": "19072a7de9dfb664011b07d440a51bdeb18396dc505d04da6de8f15189884a39",
       "validated": true,
       "checked_at": "2026-09-30T18:06:05.958275+00:00"
+    },
+    "https://www.e3g.org/about/careers/?utm_source=openai": {
+      "hash": "1cfca4b1f447916d04690a06cf4ff811eb1e9ac9bc1ba120843a8099ba189207",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.ipsa.org/na/news/call-papers-2027-ipsa-world-congress-now-open": {
+      "hash": "4dca058637871c9b52bed9fc0e30c14bbf109cf02d8fc93ff0d5dc05c7d28f53",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.ippapublicpolicy.org/summerschool/winter-school-doha-edition-2027/73": {
+      "hash": "1ac5714cf69d40c1afa42dddcb22646de99cd11b6a26646936265f9db0f5e125",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.isanet.org/Conferences/Archive": {
+      "hash": "33aefa6b334889fefa5901633c6ff54dc0764c2cd8a9d81240697ec3704decf6",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.brookings.edu/careers/internships/": {
+      "hash": "9a2b45ca0148c9813dadba5beeaa5645eeeea1d92c7c6f94f57b1a5054179db5",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.fordfoundation.org/about/careers/": {
+      "hash": "076df59a36a24bb3e8853a021616316b871117a84ed63b7dd4b0a0002e4d94c9",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.rockefellerfoundation.org/about-us/careers/": {
+      "hash": "cbf01cd80f1f480256d0e9b8f8ed1295c09d284a48a0e8504bf6db9e8019a665",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://eisa-net.org/pec-2027/": {
+      "hash": "ff8f936472f0bfcd007d6ee649a5953b17071f7e1e586c0ef5c4c0c826dd92e1",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.isanet.org/Conferences/Upcoming": {
+      "hash": "d58ed474f6a895bff6fff9f46077fa94eea3d161720589f1109bfce9c37fceae",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.earthsystemgovernance.org/publication/hard-or-soft-governance-the-eus-climate-and-energy-policy-framework-for-2030/": {
+      "hash": "86fce16ce54a427399c069ada8d1f6bf6f1879a5f27729a0e4d0b6595cfda6d6",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
+    },
+    "https://www.devstud.org.uk/conference/conference-2027/": {
+      "hash": "c691d922e26fd020345bb54db96b1f153a1bbad9d9658a3da69ddcc3ddff967f",
+      "validated": true,
+      "checked_at": "2026-09-30T18:36:37.564211+00:00"
     }
   }
 }

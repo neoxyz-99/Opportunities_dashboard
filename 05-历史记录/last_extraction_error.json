@@ -1,48 +1,38 @@
 {
-  "rejected": {
-    "https://eisa-net.org/pec-2027/": [
-      "Deadline lacks matching source evidence"
-    ]
-  },
+  "error": "Extraction failed: ValueError: Model did not decide every fetched page exactly once",
+  "page_urls": [
+    "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
+    "https://www.ippapublicpolicy.org/summerschool/winter-school-alps-edition-2027/74",
+    "https://www.aiib.org/en/general/404.html?requested=/en/opportunities/career/index.html&server=other"
+  ],
   "response": {
     "pages": [
       {
-        "url": "https://www.isanet.org/Conferences/Special-Convention-Programs",
-        "reason": "Page describes various special programs and panels for ISA annual conventions, highlighting workshops and panels but does not provide currently open calls or application deadlines for fellowships, internships, or jobs. The upcoming convention is in March 2027 but no application process or open opportunities are detailed here.",
-        "opportunities": []
-      },
-      {
-        "url": "https://www.siis.org.cn/",
-        "reason": "Page is a general homepage with news, research reports, and commentary of the Shanghai International Studies Institute. It contains no announcement of currently open fellowships, internships, or conference CFPs for applications. No relevant open opportunities identified.",
-        "opportunities": []
-      },
-      {
-        "url": "https://eisa-net.org/pec-2027/",
-        "reason": "Page is the official site for the 20th EISA Pan-European Conference on International Relations to be held 14-17 September 2027 in Ljubljana, Slovenia. The Call for Section Proposals is OPEN with deadline 9 November 2026, Abstract Submission Opens 9 December 2026, and Abstract Submission Deadline 16 February 2027. This is a conference CFP for panels in international relations. The theme relates to time and temporality in international politics. The conference is relevant to international relations and governance studies.",
+        "url": "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
+        "reason": "Open call for panel proposals for an upcoming political science conference with a fixed submission deadline in the future, offering a relevant academic opportunity.",
         "opportunities": [
           {
-            "title": "Call for Section Proposals for PEC 2027 - Panel and Section Proposals",
-            "host": "European International Studies Association (EISA)",
+            "title": "Open Panel Submission Phase for the 29th IPSA World Congress of Political Science",
+            "host": "International Political Science Association (IPSA)",
             "group": "会议",
             "topic": "国际关系/政治学",
-            "tags": "Conference, Call for Panels, International Relations, Governance, Policy",
-            "deadline": "2026-11-09",
-            "deadline_quote": "Call for Section Proposals Deadline: 9 November 2026",
-            "dates": "2027-09-14 to 2027-09-17",
-            "location": "University of Ljubljana, Slovenia",
-            "source_url": "https://eisa-net.org/pec-2027/",
-            "apply_url": "https://eisa-net.org/pec-2027/call-for-section-chairs",
-            "batch": "PEC 2027",
+            "tags": "political science, governance, global system, democracy, research presentation",
+            "deadline": "2026-08-26",
+            "deadline_quote": "Submit your Open Panel proposal by 26 August 2026",
+            "dates": "2027-07-24 to 2027-07-28",
+            "location": "Rome, Italy",
+            "source_url": "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
+            "apply_url": "https://wc2027.ipsa.org/wc/submit-panel",
+            "batch": "2027",
             "materials": [
-              "Panel proposal",
-              "Section proposal"
+              "Panel proposal submission instructions"
             ],
-            "function": "Conference Panel/Section Proposals",
-            "judgment": "Open CFP for academic panels at major IR conference with broad theme relevant to international relations and governance.",
+            "function": "Academic conference panel organization and research presentation.",
+            "judgment": "Valid academic conference CFP with open submission deadline and forthcoming event in mid-2027.",
             "relevant_duties": false,
             "specialized_duties": false,
             "senior_role": false,
-            "scope_quote": "The conference invites proposals on time as a central concept and its role in international politics; panels will be organized in standing and regular sections.",
+            "scope_quote": "Submit an open or closed panel proposal on any topic in political science, including the Congress theme, Uncertain Democracies: Rethinking Governance in a Changing Global System.",
             "risk_note": "",
             "risk_quote": "",
             "eligibility": [
@@ -51,7 +41,7 @@
                 "status": "Not stated",
                 "summary": "",
                 "quote": "",
-                "url": "",
+                "url": "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
                 "min_years": null
               },
               {
@@ -59,31 +49,7 @@
                 "status": "Not stated",
                 "summary": "",
                 "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "work_authorization",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "visa_sponsorship",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "opt_cpt",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "url": "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
                 "min_years": null
               },
               {
@@ -91,47 +57,7 @@
                 "status": "Not stated",
                 "summary": "",
                 "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "education",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "experience",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "language",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "party_membership",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "school_restrictions",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "url": "https://www.ipsa.org/na/news/submit-your-open-panel-ipsa2027-world-congress-political-science-26-august",
                 "min_years": null
               }
             ]
@@ -139,378 +65,5 @@
         ]
       }
     ]
-  },
-  "documents": [
-    {
-      "url": "https://www.isanet.org/Conferences/Special-Convention-Programs",
-      "text": "Special Annual Convention Programs Special Annual Convention Programs Special Programs Committee Panels Distinguished Scholar Panels Early Career Workshops Off the Beaten Path Pay It Forward Partner Organization Panels Professional Advancement Seminar Series Our Special Activities at the Annual Convention Our Annual Convention has over 1,000 panels and roundtables every year covering topics from across the wide array of international studies. But, ISA also offers a number of program experiences that go beyond these traditional forms of conference participation. Committee Panels These panels are reserved for the work of ISA standing committees and must be submitted by the Committee Chair (or their designee). These Committee Panels are available only to the Academic Freedom Committee, the Committee on the Status of Women, the Committee on the Status of Representation and Diversity, the Committee on the Status of Engagement with the Global South, the Professional Development Committee, the Pedagogy Conference Planning Committee, and the ad hoc committee ISA in the World. These Committee Panels may take the form of either standard panels or roundtables, and must follow the same submission guidelines per format. Scholar Award Panels (previously 'Distinguished Scholar') These are created by section and caucus to recognize and celebrate exceptional scholars in their respective fields. ISA's Distinguished Scholar panels can only be submitted by section or caucus chairs and come directly from the group's allocation quota. Please note that ISA HQ can only facilitate one special scheduling request. (Deadline July 1st) Early Career Workshops Early Career Workshop panels (formerly known as Junior Scholar Symposium [JSS] Sessions) are designed to provide early career scholars (those still in graduate school or who are within two years of having received their Ph.D) the opportunity to present their research and receive feedback in an environment dedicated to professional development as well as improving and sharing work. Lunchtime Pop-Up Sessions Launched at ISA 2023, ISA's Lunchtime Pop-Up Sessions take advantage of having scholars face-to-face to discuss breaking news and emerging debates in International Studies. Created by ISA's Programming Team and moderated by fellow academics, these sessions open an informal space for participants to exchange views and connect with colleagues from all over the world. Off the Beaten Path Off the Beaten Path (OTBP) provides a dedicated space for practitioners, policy experts, private sector workers, and independent researchers to connect and present within the wider context of ISA’s annual convention. Off the Beaten path acts as a forum to encourage interdisciplinary exchange and dialogue between various facets of International Studies. In doing so, it highlights various perspectives throughout the International Studies community. OTBP is a flexible program and can accommodate a wide range of participation options and content. Pay It Forward Pay It Forward is a mentoring program designed for female graduate students and junior faculty within the International Studies profession. It serves as a space for networking, guidance, and critical engagement and reflection. The one-day workshop covers topics such as professional development, work-life balance, and navigating a gendered field, among others. Partner Organization Panels ISA's Partner Organizations are a network of international studies groups accredited by ISA to promote contacts among specialists and practitioners and facilitate scientific and cultural exchange. Our partners are invited to participate in ISA's activities, and some receive a small quota of program items at our Annual Convention and our international conferences. Professional Advancement Seminar Series (PASS) (formerly \"Career Courses\") Professional Advancement Seminars are half-day courses that offer participants an in-depth instruction on advanced topics such as methodology, teaching strategies, software, and more. Structuring Inclusion Structuring Inclusion is a series of panels that seek to challenge systemic exclusion through the articulation of new practices, approaches, cultures, and institutional parameters that liberate ISA in particular and scholarship in general. See You At ISA 2027! All of these special activities happen at our ISA Annual Conventions. Our next Convention will take place in Atlanta, Georgia (USA) from March 21st - 25th, 2027. We hope to see you there! The Annual Convention Looking for other ISA Programs that take place outside of the Annual Convention? Virtual Programming & Events Workshop Grants Awards × Type Your Search Term Below. Results Will Populate When Available.",
-      "links": [
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs",
-          "title": "Special Programs"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Committee-Panels",
-          "title": "Committee Panels"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Scholar-Award-Panels",
-          "title": "Distinguished Scholar Panels"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/ECW",
-          "title": "Early Career Workshops"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/OTBP",
-          "title": "Off the Beaten Path"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Pay-It-Forward",
-          "title": "Pay It Forward"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Partner-Organization-Panels",
-          "title": "Partner Organization Panels"
-        },
-        {
-          "url": "https://www.isanet.org/Programs/PASS",
-          "title": "Professional Advancement Seminar Series"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Committee-Panels",
-          "title": "Committee Panels"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Scholar-Award-Panels",
-          "title": "Scholar Award Panels (previously 'Distinguished Scholar')"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/SpecialConventionPrograms/ECW",
-          "title": "Early Career Workshops"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Lunchtime-Pop-Up-Sessions",
-          "title": "Lunchtime Pop-Up Sessions"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/SpecialConventionPrograms/OTBP",
-          "title": "Off the Beaten Path"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/SpecialConventionPrograms/Pay-it-forward",
-          "title": "Pay It Forward"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/SpecialConventionPrograms/Partner-Organization-Panels",
-          "title": "Partner Organization Panels"
-        },
-        {
-          "url": "https://www.isanet.org/Programs/PASS",
-          "title": "Professional Advancement Seminar Series (PASS) (formerly \"Career Courses\")"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Special-Convention-Programs/Structuring-Inclusion",
-          "title": "Structuring Inclusion"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/ISA2027",
-          "title": "The Annual Convention"
-        },
-        {
-          "url": "https://www.isanet.org/Professional-Resources/Virtual-Programming-and-Events",
-          "title": "Virtual Programming & Events"
-        },
-        {
-          "url": "https://www.isanet.org/Programs/Grants",
-          "title": "Workshop Grants"
-        },
-        {
-          "url": "https://www.isanet.org/Programs/Awards",
-          "title": "Awards"
-        }
-      ],
-      "hash": "fc174b23494d5b3f32f6438f59337223c0cdb19c3ce5aa08c3bb23e086c74d92",
-      "source_id": "isa",
-      "discovery_url": "https://www.isanet.org/Conferences/Special-Convention-Programs"
-    },
-    {
-      "url": "https://www.siis.org.cn/",
-      "text": "上海国际问题研究院 长者风范和行者风格的追思——悼念董建华先生 9月8日，董建华先生逝世，消息传来，百感交集，往事历历在目，但 陈东晓院长会见巴基斯坦伊斯兰堡安全研究中心执行主任伊姆蒂亚兹·古尔 2026年9月21日下午，上海国际问题研究院院长陈东晓会见到访我院 发挥平台优势、赋能企业出海·上研院联合主办“十五五期间民营企业出海的地缘政治挑战研讨会” 9月17日，由上海国际问题研究院公共政策与创新研究所、上海未来 法国参议院财政委员会主席雷纳尔一行与上研院专家座谈 2026年9月17日上午，上海国际问题研究院院长陈东晓会见正在上海 学术动态 长者风范和行者风格的追思——悼念董建华先生 2026/09/30 陈东晓院长会见巴基斯坦伊斯兰堡安全研究中心执行主任伊姆蒂亚兹·古尔 2026/09/28 发挥平台优势、赋能企业出海·上研院联合主办“十五五期间民营企业出海的地缘政治挑战研讨会” 2026/09/28 法国参议院财政委员会主席雷纳尔一行与上研院专家座谈 2026/09/26 第二届中国—孟加拉国治国理政经验交流圆桌对话会在孟成功举办 2026/09/26 巴基斯坦卡拉奇外交关系委员会(KCFR)智库代表团来访我院 2026/09/26 杨洁勉主任率团访问澳大利亚堪培拉 2026/09/24 专家观点 更多 >> 时评 论文 历年年报 李开盛在环球时报上撰文，谈发展是解决一切问题的总钥匙 2026-09-28 赵隆接受环球时报采访，谈冰岛说不，欧盟地缘政治转型降速 2026-09-28 刘宗义接受观察者网采访，谈观察新德里峰会，需先厘清两个关键事实 2026-09-26 赵隆接受凤凰卫视采访，谈俄乌试探性停火范围有限，双方仍缺乏互信 2026-09-26 全球治理倡议视域下中国海洋治理自主知识体系的构建与实践 2026-07-31 美国产业补贴对企业供应链韧性的影响 2026-07-31 人工智能驱动新质生产力发展研究——基于内在机理、全球比较与路径构建的分析 2026-07-31 美国对华技术封锁与中国企业人工智能创新 2026-07-31 上海国际问题研究院2025年年度报告 2026-05-12 上海国际问题研究院2024年年度报告 2025-09-03 上海国际问题研究院2023年年度报告 2024-07-01 上海国际问题研究院2021-2022年年度报告 2023-06-05 研究成果 更多 >> 上研院报告 上研院观察 推进建设性战略稳定关系：中美关系新使命 南海合作：中菲学者联合研究报告 全球治理倡议引领亚太共同体建设——2026年深圳APEC会议如何成为新的起点？ 变局交织，安全何向?一一构建亚欧安全架构的中国视角 霸权委屈还是特权滥用——美国外部失衡的根源及其影响 印度涉华舆论宣传战的历史根源与当代演进 “左右逢源”抑或“自主求生”：战争冲击下的海湾人工智能发展走向 如何防范人工智能“做错事”？ 联合国难民署可能成为美国 “交易性霸权”的下一个牺牲品 多元化探索能否为海湾国家带来安全？ 升级中非能源合作 助力非洲能源转型 以国际法保障霍尔木兹海峡船舶通行权 学术期刊 往期期刊 >> 2026年第5期 · 目录 · “时代转折”下的欧洲一体化转型：特征、动因与前景 · 日本“新型军国主义”的演进逻辑、现实载体及运行机理 · 内陆政治经济学：中国式现代化内陆实践的实证研究 更多 >> Winter 2023 · Explaining the Taliban’s Revival: Thomas Spragens’s Crisis Theory · A World in Transition: Rethinking the Current Global Order · U.S.–China Competition: A Power Transition Perspective · China’s Belt and Road Initiative and Infrastructure Development in Nigeria See More >> 专著 往期著作 >> 关于南海仲裁案裁决的法律批驳 ——“南海仲裁案裁决不是国际法” 2026-07-28 《世界百年变局和全球重塑格局——二战结束80周年的思考和展望》 2025-09-25 本书以“世界百年变局和全球重塑格局”为主题，系统分析了国际关系和全球发展的历史进程和未来趋势。作者从战争与和平、经济科技、文明互鉴、国际体系和未来方向五个方面展开讨论，结",
-      "links": [
-        {
-          "url": "https://www.siis.org.cn/jx/18349.jhtml",
-          "title": "长者风范和行者风格的追思——悼念董建华先生 9月8日，董建华先生逝世，消息传来，百感交集，往事历历在目，但"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18346.jhtml",
-          "title": "陈东晓院长会见巴基斯坦伊斯兰堡安全研究中心执行主任伊姆蒂亚兹·古尔 2026年9月21日下午，上海国际问题研究院院长陈东晓会见到访我院"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18344.jhtml",
-          "title": "发挥平台优势、赋能企业出海·上研院联合主办“十五五期间民营企业出海的地缘政治挑战研讨会” 9月17日，由上海国际问题研究院公共政策与创新研究所、上海未来"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18341.jhtml",
-          "title": "法国参议院财政委员会主席雷纳尔一行与上研院专家座谈 2026年9月17日上午，上海国际问题研究院院长陈东晓会见正在上海"
-        },
-        {
-          "url": "https://www.siis.org.cn/xwjj/index.jhtml",
-          "title": "学术动态"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18349.jhtml",
-          "title": "长者风范和行者风格的追思——悼念董建华先生"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18346.jhtml",
-          "title": "陈东晓院长会见巴基斯坦伊斯兰堡安全研究中心执行主任伊姆蒂亚兹·古尔"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18344.jhtml",
-          "title": "发挥平台优势、赋能企业出海·上研院联合主办“十五五期间民营企业出海的地缘政治挑战研讨会”"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18341.jhtml",
-          "title": "法国参议院财政委员会主席雷纳尔一行与上研院专家座谈"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18338.jhtml",
-          "title": "第二届中国—孟加拉国治国理政经验交流圆桌对话会在孟成功举办"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18336.jhtml",
-          "title": "巴基斯坦卡拉奇外交关系委员会(KCFR)智库代表团来访我院"
-        },
-        {
-          "url": "https://www.siis.org.cn/jx/18335.jhtml",
-          "title": "杨洁勉主任率团访问澳大利亚堪培拉"
-        },
-        {
-          "url": "https://www.siis.org.cn/yxzklt.jhtml",
-          "title": ""
-        },
-        {
-          "url": "https://www.siis.org.cn/mjlg/index.jhtml",
-          "title": ""
-        },
-        {
-          "url": "https://www.siis.org.cn/sp/index.jhtml",
-          "title": "更多 >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/sp/18347.jhtml",
-          "title": "李开盛在环球时报上撰文，谈发展是解决一切问题的总钥匙"
-        },
-        {
-          "url": "https://www.siis.org.cn/sp/18345.jhtml",
-          "title": "赵隆接受环球时报采访，谈冰岛说不，欧盟地缘政治转型降速"
-        },
-        {
-          "url": "https://www.siis.org.cn/sp/18340.jhtml",
-          "title": "刘宗义接受观察者网采访，谈观察新德里峰会，需先厘清两个关键事实"
-        },
-        {
-          "url": "https://www.siis.org.cn/sp/18339.jhtml",
-          "title": "赵隆接受凤凰卫视采访，谈俄乌试探性停火范围有限，双方仍缺乏互信"
-        },
-        {
-          "url": "https://www.siis.org.cn/lw/18202.jhtml",
-          "title": "全球治理倡议视域下中国海洋治理自主知识体系的构建与实践"
-        },
-        {
-          "url": "https://www.siis.org.cn/lw/18201.jhtml",
-          "title": "美国产业补贴对企业供应链韧性的影响"
-        },
-        {
-          "url": "https://www.siis.org.cn/lw/18200.jhtml",
-          "title": "人工智能驱动新质生产力发展研究——基于内在机理、全球比较与路径构建的分析"
-        },
-        {
-          "url": "https://www.siis.org.cn/lw/18198.jhtml",
-          "title": "美国对华技术封锁与中国企业人工智能创新"
-        },
-        {
-          "url": "https://www.siis.org.cn/lnnb/17948.jhtml",
-          "title": "上海国际问题研究院2025年年度报告"
-        },
-        {
-          "url": "https://www.siis.org.cn/lnnb/17189.jhtml",
-          "title": "上海国际问题研究院2024年年度报告"
-        },
-        {
-          "url": "https://www.siis.org.cn/lnnb/15723.jhtml",
-          "title": "上海国际问题研究院2023年年度报告"
-        },
-        {
-          "url": "https://www.siis.org.cn/lnnb/14890.jhtml",
-          "title": "上海国际问题研究院2021-2022年年度报告"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/index.jhtml",
-          "title": "更多 >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18331.jhtml",
-          "title": "推进建设性战略稳定关系：中美关系新使命"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18241.jhtml",
-          "title": "南海合作：中菲学者联合研究报告"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18229.jhtml",
-          "title": "全球治理倡议引领亚太共同体建设——2026年深圳APEC会议如何成为新的起点？"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18223.jhtml",
-          "title": "变局交织，安全何向?一一构建亚欧安全架构的中国视角"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18170.jhtml",
-          "title": "霸权委屈还是特权滥用——美国外部失衡的根源及其影响"
-        },
-        {
-          "url": "https://www.siis.org.cn/syybg1/18163.jhtml",
-          "title": "印度涉华舆论宣传战的历史根源与当代演进"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18312.jhtml",
-          "title": "“左右逢源”抑或“自主求生”：战争冲击下的海湾人工智能发展走向"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18236.jhtml",
-          "title": "如何防范人工智能“做错事”？"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18232.jhtml",
-          "title": "联合国难民署可能成为美国 “交易性霸权”的下一个牺牲品"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18205.jhtml",
-          "title": "多元化探索能否为海湾国家带来安全？"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18116.jhtml",
-          "title": "升级中非能源合作 助力非洲能源转型"
-        },
-        {
-          "url": "https://www.siis.org.cn/syygc/18060.jhtml",
-          "title": "以国际法保障霍尔木兹海峡船舶通行权"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/index.jhtml",
-          "title": "往期期刊 >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/index.jhtml",
-          "title": "2026年第5期"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/18296.jhtml",
-          "title": "目录"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/18297.jhtml",
-          "title": "“时代转折”下的欧洲一体化转型：特征、动因与前景"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/18298.jhtml",
-          "title": "日本“新型军国主义”的演进逻辑、现实载体及运行机理"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/18299.jhtml",
-          "title": "内陆政治经济学：中国式现代化内陆实践的实证研究"
-        },
-        {
-          "url": "https://www.siis.org.cn/2026nd5q/index.jhtml",
-          "title": "更多 >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/index.jhtml",
-          "title": "Winter 2023"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/16428.jhtml",
-          "title": "Explaining the Taliban’s Revival: Thomas Spragens’s Crisis Theory"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/16427.jhtml",
-          "title": "A World in Transition: Rethinking the Current Global Order"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/16426.jhtml",
-          "title": "U.S.–China Competition: A Power Transition Perspective"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/16425.jhtml",
-          "title": "China’s Belt and Road Initiative and Infrastructure Development in Nigeria"
-        },
-        {
-          "url": "https://www.siis.org.cn/Winter2023/index.jhtml",
-          "title": "See More >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/zz/index.jhtml",
-          "title": "往期著作 >>"
-        },
-        {
-          "url": "https://www.siis.org.cn/zz/18191.jhtml",
-          "title": "关于南海仲裁案裁决的法律批驳 ——“南海仲裁案裁决不是国际法”"
-        },
-        {
-          "url": "https://www.siis.org.cn/zz/17257.jhtml",
-          "title": "《世界百年变局和全球重塑格局——二战结束80周年的思考和展望》"
-        }
-      ],
-      "hash": "19072a7de9dfb664011b07d440a51bdeb18396dc505d04da6de8f15189884a39",
-      "source_id": "china-siis",
-      "discovery_url": "https://www.siis.org.cn/"
-    },
-    {
-      "url": "https://eisa-net.org/pec-2027/",
-      "text": "PEC 2027 | eisa-net.org HOME IMPORTANT DATES PROGRAMME AT A GLANCE SECTION CHAIRS Call for Section Proposals Regular Sections FAQ Standing Sections FAQ VENUE CONTACT 20th Pan-European Conference on International Relations University of Ljubljana, Slovenia We are pleased to invite you to the 20th EISA Pan-European Conference on International Relations (PEC), to be held at the University of Ljubljana, Slovenia, on 14-17 September 2027. This twentieth edition is a round anniversary for our association . Over the years, the conference has grown into the leading annual gathering for International Relations in Europe , while preserving its decentral and member-led character. We are proud of what our community has built together. Call for Section Proposals is OPEN Welcome We are pleased to invite you to the 20th EISA Pan-European Conference on International Relations (PEC), to be held at the University of Ljubljana, Slovenia, on 14-17 September 2027. This twentieth edition is a round anniversary for our association. Over the years, the conference has grown into the leading annual gathering for International Relations in Europe, while preserving its decentral and member-led character. We are proud of what our community has built together. The theme for PEC 2027, developed by Programme Chairs Eric Sangar and Katarina Kušić, asks participants to step back from discourses of urgency and examine time itself. How do we grasp time in the study and practice of international politics? To whom does it matter, and whose past, present or future gets fixed by the categories we use? And what is our scholarship for, if the conditions under which we produce it leave so little time to understand the world? A twentieth edition is a good moment for such questions, since an anniversary is itself a pause to take stock of where a community has been and where it is going. Ljubljana is a fitting place to ask these questions. In little more than a century, the city has been part of the Habsburg Empire, royal and socialist Yugoslavia, and, since 1991, independent Slovenia, since 2004 as member of the European Union. Each of these transitions brings its own account of past and future. Each of these transitions brings its own account of past and future. Much of today’s city is the work of the architect Jože Plečnik, whose interwar designs wove Roman remains, older streets and new public spaces into a single city, a reminder that past and future are always built on top of one another. The University of Ljubljana has also long connected scholarship from Central and Eastern Europe with the wider European IR community, not least through its Centre of International Relations, where the Journal of International Relations and Development has its home. As always, the conference will be organised in thematic sections, both standing and regular, and will welcome colleagues from the many traditions that make up international studies, from Europe and beyond. For the first time in PEC’s history, the Programme Chairs will curate their own thematic sections. Expect a diverse group of panels around questions of time and temporality, from memory and historicity to forecasting and futures. Plenary sessions will take up the theme with leading voices from the association, while the Early Career Development Group, social events and professional development activities will offer room to meet, learn and build networks. Although we won’t be able to fund all applicants, EISA’s Mobility Fund will again support colleagues in financial need, so that attending does not depend on the size of one’s travel budget. Over twenty editions, the Pan-European Conference has been a place where ideas are formulated, debated, criticised and sharpened in mutual respect. We hope you will join us in Ljubljana to celebrate that tradition, and to take the time to carry it forward on the banks of the Ljubljanica. Daniela Lai EISA President (2025-2027) Royal Holloway, University of London Katarina Kušić Programme Chair University of Rijeka Rens van Munster EISA Governing Board Liaison Danish Institute for International Studies Ana Bojinović Fenko Local Organiser University of Ljubljana Sibel Karadağ EISA Governing Board Liaison Kadir Has University Jure Požgan Local Organiser University of Ljubljana Eric Sangar Programme Chair Sciences Po Lille / CERAPS, University of Lille Conference Theme Time is of the Essence? The Temporal Fabric of the Practice and Study of International Relations Much of international politics, but also academic life itself, seems to unfold in a state of urgency. News are showing in real-time how human-made global heating and mass extinction are rapidly changing the planet, strategic analysts are warning about new and old rivalries, tech evangelists preach the catastrophic or redemptive impact of AI on social orders, even philosophers are thinking about acceleration as the basis of modern capitalism. They all seem to be screaming: Time is of the essence! For the 2027 PEC, we propose to take a step back and look at the (perceived) essence of time: not to perpetuate the narratives of crisis, but to examine how, to whom, and for what time is indeed essential in both the study and practice of international politics. Despite narratives of immediate crisis and breakdown, we therefore invite participants to take time to think about the multiple notions of time as the essence: in the ways we study international relations, but also in our own practices. …but how… IR scholars have considered the phenomenon of time with an impressive variety of concepts and methods. Both rationalist and reflectivist theoretical traditions consider the factor of time in one way or the other to understand the objects they study. Notions such as path-dependency, institutional culture, or critical archeology all imply that the passage of time has an objectifiable impact on the way actors interpret and act upon themselves and the external world. By contrast, the subjective or intersubjective dimension of time, although harder to operationalise, has been interpreted using concepts such as collective memory, historicity, or temporality. Time is examined on multiple scales—from the everyday politics of delays, crises, and promises that shape realities around the world, to the barely graspable notion of geologic time which casts human action into the planetary consequences of the Anthropocene. Time has also been analysed in terms of the objective and subjective dimensions of temporal stability and stasis, versus decay and acceleration. These various approaches suppose very different conceptions of the “essence” of time and how it matters in political practice and knowledge production. This forms the first basis of reflection we propose: how can we conceptually and methodologically grasp the essence of time? …to whom… Scholars have analysed how time plays a function in processes of othering: by casting the Other as their own past, both political actors and theoretical approaches to studying them bound together spatial and temporal hierarchies. Who  is perceived as “stuck in the past” and whose futures become the standard of political concepts and action are questions charged with power and inequality. Different understandings of time also legitimize some political and social orders and delegitimise others. Cyclical understandings can exclude the very possibility of progress and emancipation, while stadial narratives of history, baked into many theoretical and methodological assumptions of contemporary IR, legitimise power hierarchies and external intervention. Post -colonial, post -conflict, or post -socialist are not just analytical categories, but political projects that firmly draw the boundaries of possible action and thought. The temporal intersects with the material: whose temporal frameworks become institutionalized and whose urgency counts as legitimate are questions with profound consequences. We invite scholars to reflect on the ordering and hierarchising effects of temporal categories and concepts, in the practice of international politics and in our own theories and methodologies. How might scholars approach these without reproducing their constitutive inequalities? …and for what? This final line of inquiry points to the underlying purpose of IR scholarship and the temporal conditions of its production. Scholars across IR subfields such as environmental politics, peace and conflict studies, or technology, are dealing with an all-encompassing sense of urgency, threat, and even breakdown. At the same time, the temporal cycles of academic hiring, projects, teaching semesters, and publications are increasingly at odds with the need to adjust and reflect on changing conditions. In many ways, time—rather than (office) space or funding, has become the currency of academic competition and hierarchy. Academic systems and grant applications are increasingly configured around the “trading” of time: sacrificing current time for the hypothetical gaining of future time in the form of  teaching buy outs, sabbaticals, and administrative support. A chronological “lack of time” is often associated with peer recognition, while positions that provide the luxury of “having time to think” (and do research) have become markers of ultimate professional status. And importantly, the cycles of applications and short-term contracts form the material reality of still increasing precarious employment, adding to insecurity in both professional and personal lives. We invite scholars to reflect on their own strategies of using and living with or against time. Should we give up our sceptical distance towards forecasting the future and try to predict and actively shape it? Are there ways of challenging the temporal cycles of academic production that are incompatible with the need for profound reflection, but also political investments and personal lives? Does the answer lie in quick production with  the slight hope that a missing piece or a better argument will arrive “just in time” to make a change? Or should we brace ourselves by slowing down, taking stock, and saving our energy for whatever time holds for us? Important Dates  22 September 2026 Call for Section Proposals Open  9 November 2026 Call for S ection Proposals D eadline  9 December 2026 Abstract Submission Opens  16 February 2027 Abstract Submission Deadline  20 April 2027 Acceptance Emails Sent  20 April 2027 Registration Opens  20 May 2027 Registration Deadline for Participants in the Programme  8 June 2027 Registration Deadline for Participants Placed on the Reserve List  8 July 2027 Online Programme Published Conference Secretariat C-IN Prague Congress Centre 5. kvetna 65 140 21 Prague 4 Czech Republic Tel.: +420 296 219 600 Website: www.c-in.eu",
-      "links": [
-        {
-          "url": "https://eisa-net.org/pec-2027",
-          "title": "HOME"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027",
-          "title": "IMPORTANT DATES"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/programme-at-a-glance",
-          "title": "PROGRAMME AT A GLANCE"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/call-for-section-chairs",
-          "title": "Call for Section Proposals"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/regular-sections-faq",
-          "title": "Regular Sections FAQ"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/standing-sections-faq",
-          "title": "Standing Sections FAQ"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/venue",
-          "title": "VENUE"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/contacts",
-          "title": "CONTACT"
-        },
-        {
-          "url": "https://eisa-net.org/pec-2027/call-for-section-chairs",
-          "title": "Call for Section Proposals is OPEN"
-        }
-      ],
-      "hash": "ff8f936472f0bfcd007d6ee649a5953b17071f7e1e586c0ef5c4c0c826dd92e1",
-      "source_id": "eisa",
-      "discovery_url": "https://eisa-net.org/pec-2027/"
-    }
-  ]
+  }
 }
