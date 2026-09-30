@@ -167,6 +167,17 @@ class CollectionTests(unittest.TestCase):
     def test_actual_new_record_written_by_pipeline(self):
         self.run_fixture(failure=False)
 
+    def test_unexpected_error_updates_failure_status(self):
+        with tempfile.TemporaryDirectory() as folder:
+            status = Path(folder) / "status.json"
+            pipeline.atomic_json(status, {"status": "partial", "last_successful_collection": "previous-success"})
+            with patch.object(pipeline, "STATUS_PATH", status), patch.object(pipeline, "run", side_effect=TypeError("unexpected")), patch.object(sys, "argv", ["radar"]):
+                self.assertEqual(pipeline.main(), 1)
+            report = json.loads(status.read_text())
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["last_successful_collection"], "previous-success")
+            self.assertIn("TypeError", report["errors"][0])
+
     def run_fixture(self, failure):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
@@ -174,9 +185,9 @@ class CollectionTests(unittest.TestCase):
             radar.write_csv(db, radar.FIELDS, [{"机会名称": "Old", "原网页链接": "https://example.org/old", "发现日期": "2026-07-10", "最近核查日期": "2026-07-10"}])
             original = db.read_bytes()
             status = root / "status.json"
-            pipeline.atomic_json(status, {"last_successful_collection": "previous-success"})
+            pipeline.atomic_json(status, {"last_successful_collection": "previous-success", "sources": {"example": {"last_success": None}, "example2": {"last_success": None}}})
             sources = root / "sources.json"
-            pipeline.atomic_json(sources, [{"id": "example", "name": "Example", "url": URL, "domains": ["example.org"], "kind": "jobs"}])
+            pipeline.atomic_json(sources, [{"id": source_id, "name": "Example", "url": URL, "domains": ["example.org"], "kind": "jobs"} for source_id in ["example", "example2"]])
             fetched = page()
             fetched["links"] = [{"url": URL, "title": "Policy Analyst"}]
             fetcher = SimpleNamespace(fetch=lambda *args: copy.deepcopy(fetched))
