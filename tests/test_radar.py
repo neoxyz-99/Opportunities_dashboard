@@ -32,6 +32,34 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_missing_page_preserves_other_page_results(self):
+        missing = {**page(), "url": "https://example.org/missing"}
+        rows, rejected = pipeline.validate_batch(payload(), [page(), missing], "2026-09-30")
+        self.assertEqual(len(rows), 1)
+        self.assertIn(missing["url"], rejected)
+        self.assertNotIn(URL, rejected)
+
+    def test_duplicate_decision_is_not_cached_as_valid(self):
+        data = payload()
+        data["pages"].append(copy.deepcopy(data["pages"][0]))
+        rows, rejected = pipeline.validate_batch(data, [page()], "2026-09-30")
+        self.assertEqual(rows, [])
+        self.assertIn(URL, rejected)
+
+    def test_schema_requires_all_supplied_pages(self):
+        schema = pipeline.extraction_schema([URL, "https://example.org/second"])
+        self.assertEqual(schema["properties"]["pages"]["minItems"], 2)
+        self.assertEqual(schema["properties"]["pages"]["maxItems"], 2)
+
+    def test_policy_intern_ranks_above_senior_links(self):
+        links = [{"title": "Senior Climate Policy Lead", "url": "https://example.org/senior"},
+                 {"title": "Careers", "url": "https://example.org/careers"},
+                 {"title": "Restoration Finance & Policy Intern", "url": "https://example.org/intern"}]
+        self.assertEqual(pipeline.ranked_links(links, "jobs", {}, "2026-09-30")[0]["url"], links[2]["url"])
+
+    def test_publications_and_archives_do_not_fill_event_queue(self):
+        listing = {"url": URL, "links": [{"title": "Governance Conference", "url": "https://example.org/publication/governance"}, {"title": "Conference Archive", "url": "https://example.org/archive"}, {"title": "Call for Papers", "url": "https://example.org/cfp"}]}
+        self.assertEqual(len(pipeline.candidate_links(listing, "academic")), 1)
     def test_english_politics_and_governance_relevance(self):
         row = radar.normalize_row({"机会名称": "Political Science and International Relations Congress", "原网页链接": URL}, "2026-09-30")
         self.assertEqual(row["相关度"], "高")
@@ -78,10 +106,47 @@ class EligibilityTests(unittest.TestCase):
         self.assertEqual({c["source"]["kind"] for c in ordered[:3]}, {"jobs", "academic", "schools"})
         self.assertEqual(len(ordered), len(candidates))
 
+    def test_all_seven_opportunity_categories_get_a_turn(self):
+        kinds = ["jobs", "academic", "youth", "events", "fellowship", "scholarships", "schools"]
+        candidates = [{"url": f"{kind}/{i}", "source": {"id": kind, "kind": kind}}
+                      for kind in kinds for i in range(5)]
+        ordered = pipeline.balanced_candidates(candidates)
+        self.assertEqual([c["source"]["kind"] for c in ordered[:7]], kinds)
+
+    def test_scholarship_category_does_not_use_job_experience_exclusion(self):
+        item = opportunity()
+        item["group"] = "Scholarships"
+        quote = "Two years of professional experience required."
+        item["eligibility"] = [{"category": "experience", "status": "Required", "summary": "Two years required", "quote": quote, "url": URL, "min_years": 2}]
+        row = pipeline.validate_extraction(payload(item), [page(TEXT + quote)], "2026-09-30")[0]
+        self.assertEqual(row["机会类型分组"], "Scholarships")
+        self.assertFalse(row["排除原因"])
+        self.assertIn('data-filter-type="Scholarships"', dashboard.render_dashboard([row]))
+
+    def test_forums_and_youth_calls_are_discoverable(self):
+        listing = {"url": URL, "links": [
+            {"title": "Youth Forum Registration", "url": "https://example.org/forum"},
+            {"title": "Call for Panels 2027", "url": "https://example.org/panels"},
+            {"title": "Publications", "url": "https://example.org/publications"}]}
+        links = pipeline.candidate_links(listing, "youth")
+        self.assertEqual(len(links), 2)
+        self.assertEqual(pipeline.ranked_links(links, "youth", {}, "2026-09-30")[0]["url"], "https://example.org/forum")
+
+    def test_search_covers_more_than_recruitment(self):
+        prompt = pipeline.discovery_prompt([{"name": "IPPA", "kind": "academic"}, {"name": "UN Youth Office", "kind": "youth"}], "2026-09-30")
+        for text in ["CFPs", "youth participation", "fellowships", "schools", "IPPA", "UN Youth Office"]:
+            self.assertIn(text, prompt)
+
     def test_zero_experience_role_is_retained(self):
         row = pipeline.validate_extraction(payload(), [page()], "2026-09-30")[0]
         self.assertEqual(row["排除原因"], "")
         self.assertEqual(row["最近核查日期"], "2026-09-30")
+
+    def test_explicit_no_experience_is_valid_zero_without_year_word(self):
+        item = opportunity()
+        item["eligibility"][0]["min_years"] = 0
+        row = pipeline.validate_extraction(payload(item), [page()], "2026-09-30")[0]
+        self.assertEqual(row["排除原因"], "")
 
     def test_required_year_excluded_but_preferred_retained(self):
         for status, excluded in [("Required", True), ("Preferred", False)]:
@@ -194,7 +259,10 @@ class CollectionTests(unittest.TestCase):
             self.assertEqual(report["last_successful_collection"], "previous-success")
             self.assertIn("TypeError", report["errors"][0])
 
-    def run_fixture(self, failure):
+    def test_discovery_then_extraction_executes_without_real_model_calls(self):
+        self.run_fixture(failure=False, discovery=True)
+
+    def run_fixture(self, failure, discovery=False):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             db = root / "db.csv"
@@ -207,10 +275,11 @@ class CollectionTests(unittest.TestCase):
             fetched = page()
             fetched["links"] = [{"url": URL, "title": "Policy Analyst"}]
             fetcher = SimpleNamespace(fetch=lambda *args: copy.deepcopy(fetched))
-            args = argparse.Namespace(probe=False, limit_sources=0, no_discovery=True, mode="weekly")
-            with patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": "", "GITHUB_OUTPUT": ""}), patch.object(radar, "DB_PATH", db), patch.object(radar, "PROJECT_DIR", root), patch.object(radar, "OUTPUT_DIR", root / "emails"), patch.object(pipeline, "STATUS_PATH", status), patch.object(pipeline, "CACHE_PATH", root / "cache.json"), patch.object(pipeline, "SOURCES_PATH", sources), patch.object(pipeline, "extract_pages", side_effect=ValueError("bad JSON") if failure else None, return_value=payload()):
+            args = argparse.Namespace(probe=False, limit_sources=0, no_discovery=not discovery, mode="weekly")
+            with patch.dict(os.environ, {"GITHUB_STEP_SUMMARY": "", "GITHUB_OUTPUT": ""}), patch.object(radar, "DB_PATH", db), patch.object(radar, "PROJECT_DIR", root), patch.object(radar, "OUTPUT_DIR", root / "emails"), patch.object(pipeline, "STATUS_PATH", status), patch.object(pipeline, "CACHE_PATH", root / "cache.json"), patch.object(pipeline, "SOURCES_PATH", sources), patch.object(pipeline, "indexed_discovery", return_value=([], {"status": "checked"})), patch.object(pipeline, "extract_pages", side_effect=ValueError("bad JSON") if failure else None, return_value=payload()):
                 code = pipeline.run(args, client=object(), fetcher=fetcher)
             report = json.loads(status.read_text())
+            self.assertIn("last_attempt", json.loads((root / "cache.json").read_text())["pages"][URL])
             if failure:
                 self.assertEqual(code, 1)
                 self.assertEqual(db.read_bytes(), original)
@@ -232,6 +301,8 @@ class CollectionTests(unittest.TestCase):
         self.assertNotIn('const todayKey = "', result)
         self.assertNotIn("</script><script>alert(1)</script>", result)
         self.assertIn("opportunityRadarArchived", result)
+        self.assertNotIn('<details class="collection-health">', result)
+        self.assertNotIn("HTTPError:", result)
 
 
 if __name__ == "__main__":
