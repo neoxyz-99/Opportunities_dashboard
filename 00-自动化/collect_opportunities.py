@@ -154,6 +154,7 @@ OPPORTUNITY_GROUPS = [
     "会议",
     "学术论坛/CFP",
     "Fellowship",
+    "Scholarships",
     "Internship",
     "Early-career Jobs",
     "青年项目",
@@ -415,6 +416,8 @@ def infer_opportunity_group(row: dict[str, str]) -> str:
         return "Fellowship"
     if "cfp" in text or "call for papers" in text or "投稿" in text or "学术年会" in text or "conference" in text and "academic" in text:
         return "学术论坛/CFP"
+    if "scholarship" in text or "奖学金" in text:
+        return "Scholarships"
     if "youth" in text or "青年" in text:
         return "青年项目"
     if "policy school" in text or "summer school" in text or "winter school" in text or "training" in text:

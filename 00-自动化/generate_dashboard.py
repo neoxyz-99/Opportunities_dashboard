@@ -21,6 +21,7 @@ DISPLAY_LABELS = {
     "会议": "Conferences",
     "学术论坛/CFP": "Academic",
     "Fellowship": "Fellowship",
+    "Scholarships": "Scholarships",
     "Internship": "Internship",
     "Early-career Jobs": "Early-career Jobs",
     "青年项目": "Youth",
@@ -129,13 +130,6 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     health = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
     last_success = health.get("last_successful_collection") or "Not yet verified"
     collection_label = {"success": "Sources checked", "partial": "Partial coverage", "failed": "Collection failed"}.get(health.get("status"), "Collection not verified")
-    source_details = "".join(
-        f'<li><a href="{html.escape(source.get("url", ""))}" target="_blank" rel="noreferrer">{html.escape(source.get("name", source_id))}</a>: {html.escape(source.get("status", "Not checked"))}'
-        f'{" · " + html.escape(source["error"]) if source.get("error") else ""}</li>'
-        for source_id, source in health.get("sources", {}).items()
-    )
-    source_details = source_details or "<li>No verified collection report is available.</li>"
-    source_details += "".join(f"<li>{html.escape(error)}</li>" for error in health.get("errors", []))
     type_buttons = "".join(
         f'<button class="filter-button" data-filter-type="{html.escape(group)}">{html.escape(display_label(group))}</button>'
         for group in ["全部"] + radar.OPPORTUNITY_GROUPS
@@ -201,9 +195,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     h1 {{ margin: 0; font-size: 44px; letter-spacing: 0; line-height: 1.12; font-weight: 720; }}
     .meta {{ color: var(--muted); font-size: 13px; text-align: right; }}
     .collection-health {{ margin: 10px 0 18px; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }}
-    .collection-health summary {{ cursor: pointer; color: var(--text); padding: 8px 0; }}
-    .collection-health li {{ margin: 7px 0; }}
-    .collection-health a, .eligibility a {{ color: var(--accent); }}
+    .eligibility a {{ color: var(--accent); }}
     .eligibility {{ padding-top: 18px; }}
     .eligibility h2 {{ font-size: 16px; margin: 0 0 10px; }}
     .eligibility ul, .field ul {{ margin: 5px 0; padding-left: 20px; }}
@@ -328,7 +320,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
       <div class="meta">Last successful collection: <time data-date="{html.escape(last_success)}">{html.escape(last_success)}</time><br>Page generated: <time data-date="{html.escape(datetime.now(timezone.utc).isoformat())}">{html.escape(generated_at)}</time></div>
     </header>
 
-    <details class="collection-health"><summary>{html.escape(collection_label)} · {health.get('new_count', 0)} new in last attempt</summary><ul>{source_details}</ul></details>
+    <p class="collection-health" role="status">{html.escape(collection_label)} · {health.get('new_count', 0)} new in last attempt</p>
 
     <section class="stats" id="stats"></section>
 

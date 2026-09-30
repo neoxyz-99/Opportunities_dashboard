@@ -40,6 +40,10 @@ def validate_facts(facts: list[dict], documents: dict[str, str]) -> list[dict]:
             raise ValueError("An eligibility fact needs an English summary")
         years = fact.get("min_years") if category == "experience" else None
         if years is not None:
+            explicit_zero = years == 0 and bool(re.search(r"no (?:prior |previous |professional |work )?experience.*required|experience (?:is )?not required|无需.*经验|经验不限", quote, re.I))
+            if explicit_zero:
+                validated.append({**fact, "min_years": 0})
+                continue
             if category != "experience" or years < 0 or not re.search(r"\byears?\b|年", quote, re.I):
                 raise ValueError("Unsupported minimum experience")
             words = {0: "zero", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
