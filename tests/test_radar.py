@@ -32,6 +32,32 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_official_alternative_retains_failed_entry_evidence(self):
+        fetcher = SimpleNamespace(fetch=lambda url, domains, render: page())
+        with patch.object(fetcher, "fetch", side_effect=[ValueError("403 Forbidden"), page()]):
+            document, attempts = pipeline.fetch_listing(fetcher, {"url": URL, "fallback_urls": ["https://example.org/alternate"], "domains": ["example.org"]})
+        self.assertEqual(document["url"], URL)
+        self.assertEqual([a["status"] for a in attempts], ["failed", "readable"])
+        self.assertIn("403 Forbidden", attempts[0]["error"])
+
+    def test_source_fallback_still_uses_domain_and_robots_enforcement(self):
+        fetcher = SimpleNamespace(fetch=lambda *args: (_ for _ in ()).throw(ValueError("robots.txt disallows this source")))
+        with self.assertRaisesRegex(ValueError, "robots.txt disallows"):
+            pipeline.fetch_listing(fetcher, {"url": URL, "fallback_urls": ["https://example.org/feed"], "domains": ["example.org"]})
+
+    def test_sei_job_paths_survive_people_directory_filter(self):
+        listing = {"url": URL, "links": [
+            {"title": "Research internship opportunities", "url": "https://sei.org/people/jobs/internships-africa"},
+            {"title": "Policy researcher", "url": "https://sei.org/people/researcher"},
+            {"title": "Recruitment process", "url": "https://sei.org/people/jobs/recruitment-process"}]}
+        self.assertEqual([l["url"] for l in pipeline.candidate_links(listing, "jobs")], [listing["links"][0]["url"]])
+
+    def test_un_youth_source_cannot_accidentally_add_un_internship(self):
+        item = opportunity()
+        item["group"] = "Internship"
+        document = {**page(TEXT + " Internship"), "source_id": "un-youth"}
+        self.assertEqual(pipeline.validate_extraction(payload(item), [document], "2026-09-30"), [])
+
     def test_missing_page_preserves_other_page_results(self):
         missing = {**page(), "url": "https://example.org/missing"}
         rows, rejected = pipeline.validate_batch(payload(), [page(), missing], "2026-09-30")
