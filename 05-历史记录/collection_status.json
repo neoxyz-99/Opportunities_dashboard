@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "attempted_at": "2026-09-28T06:36:58Z",
+  "last_successful_collection": null,
+  "status": "failed",
+  "new_count": 0,
+  "updated_count": 0,
+  "sources": {},
+  "errors": ["Previous collector reported no valid linked opportunities but exited successfully. The 102 legacy records have not been reverified."],
+  "model_calls": 0,
+  "pending_pages": 0,
+  "probe_only": false
+}
