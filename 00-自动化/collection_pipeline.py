@@ -260,6 +260,25 @@ If essential qualifications are in an unread linked PDF, do not assume they are 
     return response_json(response, radar.PROJECT_DIR / "05-历史记录/last_extraction_error.json")
 
 
+def deadline_evidence(deadline: str, quote: str, text: str) -> str:
+    date_value = datetime.strptime(deadline, "%Y-%m-%d")
+    month, abbreviated = date_value.strftime("%B"), date_value.strftime("%b")
+    patterns = [deadline, f"{date_value.day} {month} {date_value.year}", f"{month} {date_value.day}, {date_value.year}", f"{date_value.day} {abbreviated} {date_value.year}", f"{abbreviated} {date_value.day}, {date_value.year}"]
+    if compact(quote) and compact(quote) in compact(text) and any(compact(pattern) in compact(quote) for pattern in patterns):
+        return quote
+    source = re.sub(r"\s+", " ", text).strip()
+    for pattern in patterns:
+        for match in re.finditer(re.escape(pattern), source, re.I):
+            after = source[match.end():match.end() + 120]
+            next_date = re.search(r"\b\d{1,2} [A-Za-z]+ \d{4}\b|\d{4}-\d{2}-\d{2}", after)
+            if next_date:
+                after = after[:next_date.start()]
+            before = source[max(0, match.start() - 80):match.start()]
+            if "deadline" in re.sub(r"\s+", "", after).casefold() or re.search(r"deadline\s*(?::|on|is|by)?\s*$", before, re.I):
+                return source[max(0, match.start() - 30):match.end() + len(after)].strip()
+    raise ValueError("Deadline lacks matching source evidence")
+
+
 def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]:
     documents = {p["url"]: p["text"][:18000] for p in pages}
     decisions = data.get("pages", [])
@@ -276,15 +295,11 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
         for item in decision["opportunities"]:
             deadline = item.get("deadline", "")
             if deadline and deadline != "Rolling":
-                date_value = datetime.strptime(deadline, "%Y-%m-%d")
+                datetime.strptime(deadline, "%Y-%m-%d")
                 if deadline < today:
                     continue
                 quote = item.get("deadline_quote", "")
-                month = date_value.strftime("%B")
-                abbreviated = date_value.strftime("%b")
-                patterns = [deadline, f"{date_value.day} {month} {date_value.year}", f"{month} {date_value.day}, {date_value.year}", f"{date_value.day} {abbreviated} {date_value.year}", f"{abbreviated} {date_value.day}, {date_value.year}"]
-                if not compact(quote) or compact(quote) not in compact(documents[page["url"]]) or not any(compact(pattern) in compact(quote) for pattern in patterns):
-                    raise ValueError("Deadline lacks matching source evidence")
+                item["deadline_quote"] = deadline_evidence(deadline, quote, documents[page["url"]])
             elif deadline == "Rolling":
                 quote = item.get("deadline_quote", "")
                 if not compact(quote) or compact(quote) not in compact(documents[page["url"]]) or not re.search(r"rolling|year.round|throughout the year|全年|滚动", quote, re.I):
