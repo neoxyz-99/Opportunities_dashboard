@@ -1,0 +1,260 @@
+{
+  "error": "Extraction failed: ValueError: Unsupported minimum experience",
+  "page_urls": [
+    "https://www.isanet.org/Conferences/ISA2022",
+    "https://www.brookings.edu/careers/internships/",
+    "https://eisa-net.org/pec-2027/"
+  ],
+  "response": {
+    "pages": [
+      {
+        "url": "https://www.isanet.org/Conferences/ISA2022",
+        "reason": "The ISA Annual Convention 2022 event is closed and the page is archived only; no current open opportunities are available.",
+        "opportunities": []
+      },
+      {
+        "url": "https://www.brookings.edu/careers/internships/",
+        "reason": "Current internships with clear application deadlines and program dates are openly detailed for Fall 2026 cohort.",
+        "opportunities": [
+          {
+            "title": "Fall 2026 Internship Program",
+            "host": "Brookings Institution",
+            "group": "Internship",
+            "topic": "国际关系/政治学",
+            "tags": "Governance, Foreign Policy, Economic Studies, Global Economy and Development, Brookings Metro",
+            "deadline": "2026-06-14",
+            "dates": "2026-09-08 to 2026-11-20 or 2026-12-11",
+            "location": "Washington, D.C., USA",
+            "source_url": "https://www.brookings.edu/careers/internships/",
+            "apply_url": "https://careers-brookings.icims.com/jobs/search?ss=1&hashed=-435682078",
+            "batch": "Fall 2026",
+            "materials": [
+              "Resume",
+              "Cover Letter",
+              "Transcript"
+            ],
+            "function": "Research and program support in policy-relevant areas including governance, foreign policy, development, and economic studies.",
+            "judgment": "Suitable for degree-seeking students and recent graduates; professional development and meaningful policy-related experience.",
+            "relevant_duties": true,
+            "specialized_duties": true,
+            "senior_role": false,
+            "scope_quote": "Internships are available in research programs and business units aligned with governance, economic, and foreign policy studies.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "citizenship",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "residency",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "work_authorization",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "visa_sponsorship",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "opt_cpt",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "student_graduation",
+                "status": "Required",
+                "summary": "Degree-seeking students and recent graduates eligible.",
+                "quote": "paid internships to nearly 150 degree-seeking students, and occasionally to recent graduates",
+                "url": "https://www.brookings.edu/careers/internships/",
+                "min_years": 0
+              },
+              {
+                "category": "education",
+                "status": "Required",
+                "summary": "Applicants must be degree-seeking students or recent graduates.",
+                "quote": "degree-seeking students, and occasionally to recent graduates",
+                "url": "https://www.brookings.edu/careers/internships/",
+                "min_years": 0
+              },
+              {
+                "category": "experience",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "language",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "party_membership",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "school_restrictions",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://eisa-net.org/pec-2027/",
+        "reason": "This page is a call for section proposals for the 20th EISA Pan-European Conference on International Relations in 2027; the conference is upcoming and open for abstract submissions starting December 2026.",
+        "opportunities": [
+          {
+            "title": "20th EISA Pan-European Conference on International Relations (PEC) 2027 - Call for Section Proposals and Abstracts",
+            "host": "EISA - European International Studies Association",
+            "group": "会议",
+            "topic": "国际关系/政治学",
+            "tags": "International Relations, Political Science, European IR Community, Temporal Studies, Policy and Governance",
+            "deadline": "2027-02-16",
+            "dates": "2027-09-14 to 2027-09-17",
+            "location": "University of Ljubljana, Slovenia",
+            "source_url": "https://eisa-net.org/pec-2027/",
+            "apply_url": "https://eisa-net.org/pec-2027/",
+            "batch": "2027",
+            "materials": [
+              "Proposal Submission",
+              "Abstract Submission"
+            ],
+            "function": "Scholarly exchange on international relations focusing on temporality, policy, governance, international cooperation, and related fields.",
+            "judgment": "Open to researchers and practitioners in international relations and related disciplines interested in interdisciplinary discussions; professional development opportunities for early career scholars.",
+            "relevant_duties": true,
+            "specialized_duties": true,
+            "senior_role": false,
+            "scope_quote": "The conference invites panels and sections addressing international relations, including policy and governance questions, under the theme of time and temporality.",
+            "risk_note": "",
+            "risk_quote": "",
+            "eligibility": [
+              {
+                "category": "citizenship",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "residency",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "work_authorization",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "visa_sponsorship",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "opt_cpt",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "student_graduation",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "education",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "experience",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "language",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "party_membership",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              },
+              {
+                "category": "school_restrictions",
+                "status": "Not stated",
+                "summary": "",
+                "quote": "",
+                "url": "",
+                "min_years": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

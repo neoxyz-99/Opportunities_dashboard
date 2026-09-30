@@ -1,0 +1,19 @@
+{
+  "pages": {
+    "https://www.wri.org/join-us?utm_source=openai": {
+      "hash": "65bae96e59a8abdd53e72efad106fdcc0d9b02497bc3af4bddf0541b1faadadc",
+      "validated": true,
+      "checked_at": "2026-09-30T14:48:13.421404+00:00"
+    },
+    "https://www.isanet.org/Conferences/ISA2026/Call": {
+      "hash": "55e5f9e25c4b0a203b6656a0205800cf3bc747f80862e7f8397c95ad103b93e5",
+      "validated": true,
+      "checked_at": "2026-09-30T14:48:13.421404+00:00"
+    },
+    "https://www.worldbank.org/en/events/all": {
+      "hash": "8ae691848d07ffe2487b3221e27b05251b74cb022d113dc12c9253b056ac15a0",
+      "validated": true,
+      "checked_at": "2026-09-30T14:48:13.421404+00:00"
+    }
+  }
+}
