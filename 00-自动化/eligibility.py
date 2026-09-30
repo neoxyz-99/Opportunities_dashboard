@@ -15,7 +15,8 @@ CATEGORIES = {
     "education": "Education / discipline",
     "experience": "Work experience",
     "language": "Languages",
-    "party_membership": "Party membership",
+    "institution_membership": "Institution / academic association membership",
+    "party_membership": "Political party membership",
     "school_restrictions": "School restrictions (985 / 211 / Double First-Class)",
 }
 
@@ -38,6 +39,8 @@ def validate_facts(facts: list[dict], documents: dict[str, str]) -> list[dict]:
             raise ValueError(f"Unsupported eligibility evidence: {category}")
         if not fact.get("summary"):
             raise ValueError("An eligibility fact needs an English summary")
+        if category == "party_membership" and not re.search(r"共产党|党员|\bCCP\b|\bCPC\b|communist party|political party", quote, re.I):
+            raise ValueError("Academic association membership is not political party membership")
         years = fact.get("min_years") if category == "experience" else None
         if years is not None:
             explicit_zero = years == 0 and bool(re.search(r"no (?:prior |previous |professional |work )?experience.*required|experience (?:is )?not required|无需.*经验|经验不限", quote, re.I))

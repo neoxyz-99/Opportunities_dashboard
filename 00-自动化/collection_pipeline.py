@@ -147,6 +147,8 @@ class Fetcher:
         body, final_url, media = self.get(url)
         if not is_allowed(final_url, domains):
             raise ValueError("Redirect outside registered domains")
+        if re.search(r"/(?:404|not-found)(?:[./?]|$)", urlsplit(final_url).path, re.I):
+            raise ValueError("Source redirected to an error page, not an opportunity listing")
         links = []
         if render and media != "application/pdf" and not urlsplit(final_url).path.lower().endswith(".pdf"):
             body = self.rendered_html(final_url, domains)
@@ -155,6 +157,8 @@ class Fetcher:
             text = "\n".join(page.extract_text() or "" for page in PdfReader(BytesIO(body)).pages[:20])
         else:
             soup = BeautifulSoup(body, "html.parser")
+            if soup.title and re.search(r"page not found|404.*not found", soup.title.get_text(" ", strip=True), re.I):
+                raise ValueError("Source returned an error page with HTTP 200")
             for element in soup(["script", "style", "nav", "footer", "header", "noscript"]):
                 element.decompose()
             for anchor in soup.select("a[href]"):
@@ -173,7 +177,7 @@ def candidate_links(page: dict, kind: str) -> list[dict]:
     for link in page["links"]:
         if link["url"] in seen or not LINK_WORDS.search(link["title"] + " " + urlsplit(link["url"]).path):
             continue
-        if re.search(r"privacy|cookie|login|sign.in|contact|donat|alumni|our.people|/archive(?:/|$)|/publications?/|/books?/|/people/(?!jobs/)|recruitment-process|terms.?and.?conditions|/MyECPR/|register-your-interest|scroll_to=", link["url"], re.I):
+        if re.search(r"privacy|cookie|login|sign.in|contact|donat|alumni|our.people|/archive(?:/|$)|/publications?/|[-/]publications(?:/|$)|/books?/|/people/(?!jobs/)|recruitment-process|terms.?and.?conditions|/MyECPR/|register-your-interest|scroll_to=", link["url"], re.I):
             continue
         seen.add(link["url"])
         found.append(link)
@@ -277,15 +281,20 @@ Different submission phases with different deadlines are separate opportunities,
 For a future opening, clearly state the opening date in judgment; do not imply applications are already open.
 Batch: explicit cycle/year/cohort/job requisition ID only; otherwise blank. Never substitute today's year.
 Source and application URLs must be URLs actually supplied in the document or its links.
+source_url MUST equal this page decision's supplied URL exactly, including its query string and trailing slash. Do not substitute a linked parent or application page.
+apply_url MUST be a supplied HTTPS URL or an empty string. Never put application instructions, email addresses or prose in apply_url.
 For every eligibility category distinguish Required, Preferred and Not stated; quote exact source text and source URL for every stated fact.
 Citizenship, residency, work authorization, sponsorship, OPT/CPT and student status are different requirements.
 US location does NOT imply US citizenship. No sponsorship does NOT imply OPT/CPT excluded.
 For China capture CCP membership and 985/211/Double First-Class/named-school restrictions only if expressly stated.
+Use institution_membership for EISA/ECPR or other academic association/institution membership. This is NOT party_membership and is NOT residency.
+party_membership is only an explicitly stated political party requirement, such as CCP/CPC membership. Do not treat a scholarly society as a political party.
 Experience min_years is the minimum explicitly in the experience quote, including 0 in 0-2 years. Preferred experience does not become required.
 For Not stated use empty summary/quote/url and null min_years. min_years MUST be null outside the experience category.
 Never assess a person's immigration status or personal political identity. Every quote must be verbatim, not a paraphrase.
 Scope_quote must be exact source evidence for actual job duties. Risk_note is only for an explicit sensitive duty/frame in risk_quote, not a judgment about a host or its nationality.
 Use short contiguous evidence quotes, copied exactly, without ellipses, reordered fragments or summaries.
+Never add quotation marks to scope_quote unless those marks occur in the supplied text. If years of work experience are not explicitly stated, min_years must be null, not zero.
 If essential qualifications are in an unread linked PDF, do not assume they are absent; explain the limitation in reason.
 """ + "\nToday's date (UTC): " + datetime.now(UTC).date().isoformat() + "\n" + json.dumps(documents, ensure_ascii=False)
     response = client.responses.create(
