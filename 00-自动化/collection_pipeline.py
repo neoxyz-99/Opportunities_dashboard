@@ -365,6 +365,24 @@ def health_outcome(sources: dict, pending: int, extraction_errors: list[str]) ->
     return "success"
 
 
+def balanced_candidates(candidates: list[dict]) -> list[dict]:
+    groups = {}
+    for candidate in candidates:
+        groups.setdefault(candidate["source"]["kind"], {}).setdefault(candidate["source"]["id"], []).append(candidate)
+    result = []
+    while groups:
+        for kind in list(groups):
+            sources = groups[kind]
+            source_id = next(iter(sources))
+            queue = sources.pop(source_id)
+            result.append(queue.pop(0))
+            if queue:
+                sources[source_id] = queue
+            if not sources:
+                del groups[kind]
+    return result
+
+
 def run(args, client=None, fetcher=None) -> int:
     radar.load_env(radar.API_ENV_PATH)
     now = datetime.now(UTC).isoformat()
@@ -396,8 +414,8 @@ def run(args, client=None, fetcher=None) -> int:
                 result["error"] = "No opportunity links or explicit empty-state evidence; needs source adapter review"
             else:
                 result["status"] = "pending"
-            all_candidates.append({"url": listing["url"], "source": source, "page": listing})
             all_candidates.extend({"url": link["url"], "source": source} for link in links[:3])
+            all_candidates.append({"url": listing["url"], "source": source, "page": listing})
         except Exception as exc:
             result["error"] = f"{type(exc).__name__}: {str(exc)[:240]}"
         print(f"Source {source['id']}: {result['status']}, {result['candidates']} candidate links")
@@ -426,7 +444,7 @@ def run(args, client=None, fetcher=None) -> int:
         except Exception as exc:
             report["errors"].append(f"Indexed discovery failed: {type(exc).__name__}: {str(exc)[:180]}")
     pending, seen = [], set()
-    for candidate in all_candidates:
+    for candidate in balanced_candidates(all_candidates):
         source = candidate["source"]
         if candidate["url"] in seen:
             continue

@@ -262,7 +262,7 @@ def render_dashboard(rows: list[dict[str, str]]) -> str:
     }}
     .filter-button.active {{ background: rgba(29,29,31,.88); color: #fff; border-color: rgba(0,0,0,.08); }}
     .content {{ margin-top: 18px; }}
-    .list {{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; }}
+    .list {{ display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px; align-items: start; }}
     .card {{
       background: linear-gradient(150deg, rgba(255,255,255,.76), rgba(255,255,255,.50));
       border: 1px solid rgba(255,255,255,.82);
