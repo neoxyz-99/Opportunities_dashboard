@@ -632,6 +632,8 @@ def normalize_row(raw: dict, today: str, verified: bool = False) -> dict[str, st
     if verified:
         row["最近核查日期"] = today
     row["机会类型分组"] = row.get("机会类型分组") if row.get("机会类型分组") in OPPORTUNITY_GROUPS else infer_opportunity_group(row)
+    if row["机会类型分组"] == "会议" and re.search(r"call for .*?(?:papers|panels|sections|section proposals|proposals)|\bcfp\b|征文|投稿", row.get("机会名称", ""), re.I):
+        row["机会类型分组"] = "学术论坛/CFP"
     row["主题分区"] = row.get("主题分区") if row.get("主题分区") in TOPIC_SECTIONS else infer_topic_section(row)
     row["岗位类型"] = row.get("岗位类型") or infer_job_type(row)
     row["岗位职能"] = row.get("岗位职能") or infer_job_function(row)
