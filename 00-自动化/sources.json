@@ -38,5 +38,13 @@
   {"id":"mgcy-youth","name":"Major Group for Children and Youth participation calls","url":"https://www.unmgcy.org/","kind":"youth","domains":["unmgcy.org"],"link_pattern":"/(?:main-news-updates|opportunities)/"},
   {"id":"unfccc-events","name":"UNFCCC public events","url":"https://unfccc.int/calendar","kind":"events","domains":["unfccc.int"]},
   {"id":"ford","name":"Ford Foundation opportunities","url":"https://www.fordfoundation.org/about/people/careers/","kind":"jobs","domains":["fordfoundation.org"]},
-  {"id":"rockefeller","name":"Rockefeller Foundation","url":"https://www.rockefellerfoundation.org/careers/","kind":"jobs","domains":["rockefellerfoundation.org"]}
+  {"id":"rockefeller","name":"Rockefeller Foundation","url":"https://www.rockefellerfoundation.org/careers/","kind":"jobs","domains":["rockefellerfoundation.org"]},
+  {"id":"bisa","name":"British International Studies Association calls and conference","url":"https://www.bisa.ac.uk/news","kind":"academic","domains":["bisa.ac.uk"],"entry_urls":["https://conference.bisa.ac.uk/call-papers"],"max_links":8},
+  {"id":"apsa","name":"American Political Science Association Annual Meeting","url":"https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/","kind":"academic","domains":["apsanet.org"],"listing_first":true,"max_links":4},
+  {"id":"ipsa-congress","name":"IPSA World Congress submissions and travel grants","url":"https://www.ipsa.org/wc/home","kind":"academic","domains":["ipsa.org"],"entry_urls":["https://wc2027.ipsa.org/resources/ipsa-awards"],"max_links":6},
+  {"id":"acuns","name":"Academic Council on the United Nations System workshops and meetings","url":"https://acuns.org/","kind":"academic","domains":["acuns.org"],"entry_urls":["https://acuns.org/annual-meetings/"],"max_links":6},
+  {"id":"ssrc","name":"Social Science Research Council fellowships and grants","url":"https://www.ssrc.org/how-we-work/fellowship-and-grants-administration/","kind":"fellowship","domains":["ssrc.org"],"max_links":8},
+  {"id":"iias","name":"International Institute for Asian Studies fellowships","url":"https://www.iias.asia/fellowships-homepage","kind":"fellowship","domains":["iias.asia"],"entry_urls":["https://www.iias.asia/fellowships/asia-in-the-world"],"max_links":6},
+  {"id":"unfccc-fellowships","name":"UNFCCC - UNU Early Career Climate Fellowship","url":"https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme","fallback_urls":["https://unfccc.int/secretariat/employment/fellowship.html"],"kind":"fellowship","domains":["unu.edu","unfccc.int"],"listing_first":true,"max_links":4},
+  {"id":"worldbank-youth","name":"World Bank Youth Summit participation","url":"https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age","kind":"youth","domains":["worldbank.org"],"listing_first":true,"max_links":4}
 ]

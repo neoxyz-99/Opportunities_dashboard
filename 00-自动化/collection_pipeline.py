@@ -29,7 +29,7 @@ STATUS_PATH = radar.PROJECT_DIR / "05-历史记录/collection_status.json"
 CACHE_PATH = radar.PROJECT_DIR / "05-历史记录/collection_cache.json"
 SOURCES_PATH = Path(__file__).with_name("sources.json")
 AGENT = "OpportunityRadar/2.0 (+https://github.com/neoxyz-99/Opportunities_dashboard)"
-LINK_WORDS = re.compile(r"intern|policy|research|junior|graduate|trainee|coordina|fellow|scholarship|funding|stipendium|call for|conference|congress|workshop|forum|symposium|youth|young|summer school|winter school|policy school|registration|vacanc|openings|job|招聘|招募|实习|征文|年会|论坛|奖学金", re.I)
+LINK_WORDS = re.compile(r"intern|policy|research|junior|graduate|trainee|coordina|fellow|scholarship|funding|bursar|travel.grant|stipendium|call for|abstract|proposal|conference|congress|workshop|forum|symposium|youth|young|summer school|winter school|policy school|registration|vacanc|openings|job|招聘|招募|实习|征文|年会|论坛|奖学金", re.I)
 EMPTY_WORDS = re.compile(r"no (?:current |open |available )?(?:vacancies|positions|openings|jobs)|currently no|暂无.*(?:职位|招聘)", re.I)
 UTC = timezone.utc
 
@@ -173,7 +173,7 @@ class Fetcher:
 
 def candidate_links(page: dict, kind: str) -> list[dict]:
     found = []
-    seen = {page["url"]}
+    seen = {radar.normalize_url(page["url"])}
     for link in page["links"]:
         if link["url"] in seen or not LINK_WORDS.search(link["title"] + " " + urlsplit(link["url"]).path):
             continue
@@ -214,7 +214,7 @@ def ranked_links(links: list[dict], kind: str, cache: dict, today: str) -> list[
     return sorted(links, key=score)
 
 
-def extraction_schema(urls: list[str] | None = None) -> dict:
+def extraction_schema(urls: list[str] | None = None, application_urls: list[str] | None = None) -> dict:
     def obj(properties):
         return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
     string = {"type": "string"}
@@ -241,7 +241,11 @@ def extraction_schema(urls: list[str] | None = None) -> dict:
     pages = {"type": "array", "items": page}
     if urls:
         page["properties"]["url"] = {"type": "string", "enum": urls}
+        opportunity["properties"]["source_url"] = {"type": "string", "enum": urls}
+        fact["properties"]["url"] = {"type": "string", "enum": [""] + urls}
         pages.update(minItems=len(urls), maxItems=len(urls))
+    if application_urls is not None:
+        opportunity["properties"]["apply_url"] = {"type": "string", "enum": list(dict.fromkeys([""] + application_urls))}
     return obj({"pages": pages})
 
 
@@ -300,7 +304,10 @@ If essential qualifications are in an unread linked PDF, do not assume they are 
     response = client.responses.create(
         model=os.environ.get("OPENAI_MODEL", "gpt-4.1-mini"),
         input=prompt, store=False, max_output_tokens=7000,
-        text={"format": {"type": "json_schema", "name": "verified_opportunities", "strict": True, "schema": extraction_schema([page["url"] for page in pages])}},
+        text={"format": {"type": "json_schema", "name": "verified_opportunities", "strict": True, "schema": extraction_schema(
+            [page["url"] for page in pages],
+            [document["url"] for document in documents] + [link["url"] for document in documents for link in document["links"]],
+        )}},
     )
     return response_json(response, radar.PROJECT_DIR / "05-历史记录/last_extraction_error.json")
 
@@ -365,7 +372,7 @@ def validate_extraction(data: dict, pages: list[dict], today: str) -> list[dict]
                 if item["group"] == "Internship" and not re.search(r"\bintern(?:ship|ships|s)?\b|实习|\btraineeship\b", documents[page["url"]], re.I):
                     raise ValueError("No explicit internship identification")
                 if item["group"] == "Internship" and (
-                    page.get("source_id") in {"un", "undp", "unep", "unesco", "un-youth", "unfccc-events"}
+                    page.get("source_id") in {"un", "undp", "unep", "unesco", "un-youth", "unfccc-events", "unfccc-fellowships"}
                     or (urlsplit(page["url"]).hostname or "").endswith(".un.org")
                 ):
                     continue
@@ -491,10 +498,18 @@ def health_outcome(sources: dict, pending: int, extraction_errors: list[str]) ->
     return "success"
 
 
-def balanced_candidates(candidates: list[dict]) -> list[dict]:
+def balanced_candidates(candidates: list[dict], cache: dict | None = None) -> list[dict]:
     groups = {}
     for candidate in candidates:
         groups.setdefault(candidate["source"]["kind"], {}).setdefault(candidate["source"]["id"], []).append(candidate)
+    if cache is not None:
+        # Rotate publishers within each category using actual extraction attempts,
+        # including failures. A permanently blocked first publisher must not starve others.
+        for kind, sources in groups.items():
+            def last_attempt(source_id):
+                attempts = [cache.get(item["url"], {}).get("last_attempt", "") for item in sources[source_id]]
+                return max(attempts, default="")
+            groups[kind] = dict(sorted(sources.items(), key=lambda item: last_attempt(item[0])))
     result = []
     while groups:
         for kind in list(groups):
@@ -533,6 +548,14 @@ def run(args, client=None, fetcher=None) -> int:
             if source.get("link_pattern"):
                 links = [link for link in links if re.search(source["link_pattern"], link["url"])]
             links = ranked_links(links, source["kind"], cache["pages"], today)
+            explicit_entries = []
+            for entry_url in source.get("entry_urls", [])[:4]:
+                if not is_allowed(entry_url, source["domains"]):
+                    raise ValueError("Configured opportunity entry is outside registered domains")
+                if entry_url != listing["url"]:
+                    explicit_entries.append({"url": entry_url, "title": "Official opportunity entry"})
+            entry_set = {entry["url"] for entry in explicit_entries}
+            links = explicit_entries + [link for link in links if link["url"] not in entry_set]
             link_limit = source.get("max_links", 12 if source["kind"] == "jobs" else 6)
             result["readable"] = True
             result["candidates"] = len(links)
@@ -577,7 +600,7 @@ def run(args, client=None, fetcher=None) -> int:
         except Exception as exc:
             report["errors"].append(f"Indexed discovery failed: {type(exc).__name__}: {str(exc)[:180]}")
     pending, seen = [], set()
-    for candidate in balanced_candidates(all_candidates):
+    for candidate in balanced_candidates(all_candidates, cache["pages"]):
         source = candidate["source"]
         if candidate["url"] in seen:
             continue
@@ -597,6 +620,7 @@ def run(args, client=None, fetcher=None) -> int:
                 continue
             pending.append(page)
         except Exception as exc:
+            cache["pages"][candidate["url"]]["last_attempt"] = now
             result = report["sources"][source["id"]]
             result["status"] = "failed"
             result["error"] = f"Detail fetch failed: {type(exc).__name__}: {str(exc)[:160]}"

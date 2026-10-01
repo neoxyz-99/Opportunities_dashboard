@@ -10,7 +10,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import collect_opportunities as radar
-from eligibility import CATEGORIES
+from eligibility import CATEGORIES, apply_membership_filter
 
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
@@ -121,6 +121,7 @@ def stats(rows: list[dict[str, str]]) -> dict[str, int]:
 
 
 def render_dashboard(rows: list[dict[str, str]]) -> str:
+    rows = [apply_membership_filter(row) for row in rows]
     generated_at = datetime.now(CN_TZ).strftime("%Y-%m-%d %H:%M")
     today = datetime.now(CN_TZ).date()
     upcoming_cutoff = today + timedelta(days=30)

@@ -57,7 +57,39 @@ def validate_facts(facts: list[dict], documents: dict[str, str]) -> list[dict]:
     return validated
 
 
+def membership_exclusion(facts: list[dict]) -> str:
+    """Apply the requested mandatory CCP membership exclusion, not a political inference."""
+    fact = next((item for item in facts if item.get("category") == "party_membership"), {})
+    quote = fact.get("quote", "")
+    if fact.get("status") != "Required" or not quote or not fact.get("url"):
+        return ""
+    if not re.search(r"中共|中国共产党|党员|\bCCP\b|\bCPC\b|(?:Chinese Communist|Communist Party of China)", quote, re.I):
+        return ""
+    if re.search(r"优先|不限|无需|不要求|非党员.{0,12}(?:可|欢迎)|preferred|desirable|not required|not necessary|regardless of", quote, re.I):
+        return ""
+    # An unspecified political party or another country's communist party is not CCP evidence.
+    if re.search(r"communist party", quote, re.I) and not re.search(r"China|Chinese|\bCCP\b|\bCPC\b|中共|中国共产党|党员", quote, re.I):
+        return ""
+    return "Requires Communist Party of China membership"
+
+
+def apply_membership_filter(row: dict) -> dict:
+    try:
+        facts = json.loads(row.get("资格条件JSON") or "[]")
+    except (ValueError, TypeError):
+        return dict(row)
+    if not isinstance(facts, list) or not all(isinstance(item, dict) for item in facts):
+        return dict(row)
+    reason = membership_exclusion(facts)
+    updated = dict(row)
+    if reason and reason not in updated.get("排除原因", ""):
+        updated["排除原因"] = "; ".join(filter(None, [updated.get("排除原因", ""), reason]))
+    return updated
+
+
 def screen_role(row: dict, facts: list[dict], senior: bool, relevant: bool, specialized: bool) -> str:
+    if reason := membership_exclusion(facts):
+        return reason
     if row.get("机会类型分组") not in {"Internship", "Early-career Jobs"}:
         return ""
     if senior:
