@@ -24,6 +24,11 @@ on:
         type: boolean
         required: true
         default: false
+      probe_sources:
+        description: "检查新增来源可读性，不调用 OpenAI"
+        type: boolean
+        required: true
+        default: false
   schedule:
     # 每周一北京时间 09:00 汇总，即周一 UTC 01:00。
     - cron: "0 1 * * 1"
@@ -65,6 +70,10 @@ jobs:
 
       - name: Test collection and eligibility
         run: python -m unittest discover -s tests -v
+
+      - name: Check expanded source readability without OpenAI
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.probe_sources }}
+        run: python tests/expanded_sources_probe.py
 
       - name: Resolve mode
         id: mode
