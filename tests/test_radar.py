@@ -32,6 +32,63 @@ def payload(item=None):
 
 
 class EligibilityTests(unittest.TestCase):
+    def test_self_link_does_not_consume_a_detail_slot(self):
+        document = {"url": "https://example.org/fellowships/", "links": [{"url": "https://example.org/fellowships", "title": "Skip to content"}]}
+        self.assertEqual(pipeline.candidate_links(document, "fellowship"), [])
+
+    def test_conference_bursaries_and_abstracts_are_discoverable(self):
+        document = {"url": URL, "links": [{"url": "https://example.org/bursaries", "title": "Bursaries"}, {"url": "https://example.org/abstracts", "title": "Abstract submissions"}]}
+        self.assertEqual(len(pipeline.candidate_links(document, "academic")), 2)
+
+    def test_extraction_urls_cannot_be_application_instructions(self):
+        schema = pipeline.extraction_schema([URL], [URL, "https://example.org/apply"])
+        item = schema["properties"]["pages"]["items"]["properties"]["opportunities"]["items"]["properties"]
+        self.assertEqual(item["apply_url"]["enum"], ["", URL, "https://example.org/apply"])
+        self.assertEqual(item["eligibility"]["items"]["properties"]["url"]["enum"], ["", URL])
+
+    def test_required_ccp_membership_filtered_for_every_type(self):
+        for group in radar.OPPORTUNITY_GROUPS:
+            with self.subTest(group=group):
+                facts = [{"category": "party_membership", "status": "Required", "quote": "政治面貌：中共党员（含预备党员）", "url": URL}]
+                self.assertIn("Communist Party of China", eligibility.screen_role({"机会类型分组": group}, facts, False, True, False))
+
+    def test_party_preferences_unknown_and_associations_are_not_filtered(self):
+        for status, quote in [("Preferred", "中共党员优先"), ("Not stated", ""), ("Required", "EISA members"), ("Required", "中共党员优先"), ("Required", "党员不限"), ("Required", "CCP membership is not required"), ("Required", "Membership of a political party is required")]:
+            with self.subTest(quote=quote):
+                self.assertEqual(eligibility.membership_exclusion([{"category": "party_membership", "status": status, "quote": quote, "url": URL}]), "")
+
+    def test_membership_filter_retains_record_id_and_existing_exclusion(self):
+        row = {"机会ID": "keep-archive-id", "排除原因": "Existing reason", "资格条件JSON": json.dumps([{"category": "party_membership", "status": "Required", "quote": "中共党员", "url": URL}])}
+        result = eligibility.apply_membership_filter(row)
+        self.assertEqual(result["机会ID"], row["机会ID"])
+        self.assertIn("Existing reason", result["排除原因"])
+        self.assertIn("Communist Party of China", result["排除原因"])
+        self.assertEqual(row["排除原因"], "Existing reason")
+        self.assertEqual(eligibility.apply_membership_filter(result), result)
+
+    def test_source_rotation_uses_attempts_not_just_successes(self):
+        candidates = [{"url": "https://example.org/a", "source": {"id": "blocked", "kind": "academic"}}, {"url": "https://example.org/b", "source": {"id": "unvisited", "kind": "academic"}}]
+        cache = {candidates[0]["url"]: {"last_attempt": "2026-09-30"}}
+        self.assertEqual(pipeline.balanced_candidates(candidates, cache)[0]["source"]["id"], "unvisited")
+
+    def test_academic_membership_is_not_a_political_party_requirement(self):
+        quote = "Workshop convenors must be EISA members at the time of submission."
+        item = opportunity()
+        item["group"] = "学术论坛/CFP"
+        item["eligibility"] = [{"category": "party_membership", "status": "Required", "summary": "EISA members", "quote": quote, "url": URL, "min_years": None}]
+        with self.assertRaisesRegex(ValueError, "not political party"):
+            pipeline.validate_extraction(payload(item), [page(TEXT + quote)], "2026-09-30")
+        item["eligibility"][0]["category"] = "institution_membership"
+        row = pipeline.validate_extraction(payload(item), [page(TEXT + quote)], "2026-09-30")[0]
+        facts = json.loads(row["资格条件JSON"])
+        self.assertEqual(next(f for f in facts if f["category"] == "party_membership")["status"], "Not stated")
+
+    def test_http_200_error_redirect_is_not_readable_source(self):
+        fetcher = pipeline.Fetcher()
+        with patch.object(fetcher, "check_robots"), patch.object(fetcher, "get", return_value=(b"No current openings", "https://example.org/en/general/404.html", "text/html")):
+            with self.assertRaisesRegex(ValueError, "error page"):
+                fetcher.fetch(URL, ["example.org"])
+
     def test_official_alternative_retains_failed_entry_evidence(self):
         fetcher = SimpleNamespace(fetch=lambda url, domains, render: page())
         with patch.object(fetcher, "fetch", side_effect=[ValueError("403 Forbidden"), page()]):
