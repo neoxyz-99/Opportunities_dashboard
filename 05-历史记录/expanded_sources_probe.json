@@ -1,0 +1,193 @@
+{
+  "checked_at": "2026-10-01T07:56:27.671925+00:00",
+  "model_calls": 0,
+  "results": [
+    {
+      "source_id": "bisa",
+      "url": "https://www.bisa.ac.uk/news",
+      "status": "readable",
+      "final_url": "https://www.bisa.ac.uk/news",
+      "characters": 11731,
+      "candidate_count": 62,
+      "examples": [
+        {
+          "url": "https://www.bisa.ac.uk/news/call-expressions-interest-climate-negotiation-simulation-2026",
+          "title": "Call for expressions of interest – climate negotiation simulation 2026"
+        },
+        {
+          "url": "https://www.bisa.ac.uk/members/working-groups/pgn/news/meet-new-postgraduate-network-pgn-committee-2026-27",
+          "title": "Meet the new Postgraduate Network (PGN) committee 2026-27"
+        },
+        {
+          "url": "https://www.bisa.ac.uk/news/academy-social-sciences-fellow-awards-autumn-2026",
+          "title": "Academy of Social Sciences Fellow awards autumn 2026"
+        },
+        {
+          "url": "https://www.bisa.ac.uk/members/working-groups/ipeg/news/call-abstracts-review-international-political-economy-pre-conference-virtual-workshop-ecrs",
+          "title": "Call for abstracts: Review of International Political Economy pre-conference virtual workshop for ECRs"
+        },
+        {
+          "url": "https://www.bisa.ac.uk/members/working-groups/ugn/news/introducing-bisabfpg-undergraduate-network-committee-2026-27",
+          "title": "Introducing the BISA/BFPG Undergraduate Network committee 2026-27"
+        }
+      ]
+    },
+    {
+      "source_id": "bisa",
+      "url": "https://conference.bisa.ac.uk/call-papers",
+      "status": "readable",
+      "final_url": "https://conference.bisa.ac.uk/call-papers",
+      "characters": 10467,
+      "candidate_count": 11,
+      "examples": [
+        {
+          "url": "https://www.bisa.ac.uk/members/working-groups/ipeg/news/call-abstracts-review-international-political-economy-pre-conference-virtual-workshop-ecrs",
+          "title": "view the call for papers"
+        },
+        {
+          "url": "https://conference.bisa.ac.uk/about-conference",
+          "title": "About the conference"
+        },
+        {
+          "url": "https://conference.bisa.ac.uk/about-conference/access-and-support",
+          "title": "Access and support"
+        },
+        {
+          "url": "https://conference.bisa.ac.uk/about-conference/accommodation-and-travel",
+          "title": "Accommodation and travel"
+        },
+        {
+          "url": "https://conference.bisa.ac.uk/about-conference/bursaries",
+          "title": "Bursaries"
+        }
+      ]
+    },
+    {
+      "source_id": "apsa",
+      "url": "https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/",
+      "status": "readable",
+      "final_url": "https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/",
+      "characters": 835,
+      "candidate_count": 0,
+      "examples": []
+    },
+    {
+      "source_id": "ipsa-congress",
+      "url": "https://www.ipsa.org/wc/home",
+      "status": "readable",
+      "final_url": "https://www.ipsa.org/wc/home",
+      "characters": 2011,
+      "candidate_count": 3,
+      "examples": [
+        {
+          "url": "https://www.ipsa.org/wc/news/call-papers-now-open",
+          "title": "Call for Papers is Now Open!"
+        },
+        {
+          "url": "https://www.ipsa.org/wc/news/call-panels-now-open",
+          "title": "Call for Panels is Now Open!"
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": "International Political Science Association"
+        }
+      ]
+    },
+    {
+      "source_id": "ipsa-congress",
+      "url": "https://wc2027.ipsa.org/resources/ipsa-awards",
+      "status": "readable",
+      "final_url": "https://wc2027.ipsa.org/resources/ipsa-awards",
+      "characters": 13260,
+      "candidate_count": 2,
+      "examples": [
+        {
+          "url": "https://wc2027.ipsa.org/page/awards-prize-foundation-mattei-dogan-awarded-international-political-science-association-high",
+          "title": "Prize of the Foundation Mattei Dogan"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/page/awards-stein-rokkan-travel-grant-award",
+          "title": "Stein Rokkan Travel Grant Award"
+        }
+      ]
+    },
+    {
+      "source_id": "acuns",
+      "url": "https://acuns.org/",
+      "status": "readable",
+      "final_url": "https://acuns.org/",
+      "characters": 2674,
+      "candidate_count": 1,
+      "examples": [
+        {
+          "url": "https://acuns.org/2027-acuns-annual-workshop-on-institutions-justice-and-peace",
+          "title": "Apply to the 2027 ACUNS Annual Workshop on Institutions, Justice, and Peace"
+        }
+      ]
+    },
+    {
+      "source_id": "acuns",
+      "url": "https://acuns.org/annual-meetings/",
+      "status": "readable",
+      "final_url": "https://acuns.org/annual-meetings/",
+      "characters": 6694,
+      "candidate_count": 1,
+      "examples": [
+        {
+          "url": "https://acuns.org/events/acuns-annual-meeting-2024",
+          "title": "2024: Global Governance and Sustainable Development: Revitalizing Research to Support Multilateral Solutions"
+        }
+      ]
+    },
+    {
+      "source_id": "ssrc",
+      "url": "https://www.ssrc.org/how-we-work/fellowship-and-grants-administration/",
+      "status": "failed",
+      "error": "ValueError: Could not verify robots.txt: HTTPError"
+    },
+    {
+      "source_id": "iias",
+      "url": "https://www.iias.asia/fellowships-homepage",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_id": "iias",
+      "url": "https://www.iias.asia/fellowships/asia-in-the-world",
+      "status": "failed",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source_id": "unfccc-fellowships",
+      "url": "https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme",
+      "status": "readable",
+      "final_url": "https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme",
+      "characters": 2063,
+      "candidate_count": 1,
+      "examples": [
+        {
+          "url": "https://unu.edu/vie/faq-unfccc-unu-early-career-climate-fellowship-programme",
+          "title": "FAQ"
+        }
+      ]
+    },
+    {
+      "source_id": "worldbank-youth",
+      "url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
+      "status": "readable",
+      "final_url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
+      "characters": 17319,
+      "candidate_count": 2,
+      "examples": [
+        {
+          "url": "https://live.worldbank.org/en/event/2026/world-bank-group-youth-summit",
+          "title": "WATCH THE LIVESTREAM"
+        },
+        {
+          "url": "https://www.worldbank.org/en/news/press-release/2024/08/12/world-bank-group-launches-high-level-council-to-tackle-looming-jobs-crisis",
+          "title": "800 million young people"
+        }
+      ]
+    }
+  ]
+}
