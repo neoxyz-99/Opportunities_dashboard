@@ -1,6 +1,7 @@
 """Read the newly configured publisher entries without making model calls."""
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,6 +39,11 @@ def main():
         previous = pipeline.read_json(path, {}).get("results", [])
         results = [item for item in previous if item["source_id"] != args.source] + results
     pipeline.atomic_json(path, {"checked_at": datetime.now(timezone.utc).isoformat(), "model_calls": 0, "results": results})
+    if os.environ.get("GITHUB_STEP_SUMMARY"):
+        readable = sum(item["status"] == "readable" for item in results)
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as output:
+            output.write(f"## Readability probe (not opportunity collection)\n{readable}/{len(results)} entry pages readable; zero OpenAI calls.\n\n")
+            output.write("\n".join(f"- {item['source_id']}: {item['status']} {item.get('error', '')}" for item in results) + "\n")
     return 0 if any(item["status"] == "readable" for item in results) else 1
 
 
