@@ -1,134 +1,76 @@
 {
   "rejected": {
-    "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator": [
-      "Deadline lacks matching source evidence"
+    "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777": [
+      "Invalid page decision"
     ]
   },
   "response": {
     "pages": [
       {
-        "url": "https://www.un.org/youthaffairs/en/youth-townhall",
-        "reason": "Relevant youth participation event but application deadline for funding has passed.",
-        "opportunities": []
-      },
-      {
-        "url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference?utm_source=openai",
-        "reason": "Open call for academic proposals with a submission deadline in the future relevant to global governance and international studies.",
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+        "reason": "",
         "opportunities": [
           {
-            "title": "ISA 2026 Virtual Conference - Call for Proposals",
-            "host": "International Studies Association",
-            "group": "会议",
-            "topic": "国际关系/政治学",
-            "tags": "international studies, governance, international cooperation, conference",
-            "deadline": "2026-03-10",
-            "deadline_quote": "Submission Deadline: March 10, 2026",
-            "dates": "July 28 to July 31, 2026",
-            "location": "Virtual",
-            "source_url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference",
-            "apply_url": "https://www.isanet.org/Conferences/Virtual-2026/Submissions",
-            "batch": "2026",
-            "materials": [
-              "title",
-              "abstract",
-              "tags",
-              "author details (for papers)"
-            ],
-            "function": "Call for academic conference paper, panel, and roundtable proposals addressing issues of international order, governance, political exclusion, and global crises.",
-            "judgment": "Open for submissions until March 10, 2026, suitable for scholars and early-career researchers in international studies.",
+            "title": "Development-Related Postgraduate Courses (EPOS) Scholarship 2027/2028",
+            "host": "DAAD - Deutscher Akademischer Austauschdienst",
+            "group": "Scholarships",
+            "topic": "国际金融/债务",
+            "tags": "development postgraduate scholarship, Germany, international students, Master's, PhD",
+            "deadline": "",
+            "deadline_quote": "Application deadline Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+            "dates": "",
+            "location": "Germany",
+            "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+            "apply_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+            "batch": "",
+            "materials": [],
+            "function": "",
+            "judgment": "Open for applications to postgraduate courses for 2027/2028 academic year; application deadlines vary by course, check course's own website.",
             "relevant_duties": false,
             "specialized_duties": false,
             "senior_role": false,
-            "scope_quote": "Call for Proposals July 28th - 31st, 2026 ... spirited, empirically substantiated, theoretically robust, and ethically sound proposals on our collective future(s).",
+            "scope_quote": "Promotes the training of specialists from development and newly industrialised countries for sustainable development, with a focus on development policies in technological, economic or social areas.",
             "risk_note": "",
             "risk_quote": "",
             "eligibility": [
               {
                 "category": "citizenship",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "residency",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "work_authorization",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "visa_sponsorship",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "opt_cpt",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "student_graduation",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "status": "Required",
+                "summary": "Graduates from development and newly industrialised countries as listed specifically.",
+                "quote": "Graduates with at least two years' professional experience from the following countries: list of eligible countries",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
                 "min_years": null
               },
               {
                 "category": "education",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "status": "Required",
+                "summary": "Bachelor degree in appropriate subject, normally a four-year course, with above-average results (top third).",
+                "quote": "Candidates have a Bachelor degree (usually a four-year course) in an appropriate subject",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
                 "min_years": null
               },
               {
                 "category": "experience",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
+                "status": "Required",
+                "summary": "At least two years of related professional experience after the Bachelor's degree.",
+                "quote": "Candidates have at least two years' professional experience",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+                "min_years": 2
               },
               {
                 "category": "language",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "status": "Required",
+                "summary": "For German courses: minimum B1 level at application, pass DSH 2 or TestDaF 4 before start. For English courses: proof of adequate language skills as per course requirements.",
+                "quote": "Language skills For study courses in German (scholarship includes a preparatory 6-month German language course): ... minimum German language level of B1 at the time of application ... For courses in English: Proof of adequate language skills, according to the regulations of the respective course.",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
                 "min_years": null
               },
               {
-                "category": "party_membership",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "school_restrictions",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
+                "category": "residency",
+                "status": "Required",
+                "summary": "Applicants must not have been resident in Germany for longer than 15 months at the application deadline.",
+                "quote": "Applicants who have been resident in Germany for longer than 15 months at the application deadline cannot be considered",
+                "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
                 "min_years": null
               }
             ]
@@ -136,1011 +78,556 @@
         ]
       },
       {
-        "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-        "reason": "Active job posting for a Research Assistant position relevant to global health, climate, and pandemic preparedness policy research.",
-        "opportunities": [
-          {
-            "title": "Research Assistant – Market Shaping Accelerator",
-            "host": "Center for Global Development",
-            "group": "Early-career Jobs",
-            "topic": "可持续发展/气候",
-            "tags": "research assistant, market shaping, global health, pandemic preparedness, climate, policy research",
-            "deadline": "2026-10-15",
-            "deadline_quote": "Closing date: October 15 at 11:59 pm ET.",
-            "dates": "",
-            "location": "Washington, DC, USA",
-            "source_url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-            "apply_url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-            "batch": "",
-            "materials": [
-              "Resume/CV",
-              "Cover Letter",
-              "Writing sample",
-              "Transcripts",
-              "Professional References"
-            ],
-            "function": "Support quantitative economic analysis, policy and sector analysis, and communication related to market-shaping proposals in global health, climate, and pandemic preparedness.",
-            "judgment": "Open for applications; suitable for candidates with Bachelor’s in economics or related field and strong quantitative skills.",
-            "relevant_duties": true,
-            "specialized_duties": true,
-            "senior_role": false,
-            "scope_quote": "Economic appraisal and quantitative modeling of market-shaping proposals ... Policy and sector analysis related to climate change, global health, and pandemic preparedness ... Communication and coordination with relevant stakeholders.",
-            "risk_note": "",
-            "risk_quote": "",
-            "eligibility": [
-              {
-                "category": "citizenship",
-                "status": "Not stated",
-                "summary": "Applicants must be legally authorized to work in the US but no specific citizenship required.",
-                "quote": "CGD is unable to sponsor work authorization for this position.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": null
-              },
-              {
-                "category": "residency",
-                "status": "Required",
-                "summary": "Candidates must be able to declare residency in DC, Maryland, or Virginia.",
-                "quote": "CGD is registered to employ staff living in DC, Maryland, and Virginia. Candidates must be able to declare a primary residence in one of these 3 locations.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": null
-              },
-              {
-                "category": "work_authorization",
-                "status": "Required",
-                "summary": "Must have eligibility to work in the United States without CGD sponsorship.",
-                "quote": "In compliance with federal law, all persons hired will be required to verify identity and eligibility to work in the United States ... CGD is unable to sponsor work authorization for this position.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": null
-              },
-              {
-                "category": "visa_sponsorship",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "opt_cpt",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "student_graduation",
-                "status": "Required",
-                "summary": "Bachelor’s degree required.",
-                "quote": "Bachelor’s degree in economics or a related field including coursework in intermediate microeconomics and multivariable calculus or equivalent.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": null
-              },
-              {
-                "category": "education",
-                "status": "Required",
-                "summary": "Bachelor’s degree with relevant coursework required.",
-                "quote": "Bachelor’s degree in economics or a related field including coursework in intermediate microeconomics and multivariable calculus or equivalent.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": null
-              },
-              {
-                "category": "experience",
-                "status": "Required",
-                "summary": "Strong quantitative skills and research experience required, no explicit minimum years but entry-level focused.",
-                "quote": "Strong quantitative skills and experience with empirical research methods and/or microeconomic modeling ... Ability to manage multiple projects and stay organized in a fast-moving research environment.",
-                "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-                "min_years": 0
-              },
-              {
-                "category": "language",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "party_membership",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              },
-              {
-                "category": "school_restrictions",
-                "status": "Not stated",
-                "summary": "",
-                "quote": "",
-                "url": "",
-                "min_years": null
-              }
-            ]
-          }
-        ]
+        "url": "https://www.ipsa.org/?utm_source=openai",
+        "reason": "This page is a general landing and news page for the International Political Science Association, containing information about events and conferences but no specific currently open opportunities, fellowships, scholarships, internships or jobs with detailed application instructions or deadlines.",
+        "opportunities": []
+      },
+      {
+        "url": "https://www.unmgcy.org/main-news-updates/apyouth-assembly-road-to-eyf26",
+        "reason": "This page describes an Asia-Pacific Youth Assembly event held on April 1, 2026; event date is past, no open calls or application procedures for upcoming opportunities are presented. No open opportunities available on this page.",
+        "opportunities": []
       }
     ]
   },
   "documents": [
     {
-      "url": "https://www.un.org/youthaffairs/en/youth-townhall",
-      "text": "UN Youth Townhall | Youth Office Skip to main content Youth Office UN Youth Townhall Building a more inclusive and connected future with young people Young people are driving change around the world — from climate action and peacebuilding to technology, education, human rights and entrepreneurship. At the same time, many young people still face barriers to participating in decisions and processes that shape their lives and futures. The first-ever UN Youth Townhall will bring over 1,000 participants together in Heidelberg, Germany, to build intergenerational trust, strengthen connections and create new opportunities for collaboration. Convened by the United Nations Youth Office together with partners, the Townhall will bring young people, governments, the United Nations, civil society, the private sector and others into one space. At its core, the Townhall seeks to: Strengthen inclusion and diversity — broadening participation in global youth engagement by reaching young people and communities too often excluded from international spaces and processes. Reduce fragmentation across the ecosystem — creating stronger connections and collaboration between the many actors working across the global youth agenda. Shape a collective path forward — enabling stakeholders to transform dialogue into commitments, build partnerships, and agree on actionable measures to accelerate progress on youth priorities, their participation in decision-making and global cooperation. A global platform for youth participation The UN Youth Townhall responds to a growing need for more inclusive and meaningful ways for young people to participate in decision-making, building on the Secretary-General’s Policy Brief on Meaningful Youth Engagement , which underscored the importance of strengthening meaningful youth participation and called for the establishment of a standing United Nations Youth Townhall to bring greater diversity of youth voices into the work of the Organization. The Townhall is anchored in the UN Youth Compass, the flagship initiative of the UN Youth Office to strengthen meaningful youth participation across the United Nations and beyond. It is envisioned not only as a one-time gathering, but as a recurring platform that supports collaboration, learning and partnerships over time — all with a view towards mainstreaming meaningful youth participation at all levels, and across all spheres of the UN’s work. What to expect The Townhall will put intergenerational dialogue and co-creation at the centre of the convening. Alongside larger sessions, the programme will feature fireside chats, roundtables, small-group discussions and other interactive formats designed to build intergenerational trust by fostering meaningful exchange between young people, decision-makers and participants from different generations and sectors. Selected contributions from partners across the United Nations, civil society, academia, the private sector and other fields will help inform parts of the programme and bring a wider range of perspectives into the conversation. It will also offer organizations and partners structured spaces to showcase their work, initiatives and opportunities, and connect directly with young people. Who will take part? More than 1,000 participants are expected to join the Townhall, including young leaders and representatives of youth-led organizations and movements, public sector leaders, entrepreneurs, innovators and researchers, as well as representatives from governments, the United Nations, civil society, academia, philanthropy and the private sector. The Townhall seeks broad geographic representation, gender balance and the inclusion of young people and communities that are often underrepresented in international policy and decision-making spaces. UN Youth Townhall 8-10 December 2026 Heidelberg, Germany How to participate Young people, organizations, institutions and partners from around the world are invited to join for the UN Youth Townhall in Heidelberg, Germany, taking place from 8 to 10 December 2026. A limited number of funding opportunities were made available for young people through an open call for applications. The deadline was on 7 September 2026. Partner with us Do you want to help us bring the Townhall to life and broaden its impact? We welcome organizations to partner with us and contribute through financial or in-kind support (including funding young people to participate in the event). Click here to view our partner presentation We also welcome partners to co-create parts of the programme, convene their own spaces and activities, and engage directly with young people in ways that amplify impact and support shared objectives. Get in touch to explore how we can work together. Reach out to youthaffairs@un.org and make sure to include \"Townhall\" in the subject line! This work is generously made possible through the generous support of partners including the European Union. Go to top",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+      "text": "Development-Related Postgraduate Courses (EPOS) - DAAD - Deutscher Akademischer Austauschdienst Finding Scholarships Welcome to our scholarship database! Here you will find information about our DAAD scholarship programmes for international students and\n        researchers as well as offers from other selected funding organisations . « Search results Development-Related Postgraduate Courses (EPOS) • DAAD Do you have any questions about DAAD scholarships? You will find the answers here ! Overview Application requirements Application Procedure Please note: The usage of the application portal is possible only to a limited extent with mobile devices. Please use your desktop computer. Technical requirements Overview Eine Druckversion dieser Ausschreibung (PDF) steht Ihnen in den weiteren Registerkarten (z.B. „Bewerbungsvoraussetzungen“) zur Verfügung. A print version of this announcement (PDF) is available in the further tabs (e.g. “Application requirements”). Objective With its development-oriented postgraduate study programmes, the DAAD promotes the training of specialists from development and newly industrialised countries. Well-trained local experts, who are networked with international partners, play an important part in the sustainable development of their countries. They are the best guarantee for a better future with less poverty, more education and health for all. The scholarships offer foreign graduates from development and newly industrialised countries from all disciplines and with at least two years' professional experience the chance to take a postgraduate or Master's degree at a state or state-recognised German university, and in exceptional cases to take a doctoral degree, and to obtain a university qualification (Master's/PhD) in Germany. Who can apply? Graduates with at least two years' professional experience from the following countries: list of eligible countries What can be funded? Individual scholarships exclusively for Postgraduate courses in Germany that are listed on the List of all Postgraduate courses with application deadlines 2027/2028 . Duration of the funding 12 to 42 months (dependent on study programme) Value Depending on academic level, monthly payments of 992 euros for graduates or 1,300 euros (1,400 euros beginning with February 2026) for doctoral candidates Payments towards health, accident and personal liability insurance cover Travel allowance, unless these expenses are covered by the home country or another source of funding Under certain circumstances, scholarship holders may receive the following additional benefits: Monthly rent subsidy Monthly allowance for accompanying members of family Selection Candidates fulfil the necessary academic requirements and can be expected to successfully complete a study programme in Germany (above-average result for first academic exam – top performance third, language skills) Candidates have a Bachelor degree (usually a four-year course) in an appropriate subject Candidates have at least two years' professional experience Candidates can prove their motivation is development-related and be expected to take on social responsibility and initiate and support processes of change in their personal and professional environment after their training/scholarship Further information FAQs Application requirements What requirements must be met? The Typical Scholarship Holder works either for a public authority or a state or private company in a developing country and, as such, is engaged in the planning and execution of directives and projects with emphasis on development policies having a bearing on technological, economic or social areas. holds a Bachelor’s degree (normally four years) in a related subject. has completed an academic degree with far above average results (upper third) and at least two years of related professional experience after the first degree (bachelor) at the time of application. His/her academic degrees should normally not be more than six years old. Applicants who have been resident in Germany for longer than 15 months at the application deadline cannot be considered Language skills For study courses in German (scholarship includes a preparatory 6-month German language course in Germany): Successful passing of the language examination DSH 2 or TestDaF 4 before the start of the study course. Therefore, a minimum German language level of B1 at the time of application is a requirement, that needs to be proofed by providing a current certificate. Note: It is not possible to pass the required German language courses (DSH or TestDaF) without any previous basic knowledge in the German language (at least B1 Level), even with the preceding six-month intensive course in Germany. Passing the language test is a formal prerequisite for matriculation at the respective German university. For courses in English: Proof of adequate language skills, according to the regulations of the respective course. For detailed information see the relevant course description on the following pages. Application Procedure Application deadline Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. Application documents Applications have only to be sent to the respective course directly! Please refer to their respective websites for the application procedure (e.g. online application), for the application deadline and the documents to be submitted. Applications sent to the DAAD will not be forwarded to the respective course/university. You can apply for up to three courses. If applying to more than one course, please list courses in order of priority in the DAAD application forms (see 7. Choice of host university/institution in Germany) and do not change the priorities in the according application form! Application documents Required documents (in the following order): Completed and signed checklist EPOS application form (please type your answers or make sure they are easy to read). Current Note: If you cannot open the file, please try using a different browser. A curriculum vitae in reverse chronological order without any unexplained gaps (please use the europass template including exact information about your studies, and on practical experience One Letter of Motivation with detailed reference to academic, professional and personal reasons for applying for the programme. IMPORTANT: When applying for more than one postgraduate course (maximum 3 courses), please also give detailed reasons for your choice of courses and prioritisation in the letter of motivation. Please submit a uniform letter of motivation to all postgraduate degree programmes of your choice. Letter of recommendation from your current employer; the letter must include official letterhead, signature and official stamp and must be of current date (not in a sealed envelope) Certificate(s) of Employment from the employer(s) showing at least two years of relevant work experience after the Bachelor's degree up to the time of application and if possible, a guarantee of re-employment from your current employer upon returning home. The certificate of employment from the current employer should, if possible, include a guarantee of re-employment after returning to the home country. Recent proof of Language Skills: o English – IELTS or TOEFL (Note: The institutional TOEFL is not accepted) o German – required for courses taught in German Copies of your higher education degree certificates . Please provide a certified translation if the original is not in German or English, and make sure these are clearly legible. Copy of your full set of transcript of records . Please provide an explanation of the grading system if this is not part of the transcript. Applicants from the People’s Republic of China are asked to submit an APS Certificate with their application documents. Note: Some courses may require additional documents. For detailed information, please see the relevant course description in the Brochure and on the respective websites. IMPORTANT: The complete applications have to be submitted in English or German to be considered. Incomplete applications cannot be considered. When applying for more than one postgraduate course (maximum 3 courses), you have to submit one motivation letter explaining why you are applying for these specific courses and why you chose that priority. If this information is ignored, the application cannot be considered or an already awarded scholarship might be withdrawn. Please check with the requirements of the according University whether certified copies are required. Application location Apply directly to the chosen study programme Application and Selection Procedure Step 1: You send your complete application(s) directly to the according postgraduate course. Step 2:  A selection committee suggests potential candidates for a DAAD scholarship. Step 3: The suggested candidates will be contacted by DAAD to upload their complete application to the DAAD Portal. Step 4: The selection process will be finalized, and the suggested candidates will be informed accordingly. IMPORTANT: Make sure that you have a copy of each document of your application ready, as those documents (as PDF files) have to be uploaded to the DAAD Portal in case you are suggested for a DAAD scholarship! Do you have any questions about DAAD scholarships? You will find the answers here ! Please also take note of our important scholarship information . Please select your status and your country to enable you to submit an application Afghanistan Albania Algeria Angola Argentina Armenia Azerbaijan Bangladesh Belarus Belize Benin Bhutan Bolivia Botswana Brazil Burkina Faso Burundi Cambodia Cameroon Cape Verde Central African Republic Chad China, PR Colombia Comoros Congo Congo, Democratic Republic Cook Islands Costa Rica Côte d'Ivoire Cuba Dominica Dominican Republic Ecuador Egypt El Salvador Equatorial Guinea Eritrea Eswatani Ethiopia Fiji Gabon Gambia Georgia Ghana Grenada Guatemala Guinea Guinea-Bissau Guyana Haiti Honduras India Indonesia Iran Iraq Jamaica Jordan Kazakhstan Kenya Kiribati Kyrgyzstan Lao People's Democratic Republic Lebanon Lesotho Liberia Libya Madagascar Malawi Malaysia Maldives Mali Marshall Islands Mauritania Mauritius Mexico Micronesia, Federated States of Moldova, Republic of Mongolia Morocco Mozambique Myanmar Namibia Nauru Nepal Nicaragua Niger Nigeria Niue Pakistan Palestinian Territories Panama Papua New Guinea Paraguay Peru Philippines Rwanda Saint Lucia Saint Vincent and the Grenadines Samoa Sao Tome and Principe Senegal Seychelles Sierra Leone Solomon Islands Somalia South Africa South Sudan Sri Lanka Sudan Suriname Syrian Arab Republic (Syria) Tajikistan Tanzania, United Republic of Thailand Timor-Leste Togo Tonga Tunisia Turkmenistan Tuvalu Uganda Ukraine Uzbekistan Vanuatu Venezuela, Bolivarian Republic of Vietnam Yemen Zambia Zimbabwe „Country“ is the country in which you are living and from which you are applying. If you come from another country, please contact us to find out whether you are eligible for the programme of your choice. More Information Graduates Graduates are people who already have at least one first academic degree, e.g. Bachelor. Your status and/or country is not in the list? If your status and/or country is not included in the list, you cannot apply for this scholarship programme. To ensure that only scholarship programmes for which you are eligible to apply are shown, please select your status and your country in the results list (left-hand column). Copy this link: Copy this link: daad.de/go/en/stipa50076777 Print as PDF",
       "links": [
         {
-          "url": "https://www.un.org/youthaffairs/en/youth-townhall",
-          "title": "Skip to main content"
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/scholarship-database/information-on-other-funding-organisations",
+          "title": "other selected funding organisations"
         },
         {
-          "url": "https://www.un.org/youthaffairs/en",
-          "title": "Youth Office"
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?status=&origin=&subjectGrps=&intention=&daad=&q=&page=1&target=&back=1",
+          "title": "« Search results"
         },
         {
-          "url": "https://www.un.org/sites/un2.un.org/files/our-common-agenda-policy-brief-youth-engagement-en.pdf",
-          "title": "Policy Brief on Meaningful Youth Engagement"
-        },
-        {
-          "url": "https://www.un.org/youthaffairs/en/un-youth-compass",
-          "title": "UN Youth Compass,"
-        }
-      ],
-      "hash": "47c8f68e308d29d83ac5f75bc8e50c29ef18bab6d1923684ad5756b1f06de73f",
-      "source_id": "un-youth",
-      "discovery_url": "https://www.un.org/youthaffairs/en/youth-townhall"
-    },
-    {
-      "url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference?utm_source=openai",
-      "text": "Announcing the ISA 2026 Virtual Conference > International Studies Association News from ISA 15 Announcing the ISA 2026 Virtual Conference ISA Headquarters posted on January 15, 2026 12:00 ISA 2026 Virtual Conference Call for Proposals July 28th - 31st, 2026 Zorzeta Bakaki and Isaac Flores Delgado , Program Chairs Juana Sipriano Morales, Program Assistant Submission Deadline: March 10, 2026 (Proposal Guidelines Below) Submit Proposals for the ISA 2026 Virtual Conference Order, Disorder, and Reordering The postwar international order, its systems of governance, and its modes of operation are seemingly faltering. As evidence of this trend, states and non-state actors, including civil society organizations, have increasingly expressed dissatisfaction with United Nations organs and related judicial institutions. At the international level, this dissatisfaction has resulted in wars of aggression, boycotts of international judicial proceedings, and abuses of power by dominant actors. At the national level, there is a growing tendency toward authoritarianism, hostility toward migrants, and political exclusion based on religion, ethnicity, and other socially constructed factors. This situation calls for deeper individual and collaborative reflections. Under the present conditions, the ISA will have to confront an environment marked by the erosion of norms, democracy, governance, civil liberties, asylum, migration protections, and the resurgence of war, among other challenges. Members will have to rethink cross-sectional and cross-national collaborations aimed at advancing regimes of truth, morality, and ethics that are commensurate with the exigencies of the moment. These concerns lie at the core of our vision for the 2026 virtual conference: spirited, empirically substantiated, theoretically robust, and ethically sound proposals on our collective future(s). Are existing UN organs capable of adapting to rapid geopolitical shifts? How can international institutions reclaim credibility in an era of great-power abuses of power? How does political exclusion based on religion and ethnicity undermine international stability and domestic cohesion? How can researchers ensure empirical rigor and theoretical robustness in a polarized information environment? Are we witnessing the erosion of liberal norms or the emergence of new, competing models of governance? How do overlapping disasters reshape the legitimacy of national and international governance, and what institutional designs could withstand cascading crises?” What responsibilities do academic organizations like the ISA have in shaping public understanding of global issues? How is international society responding to the erosion of order and consensus among state actors, alongside the growing organizational capacity and transnational influence of non-state criminal actors such as drug cartels and terrorist networks? Submit Your Proposal Today! Submission Types ISA Virtual 2026 has three proposal options available: papers, panels, and roundtables . All three types require a title (up to 50 words), an abstract (up to 200 words), and three tags. Additionally, papers need at least one author, panels need 5 papers (and their full details), and roundtables need at least one chair and five participants (excluding the chair and discussant). Explore more details here. Submission Details Check out information regarding scheduling constraints, chair and discussant opportunities, program roles, and guidelines for how to submit a proposal. All proposal participants must have an ISAnet account and previously consented* to be added to a proposal. You can encourage your colleagues to create one now to avoid delays in the submission process. Learn More about Submission Types and Details * It is the submitter's responsibility to ensure that everyone included in their proposal (i.e., chair(s), discussant(s), participant(s), and (co-)author(s)) has confirmed their interest, willingness, and commitment to participate in it prior to the item's submission . Failure to obtain permission in advance from any and all included in the proposal will result in its full rejection . Posted in: ISA Virtual 2026 Actions: E-mail | Permalink | Comments (0) Comments There are currently no comments, be the first to post one. Start the Discussion... Only registered users may post comments. ISA on Twitter Tweets by @isanet Latest Comments Ankit Sahu on \"ISA-SAWP 2026 Conference - Submission Deadline Extended!\" : By what time can we expect an update on our Abstra... Adelina Mkami on \"ISA-SAWP 2026: Submission Reminder\" : Hi Rajeev, Thanks for reaching out. I'm happy to s... Rajeev MM on \"ISA-SAWP 2026: Submission Reminder\" : How will we send the proposals? No link appeared. ... Adelina Mkami on \"ISA-IDSS 2026 Summer Conference in Izmir, Türkiye - Submissions Launched! \" : Hi Mohammad, Thank you for reaching out. Please no... Search Newsletter Archive Check out our newsletter archives here! Past Newsletters Archive September 2026 (5) August 2026 (5) July 2026 (7) June 2026 (5) May 2026 (10) April 2026 (7) March 2026 (5) February 2026 (6) January 2026 (4) December 2025 (3) October 2025 (5) September 2025 (4) August 2025 (10) July 2025 (5) June 2025 (3) May 2025 (10) April 2025 (4) March 2025 (5) February 2025 (4) January 2025 (3) December 2024 (3) November 2024 (4) October 2024 (5) September 2024 (4) August 2024 (3) July 2024 (9) June 2024 (5) May 2024 (11) April 2024 (4) March 2024 (2) February 2024 (3) January 2024 (3) December 2023 (2) October 2023 (2) September 2023 (9) August 2023 (5) July 2023 (7) June 2023 (8) May 2023 (10) April 2023 (7) March 2023 (7) February 2023 (4) January 2023 (5) December 2022 (5) November 2022 (3) October 2022 (6) September 2022 (7) August 2022 (6) July 2022 (4) June 2022 (7) May 2022 (9) April 2022 (5) March 2022 (6) February 2022 (7) January 2022 (3) December 2021 (4) November 2021 (8) October 2021 (10) September 2021 (7) August 2021 (6) July 2021 (2) June 2021 (6) May 2021 (5) April 2021 (3) March 2021 (2) February 2021 (4) January 2021 (6) December 2020 (7) November 2020 (3) October 2020 (2) September 2020 (4) August 2020 (6) July 2020 (5) June 2020 (4) May 2020 (11) April 2020 (3) March 2020 (9) February 2020 (8) January 2020 (3) December 2019 (2) November 2019 (3) October 2019 (5) September 2019 (6) August 2019 (4) July 2019 (3) June 2019 (4) May 2019 (11) April 2019 (14) March 2019 (7) February 2019 (4) January 2019 (5) December 2018 (7) November 2018 (2) October 2018 (8) September 2018 (8) August 2018 (11) July 2018 (8) June 2018 (9) May 2018 (10) April 2018 (4) March 2018 (1) February 2018 (6) January 2018 (1) December 2017 (6) November 2017 (1) October 2017 (2) September 2017 (11) August 2017 (7) July 2017 (10) June 2017 (15) May 2017 (13) April 2017 (12) March 2017 (8) February 2017 (20) January 2017 (9) December 2016 (6) November 2016 (8) October 2016 (10) September 2016 (19) August 2016 (11) July 2016 (14) June 2016 (14) May 2016 (19) April 2016 (19) March 2016 (11) February 2016 (5) January 2016 (11) December 2015 (14) November 2015 (8) October 2015 (4) September 2015 (15) August 2015 (11) July 2015 (16) June 2015 (8) May 2015 (15) April 2015 (19) March 2015 (14) February 2015 (7) January 2015 (9) December 2014 (10) November 2014 (4) October 2014 (14) September 2014 (12) August 2014 (13) July 2014 (8) June 2014 (6) May 2014 (16) April 2014 (17) March 2014 (8) February 2014 (15) January 2014 (9) December 2013 (12) November 2013 (9) October 2013 (20) September 2013 (24) August 2013 (13) July 2013 (8) June 2013 (11) May 2013 (5) April 2013 (11) March 2013 (3) January 2013 (1) Categories All Conferences (18) ..Annual Convention (256) ..Other Conferences (229) ..Outside ISA (34) Headquarters (193) ..Statements (39) ..Multimedia (27) ..United Nations Academic Impact (1) ..Virtual Events / Programming (7) ..Association News (28) Awards (127) Groups (17) ..Sections (6) ..Regions (1) ..Caucuses (1) × Type Your Search Term Below. Results Will Populate When Available.",
-      "links": [
-        {
-          "url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference",
-          "title": "Announcing the ISA 2026 Virtual Conference"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026",
-          "title": ""
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Submissions",
-          "title": "Submit Proposals for the ISA 2026 Virtual Conference"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Submissions",
-          "title": "Submit Your Proposal Today!"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Call",
-          "title": "Submission Types"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Call",
-          "title": "Explore more details here."
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Call",
-          "title": "Submission Details"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Call",
-          "title": "Check out information"
-        },
-        {
-          "url": "https://www.isanet.org/Create-Account?returnurl=/Conferences/Virtual-2026/Submissions",
-          "title": "create one now"
-        },
-        {
-          "url": "https://www.isanet.org/Conferences/Virtual-2026/Call",
-          "title": "Learn More about Submission Types and Details"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/289/ISA-Virtual-2026",
-          "title": "ISA Virtual 2026"
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference",
-          "title": "Permalink"
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference",
-          "title": "Comments (0)"
-        },
-        {
-          "url": "https://www.isanet.org/DesktopModules/DnnForge%20-%20NewsArticles/RssComments.aspx?TabID=153&ModuleID=753&ArticleID=6642",
-          "title": ""
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6650/ISA-SAWP-2026-Conference--Submission-Deadline-Extended",
-          "title": "Ankit Sahu on \"ISA-SAWP 2026 Conference - Submission Deadline Extended!\" : By what time can we expect an update on our Abstra..."
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6647/ISA-SAWP-2026-Submission-Reminder",
-          "title": "Adelina Mkami on \"ISA-SAWP 2026: Submission Reminder\" : Hi Rajeev, Thanks for reaching out. I'm happy to s..."
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6647/ISA-SAWP-2026-Submission-Reminder",
-          "title": "Rajeev MM on \"ISA-SAWP 2026: Submission Reminder\" : How will we send the proposals? No link appeared. ..."
-        },
-        {
-          "url": "https://www.isanet.org/News/ID/6638/ISA-IDSS-2026-Summer-Conference-in-Izmir-Turkiye--Submissions-Launched",
-          "title": "Adelina Mkami on \"ISA-IDSS 2026 Summer Conference in Izmir, Türkiye - Submissions Launched! \" : Hi Mohammad, Thank you for reaching out. Please no..."
-        },
-        {
-          "url": "https://www.isanet.org/News/Newsletters",
-          "title": "Past Newsletters"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2026",
-          "title": "September 2026 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2026",
-          "title": "August 2026 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2026",
-          "title": "July 2026 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2026",
-          "title": "June 2026 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2026",
-          "title": "May 2026 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2026",
-          "title": "April 2026 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2026",
-          "title": "March 2026 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2026",
-          "title": "February 2026 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2026",
-          "title": "January 2026 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2025",
-          "title": "December 2025 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2025",
-          "title": "October 2025 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2025",
-          "title": "September 2025 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2025",
-          "title": "August 2025 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2025",
-          "title": "July 2025 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2025",
-          "title": "June 2025 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2025",
-          "title": "May 2025 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2025",
-          "title": "April 2025 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2025",
-          "title": "March 2025 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2025",
-          "title": "February 2025 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2025",
-          "title": "January 2025 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2024",
-          "title": "December 2024 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2024",
-          "title": "November 2024 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2024",
-          "title": "October 2024 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2024",
-          "title": "September 2024 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2024",
-          "title": "August 2024 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2024",
-          "title": "July 2024 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2024",
-          "title": "June 2024 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2024",
-          "title": "May 2024 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2024",
-          "title": "April 2024 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2024",
-          "title": "March 2024 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2024",
-          "title": "February 2024 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2024",
-          "title": "January 2024 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2023",
-          "title": "December 2023 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2023",
-          "title": "October 2023 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2023",
-          "title": "September 2023 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2023",
-          "title": "August 2023 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2023",
-          "title": "July 2023 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2023",
-          "title": "June 2023 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2023",
-          "title": "May 2023 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2023",
-          "title": "April 2023 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2023",
-          "title": "March 2023 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2023",
-          "title": "February 2023 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2023",
-          "title": "January 2023 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2022",
-          "title": "December 2022 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2022",
-          "title": "November 2022 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2022",
-          "title": "October 2022 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2022",
-          "title": "September 2022 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2022",
-          "title": "August 2022 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2022",
-          "title": "July 2022 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2022",
-          "title": "June 2022 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2022",
-          "title": "May 2022 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2022",
-          "title": "April 2022 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2022",
-          "title": "March 2022 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2022",
-          "title": "February 2022 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2022",
-          "title": "January 2022 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2021",
-          "title": "December 2021 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2021",
-          "title": "November 2021 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2021",
-          "title": "October 2021 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2021",
-          "title": "September 2021 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2021",
-          "title": "August 2021 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2021",
-          "title": "July 2021 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2021",
-          "title": "June 2021 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2021",
-          "title": "May 2021 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2021",
-          "title": "April 2021 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2021",
-          "title": "March 2021 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2021",
-          "title": "February 2021 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2021",
-          "title": "January 2021 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2020",
-          "title": "December 2020 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2020",
-          "title": "November 2020 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2020",
-          "title": "October 2020 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2020",
-          "title": "September 2020 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2020",
-          "title": "August 2020 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2020",
-          "title": "July 2020 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2020",
-          "title": "June 2020 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2020",
-          "title": "May 2020 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2020",
-          "title": "April 2020 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2020",
-          "title": "March 2020 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2020",
-          "title": "February 2020 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2020",
-          "title": "January 2020 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2019",
-          "title": "December 2019 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2019",
-          "title": "November 2019 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2019",
-          "title": "October 2019 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2019",
-          "title": "September 2019 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2019",
-          "title": "August 2019 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2019",
-          "title": "July 2019 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2019",
-          "title": "June 2019 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2019",
-          "title": "May 2019 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2019",
-          "title": "April 2019 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2019",
-          "title": "March 2019 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2019",
-          "title": "February 2019 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2019",
-          "title": "January 2019 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2018",
-          "title": "December 2018 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2018",
-          "title": "November 2018 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2018",
-          "title": "October 2018 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2018",
-          "title": "September 2018 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2018",
-          "title": "August 2018 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2018",
-          "title": "July 2018 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2018",
-          "title": "June 2018 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2018",
-          "title": "May 2018 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2018",
-          "title": "April 2018 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2018",
-          "title": "March 2018 (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2018",
-          "title": "February 2018 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2018",
-          "title": "January 2018 (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2017",
-          "title": "December 2017 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2017",
-          "title": "November 2017 (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2017",
-          "title": "October 2017 (2)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2017",
-          "title": "September 2017 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2017",
-          "title": "August 2017 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2017",
-          "title": "July 2017 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2017",
-          "title": "June 2017 (15)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2017",
-          "title": "May 2017 (13)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2017",
-          "title": "April 2017 (12)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2017",
-          "title": "March 2017 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2017",
-          "title": "February 2017 (20)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2017",
-          "title": "January 2017 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2016",
-          "title": "December 2016 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2016",
-          "title": "November 2016 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2016",
-          "title": "October 2016 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2016",
-          "title": "September 2016 (19)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2016",
-          "title": "August 2016 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2016",
-          "title": "July 2016 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2016",
-          "title": "June 2016 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2016",
-          "title": "May 2016 (19)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2016",
-          "title": "April 2016 (19)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2016",
-          "title": "March 2016 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2016",
-          "title": "February 2016 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2016",
-          "title": "January 2016 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2015",
-          "title": "December 2015 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2015",
-          "title": "November 2015 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2015",
-          "title": "October 2015 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2015",
-          "title": "September 2015 (15)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2015",
-          "title": "August 2015 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2015",
-          "title": "July 2015 (16)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2015",
-          "title": "June 2015 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2015",
-          "title": "May 2015 (15)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2015",
-          "title": "April 2015 (19)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2015",
-          "title": "March 2015 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2015",
-          "title": "February 2015 (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2015",
-          "title": "January 2015 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2014",
-          "title": "December 2014 (10)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2014",
-          "title": "November 2014 (4)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2014",
-          "title": "October 2014 (14)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2014",
-          "title": "September 2014 (12)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2014",
-          "title": "August 2014 (13)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2014",
-          "title": "July 2014 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2014",
-          "title": "June 2014 (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2014",
-          "title": "May 2014 (16)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2014",
-          "title": "April 2014 (17)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2014",
-          "title": "March 2014 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/2/year/2014",
-          "title": "February 2014 (15)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2014",
-          "title": "January 2014 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/12/year/2013",
-          "title": "December 2013 (12)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/11/year/2013",
-          "title": "November 2013 (9)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/10/year/2013",
-          "title": "October 2013 (20)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/9/year/2013",
-          "title": "September 2013 (24)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/8/year/2013",
-          "title": "August 2013 (13)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/7/year/2013",
-          "title": "July 2013 (8)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/6/year/2013",
-          "title": "June 2013 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/5/year/2013",
-          "title": "May 2013 (5)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/4/year/2013",
-          "title": "April 2013 (11)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/3/year/2013",
-          "title": "March 2013 (3)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/ArchiveView/month/1/year/2013",
-          "title": "January 2013 (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News.aspx",
-          "title": "All"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/2/Conferences",
-          "title": "Conferences (18)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/1/Annual-Convention",
-          "title": "..Annual Convention (256)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/17/Other-Conferences",
-          "title": "..Other Conferences (229)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/36/Outside-ISA",
-          "title": "..Outside ISA (34)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/3/Headquarters",
-          "title": "Headquarters (193)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/158/Statements",
-          "title": "..Statements (39)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/160/Multimedia",
-          "title": "..Multimedia (27)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/175/United-Nations-Academic-Impact",
-          "title": "..United Nations Academic Impact (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/233/Virtual-Events-Programming",
-          "title": "..Virtual Events / Programming (7)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/241/Association-News",
-          "title": "..Association News (28)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/35/Awards",
-          "title": "Awards (127)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/57/Groups",
-          "title": "Groups (17)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/55/Sections",
-          "title": "..Sections (6)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/64/Regions",
-          "title": "..Regions (1)"
-        },
-        {
-          "url": "https://www.isanet.org/News/articleType/CategoryView/categoryId/63/Caucuses",
-          "title": "..Caucuses (1)"
-        }
-      ],
-      "hash": "9c6094746d5adffdb398182ab06a60d05b92df1902fc0d790e0d4bcfe9852148",
-      "source_id": "isa",
-      "discovery_url": "https://www.isanet.org/News/ID/6642/Announcing-the-ISA-2026-Virtual-Conference?utm_source=openai"
-    },
-    {
-      "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-      "text": "Research Assistant – Market Shaping Accelerator - Center for Global Development - Career Page Skip To Job Description Our people are our most valuable asset in achieving our mission to reduce global poverty and inequality. CGD seeks highly qualified and deeply dedicated colleagues to further our research, program goals, our communications and outreach efforts, as well as to improve our organizational efficiency and operations. The Center offers a range of positions in economics, policy, communications and administration. Occasionally, as space and funding are available, CGD also offers post-doctoral fellowships and internships. Our generous benefits package for full-time U.S. based employees includes: Health and dental insurance of which the employee pays only a modest portion 6 weeks PTO per year Fully paid Federal holidays Employer-paid life, short-term disability and long-term disability insurance 12 weeks paid parental leave Commuter benefit Retirement – 15% contribution after one year, up to legal limits Onsite fitness center Tuition reimbursement CGD Europe benefits may differ from that of the U.S. headquarters. Please inquire for details. Research Assistant – Market Shaping Accelerator Washington, DC Full Time Entry Level Share The Center for Global Development (CGD) is an independent, non-partisan, non-profit policy research organization in Washington, DC, and London, UK that focuses on the issues and institutions that are critical to inclusive development. Through rigorous empirical research and active engagement with the global policy community, CGD focuses on the intersections between the policy and financial priorities of low- and middle-income countries and the governments, institutions, and corporations that can be partners in delivering greater progress. Founded by Rachel Glennerster, Michael Kremer and Christopher Snyder, the Market Shaping Accelerator (MSA), housed at CGD, aims to catalyze the development of advance market commitments and other market shaping mechanisms to incentivize innovations addressing pressing global challenges including in the areas of global health, pandemic preparedness, climate, AI safety, and drug repurposing. Information on MSA’s current projects can be found on our focus areas webpage. We focus on driving innovation in areas of large social value but incommensurate commercial return in both low- and high-income country settings by identifying promising opportunities, developing high-impact proposals, and engaging with policymakers and funders. MSA is hiring for a Research Assistant position based in Washington D.C. The Research Assistant will work with Professor Christopher Snyder of Dartmouth, Professor Rachel Glennerster of the University of Chicago and the Center for Global Development, and other colleagues at the Market Shaping Accelerator to support the development and adoption of high-impact market-shaping proposals designed to incentivize innovations addressing climate change, pandemic threats, global health challenges, and other pressing global problems. This position offers excellent preparation for graduate study or a future policy career. Our Research Assistants engage with leading scholars and policymakers and contribute directly to the design of market shaping proposals. We expect our Research Assistants to support key workstreams and advance our policy work, not simply conduct isolated analysis. Previous Research Assistants have been admitted to economics Ph.D. programs at Harvard University, Harvard Business School, and the University of Chicago Booth School of Business. Responsibilities include, but are not limited to, the following: Economic appraisal and quantitative modeling of market-shaping proposals (40%) Benefit-cost analysis and cost-effectiveness analysis Estimating the potential benefits of innovation, size of potential markets and cost of market shaping incentives. Microeconomic modeling and related quantitative analysis Modeling and data analysis in Stata, R, Python, and/or MATLAB Policy and sector analysis related to climate change, global health, and pandemic preparedness (25%) and other global challenges Writing and revising drafts for policymakers and economists Analysis of opportunities in specific sectors. This includes analysis of market dynamics, market structure, regulatory environment and implementation challenges. Desk research to identify promising candidate problems for market-shaping interventions (25%) Communication and coordination with relevant stakeholders (10%) Required Qualifications: Bachelor’s degree in economics or a related field including coursework in intermediate microeconomics and multivariable calculus or equivalent. Strong quantitative skills and experience with empirical research methods and/or microeconomic modeling Programming experience in at least one relevant language, such as Stata, R, Python, or MATLAB Excellent analytical and critical-thinking skills Strong written and oral communication skills Ability to manage multiple projects and stay organized in a fast-moving research environment Preferred Qualifications: Advanced quantitative preparation beyond the minimum requirements. This could include, for example, linear algebra, probability, statistics and econometrics, real analysis, ordinary differential equations, advanced microeconomics etc. Demonstrated interest in climate change, pandemic preparedness, global health, or related policy areas Working Conditions Some domestic and possibly international travel may be required. Application Documents Resume/CV (required) Cover Letter (required) Writing Sample (required) Transcripts (required) Professional References Contact Information (3) (required) Closing date: October 15 at 11:59 pm ET. We may have an additional hiring round in early 2027 Salary range: $54,500 - $60,000. Pay commensurate with education, skillset, and experience. We manually review applications; no AI or automated filters are used to screen candidates. The organization is working in a hybrid environment with all staff required to be in the office at least three days per week. CGD is registered to employ staff living in DC, Maryland, and Virginia. Candidates must be able to declare a primary residence in one of these 3 locations. In compliance with federal law, all persons hired will be required to verify identity and eligibility to work in the United States and to complete the required employment eligibility verification document upon hire. CGD is unable to sponsor work authorization for this position. Read about CGD’s benefits package here. CGD/E is an Equal Opportunity Employer, and celebrates fostering a collaborative, diverse, and inclusive work environment. All persons will be considered for employment regardless of race, color, creed, national origin, ancestry, gender, gender identity or expression, national origin, parental status, veteran status, marital status, disability, religious or political affiliation, age or sexual orientation. Share Apply Apply for this position Required * First Name * Last Name * Email Address * Phone * Address * Resume * We've received your resume. Click here to update it. Attach resume or Paste resume Attach resume as .pdf, .doc, .docx, .odt, .txt, or .rtf (limit 5MB) or Paste resume Paste your resume here or Attach resume file Cover Letter * Writing sample (ideally an independently written quantitative paper) * Unofficial Transcripts * Please provide contact information for 3 professional references * Do you have a Bachelor’s degree in economics or a related field including coursework in intermediate microeconomics and multivariable calculus or equivalent? * Yes Will you now, or at any time in the future, require US sponsorship for a visa or work authorization from Center for Global Development? * -- No answer -- Yes No Human Check * Submit Application",
-      "links": [
-        {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Skip To Job Description"
-        },
-        {
-          "url": "https://centerforglobaldevelopment.applytojob.com/app/share/gS6SSb6wjR",
-          "title": "Share"
-        },
-        {
-          "url": "https://www.cgdev.org",
-          "title": "Center for Global Development"
-        },
-        {
-          "url": "https://www.cgdev.org/expert/rachel-glennerster",
-          "title": "Rachel Glennerster"
-        },
-        {
-          "url": "https://www.cgdev.org/careers",
-          "title": "here."
-        },
-        {
-          "url": "https://centerforglobaldevelopment.applytojob.com/app/share/gS6SSb6wjR",
-          "title": "Share"
-        },
-        {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
           "title": "here"
         },
         {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Attach resume"
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Overview"
         },
         {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Paste resume"
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Application requirements"
         },
         {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Paste resume"
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "title": "Application Procedure"
         },
         {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Attach resume file"
+          "url": "https://www.daad.de/sapportal/technische_voraussetzungen/PBF_en.html",
+          "title": "Technical requirements"
         },
         {
-          "url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator",
-          "title": "Submit Application"
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/dac_laenderliste_epos.pdf",
+          "title": "list of eligible countries"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
+          "title": "List of all Postgraduate courses with application deadlines 2027/2028"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_faq_en.pdf",
+          "title": "FAQs"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_checkliste.pdf",
+          "title": "checklist"
+        },
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
+          "title": "here"
+        },
+        {
+          "url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants",
+          "title": "important scholarship information"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/hinweise/en/27334-frequently-asked-questions",
+          "title": "More Information"
+        },
+        {
+          "url": "https://daad.de/go/en/stipa50076777",
+          "title": "daad.de/go/en/stipa50076777"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?type=print",
+          "title": "Print"
+        },
+        {
+          "url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database.pdf?detail=50076777",
+          "title": "as PDF"
         }
       ],
-      "hash": "0e73ca2ef27d53e82e3749500df62545d8441efbd2f8a003ced0a6ebbacd252f",
-      "source_id": "cgd",
-      "discovery_url": "https://centerforglobaldevelopment.applytojob.com/apply/gS6SSb6wjR/Research-Assistant-Market-Shaping-Accelerator"
+      "hash": "2695f39d90b985ab5d748be1c9be46ea3508e9a91e56e5425ee0e95223a7ce05",
+      "source_id": "daad-epos",
+      "discovery_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777"
+    },
+    {
+      "url": "https://www.ipsa.org/?utm_source=openai",
+      "text": "| IPSA Skip to main content LOG IN Contact Us | | English Français International Political Science Association The Voice of Political Science around the World Submit a Paper Submit a Panel Learn more Submit a Paper Submit a Panel Learn more Register Now Learn more Register Now Learn more Learn more Learn more Learn more Learn more Learn more Learn more Learn more Learn more Learn more Learn more Enroll now Enroll now Previous Next Sponsored advertisement Political Science News The Call for Papers for the 2027 IPSA World Congress is Now Open! The Call for Papers is now open for the 29th IPSA World Congress of Political Science. Read More IPSA at the 2026 APSA Annual Meeting in Boston The American Political Science Association’s (APSA) 122nd Annual Meeting took place in Boston, USA, from 3-6 September 2026. IPSA was once again represented by a strong delegation. Read More IPSA Present at the 2026 ECPR General Conference in Kraków IPSA was present at the 2026 General Conference of the European Consortium for Political Research (ECPR), a prestigious global event that was held in Kraków, Poland, from 8-11 September 2026. Read More PARTNERS Contact Us Membership and Account Related Inquiries membership@ipsa.org World Congress and IPSA Events Requests regarding the 2027 IPSA World Congress should be made to wc2027@ipsa.org General inquiries about IPSA events can be made to events@ipsa.org IPSA Awards awards@ipsa.org General inquiries info@ipsa.org Webmaster webmaster@ipsa.org Privacy Statement | Cookies Policy ©2026 International Political Science Association , Canada Top",
+      "links": [
+        {
+          "url": "https://www.ipsa.org/?utm_source=openai",
+          "title": "Skip to main content"
+        },
+        {
+          "url": "https://www.ipsa.org/user/login?destination=/frontpage",
+          "title": "LOG IN"
+        },
+        {
+          "url": "https://www.ipsa.org/contact-us",
+          "title": "Contact Us"
+        },
+        {
+          "url": "https://www.ipsa.org/?utm_source=openai",
+          "title": "English"
+        },
+        {
+          "url": "https://www.ipsa.org/fr?utm_source=openai",
+          "title": "Français"
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": ""
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/submit-paper",
+          "title": "Submit a Paper"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/submit-panel",
+          "title": "Submit a Panel"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/home",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/submit-paper",
+          "title": "Submit a Paper"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/submit-panel",
+          "title": "Submit a Panel"
+        },
+        {
+          "url": "https://wc2027.ipsa.org/wc/home",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/events/wroclaw2026",
+          "title": "Register Now"
+        },
+        {
+          "url": "https://www.ipsa.org/events/wroclaw2026",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/events/wroclaw2026",
+          "title": "Register Now"
+        },
+        {
+          "url": "https://www.ipsa.org/events/wroclaw2026",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/events/aows2026",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/events/aows2026",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/nominations-now-open-2027-ipsa-awards",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/nominations-now-open-2027-ipsa-awards",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/about-ipsa/timeline",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/about-ipsa/timeline",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/resources/ipsa-digital",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/resources/ipsa-digital",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/ipsa-summer-schools",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/ipsa-summer-schools",
+          "title": "Learn more"
+        },
+        {
+          "url": "https://www.ipsa.org/page/individual-membership",
+          "title": "Enroll now"
+        },
+        {
+          "url": "https://www.ipsa.org/page/individual-membership",
+          "title": "Enroll now"
+        },
+        {
+          "url": "https://www.ipsa.org/?utm_source=openai",
+          "title": "Previous"
+        },
+        {
+          "url": "https://www.ipsa.org/?utm_source=openai",
+          "title": "Next"
+        },
+        {
+          "url": "https://go.ipsa.org/KOc0Qk",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/all",
+          "title": "Political Science News"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/call-papers-2027-ipsa-world-congress-now-open",
+          "title": "The Call for Papers for the 2027 IPSA World Congress is Now Open!"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/call-papers-2027-ipsa-world-congress-now-open",
+          "title": "Read More"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/ipsa-2026-apsa-annual-meeting-boston-0",
+          "title": "IPSA at the 2026 APSA Annual Meeting in Boston"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/ipsa-2026-apsa-annual-meeting-boston-0",
+          "title": "Read More"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/ipsa-present-2026-ecpr-general-conference-krakow",
+          "title": "IPSA Present at the 2026 ECPR General Conference in Kraków"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/ipsa-present-2026-ecpr-general-conference-krakow",
+          "title": "Read More"
+        },
+        {
+          "url": "https://www.ipsa.org/na/news/all",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/membership/collective",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/resources/ipsamooc",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/research-committees/rclist",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/ipsaportal",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/membership/individual",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/newsletter",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/awards/global-south",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/abstracts",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/ipsaportal",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/participation",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/ipsr",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/publications/encyclopedia",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": ""
+        },
+        {
+          "url": "https://www.ipsa.org/privacy-statement",
+          "title": "Privacy Statement"
+        },
+        {
+          "url": "https://www.ipsa.org/cookies-policy",
+          "title": "Cookies Policy"
+        },
+        {
+          "url": "https://www.ipsa.org",
+          "title": "International Political Science Association"
+        }
+      ],
+      "hash": "71176501b1089a0bfe9c2ff88e380e26153c260ffb409686fd78f5a1f7ff4b1e",
+      "source_id": "ipsa-congress",
+      "discovery_url": "https://www.ipsa.org/?utm_source=openai"
+    },
+    {
+      "url": "https://www.unmgcy.org/main-news-updates/apyouth-assembly-road-to-eyf26",
+      "text": "Asia-Pacific Youth Assembly: Road to the ECOSOC Youth Forum 2026 — Major Group for Children and Youth Back Overview History Mandate and Governance Structure Vision and Values Back Substantive-Overview Resilience and Humanitarian Action Peace and Security Sustainable Development Human RIghts Youth Policy and Development Back Coordination Team Secretariat Platform Liaisons CYI Back COVID-19 STATEMENT Youth Initiative Platform Youth Action on COVID 19 UN IANYD Statement on Youth and COVID 19 Back EYF Calendar 2026 Third Committee Youth Forum International Youth Day 2025 HLPF 2025 ECOSOC YF 2026 Global Youth Declaration on Children and Youth Rights in Armed Conflict Zones World Youth Report Youth 2030 Solidarity with Nigeria Youth Voices for Nature International Youth Day 2020 UN MGCY HLPF 2020 Papers UN MGCY Coordination Team Diversity Report Sustainable Energy Global Caucus for Youth in Faith Youth Entity Platforms Submission to SG's HLP on IDPs Meaningful Engagement HLPF 2020 Sector Paper Science-Policy Interface Platform Call to Action on Adolescent Health Climate Action Declaration SDG 16 Publication ECOSOC Youth Forum 2023 UNGA & SDG Summit 2023 ECE RFSD Youth Inputs to Zero Draft of the Pact for the Future The Future of Multilateralism | SOTF Youth Side-Event Admin Team 2024-2025 UNGA Youth Calendar FFD Prep Com Side Event EYF Calendar 2025 EYF Youth Partners Group Asia-Pacific Youth Assembly: Road to the ECOSOC Youth Forum 2026 Join MGCY, the Asia Pacific Youth Caucus, YAN Pakistan, the SAARC Youth Platform, and the Pacific Youth Council and partners for the Asia Pacific Youth Assembly ahead of the 2026 ECOSOC Youth Forum. The theme is \"The Future of Multilateralism: Shaping the post-2030 Framework with Asia-Pacific Youth Leading the Way\". Date: 1 April 2026, 5 - 7 PM Pakistan time Register to join in here. Admin Team April 2, 2026 Facebook 0 Twitter LinkedIn 0 Reddit Tumblr 0 Likes",
+      "links": [
+        {
+          "url": "https://www.unmgcy.org",
+          "title": ""
+        },
+        {
+          "url": "https://www.unmgcy.org/search",
+          "title": ""
+        },
+        {
+          "url": "https://www.unmgcy.org/about-overview",
+          "title": "Overview"
+        },
+        {
+          "url": "https://www.unmgcy.org/history-",
+          "title": "History"
+        },
+        {
+          "url": "https://www.unmgcy.org/mandate-and-governance",
+          "title": "Mandate and Governance"
+        },
+        {
+          "url": "https://www.unmgcy.org/structure",
+          "title": "Structure"
+        },
+        {
+          "url": "https://www.unmgcy.org/vision-and-values",
+          "title": "Vision and Values"
+        },
+        {
+          "url": "https://www.unmgcy.org/substantive-work",
+          "title": "Substantive-Overview"
+        },
+        {
+          "url": "https://www.unmgcy.org/resilience-and-humanitarian-action",
+          "title": "Resilience and Humanitarian Action"
+        },
+        {
+          "url": "https://www.unmgcy.org/peace-and-security",
+          "title": "Peace and Security"
+        },
+        {
+          "url": "https://www.unmgcy.org/sustainable",
+          "title": "Sustainable Development"
+        },
+        {
+          "url": "https://www.unmgcy.org/human-rights",
+          "title": "Human RIghts"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth-policy-and-development",
+          "title": "Youth Policy and Development"
+        },
+        {
+          "url": "https://www.unmgcy.org/coordination-team",
+          "title": "Coordination Team"
+        },
+        {
+          "url": "https://www.unmgcy.org/secretariat",
+          "title": "Secretariat"
+        },
+        {
+          "url": "https://www.unmgcy.org/new-page-4",
+          "title": "Platform Liaisons"
+        },
+        {
+          "url": "https://www.unmgcy.org/cyi",
+          "title": "CYI"
+        },
+        {
+          "url": "https://www.unmgcy.org/covid19-statement",
+          "title": "COVID-19 STATEMENT"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth-initiatives",
+          "title": "Youth Initiative Platform"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth-action-on-covid-19",
+          "title": "Youth Action on COVID 19"
+        },
+        {
+          "url": "https://www.unmgcy.org/un-ianyd-statement-on-youth-and-covid-19",
+          "title": "UN IANYD Statement on Youth and COVID 19"
+        },
+        {
+          "url": "https://www.unmgcy.org/eyf-calendar-2026",
+          "title": "EYF Calendar 2026"
+        },
+        {
+          "url": "https://www.unmgcy.org/unga-3cyouth",
+          "title": "Third Committee Youth Forum"
+        },
+        {
+          "url": "https://www.unmgcy.org/international-youth-day-2025",
+          "title": "International Youth Day 2025"
+        },
+        {
+          "url": "https://www.unmgcy.org/hlpf",
+          "title": "HLPF 2025"
+        },
+        {
+          "url": "https://www.unmgcy.org/eyf",
+          "title": "ECOSOC YF 2026"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth-declaration-25oct",
+          "title": "Global Youth Declaration on Children and Youth Rights in Armed Conflict Zones"
+        },
+        {
+          "url": "https://www.unmgcy.org/world-youth-report",
+          "title": "World Youth Report"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth2030",
+          "title": "Youth 2030"
+        },
+        {
+          "url": "https://www.unmgcy.org/solidarity-with-youth-in-nigeria",
+          "title": "Solidarity with Nigeria"
+        },
+        {
+          "url": "https://www.unmgcy.org/for-nature",
+          "title": "Youth Voices for Nature"
+        },
+        {
+          "url": "https://www.unmgcy.org/international-youth-day-2020",
+          "title": "International Youth Day 2020"
+        },
+        {
+          "url": "https://www.unmgcy.org/hlpf2020-paper",
+          "title": "UN MGCY HLPF 2020 Papers"
+        },
+        {
+          "url": "https://www.unmgcy.org/un-mgcy-coordination-team-diversity-report",
+          "title": "UN MGCY Coordination Team Diversity Report"
+        },
+        {
+          "url": "https://www.unmgcy.org/sustainable-energy",
+          "title": "Sustainable Energy"
+        },
+        {
+          "url": "https://www.unmgcy.org/global-caucus-for-youth-in-faith",
+          "title": "Global Caucus for Youth in Faith"
+        },
+        {
+          "url": "https://www.unmgcy.org/youth-entity-platforms",
+          "title": "Youth Entity Platforms"
+        },
+        {
+          "url": "https://www.unmgcy.org/submission-to-sgs-hlp-on-idps",
+          "title": "Submission to SG's HLP on IDPs"
+        },
+        {
+          "url": "https://www.unmgcy.org/meaningful-engagement",
+          "title": "Meaningful Engagement"
+        },
+        {
+          "url": "https://www.unmgcy.org/hlpf2020sectorpaper",
+          "title": "HLPF 2020 Sector Paper"
+        },
+        {
+          "url": "https://www.unmgcy.org/science-policy-interface",
+          "title": "Science-Policy Interface Platform"
+        },
+        {
+          "url": "https://www.unmgcy.org/call-to-action-on-adolescent-health",
+          "title": "Call to Action on Adolescent Health"
+        },
+        {
+          "url": "https://www.unmgcy.org/global-youth-climate-action-declaration-preamble",
+          "title": "Climate Action Declaration"
+        },
+        {
+          "url": "https://www.unmgcy.org/sdg-16-publication",
+          "title": "SDG 16 Publication"
+        },
+        {
+          "url": "https://www.unmgcy.org/eyf2023",
+          "title": "ECOSOC Youth Forum 2023"
+        },
+        {
+          "url": "https://www.unmgcy.org/unga-sdg-summit-2023",
+          "title": "UNGA & SDG Summit 2023"
+        },
+        {
+          "url": "https://www.unmgcy.org/ece-youth-2024",
+          "title": "ECE RFSD Youth"
+        },
+        {
+          "url": "https://www.unmgcy.org/inputs-zero-draft-pact",
+          "title": "Inputs to Zero Draft of the Pact for the Future"
+        },
+        {
+          "url": "https://www.unmgcy.org/sotf-side-event-future-of-mult",
+          "title": "The Future of Multilateralism | SOTF Youth Side-Event"
+        },
+        {
+          "url": "https://www.unmgcy.org/adminteam2425",
+          "title": "Admin Team 2024-2025"
+        },
+        {
+          "url": "https://www.unmgcy.org/unga-youth-calendar",
+          "title": "UNGA Youth Calendar"
+        },
+        {
+          "url": "https://www.unmgcy.org/dcf-2025-side-event",
+          "title": "FFD Prep Com Side Event"
+        },
+        {
+          "url": "https://www.unmgcy.org/eyf-calendar",
+          "title": "EYF Calendar 2025"
+        },
+        {
+          "url": "https://www.unmgcy.org/eyf-ypg",
+          "title": "EYF Youth Partners Group"
+        },
+        {
+          "url": "https://www.unmgcy.org/main-news-updates?author=5b2586723eb1ea486048fdfc",
+          "title": "Admin Team"
+        },
+        {
+          "url": "https://www.unmgcy.org/main-news-updates/apyouth-assembly-road-to-eyf26",
+          "title": "0 Likes"
+        }
+      ],
+      "hash": "a5c36c164ba08b4e8e94b3fe855327015e0c1c7bac7b733296eb50f34109661e",
+      "source_id": "mgcy-youth",
+      "discovery_url": "https://www.unmgcy.org/main-news-updates/apyouth-assembly-road-to-eyf26"
     }
   ]
 }

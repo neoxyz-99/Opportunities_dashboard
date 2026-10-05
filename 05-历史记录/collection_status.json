@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "attempted_at": "2026-09-30T21:15:34.489717+00:00",
-  "last_successful_collection": "2026-09-30T21:15:34.489717+00:00",
+  "attempted_at": "2026-10-05T06:48:39.697463+00:00",
+  "last_successful_collection": "2026-10-05T06:48:39.697463+00:00",
   "status": "partial",
   "new_count": 1,
   "updated_count": 0,
@@ -9,18 +9,18 @@
     "odi": {
       "name": "ODI Global",
       "url": "https://careers.odi.org/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
-      "error": "ValueError: https://careers.odi.org/: HTTPError: HTTP Error 403: Forbidden; https://odi.org/en/careers/: HTTPError: HTTP Error 403: Forbidden",
+      "error": "Detail fetch failed: HTTPError: HTTP Error 403: Forbidden",
       "candidates": 0,
-      "expected_pages": 0,
+      "expected_pages": 2,
       "validated_pages": 0
     },
     "sei": {
       "name": "Stockholm Environment Institute",
       "url": "https://www.sei.org/people/jobs/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.sei.org/people/jobs/: HTTPError: HTTP Error 403: Forbidden; https://www.sei.org/people/jobs/internships-africa/: HTTPError: HTTP Error 403: Forbidden",
@@ -31,10 +31,10 @@
     "cgd": {
       "name": "Center for Global Development",
       "url": "https://centerforglobaldevelopment.applytojob.com/apply",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "failed",
-      "error": "Record validation: Deadline lacks matching source evidence",
+      "status": "pending",
+      "error": "",
       "candidates": 3,
       "expected_pages": 3,
       "validated_pages": 0,
@@ -51,7 +51,7 @@
     "iges": {
       "name": "IGES",
       "url": "https://www.iges.or.jp/en/about/employment",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.iges.or.jp/en/about/employment: ValueError: Could not verify robots.txt: HTTPError",
@@ -62,10 +62,10 @@
     "oecd": {
       "name": "OECD",
       "url": "https://careers.smartrecruiters.com/OECD",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "failed",
-      "error": "Record validation: Job duties lack source evidence",
+      "status": "pending",
+      "error": "",
       "candidates": 3,
       "expected_pages": 3,
       "validated_pages": 0,
@@ -82,10 +82,10 @@
     "gcf": {
       "name": "Green Climate Fund",
       "url": "https://www.greenclimate.fund/about/careers",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "partial",
-      "error": "Record validation: Job duties lack source evidence",
+      "status": "pending",
+      "error": "",
       "candidates": 2,
       "expected_pages": 2,
       "validated_pages": 0,
@@ -102,10 +102,10 @@
     "adb": {
       "name": "Asian Development Bank",
       "url": "https://www.adb.org/work-with-us/careers/internship-program",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "failed",
-      "error": "Record validation: Deadline lacks matching source evidence",
+      "status": "pending",
+      "error": "",
       "candidates": 5,
       "expected_pages": 5,
       "validated_pages": 0,
@@ -122,10 +122,10 @@
     "eib": {
       "name": "European Investment Bank",
       "url": "https://www.eib.org/en/about/careers/categories/traineeships/index.htm",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "pending",
-      "error": "",
+      "status": "failed",
+      "error": "Detail fetch failed: ValueError: Could not verify robots.txt: HTTPError",
       "candidates": 1,
       "expected_pages": 1,
       "validated_pages": 0,
@@ -142,24 +142,24 @@
     "imf": {
       "name": "IMF",
       "url": "https://www.imf.org/en/About/Recruitment",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
-      "error": "Detail fetch failed: HTTPError: HTTP Error 403: Forbidden",
+      "error": "ValueError: https://www.imf.org/en/About/Recruitment: HTTPError: HTTP Error 403: Forbidden",
       "candidates": 0,
-      "expected_pages": 2,
+      "expected_pages": 0,
       "validated_pages": 0
     },
     "chatham": {
       "name": "Chatham House",
       "url": "https://careers.chathamhouse.org/jobs",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": null,
-      "status": "pending",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "checked",
       "error": "",
       "candidates": 1,
       "expected_pages": 1,
-      "validated_pages": 0,
+      "validated_pages": 1,
       "entry_attempts": [
         {
           "url": "https://careers.chathamhouse.org/jobs",
@@ -173,10 +173,10 @@
     "ecpr": {
       "name": "ECPR",
       "url": "https://ecpr.eu/JointSessions",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
-      "status": "failed",
-      "error": "Record validation: Unsupported eligibility evidence: residency; Unfetched or fabricated opportunity URL",
+      "status": "pending",
+      "error": "",
       "candidates": 1,
       "expected_pages": 2,
       "validated_pages": 0,
@@ -193,7 +193,7 @@
     "aas": {
       "name": "Association for Asian Studies",
       "url": "https://www.asianstudies.org/conferences/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.asianstudies.org/conferences/: HTTPError: HTTP Error 403: Forbidden",
@@ -204,7 +204,7 @@
     "hnet": {
       "name": "H-Net announcements",
       "url": "https://networks.h-net.org/h-announce",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://networks.h-net.org/h-announce: ValueError: Could not verify robots.txt: HTTPError",
@@ -215,7 +215,7 @@
     "imf-meetings": {
       "name": "IMF / World Bank meetings",
       "url": "https://www.imf.org/en/About/Annual-Meetings",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.imf.org/en/About/Annual-Meetings: HTTPError: HTTP Error 403: Forbidden",
@@ -226,7 +226,7 @@
     "china-cicir": {
       "name": "China Institutes of Contemporary International Relations",
       "url": "https://www.cicir.ac.cn/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.cicir.ac.cn/: ValueError: Could not verify robots.txt: URLError",
@@ -237,7 +237,7 @@
     "chatham-fellowships": {
       "name": "Chatham House Academy fellowships",
       "url": "https://www.chathamhouse.org/academy/fellowships",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": null,
       "status": "failed",
       "error": "ValueError: https://www.chathamhouse.org/academy/fellowships: HTTPError: HTTP Error 403: Forbidden",
@@ -245,71 +245,133 @@
       "expected_pages": 0,
       "validated_pages": 0
     },
-    "eui-maxweber": {
-      "name": "EUI Max Weber social-science fellowships",
-      "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
+    "bisa": {
+      "name": "British International Studies Association calls and conference",
+      "url": "https://www.bisa.ac.uk/news",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
       "status": "partial",
-      "error": "Detail fetch failed: ValueError: robots.txt disallows this source",
-      "candidates": 4,
-      "expected_pages": 5,
+      "error": "",
+      "candidates": 64,
+      "expected_pages": 9,
       "validated_pages": 1,
       "entry_attempts": [
         {
-          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+          "url": "https://www.bisa.ac.uk/news",
           "status": "readable"
         }
       ],
-      "fetched_url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+      "fetched_url": "https://www.bisa.ac.uk/news",
+      "readable": true,
+      "deferred_links": 56
+    },
+    "apsa": {
+      "name": "American Political Science Association Annual Meeting",
+      "url": "https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
+      "candidates": 0,
+      "expected_pages": 1,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://apsanet.org/EVENTS/Annual-Meeting-Exhibition/",
       "readable": true,
       "deferred_links": 0
     },
-    "humboldt-climate": {
-      "name": "Humboldt International Climate Protection Fellowship",
-      "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
+    "ipsa-congress": {
+      "name": "IPSA World Congress submissions and travel grants",
+      "url": "https://www.ipsa.org/wc/home",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
       "status": "partial",
       "error": "",
-      "candidates": 11,
-      "expected_pages": 7,
+      "candidates": 4,
+      "expected_pages": 6,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://www.ipsa.org/wc/home",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.ipsa.org/wc/home",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "acuns": {
+      "name": "Academic Council on the United Nations System workshops and meetings",
+      "url": "https://acuns.org/",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 2,
+      "expected_pages": 3,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://acuns.org/",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://acuns.org/",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "ssrc": {
+      "name": "Social Science Research Council fellowships and grants",
+      "url": "https://www.ssrc.org/how-we-work/fellowship-and-grants-administration/",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": null,
+      "status": "failed",
+      "error": "ValueError: https://www.ssrc.org/how-we-work/fellowship-and-grants-administration/: ValueError: Could not verify robots.txt: HTTPError",
+      "candidates": 0,
+      "expected_pages": 0,
+      "validated_pages": 0
+    },
+    "iias": {
+      "name": "International Institute for Asian Studies fellowships",
+      "url": "https://www.iias.asia/fellowships-homepage",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": null,
+      "status": "failed",
+      "error": "ValueError: https://www.iias.asia/fellowships-homepage: HTTPError: HTTP Error 403: Forbidden",
+      "candidates": 0,
+      "expected_pages": 0,
+      "validated_pages": 0
+    },
+    "unfccc-fellowships": {
+      "name": "UNFCCC - UNU Early Career Climate Fellowship",
+      "url": "https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "checked",
+      "error": "",
+      "candidates": 1,
+      "expected_pages": 2,
       "validated_pages": 2,
       "entry_attempts": [
         {
-          "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+          "url": "https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme",
           "status": "readable"
         }
       ],
-      "fetched_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
-      "readable": true,
-      "deferred_links": 5
-    },
-    "daad-epos": {
-      "name": "DAAD development-related postgraduate scholarships",
-      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "Record validation: Unfetched or fabricated opportunity URL",
-      "candidates": 1,
-      "expected_pages": 2,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+      "fetched_url": "https://unu.edu/vie/our-work/partnerships-and-outreach/unfccc-unu-early-career-climate-fellowship-programme",
       "readable": true,
       "deferred_links": 0
     },
-    "un-youth": {
-      "name": "UN Youth Office participation and events",
-      "url": "https://www.un.org/youthaffairs/en",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
+    "worldbank-youth": {
+      "name": "World Bank Youth Summit participation",
+      "url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
       "status": "partial",
       "error": "",
       "candidates": 2,
@@ -317,44 +379,24 @@
       "validated_pages": 2,
       "entry_attempts": [
         {
-          "url": "https://www.un.org/youthaffairs/en",
+          "url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
           "status": "readable"
         }
       ],
-      "fetched_url": "https://www.un.org/youthaffairs/en",
+      "fetched_url": "https://www.worldbank.org/en/events/2026/06/11/youth-summit-2026-future-works-designing-jobs-for-the-digital-age",
       "readable": true,
       "deferred_links": 0
-    },
-    "mgcy-youth": {
-      "name": "Major Group for Children and Youth participation calls",
-      "url": "https://www.unmgcy.org/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "",
-      "candidates": 9,
-      "expected_pages": 7,
-      "validated_pages": 2,
-      "entry_attempts": [
-        {
-          "url": "https://www.unmgcy.org/",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www.unmgcy.org/",
-      "readable": true,
-      "deferred_links": 3
     },
     "wri": {
       "name": "World Resources Institute",
       "url": "https://www.wri.org/careers/jobs",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T14:48:13.421404+00:00",
-      "status": "pending",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
       "error": "",
-      "candidates": 21,
-      "expected_pages": 12,
-      "validated_pages": 0,
+      "candidates": 10,
+      "expected_pages": 10,
+      "validated_pages": 1,
       "entry_attempts": [
         {
           "url": "https://www.wri.org/careers/jobs",
@@ -363,18 +405,18 @@
       ],
       "fetched_url": "https://www.wri.org/careers/jobs",
       "readable": true,
-      "deferred_links": 9
+      "deferred_links": 0
     },
     "e3g": {
       "name": "E3G",
       "url": "https://e3g.bamboohr.com/careers",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T18:36:37.564211+00:00",
-      "status": "pending",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "checked",
       "error": "",
       "candidates": 1,
       "expected_pages": 1,
-      "validated_pages": 0,
+      "validated_pages": 1,
       "entry_attempts": [
         {
           "url": "https://e3g.bamboohr.com/careers",
@@ -388,7 +430,7 @@
     "iisd": {
       "name": "IISD",
       "url": "https://www.iisd.org/about/careers",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "failed",
       "error": "ValueError: https://www.iisd.org/about/careers: HTTPError: HTTP Error 403: Forbidden",
@@ -399,13 +441,13 @@
     "cpi": {
       "name": "Climate Policy Initiative",
       "url": "https://www.climatepolicyinitiative.org/careers/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T18:36:37.564211+00:00",
-      "status": "pending",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "checked",
       "error": "",
-      "candidates": 2,
-      "expected_pages": 2,
-      "validated_pages": 0,
+      "candidates": 1,
+      "expected_pages": 1,
+      "validated_pages": 1,
       "entry_attempts": [
         {
           "url": "https://www.climatepolicyinitiative.org/careers/",
@@ -416,30 +458,10 @@
       "readable": true,
       "deferred_links": 0
     },
-    "aiib": {
-      "name": "Asian Infrastructure Investment Bank",
-      "url": "https://www.aiib.org/en/opportunities/career/index.html",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "checked",
-      "error": "",
-      "candidates": 0,
-      "expected_pages": 1,
-      "validated_pages": 0,
-      "entry_attempts": [
-        {
-          "url": "https://www.aiib.org/en/opportunities/career/index.html",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www.aiib.org/en/general/404.html?requested=/en/opportunities/career/index.html&server=other",
-      "readable": true,
-      "deferred_links": 0
-    },
     "worldbank": {
       "name": "World Bank",
       "url": "https://www.worldbank.org/en/about/careers",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "failed",
       "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
@@ -459,12 +481,12 @@
     "brookings": {
       "name": "Brookings",
       "url": "https://www.brookings.edu/careers/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "pending",
       "error": "",
-      "candidates": 4,
-      "expected_pages": 4,
+      "candidates": 3,
+      "expected_pages": 3,
       "validated_pages": 0,
       "entry_attempts": [
         {
@@ -476,76 +498,16 @@
       "readable": true,
       "deferred_links": 0
     },
-    "isa": {
-      "name": "International Studies Association",
-      "url": "https://www.isanet.org/Conferences",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "",
-      "candidates": 5,
-      "expected_pages": 7,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://www.isanet.org/Conferences",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www.isanet.org/Conferences",
-      "readable": true,
-      "deferred_links": 0
-    },
-    "eisa": {
-      "name": "European International Studies Association",
-      "url": "https://eisa-net.org/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "",
-      "candidates": 3,
-      "expected_pages": 4,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://eisa-net.org/",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://eisa-net.org/",
-      "readable": true,
-      "deferred_links": 0
-    },
-    "ipsa": {
-      "name": "International Political Science Association",
-      "url": "https://www.ipsa.org/na/news/all",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "",
-      "candidates": 6,
-      "expected_pages": 8,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://www.ipsa.org/na/news/all",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www.ipsa.org/na/news/all",
-      "readable": true,
-      "deferred_links": 0
-    },
     "ipppa": {
       "name": "International Public Policy Association",
       "url": "https://www.ippapublicpolicy.org/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T18:36:37.564211+00:00",
-      "status": "failed",
-      "error": "Record validation: Deadline lacks matching source evidence",
-      "candidates": 31,
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 30,
       "expected_pages": 7,
-      "validated_pages": 0,
+      "validated_pages": 1,
       "entry_attempts": [
         {
           "url": "https://www.ippapublicpolicy.org/",
@@ -554,12 +516,12 @@
       ],
       "fetched_url": "https://www.ippapublicpolicy.org/",
       "readable": true,
-      "deferred_links": 25
+      "deferred_links": 24
     },
     "earthsystem": {
       "name": "Earth System Governance",
       "url": "https://www.earthsystemgovernance.org/events/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "pending",
       "error": "",
@@ -579,7 +541,7 @@
     "dsa": {
       "name": "Development Studies Association",
       "url": "https://www.devstud.org.uk/conferences/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "pending",
       "error": "",
@@ -596,30 +558,10 @@
       "readable": true,
       "deferred_links": 0
     },
-    "worldbank-events": {
-      "name": "World Bank events",
-      "url": "https://www.worldbank.org/en/events",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
-      "candidates": 0,
-      "expected_pages": 1,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://www.worldbank.org/en/events",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://www.worldbank.org/en/events/all",
-      "readable": true,
-      "deferred_links": 0
-    },
     "china-siis": {
       "name": "Shanghai Institutes for International Studies",
       "url": "https://www.siis.org.cn/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "failed",
       "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
@@ -636,50 +578,10 @@
       "readable": true,
       "deferred_links": 0
     },
-    "ceu-schools": {
-      "name": "CEU Summer University",
-      "url": "https://summeruniversity.ceu.edu/courses",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
-      "candidates": 0,
-      "expected_pages": 1,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://summeruniversity.ceu.edu/courses",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://summeruniversity.ceu.edu/courses",
-      "readable": true,
-      "deferred_links": 0
-    },
-    "unfccc-events": {
-      "name": "UNFCCC public events",
-      "url": "https://unfccc.int/calendar",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
-      "last_success": "2026-09-30T21:15:34.489717+00:00",
-      "status": "partial",
-      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
-      "candidates": 0,
-      "expected_pages": 1,
-      "validated_pages": 1,
-      "entry_attempts": [
-        {
-          "url": "https://unfccc.int/calendar",
-          "status": "readable"
-        }
-      ],
-      "fetched_url": "https://unfccc.int/calendar/events-list",
-      "readable": true,
-      "deferred_links": 0
-    },
     "ford": {
       "name": "Ford Foundation opportunities",
       "url": "https://www.fordfoundation.org/about/people/careers/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "failed",
       "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
@@ -699,7 +601,7 @@
     "rockefeller": {
       "name": "Rockefeller Foundation",
       "url": "https://www.rockefellerfoundation.org/careers/",
-      "checked_at": "2026-09-30T21:15:34.489717+00:00",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
       "last_success": "2026-09-30T18:36:37.564211+00:00",
       "status": "failed",
       "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
@@ -715,23 +617,248 @@
       "fetched_url": "https://www.rockefellerfoundation.org/about-us/careers/",
       "readable": true,
       "deferred_links": 0
+    },
+    "aiib": {
+      "name": "Asian Infrastructure Investment Bank",
+      "url": "https://www.aiib.org/en/opportunities/career/index.html",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-09-30T21:15:34.489717+00:00",
+      "status": "failed",
+      "error": "ValueError: https://www.aiib.org/en/opportunities/career/index.html: ValueError: Source redirected to an error page, not an opportunity listing",
+      "candidates": 0,
+      "expected_pages": 0,
+      "validated_pages": 0
+    },
+    "isa": {
+      "name": "International Studies Association",
+      "url": "https://www.isanet.org/Conferences",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 5,
+      "expected_pages": 7,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://www.isanet.org/Conferences",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.isanet.org/Conferences",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "eisa": {
+      "name": "European International Studies Association",
+      "url": "https://eisa-net.org/",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-09-30T21:15:34.489717+00:00",
+      "status": "pending",
+      "error": "",
+      "candidates": 3,
+      "expected_pages": 4,
+      "validated_pages": 0,
+      "entry_attempts": [
+        {
+          "url": "https://eisa-net.org/",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://eisa-net.org/",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "ipsa": {
+      "name": "International Political Science Association",
+      "url": "https://www.ipsa.org/na/news/all",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-09-30T21:15:34.489717+00:00",
+      "status": "pending",
+      "error": "",
+      "candidates": 6,
+      "expected_pages": 6,
+      "validated_pages": 0,
+      "entry_attempts": [
+        {
+          "url": "https://www.ipsa.org/na/news/all",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.ipsa.org/na/news/all",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "worldbank-events": {
+      "name": "World Bank events",
+      "url": "https://www.worldbank.org/en/events",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
+      "candidates": 0,
+      "expected_pages": 1,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://www.worldbank.org/en/events",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.worldbank.org/en/events/all",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "eui-maxweber": {
+      "name": "EUI Max Weber social-science fellowships",
+      "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-09-30T21:15:34.489717+00:00",
+      "status": "failed",
+      "error": "Detail fetch failed: ValueError: robots.txt disallows this source",
+      "candidates": 3,
+      "expected_pages": 4,
+      "validated_pages": 0,
+      "entry_attempts": [
+        {
+          "url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "humboldt-climate": {
+      "name": "Humboldt International Climate Protection Fellowship",
+      "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 11,
+      "expected_pages": 7,
+      "validated_pages": 2,
+      "entry_attempts": [
+        {
+          "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/international-climate-protection-fellowship",
+      "readable": true,
+      "deferred_links": 5
+    },
+    "daad-epos": {
+      "name": "DAAD development-related postgraduate scholarships",
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "Record validation: Invalid page decision",
+      "candidates": 1,
+      "expected_pages": 2,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "ceu-schools": {
+      "name": "CEU Summer University",
+      "url": "https://summeruniversity.ceu.edu/courses",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
+      "candidates": 0,
+      "expected_pages": 1,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://summeruniversity.ceu.edu/courses",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://summeruniversity.ceu.edu/courses",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "un-youth": {
+      "name": "UN Youth Office participation and events",
+      "url": "https://www.un.org/youthaffairs/en",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 2,
+      "expected_pages": 3,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://www.un.org/youthaffairs/en",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.un.org/youthaffairs/en",
+      "readable": true,
+      "deferred_links": 0
+    },
+    "mgcy-youth": {
+      "name": "Major Group for Children and Youth participation calls",
+      "url": "https://www.unmgcy.org/",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "",
+      "candidates": 9,
+      "expected_pages": 7,
+      "validated_pages": 2,
+      "entry_attempts": [
+        {
+          "url": "https://www.unmgcy.org/",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://www.unmgcy.org/",
+      "readable": true,
+      "deferred_links": 3
+    },
+    "unfccc-events": {
+      "name": "UNFCCC public events",
+      "url": "https://unfccc.int/calendar",
+      "checked_at": "2026-10-05T06:48:39.697463+00:00",
+      "last_success": "2026-10-05T06:48:39.697463+00:00",
+      "status": "partial",
+      "error": "No opportunity links or explicit empty-state evidence; needs source adapter review",
+      "candidates": 0,
+      "expected_pages": 1,
+      "validated_pages": 1,
+      "entry_attempts": [
+        {
+          "url": "https://unfccc.int/calendar",
+          "status": "readable"
+        }
+      ],
+      "fetched_url": "https://unfccc.int/calendar/events-list",
+      "readable": true,
+      "deferred_links": 0
     }
   },
   "errors": [
-    "Record validation: Unfetched or fabricated opportunity URL",
-    "Record validation: Deadline lacks matching source evidence",
-    "Record validation: Unsupported eligibility evidence: residency; Unfetched or fabricated opportunity URL",
-    "Record validation: Job duties lack source evidence",
-    "Record validation: Job duties lack source evidence",
-    "Record validation: Deadline lacks matching source evidence",
-    "Record validation: Deadline lacks matching source evidence"
+    "Record validation: Invalid page decision"
   ],
   "model_calls": 7,
-  "pending_pages": 251,
+  "pending_pages": 308,
   "probe_only": false,
   "linkedin_discovery": {
     "status": "checked",
     "indexed_links": [],
-    "official_candidates": 16
+    "official_candidates": 15
   }
 }
