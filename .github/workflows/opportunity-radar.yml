@@ -1,144 +1,47 @@
-name: 国际会议与学术机会雷达
-
+name: Curated Public Beta deployment
 on:
   workflow_dispatch:
-    inputs:
-      mode:
-        description: "运行模式"
-        type: choice
-        options:
-          - instant
-          - weekly
-        default: weekly
-      send_email:
-        description: "发送极简邮件提醒"
-        type: boolean
-        required: true
-        default: false
-      send_to_email:
-        description: "临时收件邮箱；留空则使用 MAIL_TO Secret"
-        type: string
-        required: false
-      dashboard_only:
-        description: "只重建仪表盘，不调用 OpenAI"
-        type: boolean
-        required: true
-        default: false
-      probe_sources:
-        description: "检查新增来源可读性，不调用 OpenAI"
-        type: boolean
-        required: true
-        default: false
-  schedule:
-    # 每周一北京时间 09:00 汇总，即周一 UTC 01:00。
-    - cron: "0 1 * * 1"
-
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
-
 concurrency:
-  group: opportunity-radar-main
+  group: pages
   cancel-in-progress: false
-
 jobs:
-  collect-and-build-dashboard:
+  deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 8
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
         with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install public-page renderer
-        run: python -m playwright install --with-deps chromium
-
-      - name: Validate sample opportunities
-        run: python "00-自动化/validate_opportunities.py" "04-模板/30条样例机会.csv"
-
-      - name: Test collection and eligibility
-        run: python -m unittest discover -s tests -v
-
-      - name: Check expanded source readability without OpenAI
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.probe_sources }}
-        run: python tests/expanded_sources_probe.py
-
-      - name: Resolve mode
-        id: mode
+          persist-credentials: false
+      - name: Check approved artifact allowlist and reproduce current source build
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "mode=weekly" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Collect opportunities
-        id: collect
-        continue-on-error: true
-        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dashboard_only) }}
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-4.1-mini
-          RADAR_MAX_MODEL_CALLS: "7"
-          RADAR_MAX_EXTRACTIONS: "18"
-        run: python "00-自动化/collect_opportunities.py" --mode "${{ steps.mode.outputs.mode }}"
-
-      - name: Generate dashboard
-        id: dashboard
-        if: ${{ !cancelled() }}
-        run: python "00-自动化/generate_dashboard.py"
-
-      - name: Send brief email
-        if: ${{ steps.collect.outputs.has_updates == 'true' && steps.collect.outcome == 'success' && github.event_name == 'workflow_dispatch' && inputs.send_email }}
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          MAIL_FROM: ${{ secrets.MAIL_FROM }}
-          MAIL_TO: ${{ github.event_name == 'workflow_dispatch' && inputs.send_to_email || secrets.MAIL_TO }}
-          MAIL_REPLY_TO: ${{ secrets.MAIL_REPLY_TO }}
-          MAIL_SUBJECT_PREFIX: 国际会议与学术机会雷达
-          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
-        run: python "00-自动化/send_email.py" "${{ steps.collect.outputs.html_path }}" --subject "${{ steps.collect.outputs.email_subject }}"
-
-      - name: Skip email notice
-        if: ${{ steps.collect.outputs.has_updates != 'true' || github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_email) }}
-        run: echo "Long emails are disabled; dashboard is the primary interface."
-
-      - name: Commit database and dashboard
-        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update opportunity radar"
-          file_pattern: "04-数据库/* 05-历史记录/* 06-邮件输出/* docs/*"
-
-      - name: Configure GitHub Pages
-        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
-        uses: actions/configure-pages@v5
-
-      - name: Upload dashboard publication
-        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
-        uses: actions/upload-pages-artifact@v3
+          python3 -B - <<'PY'
+          import hashlib,json,subprocess,tempfile
+          from pathlib import Path
+          manifest=json.loads(Path('beta-release-manifest.json').read_text())
+          assert manifest['schedules_enabled'] is manifest['email_enabled'] is manifest['automatic_publication_enabled'] is False
+          assert set(p.name for p in Path('docs').iterdir())=={'index.html','opportunities.json','beta.css'}
+          for path,expected in manifest['public_source_sha256'].items():
+              assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==expected,path
+          for name,expected in manifest['build_sha256'].items():
+              assert hashlib.sha256((Path('docs')/name).read_bytes()).hexdigest()==expected,name
+          with tempfile.TemporaryDirectory() as folder:
+              subprocess.run(['python3','00-自动化/build_curated_beta.py','--data','docs/opportunities.json','--output',folder],check=True)
+              for name,expected in manifest['build_sha256'].items():
+                  assert hashlib.sha256((Path(folder)/name).read_bytes()).hexdigest()==expected,name
+          assert len(json.loads(Path('docs/opportunities.json').read_text())['opportunities'])==manifest['approved_count']>=5
+          print('Current commit reproduced approved public artifacts; no collection, email or automatic publishing')
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
-
-      - name: Deploy updated GitHub Pages
+      - name: Deploy curated Beta to existing Pages destination
         id: deployment
-        if: ${{ !cancelled() && steps.dashboard.outcome == 'success' }}
         uses: actions/deploy-pages@v4
-
-      - name: Report collection failure
-        if: ${{ !cancelled() && steps.collect.outcome == 'failure' }}
-        run: |
-          echo "Collection failed. Existing data retained; dashboard shows the actual collection status."
-          exit 1
