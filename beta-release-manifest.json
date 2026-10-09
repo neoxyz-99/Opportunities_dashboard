@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "release": "International Opportunity — Beta",
+  "built_on": "2026-10-09",
+  "approved_count": 5,
+  "build_sha256": {
+    "beta.css": "22ca2bc17243e46351e68da0eaf2fc1d0910aa7fecf6aba6a4f1a217d1c9fd20",
+    "index.html": "840355422d737af56f91dc011444ae42703bde9a75001f8b0522db1ee4cfed18",
+    "opportunities.json": "72f85b70c9570dddb08d3fa3f7fd0ca2abf121e1fdaecdacf924d42ab84de3cf"
+  },
+  "aggregate_build_sha256": "8677afd2515fc12a1bb460604f4664d35fbe902a836870bbd97d3eae704d8377",
+  "public_source_sha256": {
+    "00-自动化/build_curated_beta.py": "f6836f6877a5c3449cea4c7bfc44b1c78302ab7afd63b88dd8ab610a06c34151",
+    "docs/beta.css": "22ca2bc17243e46351e68da0eaf2fc1d0910aa7fecf6aba6a4f1a217d1c9fd20",
+    "docs/opportunities.json": "72f85b70c9570dddb08d3fa3f7fd0ca2abf121e1fdaecdacf924d42ab84de3cf"
+  },
+  "offline_tests": {
+    "run": 443,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "schedules_enabled": false,
+  "email_enabled": false,
+  "automatic_publication_enabled": false,
+  "rollback_source_commit": "cd5d583af94d1d283005f6b8dee70e6b66c69bdc",
+  "rollback_instruction": "Restore approved public files from the prior commit and manually deploy; keep manual-only deployment workflow so rollback does not re-enable unattended collection."
+}
