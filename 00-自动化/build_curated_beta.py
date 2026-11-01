@@ -1,7 +1,35 @@
 #!/usr/bin/env python3
 """Build the existing static Pages dashboard from a small approved public projection."""
 import argparse, hashlib, html, json, re
+import copy
+from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
+# Standalone public date parser: identical conservative rules to the validated runtime.
+MONTHS = {name: i for i, name in enumerate(("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"), 1)}
+
+DATE = re.compile(r"(?<!\d)(?:20\d\d-\d{1,2}-\d{1,2}|\d{1,2}[/.]\d{1,2}[/.]20\d\d|"
+                  r"(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2}(?:st|nd|rd|th)?[,]?\s+20\d\d|"
+                  r"\d{1,2}(?:st|nd|rd|th)?\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?[,]?\s+20\d\d)(?!\d)", re.I)
+
+def parse_date(value):
+    # Numeric dot dates use the same ambiguity guard as slash dates. Never
+    # infer a locale when both components could be the month.
+    if re.fullmatch(r"\d{1,2}\.\d{1,2}\.20\d\d", value):
+        return parse_date(value.replace('.', '/'))
+    value = re.sub(r"(\d)(st|nd|rd|th)\b", r"\1", value, flags=re.I).replace(",", "").replace(".", "")
+    try:
+        if re.fullmatch(r"20\d\d-\d{1,2}-\d{1,2}", value): return date.fromisoformat(value)
+        if "/" in value:
+            month, day, year = map(int, value.split("/"))
+            if month <= 12 and day <= 12 and month != day: return None  # ambiguous locale
+            return date(year, month, day) if month <= 12 else date(year, day, month)
+        parts = value.split()
+        if parts[0].isdigit(): day, name, year = parts
+        else: name, day, year = parts
+        month = next(v for k, v in MONTHS.items() if k.lower().startswith(name.lower()[:3]))
+        return date(int(year), month, int(day))
+    except (ValueError, StopIteration): return None
 
 ROOT=Path(__file__).resolve().parents[1]
 FIELDS={'id','name','organization','type','geography','status','deadline','funding','eligibility','detail_url','application_url','verification','last_checked','reviewed_at'}
@@ -10,35 +38,89 @@ NOTICE='Actively curated Beta with incomplete coverage. Opportunity information 
 def validate(data):
     if set(data)!={'version','notice','opportunities'} or data['version']!=1 or data['notice']!=NOTICE: raise ValueError('Unexpected public projection')
     rows=data['opportunities']
-    if len(rows)<5 or len({r['id'] for r in rows})!=len(rows): raise ValueError('At least five distinct approved opportunities required')
+    if not isinstance(rows,list): raise ValueError('Opportunities must be a list')
     for row in rows:
         if set(row)!=FIELDS or any(not isinstance(v,str) for v in row.values()): raise ValueError('Public field allowlist mismatch')
         if row['status'] not in ('Open','Rolling','Upcoming') or row['verification']!='Verified official source; current application evidence reviewed': raise ValueError('Unapproved lifecycle or provenance')
         if not row['name'] or not row['organization'] or not row['detail_url'].startswith('https://'): raise ValueError('Missing public identity')
         if row['application_url'] and not row['application_url'].startswith('https://'): raise ValueError('Invalid application URL')
+    if len({r['id'] for r in rows})!=len(rows): raise ValueError('Duplicate approved opportunity IDs')
     return rows
 
-def render(data):
-    rows=validate(data);esc=lambda v:html.escape(v,quote=True)
+def deadline_day(row):
+    literal=re.sub(r'(?<=\d),\s*(?=[A-Za-z])',' ',row['deadline'])
+    cutoffs={d for m in DATE.finditer(literal) if (d:=parse_date(m.group())) is not None}
+    return next(iter(cutoffs)) if len(cutoffs)==1 else None
+
+def expiry_utc(row):
+    """Operational expiry, not a guessed source time zone.
+
+    A date-only deadline has certainly ended by noon UTC the next day, even
+    in UTC-12. Never close it early by assuming midnight in the viewer's zone.
+    """
+    cutoff=deadline_day(row)
+    if cutoff is None: return ''
+    # Honor explicit source clock/zone pairs; never infer a zone from geography.
+    literal=row['deadline']
+    times=list(re.finditer(r'(?<!\d)(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?',literal,re.I))
+    zones=[]
+    for pattern,zone in [(r'\bCET\b',timezone(timedelta(hours=1))),
+                         (r'\bCEST\b',timezone(timedelta(hours=2))),
+                         (r'\bEDT\b',timezone(timedelta(hours=-4))),
+                         (r'\bEST\b',timezone(timedelta(hours=-5))),
+                         (r'\bUTC\b|Coordinated Universal Time',timezone.utc),
+                         (r'Pacific time',ZoneInfo('America/Los_Angeles')),
+                         (r'Stockholm time',ZoneInfo('Europe/Stockholm'))]:
+        if re.search(pattern,literal,re.I): zones.append(zone)
+    if len(times)==1 and len(zones)==1:
+        found=times[0];hour,minute=int(found[1]),int(found[2]);meridiem=(found[3] or '').lower().replace('.','')
+        if minute<60 and ((meridiem and 1<=hour<=12) or (not meridiem and 0<=hour<24)):
+            if meridiem: hour=hour%12+(12 if meridiem=='pm' else 0)
+            return datetime(cutoff.year,cutoff.month,cutoff.day,hour,minute,tzinfo=zones[0]).astimezone(timezone.utc).isoformat()
+    return datetime.combine(cutoff+timedelta(days=1),datetime.min.time(),timezone.utc).replace(hour=12).isoformat()
+
+def current_projection(data, *, as_of=None):
+    """Omit expired approved rows without changing their historical records.
+
+    Calendar passage may remove currentness; it never grants verification or
+    promotes an Upcoming record to Open. Unknown or multiple cutoff dates are
+    left for review, not guessed. Same-day cutoffs require source time zones.
+    """
+    now=datetime.now(timezone.utc)
+    today=date.fromisoformat(as_of) if isinstance(as_of,str) else as_of or now.date()
+    rows=validate(data); result=copy.deepcopy(data); keep=[]
+    for row in rows:
+        cutoff=deadline_day(row)
+        expired = bool(cutoff and cutoff < today) if as_of is not None else bool(expiry_utc(row) and datetime.fromisoformat(expiry_utc(row)) <= now)
+        if expired: continue
+        keep.append(copy.deepcopy(row))
+    result['opportunities']=keep
+    return result
+
+def render(data, *, as_of=None):
+    rows=validate(current_projection(data,as_of=as_of));esc=lambda v:html.escape(v,quote=True)
     cards=[]
     for row in rows:
         fields=''.join('<div class="field"><b>'+esc(label)+'</b><span>'+esc(row[key])+'</span></div>' for label,key in [('Organization','organization'),('Geography','geography'),('Funding · source statement','funding'),('Eligibility','eligibility')])
         apply='<a href="'+esc(row['application_url'])+'" target="_blank" rel="noopener noreferrer">Application page ↗</a>' if row['application_url'] else ''
-        cards.append('<article class="card" data-search="'+esc(' '.join(row.values()).lower())+'" data-type="'+esc(row['type'])+'"><header class="card-heading"><div><h2 class="title">'+esc(row['name'])+'</h2><div class="chips"><span class="chip">'+esc(row['type'])+'</span><span class="chip">'+esc(row['status'])+' · as reviewed</span></div></div><div class="deadline"><span>Verified deadline</span><strong>'+esc(row['deadline'])+'</strong></div></header><div class="details"><div class="detail-grid">'+fields+'</div><p class="verification">✓ '+esc(row['verification'])+'</p><p class="meta-check">Source last checked: '+esc(row['last_checked'])+' · Reviewed: '+esc(row['reviewed_at'])+'</p><div class="links"><a href="'+esc(row['detail_url'])+'" target="_blank" rel="noopener noreferrer">Official details ↗</a>'+apply+'</div></div></article>')
+        cards.append('<article class="card" data-expires="'+esc(expiry_utc(row))+'" data-search="'+esc(' '.join(row.values()).lower())+'" data-type="'+esc(row['type'])+'"><header class="card-heading"><div><h2 class="title">'+esc(row['name'])+'</h2><div class="chips"><span class="chip">'+esc(row['type'])+'</span><span class="chip">'+esc(row['status'])+' · as reviewed</span></div></div><div class="deadline"><span>Verified deadline</span><strong>'+esc(row['deadline'])+'</strong></div></header><div class="details"><div class="detail-grid">'+fields+'</div><p class="verification">✓ '+esc(row['verification'])+'</p><p class="meta-check">Source last checked: '+esc(row['last_checked'])+' · Reviewed: '+esc(row['reviewed_at'])+'</p><div class="links"><a href="'+esc(row['detail_url'])+'" target="_blank" rel="noopener noreferrer">Official details ↗</a>'+apply+'</div></div></article>')
     options=''.join('<option>'+esc(t)+'</option>' for t in sorted({r['type'] for r in rows}))
     return '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>International Opportunity — Beta</title><link rel="stylesheet" href="beta.css"></head><body><div class="shell"><header class="hero"><div><p class="eyebrow">CURATED INTERNATIONAL OPPORTUNITIES</p><h1>International Opportunity <span class="beta-label">Beta</span></h1><p>Fellowships, research funding and policy opportunities.</p></div></header><p class="beta-notice">'''+esc(NOTICE)+'''</p><section class="stats"><div class="stat"><strong>'''+str(len(rows))+'''</strong><span>Verified opportunities</span></div><div class="stat"><strong>Curated</strong><span>Current application evidence</span></div></section><section class="toolbar"><div class="search-row"><label class="search-label" for="search">Search opportunities<input id="search" type="search" placeholder="Search name, organization or eligibility"></label><label for="type">Opportunity type<select id="type"><option value="">All types</option>'''+options+'''</select></label></div></section><p id="count" aria-live="polite">'''+str(len(rows))+''' opportunities</p><main class="list" id="list">'''+''.join(cards)+'''</main><p id="empty" hidden>No matching opportunities. Try another search.</p><footer class="site-footer">International Opportunity — Beta · Source statements are shown only where supported. Eligibility may be restricted; check the official call for complete conditions.</footer></div><script>
 const search=document.getElementById('search'), type=document.getElementById('type');
-function filter(){let count=0; document.querySelectorAll('article.card').forEach(card=>{card.hidden=!(card.dataset.search.includes(search.value.trim().toLowerCase())&&(!type.value||card.dataset.type===type.value));if(!card.hidden)count++;});document.getElementById('count').textContent=count+' opportunities';document.getElementById('empty').hidden=count!==0;}
-search.addEventListener('input',filter);type.addEventListener('change',filter);
+const cards=Array.from(document.querySelectorAll('article.card'));
+function current(card){return !card.dataset.expires || Date.now()<Date.parse(card.dataset.expires);}
+function filter(){let count=0; cards.forEach(card=>{card.hidden=!(current(card)&&card.dataset.search.includes(search.value.trim().toLowerCase())&&(!type.value||card.dataset.type===type.value));if(!card.hidden)count++;});document.getElementById('count').textContent=count+' opportunities';document.getElementById('empty').hidden=count!==0;document.querySelector('.stat strong').textContent=cards.filter(current).length;}
+search.addEventListener('input',filter);type.addEventListener('change',filter);window.addEventListener('focus',filter);setInterval(filter,60000);filter();
 </script></body></html>'''
 
-def build(data,destination):
+def build(data,destination, *, as_of=None):
+    data=current_projection(data,as_of=as_of)
     output=Path(destination);output.mkdir(parents=True,exist_ok=True)
-    (output/'index.html').write_text(render(data),encoding='utf-8')
+    (output/'index.html').write_text(render(data,as_of=as_of),encoding='utf-8')
     (output/'opportunities.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     (output/'beta.css').write_bytes((ROOT/'docs/beta.css').read_bytes())
     return {p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.iterdir()) if p.is_file()}
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--data',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args();print(json.dumps(build(json.loads(args.data.read_text()),args.output)))
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--data',type=Path,required=True);parser.add_argument('--output',type=Path,required=True);parser.add_argument('--as-of',help='ISO calendar date for reproducible review');args=parser.parse_args();print(json.dumps(build(json.loads(args.data.read_text()),args.output,as_of=args.as_of)))
 if __name__=='__main__':main()
