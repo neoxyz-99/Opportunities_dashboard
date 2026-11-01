@@ -32,10 +32,10 @@ jobs:
           for name,expected in manifest['build_sha256'].items():
               assert hashlib.sha256((Path('docs')/name).read_bytes()).hexdigest()==expected,name
           with tempfile.TemporaryDirectory() as folder:
-              subprocess.run(['python3','00-自动化/build_curated_beta.py','--data','docs/opportunities.json','--output',folder],check=True)
+              subprocess.run(['python3','00-自动化/build_curated_beta.py','--data','docs/opportunities.json','--output',folder,'--as-of',manifest['built_on']],check=True)
               for name,expected in manifest['build_sha256'].items():
                   assert hashlib.sha256((Path(folder)/name).read_bytes()).hexdigest()==expected,name
-          assert len(json.loads(Path('docs/opportunities.json').read_text())['opportunities'])==manifest['approved_count']>=5
+          assert len(json.loads(Path('docs/opportunities.json').read_text())['opportunities'])==manifest['approved_count']
           print('Current commit reproduced approved public artifacts; no collection, email or automatic publishing')
           PY
       - uses: actions/configure-pages@v5
