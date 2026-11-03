@@ -5,6 +5,7 @@ import copy
 from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from string import Template
 # Standalone public date parser: identical conservative rules to the validated runtime.
 MONTHS = {name: i for i, name in enumerate(("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"), 1)}
 
@@ -32,6 +33,7 @@ def parse_date(value):
     except (ValueError, StopIteration): return None
 
 ROOT=Path(__file__).resolve().parents[1]
+TEMPLATES=ROOT/'04-模板'
 FIELDS={'id','name','organization','type','geography','status','deadline','funding','eligibility','detail_url','application_url','verification','last_checked','reviewed_at'}
 NOTICE='Actively curated Beta with incomplete coverage. Opportunity information can change. Confirm final application details on the linked official source.'
 
@@ -99,19 +101,38 @@ def current_projection(data, *, as_of=None):
 
 def render(data, *, as_of=None):
     rows=validate(current_projection(data,as_of=as_of));esc=lambda v:html.escape(v,quote=True)
+    def icon(name, extra=''):
+        return '<svg class="icon'+(' '+extra if extra else '')+'" aria-hidden="true"><use href="#i-'+name+'"/></svg>'
+    def type_icon(kind):
+        return {'Research Grant':'grant','Research funding':'grant','Visiting Research':'book',
+                'Visiting fellowship':'book','Fellowship':'briefcase','Traineeship':'briefcase',
+                'Internship':'briefcase','Early-career research role':'briefcase',
+                'Call for papers':'book'}.get(kind,'layers')
     cards=[]
     for row in rows:
-        fields=''.join('<div class="field"><b>'+esc(label)+'</b><span>'+esc(row[key])+'</span></div>' for label,key in [('Organization','organization'),('Geography','geography'),('Funding · source statement','funding'),('Eligibility','eligibility')])
-        apply='<a href="'+esc(row['application_url'])+'" target="_blank" rel="noopener noreferrer">Application page ↗</a>' if row['application_url'] else ''
-        cards.append('<article class="card" data-expires="'+esc(expiry_utc(row))+'" data-search="'+esc(' '.join(row.values()).lower())+'" data-type="'+esc(row['type'])+'"><header class="card-heading"><div><h2 class="title">'+esc(row['name'])+'</h2><div class="chips"><span class="chip">'+esc(row['type'])+'</span><span class="chip">'+esc(row['status'])+' · as reviewed</span></div></div><div class="deadline"><span>Verified deadline</span><strong>'+esc(row['deadline'])+'</strong></div></header><div class="details"><div class="detail-grid">'+fields+'</div><p class="verification">✓ '+esc(row['verification'])+'</p><p class="meta-check">Source last checked: '+esc(row['last_checked'])+' · Reviewed: '+esc(row['reviewed_at'])+'</p><div class="links"><a href="'+esc(row['detail_url'])+'" target="_blank" rel="noopener noreferrer">Official details ↗</a>'+apply+'</div></div></article>')
-    options=''.join('<option>'+esc(t)+'</option>' for t in sorted({r['type'] for r in rows}))
-    return '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>International Opportunity — Beta</title><link rel="stylesheet" href="beta.css"></head><body><div class="shell"><header class="hero"><div><p class="eyebrow">CURATED INTERNATIONAL OPPORTUNITIES</p><h1>International Opportunity <span class="beta-label">Beta</span></h1><p>Fellowships, research funding and policy opportunities.</p></div></header><p class="beta-notice">'''+esc(NOTICE)+'''</p><section class="stats"><div class="stat"><strong>'''+str(len(rows))+'''</strong><span>Verified opportunities</span></div><div class="stat"><strong>Curated</strong><span>Current application evidence</span></div></section><section class="toolbar"><div class="search-row"><label class="search-label" for="search">Search opportunities<input id="search" type="search" placeholder="Search name, organization or eligibility"></label><label for="type">Opportunity type<select id="type"><option value="">All types</option>'''+options+'''</select></label></div></section><p id="count" aria-live="polite">'''+str(len(rows))+''' opportunities</p><main class="list" id="list">'''+''.join(cards)+'''</main><p id="empty" hidden>No matching opportunities. Try another search.</p><footer class="site-footer">International Opportunity — Beta · Source statements are shown only where supported. Eligibility may be restricted; check the official call for complete conditions.</footer></div><script>
-const search=document.getElementById('search'), type=document.getElementById('type');
-const cards=Array.from(document.querySelectorAll('article.card'));
-function current(card){return !card.dataset.expires || Date.now()<Date.parse(card.dataset.expires);}
-function filter(){let count=0; cards.forEach(card=>{card.hidden=!(current(card)&&card.dataset.search.includes(search.value.trim().toLowerCase())&&(!type.value||card.dataset.type===type.value));if(!card.hidden)count++;});document.getElementById('count').textContent=count+' opportunities';document.getElementById('empty').hidden=count!==0;document.querySelector('.stat strong').textContent=cards.filter(current).length;}
-search.addEventListener('input',filter);type.addEventListener('change',filter);window.addEventListener('focus',filter);setInterval(filter,60000);filter();
-</script></body></html>'''
+        fields=''.join('<div class="field'+(' unresolved' if row[key] in ('Needs verification','Not stated') else '')+'"><b>'+esc(label)+'</b><span>'+esc(row[key])+'</span></div>' for label,key in [('Organization','organization'),('Geography','geography'),('Funding — source statement','funding'),('Eligibility','eligibility')])
+        def source_link(url, label, secondary=False):
+            return '<a'+(' class="secondary"' if secondary else '')+' href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+label+icon('external')+'<span class="sr-only"> (opens in a new tab)</span></a>'
+        links=source_link(row['detail_url'],'Official details')
+        if row['application_url']:
+            links+=source_link(row['application_url'],'Application page',secondary=True)
+        cards.append(
+            '<article class="card" data-expires="'+esc(expiry_utc(row))+'" data-search="'+esc(' '.join(row.values()).lower())+'" data-type="'+esc(row['type'])+'" data-organization="'+esc(row['organization'])+'">'
+            '<details class="record"><summary class="record-summary"><span class="record-icon">'+icon(type_icon(row['type']))+'</span><div class="record-heading">'
+            '<h3 class="title">'+esc(row['name'])+'</h3><p class="organization">'+esc(row['organization'])+'</p><div class="chips"><span class="chip">'+esc(row['type'])+'</span><span class="chip status">'+esc(row['status'])+' — as reviewed</span></div></div>'
+            '<div class="deadline"><span>Deadline — source statement</span><strong>'+esc(row['deadline'])+'</strong></div>'+icon('chevron','chevron')+'</summary>'
+            '<div class="details"><div class="detail-grid">'+fields+'</div><div class="card-footer"><div><p class="verification">'+icon('shield')+esc(row['verification'])+'</p>'
+            '<p class="meta-check"><span>Source last checked: '+esc(row['last_checked'])+'</span><span>Reviewed: '+esc(row['reviewed_at'])+'</span></p></div><div class="links">'+links+'</div></div></div></details></article>')
+    types=sorted({r['type'] for r in rows})
+    options=''.join('<option>'+esc(t)+'</option>' for t in types)
+    navigation=''.join(
+        '<button class="nav-type" type="button" data-type="'+esc(t)+'" aria-pressed="false" aria-label="'+esc(t)+'">'
+        +icon(type_icon(t))+'<span class="nav-label">'+esc(t)+'</span><span class="nav-count">'+str(sum(r['type']==t for r in rows))+'</span></button>'
+        for t in types)
+    return Template((TEMPLATES/'curated-beta.html').read_text(encoding='utf-8')).substitute(
+        count=len(rows), count_label=str(len(rows))+(' opportunity' if len(rows)==1 else ' opportunities'),
+        organization_count=len({r['organization'] for r in rows}), type_count=len(types), navigation=navigation,
+        empty_hidden='hidden' if rows else '', notice=esc(NOTICE), options=options, cards='\n'.join(cards))
 
 def build(data,destination, *, as_of=None):
     data=current_projection(data,as_of=as_of)
