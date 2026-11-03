@@ -1,17 +1,18 @@
 {
   "version": 1,
   "release": "International Opportunity — Beta",
-  "built_on": "2026-11-01",
+  "built_on": "2026-11-02",
   "approved_count": 12,
   "build_sha256": {
-    "beta.css": "22ca2bc17243e46351e68da0eaf2fc1d0910aa7fecf6aba6a4f1a217d1c9fd20",
-    "index.html": "cd9cfffae65eaaa52b49884d985931838278a3851035bcf9f122000731adba70",
+    "beta.css": "36aff82d87253871f7e1de4e51d40265ca1ebff4fcbeddb70d2a1d58b7413685",
+    "index.html": "2d8a576b91491b5bc0e800f7b352d0319c19114851c143a83994b4f5797614e4",
     "opportunities.json": "3f1ec577bdd0e0770f357936063b8a9e5eb39319704f91a09b4712391819e9b0"
   },
-  "aggregate_build_sha256": "4baf4c0235e4b1c742d74ef58109648154e3447ab6d9240434c24c6ee92b0628",
+  "aggregate_build_sha256": "1970e28d2407b0b27e73cfa638afffa614f21ef35ffc8eb0fbc1d37b6d2f4210",
   "public_source_sha256": {
-    "00-自动化/build_curated_beta.py": "893b77b80dd18fd10441d8a4c5d87da3d16a6bb861705df5a28f5da04864c66c",
-    "docs/beta.css": "22ca2bc17243e46351e68da0eaf2fc1d0910aa7fecf6aba6a4f1a217d1c9fd20",
+    "00-自动化/build_curated_beta.py": "06b93aa547bab93eeb0b2e45f93e01a2c307936c21fdf1ae62368729913fd907",
+    "04-模板/curated-beta.html": "4ab010ccc1eaefd076a0917aff7e13c5111358878d03470892f4f18b69de4ba3",
+    "docs/beta.css": "36aff82d87253871f7e1de4e51d40265ca1ebff4fcbeddb70d2a1d58b7413685",
     "docs/opportunities.json": "3f1ec577bdd0e0770f357936063b8a9e5eb39319704f91a09b4712391819e9b0"
   },
   "offline_tests": {
@@ -23,6 +24,8 @@
   "schedules_enabled": false,
   "email_enabled": false,
   "automatic_publication_enabled": false,
-  "rollback_source_commit": "81cb862a7e4ab08fc4bd56d360ad8aed92e33a1a",
-  "rollback_instruction": "Restore approved public files from the prior commit and manually deploy; keep manual-only deployment workflow so rollback does not re-enable unattended collection."
+  "rollback_source_commit": "ce4a03135c11f2a0f73b5af6030209dbebb7e937",
+  "rollback_instruction": "Restore approved public files from the prior commit and manually deploy; keep manual-only deployment workflow so rollback does not re-enable unattended collection.",
+  "ui_released_on": "2026-11-03",
+  "browser_checks": 27
 }
