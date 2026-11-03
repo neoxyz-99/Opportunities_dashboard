@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore a curated directory of international research, funding and policy opportunities, with original sources and review notes.">
+  <title>Opportunity dashboard — International Opportunity</title>
+  <link rel="stylesheet" href="beta.css">
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1v15Z"/></symbol>
+    <symbol id="i-grant" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5M3 21h18M5 10v7m7-7v7m7-7v7M4 8h16"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12c6 3 12 3 18 0M10 13v3h4v-3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4-9-4Zm0 5 9 4 9-4M3 17l9 4 9-4"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V4h11v17M15 9h5v12M2 21h20M8 8h3M8 12h3M8 16h3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v1"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14M10 4H4v16h16v-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 4h16M4 20h16m-12-11 4-4 4 4m-8 6 4 4 4-4"/></symbol>
+  </svg>
+  <a class="skip-link" href="#browse">Skip to opportunities</a>
+  <div class="app-shell" id="top">
+    <aside class="sidebar" aria-label="Directory navigation">
+      <a class="brand" href="#top" aria-label="International Opportunity home">
+        <span class="brand-symbol"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+        <span class="brand-name">International <br>Opportunity</span>
+      </a>
+      <div class="nav-section-label">Workspace</div>
+      <nav class="navigation" aria-label="Opportunity categories">
+        <button class="nav-type active" type="button" data-type="" aria-pressed="true" aria-label="All opportunities">
+          <svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span class="nav-label">All opportunities</span><span class="nav-count">$count</span>
+        </button>
+        $navigation
+      </nav>
+      <div class="sidebar-bottom">
+        <a class="notes-link" href="#about"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Source notes</span></a>
+        <div class="source-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><strong>Source-first, always.</strong><p>Original links and review notes, with every opportunity.</p></div>
+        <div class="sidebar-foot"><span>International Opportunity</span><span class="beta-label">Beta</span></div>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div class="breadcrumb"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Workspace</span><span class="breadcrumb-divider">/</span><strong>Overview</strong></div><a href="#about" class="topbar-note"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>About the data</a></header>
+      <div class="workspace-content">
+        <section class="page-heading" aria-labelledby="page-title"><h1 id="page-title">Opportunity <span>dashboard</span></h1><p>A clearer view of your next move in research, policy and global affairs.</p></section>
+        <section class="metrics" aria-label="Directory overview">
+          <div class="metric stat"><div class="metric-label"><span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>Opportunities</div><div class="metric-value"><strong id="total-count">$count</strong><span>In this directory</span></div></div>
+          <div class="metric"><div class="metric-label"><span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>Organizations</div><div class="metric-value"><strong id="organization-count">$organization_count</strong><span>Across the collection</span></div></div>
+          <div class="metric"><div class="metric-label"><span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span>Opportunity types</div><div class="metric-value"><strong id="type-count">$type_count</strong><span>Find your focus</span></div></div>
+        </section>
+        <main id="browse" tabindex="-1">
+          <div class="directory-heading"><div><h2>Explore opportunities</h2><p id="count" role="status" aria-live="polite" aria-atomic="true">$count_label</p></div><button class="text-button" id="expand-all" type="button" hidden><svg class="icon" aria-hidden="true"><use href="#i-expand"/></svg><span>Expand details</span></button></div>
+          <section class="toolbar" aria-label="Filter opportunities">
+            <label class="search-label" for="search"><span class="sr-only">Search the directory</span><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="search" type="search" placeholder="Search opportunities, organizations…" autocomplete="off" aria-controls="list"></label>
+            <label class="type-label" for="type"><span class="sr-only">Opportunity type</span><select id="type" aria-controls="list"><option value="">All types</option>$options</select></label>
+            <button class="reset-button" id="reset" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>Reset</button>
+          </section>
+          <noscript><p class="noscript-notice">Enable JavaScript to search and filter. Expand any listing below to read its details; confirm deadlines with the official source.</p></noscript>
+          <div class="list" id="list">$cards</div>
+          <section class="empty" id="empty" $empty_hidden aria-labelledby="empty-title"><span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg></span><h3 id="empty-title">No current listings to show.</h3><p>Reviewed opportunities will appear here when available.</p><button class="primary-button" id="empty-reset" type="button" hidden>Clear filters</button></section>
+          <p class="availability-note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Availability reflects the recorded review. Confirm the latest details with the official source.</p>
+        </main>
+        <details class="about-panel" id="about"><summary><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>How to read this directory</span><svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div><p>$notice</p><p>Source statements are shown only where supported. “Needs verification” marks an unresolved field, not confirmed eligibility. Check the official call for complete conditions.</p><p>The totals above describe this collection. They do not measure global opportunity coverage.</p></div></details>
+        <footer class="site-footer"><span>International Opportunity</span><span>A curated starting point. An informed next step.</span></footer>
+      </div>
+    </div>
+  </div>
+  <script>
+const search=document.getElementById('search'), type=document.getElementById('type');
+const cards=Array.from(document.querySelectorAll('article.card'));
+const reset=document.getElementById('reset'), emptyReset=document.getElementById('empty-reset');
+const expand=document.getElementById('expand-all'), navButtons=Array.from(document.querySelectorAll('.nav-type'));
+function current(card){return !card.dataset.expires || Date.now()<Date.parse(card.dataset.expires);}
+function updateExpand(){
+  const visible=cards.filter(card=>!card.hidden);
+  expand.hidden=visible.length===0;
+  expand.querySelector('span').textContent=visible.length&&visible.every(card=>card.querySelector('details').open)?'Collapse details':'Expand details';
+}
+function filter(){
+  const available=cards.filter(current);
+  let count=0;
+  cards.forEach(card=>{
+    card.hidden=!(current(card)&&card.dataset.search.includes(search.value.trim().toLowerCase())&&(!type.value||card.dataset.type===type.value));
+    if(!card.hidden)count++;
+  });
+  document.getElementById('count').textContent=count+(count===1?' opportunity':' opportunities');
+  document.getElementById('empty').hidden=count!==0;
+  document.getElementById('total-count').textContent=available.length;
+  document.getElementById('organization-count').textContent=new Set(available.map(card=>card.dataset.organization)).size;
+  document.getElementById('type-count').textContent=new Set(available.map(card=>card.dataset.type)).size;
+  navButtons.forEach(button=>{
+    const selected=button.dataset.type===type.value;
+    button.classList.toggle('active',selected);button.setAttribute('aria-pressed',String(selected));
+    button.querySelector('.nav-count').textContent=available.filter(card=>!button.dataset.type||card.dataset.type===button.dataset.type).length;
+  });
+  reset.disabled=!search.value&&!type.value;
+  emptyReset.hidden=reset.disabled;
+  document.getElementById('empty-title').textContent=reset.disabled?'No current listings to show.':'No matching opportunities.';
+  document.querySelector('#empty p').textContent=reset.disabled?'Reviewed opportunities will appear here when available.':'Try another keyword or clear your filters to explore the directory.';
+  updateExpand();
+}
+function clearFilters(){search.value='';type.value='';filter();search.focus();}
+search.addEventListener('input',filter);type.addEventListener('change',filter);
+reset.addEventListener('click',clearFilters);emptyReset.addEventListener('click',clearFilters);
+navButtons.forEach(button=>button.addEventListener('click',()=>{type.value=button.dataset.type;filter();}));
+expand.addEventListener('click',()=>{
+  const visible=cards.filter(card=>!card.hidden), open=!visible.every(card=>card.querySelector('details').open);
+  visible.forEach(card=>card.querySelector('details').open=open);updateExpand();
+});
+cards.forEach(card=>card.querySelector('details').addEventListener('toggle',updateExpand));
+document.querySelectorAll('a[href="#about"]').forEach(link=>link.addEventListener('click',()=>{document.getElementById('about').open=true;}));
+window.addEventListener('focus',filter);setInterval(filter,60000);filter();
+  </script>
+</body>
+</html>
